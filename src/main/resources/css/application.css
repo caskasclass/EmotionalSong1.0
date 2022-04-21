@@ -1,0 +1,9 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#mygrid{
+    -fx-background-color: rgb(193, 26, 54);
+     background-color: rgb(193, 26, 54);
+}
+/*.root{
+    -fx-background-color: "green";
+    background-color: green;
+}*/
