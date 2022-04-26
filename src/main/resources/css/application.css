@@ -1,9 +1,16 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-#mygrid{
+#navbar{
     -fx-background-color: rgb(193, 26, 54);
      background-color: rgb(193, 26, 54);
 }
-/*.root{
+#menubar{
+    -fx-background-color: rgb(21, 65, 7);
+     background-color: rgb(21, 65, 7);
+}
+#mainbody{
     -fx-background-color: "green";
     background-color: green;
-}*/
+}
+.label{
+    -fx-text-fill: "white";
+}

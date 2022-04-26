@@ -33,6 +33,5 @@ public class App extends Application {
         Scene scene = new Scene(root);
         stg.setScene(scene);
         stg.show();
-
     }
 }

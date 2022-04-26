@@ -66,7 +66,7 @@
                         <Hyperlink fx:id="reg_link" onAction="#SignUpWind" text="Registrati" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#Login" text="Accedi">
+                  <Button fx:id="btn_login" mnemonicParsing="false" onAction="#Login" text="Accedi">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
