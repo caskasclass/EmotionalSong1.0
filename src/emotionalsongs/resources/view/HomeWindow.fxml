@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.Homebuilder">
+<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
    <left>
       <VBox fx:id="menubar" prefHeight="900.0" prefWidth="239.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,9 +24,9 @@
                   </Label>
                </children>
             </Pane>
-            <Label accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" prefWidth="293.0" text="menu item1">
+            <Label fx:id="add_song_btn" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#add_canzone_UI" prefHeight="53.0" prefWidth="293.0" text="Aggiungi Canzoni">
                <font>
-                  <Font size="32.0" />
+                  <Font size="22.0" />
                </font>
                <padding>
                   <Insets left="20.0" />
@@ -62,10 +62,7 @@
          </children></VBox>
    </left>
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <center>
-            <FlowPane fx:id="mainbody" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
+      <BorderPane fx:id="left_side_bpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
             <Pane fx:id="navbar" prefHeight="110.0" prefWidth="1161.0" BorderPane.alignment="CENTER">
                <children>
@@ -77,8 +74,9 @@
                   <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/avatarpreview.png" />
-                     </image></ImageView>
-                  <Button layoutX="1000.0" layoutY="37.0" mnemonicParsing="false" text="Sign Out ">
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btn_signOut" layoutX="1000.0" layoutY="37.0" mnemonicParsing="false" onAction="#SignOut" text="Sign Out ">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -86,6 +84,9 @@
                </children>
             </Pane>
          </top>
+         <center>
+            <FlowPane fx:id="mainbody" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </center>
 </BorderPane>

@@ -1,19 +1,19 @@
-package main.java;
+package emotionalsongs;
 
 import java.io.IOException;
+import emotionalsongs.java.Managers.StyleManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.java.Managers.StyleManager;
 
-public class App extends Application {
+public class EmotionalSongs extends Application {
     StyleManager style = new StyleManager();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/LoginWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/view/LoginWindow.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style.mainStyle());
         primaryStage.setTitle("EmotionalSong");

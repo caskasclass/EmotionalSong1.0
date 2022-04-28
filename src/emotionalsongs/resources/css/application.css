@@ -14,3 +14,7 @@
 .label{
     -fx-text-fill: "white";
 }
+.root{
+    -fx-background-color: rgb(193, 26, 54);
+     background-color: rgb(193, 26, 54);
+}

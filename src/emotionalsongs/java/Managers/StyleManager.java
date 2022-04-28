@@ -1,4 +1,4 @@
-package main.java.Managers;
+package emotionalsongs.java.Managers;
 
 
 public class StyleManager {
