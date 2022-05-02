@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.FileManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
@@ -156,28 +157,12 @@ public class Homebuilder implements Initializable {
         String Album = tf5.getText();
         String Genere = tf6.getText();
         Canzone canzone =new Canzone(Titolo, Autore, Anno, Durata, Album, Genere);
-        ArrayList<Canzone> canzoni= new ArrayList<Canzone>();
-        Object obj = FileManager.readData(PATH);
-        if(obj instanceof ArrayList<?>)
-        {
-            ArrayList<?> al = (ArrayList<?>) obj;
-            canzoni = castList(al);
-        }
+        ArrayList<Canzone> canzoni= CanzoniManager.readCanzoni();
         canzoni.add(canzone);
-        FileManager.getData(canzoni, PATH);
+        CanzoniManager.getCanzoni(canzoni);
         System.out.println("Aggiunt0!!!");
 
 
     }
-    private static ArrayList<Canzone> castList(ArrayList<?> al) {
-
-        ArrayList<Canzone> array = new ArrayList<Canzone>();
-        for (Object obj : al) {
-          if (obj instanceof Canzone) {
-            array.add((Canzone) obj);
-          }
-        }
-        return array;
-      }
 
 }

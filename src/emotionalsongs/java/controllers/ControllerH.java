@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import emotionalsongs.EmotionalSongs;
-import emotionalsongs.java.Managers.FileManager;
 import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class ControllerH {
 
     public void Login(ActionEvent e) throws IOException {
         User loguser = new User(ue_field.getText(), passwd_field.getText(), ue_field.getText());
-        ArrayList<User> users = (ArrayList<User>) FileManager.ReadUsers(PATH);
+        ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
         if (users.contains(loguser)) {
             // int index = users.indexOf(loguser);//trova l'indice dell'user nella lista
             // User logged = users.get(index);
@@ -81,14 +81,14 @@ public class ControllerH {
     public void SignUpUser(ActionEvent e) throws IOException {
 
         User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText());
-        ArrayList<User> users = FileManager.ReadUsers(PATH);
+        ArrayList<User> users = UserManager.readUsers();
         if (users.contains(newuser)) {
             System.out.println("\n\n\nUtente gia registrato!!!\n\n\n");
         } else {
             users.add(newuser);
             System.out.println("\n\nuser aggiunto\n" + newuser.printUser() + "\n");
         }
-        FileManager.getUsers(users, PATH);
+        UserManager.getUsers(users);
 
         // le prossime due righe sono da mettere dentro il controllo tipo if
         // Nel sennso che se la registrazione è avvenuta con successo allora chiuedi
