@@ -7,14 +7,19 @@
     -fx-background-color: rgb(21, 65, 7);
      background-color: rgb(21, 65, 7);
 }
-#mainbody{
-    -fx-background-color: "green";
-    background-color: green;
-}
+
 .label{
     -fx-text-fill: "white";
 }
 .root{
     -fx-background-color: rgb(193, 26, 54);
      background-color: rgb(193, 26, 54);
+}
+#PlaylistVBox{
+    -fx-background-color: #d528f7;
+    background-color: #d528f7;
+}
+#mainbody{
+    -fx-background-color: #d528f7;
+    background-color: #d528f7;  
 }

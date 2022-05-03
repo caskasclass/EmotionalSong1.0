@@ -26,7 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 public class Homebuilder implements Initializable {
 
     @FXML
-    private FlowPane mainbody;
+    private HBox mainbody;
     @FXML
     private BorderPane left_side_bpane;
     @FXML
@@ -65,10 +65,10 @@ public class Homebuilder implements Initializable {
 
         Platform.runLater(() -> {
 
-            mainbody.setHgap(15);
-            mainbody.setVgap(15);
             mainbody.setPadding(new Insets(15));
             mainbody.setAlignment(Pos.CENTER);
+            mainbody.setSpacing(20);
+            
 
             System.out.println("\n\nFunzia bene");
             for (int i = 0; i < 11; i++) {
@@ -76,10 +76,10 @@ public class Homebuilder implements Initializable {
                 lab.setText("Playlist");
                 lab.setFont(new Font("Arial", 40));
                 lab.alignmentProperty().setValue(Pos.CENTER);
-                lab.setPrefHeight(225);
-                lab.setPrefWidth(225);
-                lab.setBackground(Background.fill(Color.VIOLET));
-                lab.setBorder(Border.stroke(Color.PINK));
+                lab.setMinWidth(225);
+                lab.setMinHeight(225);
+                lab.setBackground(Background.fill(Color.CORAL));
+                lab.setBorder(Border.stroke(Color.BLANCHEDALMOND));
                 mainbody.getChildren().addAll(lab);
             }
 

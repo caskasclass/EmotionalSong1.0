@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -67,10 +68,13 @@
          <top>
             <Pane fx:id="navbar" prefHeight="110.0" prefWidth="1161.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="hello_username" layoutX="122.0" layoutY="36.0" text="Ciao,  username">
+                  <Label fx:id="hello_username" depthTest="DISABLE" layoutX="122.0" layoutY="36.0" text="Ciao,  username">
                      <font>
                         <Font size="34.0" />
                      </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </Label>
                   <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,11 +92,35 @@
          <center>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="250.0" pannable="true" vbarPolicy="NEVER">
-                     <content>
-                        <FlowPane fx:id="mainbody" maxHeight="250.0" prefHeight="250.0" style="-fx-background-color: #c90eb0;" />
-                     </content>
-                  </ScrollPane>
+                  <VBox fx:id="PlaylistVBox">
+                     <children>
+                        <HBox nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: trasparent;">
+                           <children>
+                              <Label text="Le tue Playlist">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" style="-fx-background-color: trasparent;" vbarPolicy="NEVER">
+                           <content>
+                              <HBox fx:id="mainbody" />
+                           </content>
+                        </ScrollPane>
+                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                           <children>
+                              <Button mnemonicParsing="false" text="See All " />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="25.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
                   <FlowPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #8514db;" />
                   <FlowPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: blue;" />
                </children>
