@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
+<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
    <left>
       <VBox fx:id="menubar" prefHeight="900.0" prefWidth="239.0" BorderPane.alignment="CENTER">
          <children>
@@ -114,41 +113,72 @@
             </GridPane>
          </top>
          <center>
-            <VBox BorderPane.alignment="CENTER">
-               <children>
-                  <VBox fx:id="PlaylistVBox">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: trasparent;" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox>
                      <children>
-                        <HBox nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: trasparent;">
+                        <VBox fx:id="PlaylistVBox">
                            <children>
-                              <Label text="Le tue Playlist">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
+                              <HBox nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: trasparent;">
+                                 <children>
+                                    <Label text="Le tue Playlist">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" style="-fx-background-color: trasparent;" vbarPolicy="NEVER">
+                                 <content>
+                                    <HBox fx:id="myPlaylistcont" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="See All " />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="25.0" />
+                                 </padding>
+                              </HBox>
                            </children>
-                           <padding>
-                              <Insets left="10.0" top="20.0" />
-                           </padding>
-                        </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" style="-fx-background-color: trasparent;" vbarPolicy="NEVER">
-                           <content>
-                              <HBox fx:id="mainbody" />
-                           </content>
-                        </ScrollPane>
-                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                        </VBox>
+                        <VBox fx:id="SongsVBox">
                            <children>
-                              <Button mnemonicParsing="false" text="See All " />
+                              <HBox>
+                                 <children>
+                                    <Label text="Espolora il modno della musica">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="400.0" style="-fx-background-color: trasparent;">
+                                 <content>
+                                    <VBox fx:id="SongsContainer" />
+                                 </content>
+                              </ScrollPane>
+                              <HBox nodeOrientation="RIGHT_TO_LEFT">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Vedi tutte" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="25.0" />
+                                 </padding>
+                              </HBox>
                            </children>
-                           <padding>
-                              <Insets bottom="10.0" left="25.0" />
-                           </padding>
-                        </HBox>
+                        </VBox>
                      </children>
                   </VBox>
-                  <FlowPane prefHeight="250.0" style="-fx-background-color: #8514db;" />
-                  <FlowPane prefHeight="250.0" style="-fx-background-color: blue;" />
-               </children>
-            </VBox>
+               </content>
+            </ScrollPane>
          </center>
       </BorderPane>
    </center>

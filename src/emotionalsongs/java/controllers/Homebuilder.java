@@ -35,7 +35,9 @@ import javafx.stage.Stage;
 public class Homebuilder implements Initializable {
 
     @FXML
-    private HBox mainbody;
+    private HBox myPlaylistcont;
+    @FXML
+    private VBox SongsContainer;
     @FXML
     private BorderPane left_side_bpane;
     @FXML
@@ -65,23 +67,8 @@ public class Homebuilder implements Initializable {
 
         Platform.runLater(() -> {
 
-            mainbody.setPadding(new Insets(15));
-            mainbody.setAlignment(Pos.CENTER);
-            mainbody.setSpacing(20);
-            
-
-            System.out.println("\n\nFunzia bene");
-            for (int i = 0; i < 11; i++) {
-                Label lab = new Label();
-                lab.setText("Playlist");
-                lab.setFont(new Font("Arial", 40));
-                lab.alignmentProperty().setValue(Pos.CENTER);
-                lab.setMinWidth(225);
-                lab.setMinHeight(225);
-                lab.setBackground(Background.fill(Color.CORAL));
-                lab.setBorder(Border.stroke(Color.BLANCHEDALMOND));
-                mainbody.getChildren().addAll(lab);
-            }
+            createHomePlaylistUI();
+            createHomeSongUI();
 
             hello_username.setText("Ciao, " + logged.getUsername());
 
@@ -116,8 +103,8 @@ public class Homebuilder implements Initializable {
     }
 
     public void add_canzone_UI(MouseEvent e) {
-        // mainbody.getChildren().clear(); //funziona
-        left_side_bpane.getChildren().remove(mainbody);
+        // myPlaylistcont.getChildren().clear(); //funziona
+        left_side_bpane.getChildren().remove(myPlaylistcont);
         VBox hbox = new VBox();
         Label lb1 = new Label("Titolo");
         tf1 = new TextField();
@@ -148,19 +135,58 @@ public class Homebuilder implements Initializable {
     }
 
     public void submit() {
-        String Titolo =tf1.getText();
-        String Autore =tf2.getText();
+        String Titolo = tf1.getText();
+        String Autore = tf2.getText();
         Integer Anno = Integer.parseInt(tf3.getText());
         double Durata = Double.parseDouble(tf4.getText());
         String Album = tf5.getText();
         String Genere = tf6.getText();
-        Canzone canzone =new Canzone(Titolo, Autore, Anno, Durata, Album, Genere);
-        ArrayList<Canzone> canzoni= CanzoniManager.readCanzoni();
+        Canzone canzone = new Canzone(Titolo, Autore, Anno, Durata, Album, Genere);
+        ArrayList<Canzone> canzoni = CanzoniManager.readCanzoni();
         canzoni.add(canzone);
         CanzoniManager.getCanzoni(canzoni);
         System.out.println("Aggiunt0!!!");
 
+    }
+
+    private void createHomePlaylistUI() {
+
+        myPlaylistcont.setPadding(new Insets(15));
+        myPlaylistcont.setAlignment(Pos.CENTER_LEFT);
+        myPlaylistcont.setSpacing(20);
+
+        System.out.println("\n\nFunzia bene");
+        for (int i = 0; i < 4; i++) {
+            Label lab = new Label();
+            lab.setText("Playlist");
+            lab.setFont(new Font("Arial", 40));
+            lab.alignmentProperty().setValue(Pos.CENTER);
+            lab.setMinWidth(225);
+            lab.setMinHeight(225);
+            lab.setBackground(Background.fill(Color.CORAL));
+            lab.setBorder(Border.stroke(Color.BLANCHEDALMOND));
+            myPlaylistcont.getChildren().addAll(lab);
+        }
 
     }
 
+    private void createHomeSongUI() {
+        SongsContainer.setPadding(new Insets(5, 0, 5, 0));
+        ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
+       
+        for(Canzone canzone : songs) {
+            HBox songrow = new HBox();
+            songrow.setPadding(new Insets(3));
+            songrow.setAlignment(Pos.CENTER);
+            Label nomeCanzone = new Label(canzone.getTitolo());
+            Label nomeAutore = new Label(canzone.getAutore());
+            Label durata = new Label(canzone.getDurata().toString());
+            Label genere = new Label(canzone.getGenere());
+            Label nomeAlbum = new Label(canzone.getAlbum());
+            songrow.getChildren().addAll(nomeCanzone,nomeAlbum,genere,nomeAutore,durata);
+            songrow.setSpacing(15);
+            SongsContainer.getChildren().add(songrow);
+        }
+        
+    }
 }
