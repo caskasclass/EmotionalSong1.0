@@ -7,13 +7,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
+<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
    <left>
       <VBox fx:id="menubar" prefHeight="900.0" prefWidth="239.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,30 +67,51 @@
          </children></VBox>
    </left>
    <center>
-      <BorderPane fx:id="left_side_bpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="left_side_bpane" BorderPane.alignment="CENTER">
          <top>
-            <Pane fx:id="navbar" prefHeight="110.0" prefWidth="1161.0" BorderPane.alignment="CENTER">
+            <GridPane BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label fx:id="hello_username" depthTest="DISABLE" layoutX="122.0" layoutY="36.0" text="Ciao,  username">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/avatarpreview.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="btn_signOut" layoutX="1000.0" layoutY="37.0" mnemonicParsing="false" onAction="#SignOut" text="Sign Out ">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Button>
+                  <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT">
+                     <children>
+                        <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/avatarpreview.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="hello_username" depthTest="DISABLE" text="Ciao,  username">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                     <children>
+                        <Button fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" text="Sign Out ">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets right="35.0" />
+                     </padding>
+                  </HBox>
                </children>
-            </Pane>
+            </GridPane>
          </top>
          <center>
             <VBox BorderPane.alignment="CENTER">
@@ -121,8 +145,8 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <FlowPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #8514db;" />
-                  <FlowPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: blue;" />
+                  <FlowPane prefHeight="250.0" style="-fx-background-color: #8514db;" />
+                  <FlowPane prefHeight="250.0" style="-fx-background-color: blue;" />
                </children>
             </VBox>
          </center>
