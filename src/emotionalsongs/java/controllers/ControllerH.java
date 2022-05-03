@@ -22,9 +22,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ControllerH {
-
-    private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/UtentiRegistrati.dati.txt";
-
     @FXML
     public TextField ue_field;
     @FXML

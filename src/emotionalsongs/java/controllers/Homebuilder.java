@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.CanzoniManager;
-import emotionalsongs.java.Managers.FileManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.User;
@@ -34,7 +33,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Homebuilder implements Initializable {
-    private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
 
     @FXML
     private FlowPane mainbody;
