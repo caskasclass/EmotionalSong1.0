@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
+import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,6 +28,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -187,6 +189,13 @@ public class Homebuilder implements Initializable {
             songrow.setSpacing(15);
             SongsContainer.getChildren().add(songrow);
         }
+        
+    }
+
+    public void backHome(MouseEvent e) throws IOException{
+        System.out.println("funzia");
+        FxmlLoader obj = new FxmlLoader();
+        Pane ui= obj.getPane("home");
         
     }
 }
