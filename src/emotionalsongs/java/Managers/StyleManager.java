@@ -13,6 +13,7 @@ public class StyleManager {
     public  void  printPath()
     {
         System.out.println(maincss);
+        
     }
 
 }
