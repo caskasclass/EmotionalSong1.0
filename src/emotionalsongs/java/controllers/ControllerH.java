@@ -2,7 +2,6 @@ package emotionalsongs.java.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import emotionalsongs.EmotionalSongs;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
@@ -22,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ControllerH {
+
     @FXML
     public TextField ue_field;
     @FXML

@@ -160,6 +160,7 @@
                                     </Label>
                                  </children>
                               </HBox>
+                              <HBox fx:id="layoutContaierSongsTopBar" />
                               <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="400.0" style="-fx-background-color: trasparent;">
                                  <content>
                                     <VBox fx:id="SongsContainer" />

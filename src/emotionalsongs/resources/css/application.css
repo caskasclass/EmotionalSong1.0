@@ -31,7 +31,7 @@
     -fx-background-color: #6808c2;
     background-color: #6808c2;
 }
-#SongsContainer, .label{
+#SongsContainer .label{
     -fx-font-size: 25;
     font-size: 25;
 }

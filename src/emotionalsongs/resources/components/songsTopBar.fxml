@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox nodeOrientation="LEFT_TO_RIGHT">
+         <children>
+            <Label text="#Titolo" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="90.0" />
+         </padding>
+      </HBox>
+      <HBox nodeOrientation="LEFT_TO_RIGHT">
+         <children>
+            <Label text="Album" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="90.0" />
+         </padding>
+      </HBox>
+      <HBox nodeOrientation="LEFT_TO_RIGHT">
+         <children>
+            <Label text="Genere" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="90.0" />
+         </padding>
+      </HBox>
+      <HBox nodeOrientation="LEFT_TO_RIGHT">
+         <children>
+            <Label text="Autore" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="90.0" />
+         </padding>
+      </HBox>
+      <HBox nodeOrientation="LEFT_TO_RIGHT">
+         <children>
+            <Label text="Durata" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</HBox>
