@@ -1,33 +1,37 @@
 package emotionalsongs.java.Managers;
 
+import java.util.ArrayList;
+
+import emotionalsongs.java.util.Playlist;
+
 public class PlaylistManager extends FileManager {
-    final static String PATH="./src/emotionalsongs/resources/DataBaseBrutto/UtentiRegistrati.dati.txt";
+    final static String PATH="./src/emotionalsongs/resources/DataBaseBrutto/Playlist.dati.txt";
     
     
-    /*public static ArrayList<User> readUsers(){
+    public static ArrayList<Playlist> readPlaylist(){
 
         Object obj= readData(PATH);
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Playlist> plays = new ArrayList<>();
         if (obj instanceof ArrayList<?>) {
             ArrayList<?> al = (ArrayList<?>) obj;
-            users = castList(al);
+            plays = castList(al);
           }
-        return users;
+        return plays;
     }
 
-    public static void getUsers(ArrayList<User> users){
+    public static void getPlaylist(ArrayList<Playlist> plays){
 
-        getData(users, PATH);
+        getData(plays, PATH);
     }
 
-    private static ArrayList<User> castList(ArrayList<?> al) {
+    private static ArrayList<Playlist> castList(ArrayList<?> al) {
 
-        ArrayList<User> array = new ArrayList<User>();
+        ArrayList<Playlist> array = new ArrayList<Playlist>();
         for (Object obj : al) {
-          if (obj instanceof User) {
-            array.add((User) obj);
+          if (obj instanceof Playlist) {
+            array.add((Playlist) obj);
           }
         }
         return array;
-      }*/
+      }
 }
