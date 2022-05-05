@@ -6,17 +6,18 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.CanzoniManager;
+
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
+
 import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,19 +25,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+
 import javafx.stage.Stage;
 
 public class Homebuilder implements Initializable {
 
-
+    @FXML
+    private HBox myPlaylistcont;
+    @FXML
+    private VBox uno;
+    @FXML
+    private VBox due;
+    @FXML
+    private VBox tre;
+    @FXML
+    private VBox quattro;
+    @FXML
+    private VBox cinque;
     @FXML
     private BorderPane left_side_bpane;
     @FXML
@@ -45,6 +55,11 @@ public class Homebuilder implements Initializable {
     private Button btn_signOut;
     @FXML
     private Label add_song_btn;
+    @FXML
+    private TextField songTitle_pl;
+    @FXML
+    private TextField songTitle_pl1;
+
     @FXML
     private TextField tf1;
     @FXML
@@ -69,9 +84,11 @@ public class Homebuilder implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         Platform.runLater(() -> {
-            
+
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
+
+            createHomeSongUI();
 
             hello_username.setText("Ciao, " + logged.getUsername());
 
@@ -152,51 +169,82 @@ public class Homebuilder implements Initializable {
 
     }
 
-    /*private void createHomePlaylistUI() {
-
-        myPlaylistcont.setPadding(new Insets(15));
-        myPlaylistcont.setAlignment(Pos.CENTER_LEFT);
-        myPlaylistcont.setSpacing(20);
-
-        System.out.println("\n\nFunzia bene");
-        for (int i = 0; i < 4; i++) {
-            Label lab = new Label();
-            lab.setText("Playlist");
-            lab.setFont(new Font("Arial", 40));
-            lab.alignmentProperty().setValue(Pos.CENTER);
-            lab.setMinWidth(225);
-            lab.setMinHeight(225);
-            lab.setBackground(Background.fill(Color.CORAL));
-            lab.setBorder(Border.stroke(Color.BLANCHEDALMOND));
-            myPlaylistcont.getChildren().addAll(lab);
-        }
-
-    }
 
     private void createHomeSongUI() {
-        SongsContainer.setPadding(new Insets(5, 0, 5, 0));
+        // SongsContainer.setPadding(new Insets(5, 0, 5, 0));
         ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
-       
-        for(Canzone canzone : songs) {
-            HBox songrow = new HBox();
-            songrow.setPadding(new Insets(3));
-            songrow.setAlignment(Pos.CENTER);
+
+        for (Canzone canzone : songs) {
+            // HBox songrow = new HBox();
+            // songrow.setPadding(new Insets(3));
+            // songrow.setAlignment(Pos.CENTER);
             Label nomeCanzone = new Label(canzone.getTitolo());
             Label nomeAutore = new Label(canzone.getAutore());
             Label durata = new Label(canzone.getDurata().toString());
             Label genere = new Label(canzone.getGenere());
             Label nomeAlbum = new Label(canzone.getAlbum());
-            songrow.getChildren().addAll(nomeCanzone,nomeAlbum,genere,nomeAutore,durata);
-            songrow.setSpacing(15);
-            SongsContainer.getChildren().add(songrow);
+            uno.getChildren().add(nomeCanzone);
+            due.getChildren().add(nomeAlbum);
+            tre.getChildren().add(genere);
+            quattro.getChildren().add(nomeAutore);
+            cinque.getChildren().add(durata);
+            // songrow.getChildren().addAll(nomeCanzone,nomeAlbum,genere,nomeAutore,durata);
+            // songrow.setSpacing(15);
+            // SongsContainer.getChildren().add(songrow);
         }
-        
+
     }
-*/
+
     public void backHome(MouseEvent e) throws IOException{
         System.out.println("funzia");
         Pane ui= obj.getPane("home");
         left_side_bpane.setCenter(ui);
-        
     }
+
+    public void playWind(MouseEvent e) throws IOException {
+        System.out.println("funzia");
+        obj = new FxmlLoader();
+        Pane ui = obj.getPane("playlist");
+        left_side_bpane.setCenter(ui);
+    }
+
+    public void songWind(MouseEvent e) throws IOException {
+        System.out.println("funzia");
+        obj = new FxmlLoader();
+        Pane ui = obj.getPane("songs");
+        left_side_bpane.setCenter(ui);
+    }
+
+    /*
+     * public void songWindTest(MouseEvent e) throws IOException{
+     * System.out.println("funzia");
+     * FxmlLoader obj = new FxmlLoader();
+     * Pane ui= obj.getPane("songsTopBar");
+     * left_side_bpane.setCenter(ui);
+     * BorderPane.setAlignment(ui, Pos.TOP_CENTER);
+     * 
+     * 
+     * 
+     * 
+     * }
+     */
+
+    /*
+     * public void addsongPLaylist(ActionEvent e){
+     * 
+     * ArrayList<Canzone> songs = (ArrayList<Canzone>) CanzoniManager.readCanzoni();
+     * for (Canzone s : songs) {
+     * if(s.getTitolo() == songTitle_pl.getText()){
+     * 
+     * Playlist pl= new Playlist(songTitle_pl1.getText(), logged.getUsername(),
+     * s.getIdCanzone());
+     * for (String si : pl.getCanzoni()) {
+     * System.out.print(si);
+     * }
+     * 
+     * }
+     * }
+     * 
+     * }
+     */
 }
