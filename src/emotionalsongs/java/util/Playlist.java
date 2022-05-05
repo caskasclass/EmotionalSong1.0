@@ -7,16 +7,16 @@ public class Playlist implements Serializable {
 
     private String idUser;
     private String nomePlaylist;
-    private ArrayList<Integer> listaCanzoni;
+    private ArrayList<String> listaCanzoni;
 
-    public Playlist(String np, String userId, Integer idCanzone) {
+    public Playlist(String np, String userId, String idCanzone) {
         idUser = userId;
         nomePlaylist = np;
         listaCanzoni.add(idCanzone);
     }
 
 
-    public void addCanzone(Integer idCanzone) {
+    public void addCanzone(String idCanzone) {
         listaCanzoni.add(idCanzone);
     }
 
@@ -28,8 +28,17 @@ public class Playlist implements Serializable {
         return idUser;
     }
 
-    public ArrayList<Integer> getCanzoni() {
+    public ArrayList<String> getCanzoni() {
         return listaCanzoni;
     }
+ 
+
+    //creare print playlist
+    /*public String printPlaylist(String s){
+        for (String nome : listaCanzoni) {
+           println()
+            
+        }
+    }*/
 
 }
