@@ -44,7 +44,7 @@ public class homeComponentController implements Initializable {
         UserPlaylistContainer.setSpacing(20);
 
         System.out.println("\n\nFunzia bene");
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 2; i++) {
             Label lab = new Label();
             lab.setText("Playlist");
             lab.setFont(new Font("Arial", 40));

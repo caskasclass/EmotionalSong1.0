@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
@@ -63,12 +65,12 @@
                            </content>
                         </ScrollPane>
                         <HBox nodeOrientation="RIGHT_TO_LEFT">
-                           <children>
-                              <Button mnemonicParsing="false" text="Vedi tutte " />
-                           </children>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <children>
+                              <Button mnemonicParsing="false" text="Vedi tutte" />
+                           </children>
                            <padding>
                               <Insets bottom="10.0" left="25.0" />
                            </padding>

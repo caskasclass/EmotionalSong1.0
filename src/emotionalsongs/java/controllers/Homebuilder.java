@@ -38,16 +38,6 @@ public class Homebuilder implements Initializable {
     @FXML
     private HBox myPlaylistcont;
     @FXML
-    private VBox uno;
-    @FXML
-    private VBox due;
-    @FXML
-    private VBox tre;
-    @FXML
-    private VBox quattro;
-    @FXML
-    private VBox cinque;
-    @FXML
     private BorderPane left_side_bpane;
     @FXML
     private Label hello_username;
@@ -88,7 +78,7 @@ public class Homebuilder implements Initializable {
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
 
-            createHomeSongUI();
+            //createHomeSongUI();
 
             hello_username.setText("Ciao, " + logged.getUsername());
 
@@ -170,30 +160,7 @@ public class Homebuilder implements Initializable {
     }
 
 
-    private void createHomeSongUI() {
-        // SongsContainer.setPadding(new Insets(5, 0, 5, 0));
-        ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
-
-        for (Canzone canzone : songs) {
-            // HBox songrow = new HBox();
-            // songrow.setPadding(new Insets(3));
-            // songrow.setAlignment(Pos.CENTER);
-            Label nomeCanzone = new Label(canzone.getTitolo());
-            Label nomeAutore = new Label(canzone.getAutore());
-            Label durata = new Label(canzone.getDurata().toString());
-            Label genere = new Label(canzone.getGenere());
-            Label nomeAlbum = new Label(canzone.getAlbum());
-            uno.getChildren().add(nomeCanzone);
-            due.getChildren().add(nomeAlbum);
-            tre.getChildren().add(genere);
-            quattro.getChildren().add(nomeAutore);
-            cinque.getChildren().add(durata);
-            // songrow.getChildren().addAll(nomeCanzone,nomeAlbum,genere,nomeAutore,durata);
-            // songrow.setSpacing(15);
-            // SongsContainer.getChildren().add(songrow);
-        }
-
-    }
+ 
 
     public void backHome(MouseEvent e) throws IOException{
         System.out.println("funzia");
@@ -210,7 +177,6 @@ public class Homebuilder implements Initializable {
 
     public void songWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        obj = new FxmlLoader();
         Pane ui = obj.getPane("songs");
         left_side_bpane.setCenter(ui);
     }
