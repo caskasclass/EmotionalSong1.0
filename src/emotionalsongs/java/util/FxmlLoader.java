@@ -1,6 +1,9 @@
 package emotionalsongs.java.util;
 
+
+
 import java.net.URL;
+
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
@@ -12,16 +15,16 @@ public class FxmlLoader {
 
         try{
 
-            URL fileUrl = getClass().getResource("../../resources/components/" + file + ".fxml");
+            URL fileUrl =  getClass().getResource("../../resources/components/" + file + ".fxml");
             if(fileUrl == null){
                 throw new java.io.FileNotFoundException("File non trovato");
             }
 
-            ui = new FXMLLoader().load(fileUrl);
+            ui = FXMLLoader.load(fileUrl);
 
 
         }catch(Exception e){
-            System.out.print("Errrrrrror");
+            e.printStackTrace();
         }
 
         return ui;

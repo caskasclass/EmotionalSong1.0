@@ -28,8 +28,8 @@
     background-color: #6808c2;
 }
 #SongsContainer{
-    -fx-background-color: #6808c2;
-    background-color: #6808c2;
+    -fx-background-color: #4989dc;
+    background-color: #4989dc;
 }
 #SongsContainer .label{
     -fx-font-size: 25;

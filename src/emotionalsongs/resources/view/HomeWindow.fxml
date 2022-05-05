@@ -23,7 +23,7 @@
                <children>
                   <ImageView accessibleRole="BUTTON" fitHeight="181.0" fitWidth="143.0" layoutX="48.0" layoutY="38.0" onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@..\images\icon.png" />
+                        <Image url="@../images/icon.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

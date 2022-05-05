@@ -36,10 +36,7 @@ import javafx.stage.Stage;
 
 public class Homebuilder implements Initializable {
 
-    @FXML
-    private HBox myPlaylistcont;
-    @FXML
-    private VBox SongsContainer;
+
     @FXML
     private BorderPane left_side_bpane;
     @FXML
@@ -60,7 +57,11 @@ public class Homebuilder implements Initializable {
     private TextField tf5;
     @FXML
     private TextField tf6;
+    @FXML
+    private Pane homePane;
+
     StyleManager style = new StyleManager();
+    FxmlLoader obj = new FxmlLoader();
 
     private User logged;
 
@@ -68,9 +69,9 @@ public class Homebuilder implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         Platform.runLater(() -> {
-
-            createHomePlaylistUI();
-            createHomeSongUI();
+            
+            homePane = obj.getPane("home");
+            left_side_bpane.setCenter(homePane);
 
             hello_username.setText("Ciao, " + logged.getUsername());
 
@@ -106,7 +107,7 @@ public class Homebuilder implements Initializable {
 
     public void add_canzone_UI(MouseEvent e) {
         // myPlaylistcont.getChildren().clear(); //funziona
-        left_side_bpane.getChildren().remove(myPlaylistcont);
+        left_side_bpane.getChildren().remove(homePane);
         VBox hbox = new VBox();
         Label lb1 = new Label("Titolo");
         tf1 = new TextField();
@@ -151,7 +152,7 @@ public class Homebuilder implements Initializable {
 
     }
 
-    private void createHomePlaylistUI() {
+    /*private void createHomePlaylistUI() {
 
         myPlaylistcont.setPadding(new Insets(15));
         myPlaylistcont.setAlignment(Pos.CENTER_LEFT);
@@ -191,11 +192,11 @@ public class Homebuilder implements Initializable {
         }
         
     }
-
+*/
     public void backHome(MouseEvent e) throws IOException{
         System.out.println("funzia");
-        FxmlLoader obj = new FxmlLoader();
         Pane ui= obj.getPane("home");
+        left_side_bpane.setCenter(ui);
         
     }
 }

@@ -5,73 +5,81 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: trasparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <VBox>
-         <children>
-            <VBox fx:id="PlaylistVBox">
+<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.homeComponentController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity">
+         <content>
+            <VBox>
                <children>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: trasparent;">
+                  <VBox>
                      <children>
-                        <Label text="Le tue Playlist">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
+                        <HBox>
+                           <children>
+                              <Label text="Le tue Playlist">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" vbarPolicy="NEVER">
+                           <content>
+                              <HBox fx:id="UserPlaylistContainer" />
+                           </content>
+                        </ScrollPane>
+                        <HBox nodeOrientation="RIGHT_TO_LEFT">
+                           <padding>
+                              <Insets bottom="10.0" left="25.0" />
+                           </padding>
+                           <children>
+                              <Button mnemonicParsing="false" text="Vedi Tutte" />
+                           </children>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets left="10.0" top="20.0" />
-                     </padding>
-                  </HBox>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" style="-fx-background-color: trasparent;" vbarPolicy="NEVER">
-                     <content>
-                        <HBox fx:id="myPlaylistcont" />
-                     </content>
-                  </ScrollPane>
-                  <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                  </VBox>
+                  <VBox>
                      <children>
-                        <Button mnemonicParsing="false" text="See All " />
+                        <HBox>
+                           <children>
+                              <Label text="Esplora il mondo della musica">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox />
+                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="257.0">
+                           <content>
+                              <VBox fx:id="SongsContainer" />
+                           </content>
+                        </ScrollPane>
+                        <HBox nodeOrientation="RIGHT_TO_LEFT">
+                           <children>
+                              <Button mnemonicParsing="false" text="Vedi tutte " />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="10.0" left="25.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="25.0" />
-                     </padding>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
-            <VBox fx:id="SongsVBox">
-               <children>
-                  <HBox>
-                     <children>
-                        <Label text="Espolora il modno della musica">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="10.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="layoutContaierSongsTopBar" />
-                  <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="400.0" style="-fx-background-color: trasparent;">
-                     <content>
-                        <VBox fx:id="SongsContainer" />
-                     </content>
-                  </ScrollPane>
-                  <HBox nodeOrientation="RIGHT_TO_LEFT">
-                     <children>
-                        <Button mnemonicParsing="false" text="Vedi tutte" />
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="25.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </content>
-</ScrollPane>
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>
