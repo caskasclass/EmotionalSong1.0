@@ -45,10 +45,6 @@ public class Homebuilder implements Initializable {
     private Button btn_signOut;
     @FXML
     private Label add_song_btn;
-    @FXML
-    private TextField songTitle_pl;
-    @FXML
-    private TextField songTitle_pl1;
 
     @FXML
     private TextField tf1;

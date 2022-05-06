@@ -7,24 +7,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.songRepositoryController">
    <center>
-      <Pane BorderPane.alignment="CENTER">
-         <children>
-            <TableView fx:id="repository" prefHeight="363.0" prefWidth="600.0">
-              <columns>
-                <TableColumn fx:id="titolo" prefWidth="121.0" text="titolo" />
-                  <TableColumn fx:id="autore" prefWidth="94.0" text="autore" />
-                  <TableColumn fx:id="anno" prefWidth="49.0" text="anno" />
-                  <TableColumn fx:id="album" prefWidth="127.0" text="album" />
-                  <TableColumn fx:id="durata" prefWidth="64.0" text="durata" />
-                  <TableColumn fx:id="genere" prefWidth="144.0" text="genere" />
-              </columns>
-            </TableView>
-         </children>
-      </Pane>
+      <TableView fx:id="repository">
+        <columns>
+          <TableColumn fx:id="titolo" prefWidth="121.0" text="titolo" />
+            <TableColumn fx:id="autore" prefWidth="94.0" text="autore" />
+            <TableColumn fx:id="anno" prefWidth="49.0" text="anno" />
+            <TableColumn fx:id="album" prefWidth="127.0" text="album" />
+            <TableColumn fx:id="durata" prefWidth="64.0" text="durata" />
+            <TableColumn fx:id="genere" prefWidth="144.0" text="genere" />
+        </columns>
+      </TableView>
    </center>
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
