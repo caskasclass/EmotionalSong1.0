@@ -170,7 +170,6 @@ public class Homebuilder implements Initializable {
 
     public void playWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        obj = new FxmlLoader();
         Pane ui = obj.getPane("playlist");
         left_side_bpane.setCenter(ui);
     }
@@ -180,21 +179,6 @@ public class Homebuilder implements Initializable {
         Pane ui = obj.getPane("songs");
         left_side_bpane.setCenter(ui);
     }
-
-    /*
-     * public void songWindTest(MouseEvent e) throws IOException{
-     * System.out.println("funzia");
-     * FxmlLoader obj = new FxmlLoader();
-     * Pane ui= obj.getPane("songsTopBar");
-     * left_side_bpane.setCenter(ui);
-     * BorderPane.setAlignment(ui, Pos.TOP_CENTER);
-     * 
-     * 
-     * 
-     * 
-     * }
-     */
-
     /*
      * public void addsongPLaylist(ActionEvent e){
      * 
