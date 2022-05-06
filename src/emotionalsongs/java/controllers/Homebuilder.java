@@ -170,7 +170,6 @@ public class Homebuilder implements Initializable {
 
     public void playWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        obj = new FxmlLoader();
         Pane ui = obj.getPane("playlist");
         left_side_bpane.setCenter(ui);
     }
@@ -181,36 +180,5 @@ public class Homebuilder implements Initializable {
         left_side_bpane.setCenter(ui);
     }
 
-    /*
-     * public void songWindTest(MouseEvent e) throws IOException{
-     * System.out.println("funzia");
-     * FxmlLoader obj = new FxmlLoader();
-     * Pane ui= obj.getPane("songsTopBar");
-     * left_side_bpane.setCenter(ui);
-     * BorderPane.setAlignment(ui, Pos.TOP_CENTER);
-     * 
-     * 
-     * 
-     * 
-     * }
-     */
 
-    /*
-     * public void addsongPLaylist(ActionEvent e){
-     * 
-     * ArrayList<Canzone> songs = (ArrayList<Canzone>) CanzoniManager.readCanzoni();
-     * for (Canzone s : songs) {
-     * if(s.getTitolo() == songTitle_pl.getText()){
-     * 
-     * Playlist pl= new Playlist(songTitle_pl1.getText(), logged.getUsername(),
-     * s.getIdCanzone());
-     * for (String si : pl.getCanzoni()) {
-     * System.out.print(si);
-     * }
-     * 
-     * }
-     * }
-     * 
-     * }
-     */
 }
