@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.CanzoniManager;
-import emotionalsongs.java.controllers.microcontrollers.songLineController;
+import emotionalsongs.java.controllers.microcontrollers.SongLineController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import javafx.application.Platform;
@@ -15,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
@@ -32,6 +31,7 @@ public class homeComponentController implements Initializable {
     @FXML
     private VBox SongsContainer;
     FxmlLoader obj = new FxmlLoader();
+    
 
 
     @Override
@@ -42,7 +42,6 @@ public class homeComponentController implements Initializable {
             try {
                 createHomeSongUI();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -73,15 +72,18 @@ public class homeComponentController implements Initializable {
     private void createHomeSongUI() throws IOException {
         int i = 0;
         SongsContainer.setPadding(new Insets(5, 0, 5, 0));
+       
+        
         ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
         
         for (Canzone canzone : songs) {
-            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("../../resources/microcomponents/SongLine.fxml"));
-            Pane ui = (Pane)fxmlloader.load();
-            songLineController controller = fxmlloader.<songLineController>getController();
-            controller.setCanzone(canzone, i);        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/microcomponents/SongLine.fxml"));
+            Pane ui = (Pane)loader.load();
+            SongLineController controller = loader.<SongLineController>getController();
+            controller.setCanzone(canzone, i);      
             SongsContainer.getChildren().add(ui);
             i++;
+            
         }
        
         /*for(Canzone canzone : songs) {

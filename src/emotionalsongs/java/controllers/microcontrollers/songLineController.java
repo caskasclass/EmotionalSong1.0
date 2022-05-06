@@ -4,11 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.util.Canzone;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class songLineController implements Initializable {
+public class SongLineController implements Initializable {
     @FXML
     private Label lb_SongNumber;
     @FXML
@@ -30,14 +31,17 @@ public class songLineController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lb_SongNumber.setText(indx.toString());
-        lb_SongTitle.setText(canzone.getTitolo());
-        lb_SongAutore.setText(canzone.getAutore());
-        lb_SongAlbum.setText(canzone.getAlbum());
-        lb_SongGenere.setText(canzone.getGenere());
-        lb_SongAnno.setText(canzone.getAnno().toString());
-        lb_SongDurata.setText(canzone.getDurata().toString());
+        Platform.runLater(() -> {
+            lb_SongNumber.setText(indx.toString());
+            lb_SongTitle.setText(canzone.getTitolo());
+            lb_SongAutore.setText(canzone.getAutore());
+            lb_SongAlbum.setText(canzone.getAlbum());
+            lb_SongGenere.setText(canzone.getGenere());
+            lb_SongAnno.setText(canzone.getAnno().toString());
+            lb_SongDurata.setText(canzone.getDurata().toString());
+        });       
     }
+    
     public void setCanzone(Canzone c,Integer index)
     {
         canzone = c ;
