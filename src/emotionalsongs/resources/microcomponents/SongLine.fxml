@@ -4,40 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.SongLineController">
+
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.SongLineController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
    <children>
-      <GridPane alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Label fx:id="lb_SongNumber" text="#0" />
+      <VBox GridPane.columnIndex="1">
          <children>
-            <Label fx:id="lb_SongNumber" text="#0" />
-            <VBox GridPane.columnIndex="1">
-               <children>
-                  <Label fx:id="lb_SongTitle" text="Titolo" />
-                  <Label fx:id="lb_SongAutore" text="Autore" />
-               </children>
-            </VBox>
-            <Label fx:id="lb_SongAlbum" text="Album" GridPane.columnIndex="2" />
-            <Label fx:id="lb_SongDurata" text="Durata" GridPane.columnIndex="5" />
-            <Label fx:id="lb_SongGenere" text="Genere" GridPane.columnIndex="3" />
-            <Label fx:id="lb_SongAnno" text="Anno" GridPane.columnIndex="4" />
+            <Label fx:id="lb_SongTitle" text="Titolo" />
+            <Label fx:id="lb_SongAutore" text="Autore" />
          </children>
-         <padding>
-            <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-         </padding>
-      </GridPane>
+      </VBox>
+      <Label fx:id="lb_SongAlbum" text="Album" GridPane.columnIndex="2" />
+      <Label fx:id="lb_SongDurata" text="Durata" GridPane.columnIndex="5" />
+      <Label fx:id="lb_SongGenere" text="Genere" GridPane.columnIndex="3" />
+      <Label fx:id="lb_SongAnno" text="Anno" GridPane.columnIndex="4" />
    </children>
-</Pane>
+   <padding>
+      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+   </padding>
+</GridPane>

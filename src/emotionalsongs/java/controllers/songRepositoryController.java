@@ -56,9 +56,8 @@ public class songRepositoryController implements Initializable{
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        
         repository.setItems(list);
-        //cercaBranoMusicale();
+        cercaBranoMusicale();
     }
 
     private void cercaBranoMusicale(){
@@ -94,7 +93,7 @@ public class songRepositoryController implements Initializable{
     }
     
 
-    
+
         
 
 }
