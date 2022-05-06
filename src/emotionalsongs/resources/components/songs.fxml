@@ -2,140 +2,42 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.songWindController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.songRepositoryController">
    <center>
       <Pane BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
-               <children>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT">
-                     <padding>
-                        <Insets left="10.0" right="90.0" />
-                     </padding>
-                     <children>
-                        <VBox fx:id="uno" prefHeight="200.0" prefWidth="113.0">
-                           <children>
-                              <Label fx:id="title" prefHeight="45.0" prefWidth="126.0" text="#Titolo">
-                                 <font>
-                                    <Font name="System Bold" size="30.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT">
-                     <children>
-                        <VBox fx:id="due" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Album">
-                                 <font>
-                                    <Font name="System Bold" size="30.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" right="90.0" />
-                     </padding>
-                  </HBox>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT">
-                     <children>
-                        <VBox fx:id="tre" prefHeight="200.0" prefWidth="116.0">
-                           <children>
-                              <Label text="Genere">
-                                 <font>
-                                    <Font name="System Bold" size="30.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" right="90.0" />
-                     </padding>
-                  </HBox>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT" HBox.hgrow="ALWAYS">
-                     <children>
-                        <VBox fx:id="quattro" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Autore">
-                                 <font>
-                                    <Font name="System Bold" size="30.0" />
-                                 </font></Label>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" right="90.0" />
-                     </padding>
-                  </HBox>
-                  <HBox nodeOrientation="LEFT_TO_RIGHT">
-                     <children>
-                        <VBox fx:id="cinque" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Durata">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font></Label>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" right="10.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </HBox>
+            <TableView fx:id="repository" prefHeight="363.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="titolo" prefWidth="121.0" text="titolo" />
+                  <TableColumn fx:id="autore" prefWidth="94.0" text="autore" />
+                  <TableColumn fx:id="anno" prefWidth="49.0" text="anno" />
+                  <TableColumn fx:id="album" prefWidth="127.0" text="album" />
+                  <TableColumn fx:id="durata" prefWidth="64.0" text="durata" />
+                  <TableColumn fx:id="genere" prefWidth="144.0" text="genere" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </center>
    <top>
-      <GridPane prefHeight="58.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Canzoni">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Cerca" GridPane.columnIndex="1">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label text="Aggiungi Canzone" GridPane.columnIndex="2">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
+            <Label text="Search" />
+            <TextField prefHeight="25.0" prefWidth="254.0" promptText="Inserisci titolo o autore e anno della canzone" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-      </GridPane>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </HBox>
    </top>
 </BorderPane>

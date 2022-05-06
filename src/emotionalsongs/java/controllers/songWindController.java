@@ -1,5 +1,6 @@
 package emotionalsongs.java.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,6 +10,7 @@ import emotionalsongs.java.util.Canzone;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class songWindController implements Initializable{
@@ -47,4 +49,5 @@ public class songWindController implements Initializable{
         }
 
     }
+
 }
