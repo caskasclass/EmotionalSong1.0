@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.SongLineController">
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.songLineController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
