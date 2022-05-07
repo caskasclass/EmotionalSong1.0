@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane accessibleRole="BUTTON" minHeight="280.0" minWidth="240.0" onMouseClicked="#CreatePlaylistMethod" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.AddPlaylistBoxController">
+<BorderPane accessibleRole="BUTTON" minHeight="280.0" minWidth="240.0" onMouseClicked="#CreatePlaylistMethod" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController">
    <center>
       <GridPane style="-fx-background-radius: 15; -fx-background-color: rgb(24,24,24,0.8);">
          <columnConstraints>

@@ -1,4 +1,4 @@
-package emotionalsongs.java.controllers;
+package emotionalsongs.java.controllers.componentscontroller;
 
 import java.net.URL;
 import java.util.ArrayList;

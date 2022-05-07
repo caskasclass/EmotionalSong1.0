@@ -1,4 +1,4 @@
-package emotionalsongs.java.controllers;
+package emotionalsongs.java.controllers.componentscontroller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.PlaylistManager;
-import emotionalsongs.java.controllers.componentscontroller.PlaylistBoxController;
+import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.controllers.microcontrollers.SongLineController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;

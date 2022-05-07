@@ -1,4 +1,4 @@
-package emotionalsongs.java.controllers.componentscontroller;
+package emotionalsongs.java.controllers.microcontrollers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
