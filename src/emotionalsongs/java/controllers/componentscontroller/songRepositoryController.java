@@ -1,4 +1,4 @@
-package emotionalsongs.java.controllers;
+package emotionalsongs.java.controllers.componentscontroller;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,7 +69,6 @@ public class songRepositoryController implements Initializable{
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        
         repository.setItems(list);
         cercaBranoMusicale();
     }
@@ -116,7 +115,7 @@ public class songRepositoryController implements Initializable{
     
     
 
-    
+
         
 
 }

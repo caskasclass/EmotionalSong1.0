@@ -73,14 +73,13 @@ public class Homebuilder implements Initializable {
 
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
-
-            //createHomeSongUI();
-
             hello_username.setText("Ciao, " + logged.getUsername());
 
         });
 
     }
+    /************************************************************************/
+    /**********  Servono per tornare alla scermata loggin  *****************/
 
     public void SignOut(ActionEvent e) throws IOException {
         closewindow(btn_signOut);
@@ -103,11 +102,18 @@ public class Homebuilder implements Initializable {
         Stage stage = (Stage) n.getScene().getWindow(); // chiusura della finestra
         stage.close();
     }
+    /************************************************************************/
+    /************************************************************************/
+
 
     public void setUser(User u) {
         logged = u;
     }
 
+
+    /************************************************************************/
+    /* Metodo da cancellare in futuro serve solo per aggiungere una canzone */
+    /************************************************************************/
     public void add_canzone_UI(MouseEvent e) {
         // myPlaylistcont.getChildren().clear(); //funziona
         left_side_bpane.getChildren().remove(homePane);
@@ -154,13 +160,22 @@ public class Homebuilder implements Initializable {
         System.out.println("Aggiunt0!!!");
 
     }
+    /************************************************************************/
+    /************************************************************************/
 
 
- 
 
-    public void backHome(MouseEvent e) throws IOException{
+
+
+
+
+    /*****************************************************
+     * metodi per i button della homeWindow
+     *****************************************************/
+
+    public void backHome(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        Pane ui= obj.getPane("home");
+        Pane ui = obj.getPane("home");
         left_side_bpane.setCenter(ui);
     }
 
@@ -176,5 +191,7 @@ public class Homebuilder implements Initializable {
         left_side_bpane.setCenter(ui);
     }
 
+    /*****************************************************
+     *****************************************************/
 
 }

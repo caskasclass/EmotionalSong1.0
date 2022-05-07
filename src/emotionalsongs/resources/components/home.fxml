@@ -4,13 +4,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.homeComponentController">
-   <children>
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.homeComponentController">
+   <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity">
          <content>
             <VBox>
@@ -29,7 +29,7 @@
                               <Insets left="10.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="257.0" vbarPolicy="NEVER">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="316.0" vbarPolicy="NEVER">
                            <content>
                               <HBox fx:id="UserPlaylistContainer" />
                            </content>
@@ -69,7 +69,7 @@
                               <Insets />
                            </opaqueInsets>
                            <children>
-                              <Button mnemonicParsing="false" text="Vedi tutte" />
+                              <Button mnemonicParsing="false" onAction="#showSongs" text="Vedi tutte" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="25.0" />
@@ -81,5 +81,5 @@
             </VBox>
          </content>
       </ScrollPane>
-   </children>
-</Pane>
+   </center>
+</BorderPane>

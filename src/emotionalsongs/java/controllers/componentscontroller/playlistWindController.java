@@ -1,4 +1,4 @@
-package emotionalsongs.java.controllers;
+package emotionalsongs.java.controllers.componentscontroller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,7 +9,7 @@ public class playlistWindController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
+       
         
     }
     
