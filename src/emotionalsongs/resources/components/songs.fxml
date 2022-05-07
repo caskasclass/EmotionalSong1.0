@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.songRepositoryController">
+<BorderPane fx:id="songPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.songRepositoryController">
    <center>
       <TableView fx:id="repository">
         <columns>
@@ -25,7 +26,8 @@
       <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Search" />
-            <TextField prefHeight="25.0" prefWidth="254.0" promptText="Inserisci titolo o autore e anno della canzone" />
+            <TextField fx:id="cercaCanzone" prefHeight="25.0" prefWidth="254.0" promptText="Inserisci titolo o autore e anno della canzone" />
+            <Button mnemonicParsing="false" onAction="#InserisciEmozioniBrano" text="Aggiungi Emozioni" />
          </children>
          <opaqueInsets>
             <Insets />

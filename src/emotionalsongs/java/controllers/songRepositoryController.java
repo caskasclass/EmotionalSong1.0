@@ -7,16 +7,21 @@ import java.util.function.Predicate;
 
 import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.util.Canzone;
+import emotionalsongs.java.util.FxmlLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class songRepositoryController implements Initializable{
 
@@ -44,9 +49,17 @@ public class songRepositoryController implements Initializable{
     @FXML
     private TableColumn<Canzone, String> titolo;
 
+    @FXML
+    private BorderPane songPane;
+
+    @FXML
+    private Label songToAdd;
+
     private final ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
 
     private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
+
+    FxmlLoader obj = new FxmlLoader();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,7 +71,7 @@ public class songRepositoryController implements Initializable{
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
         
         repository.setItems(list);
-        //cercaBranoMusicale();
+        cercaBranoMusicale();
     }
 
     private void cercaBranoMusicale(){
@@ -92,6 +105,15 @@ public class songRepositoryController implements Initializable{
 
         repository.setItems(sortedData);
     }
+
+    public void InserisciEmozioniBrano(ActionEvent e){
+    
+        System.out.println("funzia");
+        Pane ui = obj.getPane("emotions");
+        songPane.setCenter(ui);
+    }
+
+    
     
 
     
