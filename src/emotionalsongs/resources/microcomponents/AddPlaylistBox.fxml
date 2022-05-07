@@ -12,23 +12,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane accessibleRole="BUTTON" minHeight="280.0" minWidth="240.0" onMouseClicked="#CreatePlaylistMethod" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController">
+<BorderPane accessibleRole="BUTTON" minHeight="275.0" minWidth="210.0" onMouseClicked="#CreatePlaylistMethod" styleClass="borderpane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController">
    <center>
-      <GridPane style="-fx-background-radius: 15; -fx-background-color: rgb(24,24,24,0.8);">
+      <GridPane>
          <columnConstraints>
-            <ColumnConstraints />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <VBox spacing="10.0">
                <children>
-                  <Pane maxHeight="200.0" maxWidth="200.0" minHeight="100.0" minWidth="100.0">
+                  <Pane maxHeight="200.0" maxWidth="180.0" minHeight="100.0" minWidth="100.0">
                      <children>
-                        <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="200.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/add.png" />
+                              <Image url="@../images/sadness.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -41,9 +41,9 @@
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="15.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
       </GridPane>
    </center>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 </BorderPane>

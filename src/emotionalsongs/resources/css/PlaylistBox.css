@@ -1,0 +1,29 @@
+.borderpane{
+    -fx-background-color:rgb(24,24,24);
+    background-color: rgb(24,24,24);
+    -fx-background-radius: 10;
+    -fx-transition: 0.3;
+    transition: 0.3;
+    -webkit-transition: 0.3;
+    -moz-transition: 0.3;
+    -ms-transition: 0.3;
+    -o-transition: 0.3;
+}
+.borderpane:hover{
+    -fx-background-color:rgb(40,40,40);
+    background-color: rgb(40,40,40);
+    -fx-transition: 0.3;
+    transition: 0.3;
+    -webkit-transition: 0.3;
+    -moz-transition: 0.3;
+    -ms-transition: 0.3;
+    -o-transition: 0.3;
+
+}
+.borderpane .label {
+    -fx-text-fill: rgb(255,255,255);
+}
+.root .viewport{
+    -fx-background-color: trasparent;
+    background-color: transparent;
+}

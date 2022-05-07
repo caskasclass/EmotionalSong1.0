@@ -1,37 +1,47 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-#navbar{
-    -fx-background-color: rgb(193, 26, 54);
-     background-color: rgb(193, 26, 54);
-}
+
 #menubar{
-    -fx-background-color: rgb(21, 65, 7);
-     background-color: rgb(21, 65, 7);
+    -fx-background-color: rgb(0, 0, 0);
+     background-color: rgb(0, 0, 0);
+}
+#menubar .label{
+    -fx-text-fill: rgb(169, 169, 169);
+}
+#menubar .label:hover{
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
-.label{
-    -fx-text-fill: "white";
+#left_side_bpane {
+    
+    -fx-background-color : linear-gradient(to top,rgb(18,18,18)85%,rgb(30,18,88) 100%);
+    background-color: rgb(30,18,88); 
+    background-color: linear-gradient(to top,rgb(18,18,18)85%,rgb(30,18,88) 100%);
+    
 }
-.root{
-    -fx-background-color: rgb(193, 26, 54);
-     background-color: rgb(193, 26, 54);
+#left_side_bpane .label{
+    -fx-text-fill:rgb(255,255,255);
 }
-#PlaylistVBox{
-    -fx-background-color: #d528f7;
-    background-color: #d528f7;
+#homePane {
+    -fx-background-color: trasparent;
+    background-color: transparent;
 }
-#myPlaylistcont{
-    -fx-background-color: #d528f7;
-    background-color: #d528f7;  
+#homePane > .viewport{
+    -fx-background-color: trasparent;
+    background-color: transparent; 
 }
-#SongsVBox{
-    -fx-background-color: #6808c2;
-    background-color: #6808c2;
+
+#homePane .scroll-pane{
+    -fx-background-color: trasparent;
+    background-color: transparent;
 }
-#SongsContainer{
-    -fx-background-color: #4989dc;
-    background-color: #4989dc;
+
+
+#homePane .scroll-pane > .viewport{
+    -fx-background-color: trasparent;
+    background-color: transparent; 
 }
-#SongsContainer .label{
-    -fx-font-size: 25;
-    font-size: 25;
+
+#HomeBorderPaneCss{
+    -fx-background-color: trasparent;
+    background-color: transparent; 
 }

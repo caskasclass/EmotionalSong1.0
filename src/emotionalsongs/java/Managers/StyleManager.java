@@ -15,5 +15,9 @@ public class StyleManager {
         System.out.println(maincss);
         
     }
+    public String getStyle(String filename)
+    {
+        return getClass().getResource("../../resources/css/"+filename+".css").toExternalForm();
+    }
 
 }
