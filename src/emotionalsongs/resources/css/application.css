@@ -22,23 +22,23 @@
     -fx-text-fill:rgb(255,255,255);
 }
 #homePane {
-    -fx-background-color: trasparent;
-    background-color: transparent;
+    -fx-background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0); 
 }
 #homePane > .viewport{
-    -fx-background-color: trasparent;
-    background-color: transparent; 
+    -fx-background-color: rgba(0,0,0,0);;
+    background-color:rgba(0,0,0,0);; 
 }
 
 #homePane .scroll-pane{
-    -fx-background-color: trasparent;
-    background-color: transparent;
+    -fx-background-color: rgba(0,0,0,0);;
+    background-color: rgba(0,0,0,0);;
 }
 
 
 #homePane .scroll-pane > .viewport{
-    -fx-background-color: trasparent;
-    background-color: transparent; 
+    -fx-background-color: rgba(0,0,0,0);;
+    background-color: rgba(0,0,0,0);; 
 }
 
 #HomeBorderPaneCss{

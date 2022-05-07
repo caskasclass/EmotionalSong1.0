@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane style="-fx-background-color: trasparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.homeComponentController">
+<GridPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.homeComponentController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -21,11 +21,11 @@
    <children>
       <ScrollPane fx:id="homePane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="900.0">
          <content>
-            <VBox style="-fx-background-color: trasparent;">
+            <VBox style="-fx-background-color: rgba(0,0,0,0);">
                <children>
-                  <VBox style="-fx-background-color: trasparent;">
+                  <VBox style="-fx-background-color: rgba(0,0,0,0);">
                      <children>
-                        <HBox style="-fx-background-color: trasparent;">
+                        <HBox style="-fx-background-color: rgba(0,0,0,0);">
                            <children>
                               <Label text="Le tue Playlist">
                                  <font>
@@ -39,10 +39,10 @@
                         </HBox>
                         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="316.0" vbarPolicy="NEVER">
                            <content>
-                              <HBox fx:id="UserPlaylistContainer" style="-fx-background-color: trasparent;" />
+                              <HBox fx:id="UserPlaylistContainer" style="-fx-background-color: rgba(0,0,0,0);" />
                            </content>
                         </ScrollPane>
-                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: rgba(0,0,0,0);">
                            <padding>
                               <Insets bottom="10.0" left="25.0" />
                            </padding>
@@ -52,9 +52,9 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox style="-fx-background-color: trasparent;">
+                  <VBox style="-fx-background-color: rgba(0,0,0,0);">
                      <children>
-                        <HBox style="-fx-background-color: trasparent;">
+                        <HBox style="-fx-background-color: rgba(0,0,0,0);">
                            <children>
                               <Label text="Esplora il mondo della musica">
                                  <font>
@@ -66,13 +66,13 @@
                               <Insets left="10.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <HBox style="-fx-background-color: trasparent;" />
+                        <HBox style="-fx-background-color: rgba(0,0,0,0);" />
                         <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="257.0">
                            <content>
-                              <VBox fx:id="SongsContainer" style="-fx-background-color: trasparent;" />
+                              <VBox fx:id="SongsContainer" style="-fx-background-color: rgba(0,0,0,0);" />
                            </content>
                         </ScrollPane>
-                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: trasparent;">
+                        <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: rgba(0,0,0,0);">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
