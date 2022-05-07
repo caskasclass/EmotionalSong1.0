@@ -21,6 +21,26 @@
 #left_side_bpane .label{
     -fx-text-fill:rgb(255,255,255);
 }
+.buttonHome{
+    -fx-background-color: rgba(0,0,0,0);
+    background-color:  rgba(0, 0, 0, 0);
+    -fx-border-color:rgb(169, 169, 169);
+    border-color: rgb(169, 169, 169);
+    -fx-border-radius: 15;
+    border-radius: 15;
+    -fx-text-fill: rgb(255, 255, 255);
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    -ms-border-radius: 15;
+    -o-border-radius: 15;
+
+}
+.buttonHome:hover{
+    -fx-border-color:rgb(255,255,255);
+    border-color: rgb(255,255,255);
+    
+}
+
 #homePane {
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0); 
@@ -34,6 +54,7 @@
     -fx-background-color: rgba(0,0,0,0);;
     background-color: rgba(0,0,0,0);;
 }
+
 
 
 #homePane .scroll-pane > .viewport{

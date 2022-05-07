@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900.0" minWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
+<BorderPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900.0" minWidth="1400.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.Homebuilder">
    <left>
       <VBox fx:id="menubar" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
@@ -83,9 +83,9 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT">
+                  <HBox alignment="CENTER_LEFT" minHeight="70.0" nodeOrientation="LEFT_TO_RIGHT">
                      <children>
-                        <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/avatarpreview.png" />
                            </image>
@@ -97,15 +97,18 @@
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                      <padding>
-                        <Insets left="5.0" />
+                        <Insets bottom="15.0" left="25.0" top="25.0" />
                      </padding>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" text="Sign Out ">
+                        <Button fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" styleClass="buttonHome" text="Sign Out ">
                            <font>
                               <Font size="19.0" />
                            </font>

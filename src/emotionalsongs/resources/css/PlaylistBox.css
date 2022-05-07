@@ -12,12 +12,7 @@
 .borderpane:hover{
     -fx-background-color:rgb(40,40,40);
     background-color: rgb(40,40,40);
-    -fx-transition: 0.3;
-    transition: 0.3;
-    -webkit-transition: 0.3;
-    -moz-transition: 0.3;
-    -ms-transition: 0.3;
-    -o-transition: 0.3;
+
 
 }
 .borderpane .label {

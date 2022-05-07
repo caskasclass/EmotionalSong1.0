@@ -47,5 +47,6 @@ public class songLineController implements Initializable {
         canzone = c ;
         indx = index;
     }
+    
 
 }

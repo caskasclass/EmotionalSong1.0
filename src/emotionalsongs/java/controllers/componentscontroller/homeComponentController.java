@@ -23,6 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -32,6 +33,9 @@ public class homeComponentController implements Initializable {
     private HBox UserPlaylistContainer;
     @FXML
     private VBox SongsContainer;
+    @FXML
+    private FlowPane notMyPlaylistContainer;
+
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
 
@@ -42,6 +46,7 @@ public class homeComponentController implements Initializable {
             try {
                 createHomePlaylistUI();
                 createHomeSongUI();
+                createHomeOthersPlaylistUI();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -58,7 +63,7 @@ public class homeComponentController implements Initializable {
         System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
         if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 1; i++) {
                 BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
                 ui.getStylesheets().add(style.getStyle("PlaylistBox"));
                 UserPlaylistContainer.getChildren().add(ui);
@@ -71,6 +76,7 @@ public class homeComponentController implements Initializable {
                 PlaylistBoxController controller = loader.<PlaylistBoxController>getController();
                 controller.setPlaylist(playlist);
                 UserPlaylistContainer.getChildren().add(ui);
+
             }
         }
 
@@ -93,6 +99,28 @@ public class homeComponentController implements Initializable {
             i++;
 
         }
+    }
+
+    private void createHomeOthersPlaylistUI() throws IOException {
+        System.out.println("\n\nFunzia bene");
+        ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
+        if (playlists == null || playlists.isEmpty()) {
+            for (int i = 0; i < 12; i++) {
+                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
+                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
+                notMyPlaylistContainer.getChildren().add(ui);
+            }
+
+        } else {
+            for (Playlist playlist : playlists) {
+                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                Pane ui = loader.load();
+                PlaylistBoxController controller = loader.<PlaylistBoxController>getController();
+                controller.setPlaylist(playlist);
+                notMyPlaylistContainer.getChildren().add(ui);
+            }
+        }
+
     }
 
     public void showSongs(ActionEvent e) throws IOException {
