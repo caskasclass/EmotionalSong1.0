@@ -9,7 +9,7 @@ import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
-import emotionalsongs.java.controllers.microcontrollers.SongLineController;
+import emotionalsongs.java.controllers.microcontrollers.songLineController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.Playlist;
@@ -86,7 +86,7 @@ public class homeComponentController implements Initializable {
         for (Canzone canzone : songs) {
             FXMLLoader loader = obj.getLoader("SongLine");
             Pane ui = (Pane) loader.load();
-            SongLineController controller = loader.<SongLineController>getController();
+            songLineController controller = loader.<songLineController>getController();
             controller.setCanzone(canzone, i);
             SongsContainer.getChildren().add(ui);
             i++;

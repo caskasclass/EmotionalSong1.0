@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class SongLineController implements Initializable {
+public class songLineController implements Initializable {
     @FXML
     private Label lb_SongNumber;
     @FXML
