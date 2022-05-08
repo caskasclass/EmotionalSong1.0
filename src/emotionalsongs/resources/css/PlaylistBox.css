@@ -15,9 +15,9 @@
 
 
 }
-.borderpane .label {
+/*.borderpane .label {
     -fx-text-fill: rgb(255,255,255);
-}
+}*/
 .root .viewport{
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);

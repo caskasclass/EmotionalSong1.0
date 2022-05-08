@@ -18,9 +18,11 @@
     background-color: linear-gradient(to top,rgb(18,18,18)85%,rgb(30,18,88) 100%);
     
 }
+
 #left_side_bpane .label{
-    -fx-text-fill:rgb(255,255,255);
+    -fx-text-fill:rgba(255,255,255);
 }
+
 .buttonHome{
     -fx-background-color: rgba(0,0,0,0);
     background-color:  rgba(0, 0, 0, 0);
@@ -63,6 +65,6 @@
 }
 
 #HomeBorderPaneCss{
-    -fx-background-color: trasparent;
-    background-color: transparent; 
+    -fx-background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0); 
 }
