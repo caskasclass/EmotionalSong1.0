@@ -63,7 +63,7 @@ public class homeComponentController implements Initializable {
         System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
         if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 1; i++) {
+            for (int i = 0; i < 10; i++) {
                 BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
                 ui.getStylesheets().add(style.getStyle("PlaylistBox"));
                 UserPlaylistContainer.getChildren().add(ui);
@@ -105,7 +105,7 @@ public class homeComponentController implements Initializable {
         System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
         if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < 6; i++) {
                 BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
                 ui.getStylesheets().add(style.getStyle("PlaylistBox"));
                 notMyPlaylistContainer.getChildren().add(ui);
