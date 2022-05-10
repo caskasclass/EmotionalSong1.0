@@ -1,29 +1,46 @@
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.UUID;
-import emotionalsongs.java.Managers.FileManager;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Canzone implements Serializable {
+    //private static final long serialVersionUID = 6529685098267757690L;
+
     private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
-    private String IdCanzone;
-    private String Titolo;
-    private String Autore;
-    private Integer Anno;
-    private double Durata;
-    private String Album;
-    private String Genere;
+    private String IdCanzone;// ok
+    private String Titolo;// ok
+    private String Autore;// ok
+    private Double DanceAbility;// ok
+    private Double Energy;// ok
+    private Double Loudness;// ok
+    private Double Speechiness;// ok
+    private Boolean Mode;// ok
+    private Double Liveness;// ok
+    private Double Tempo;// ok
+    private Date Anno;// ok
+    private Double Duration_ms;// ok
+    private String Album;// ok
+    private Integer Time_signature;// ok
 
-    public Canzone(String Titolo, String Autore, Integer Anno, Double Durata, String Album, String Genere) {
+    public Canzone(String songId, String titolo, String autore, Date release_date, Double danceability, Double energy,
+            Double loudness, Double speechiness, Boolean mode, Double liveness, Double tempo, Double durata,
+            String album, Integer time_signature) {
 
-        this.IdCanzone = setIdCanzone();
-        this.Titolo = Titolo;
-        this.Autore = Autore;
-        this.Anno = Anno;
-        this.Durata = Durata;
-        this.Album = Album;
-        this.Genere = Genere;
+        this.IdCanzone = songId;
+        this.Titolo = titolo;
+        this.Autore = autore;
+        this.DanceAbility = danceability;
+        this.Energy = energy;
+        this.Loudness = loudness;
+        this.Speechiness = speechiness;
+        this.Mode = mode;
+        this.Liveness = liveness;
+        this.Tempo = tempo;
+        this.Anno = release_date;
+        this.Duration_ms = durata;
+        this.Album = album;
+        this.Time_signature = time_signature;
     }
 
     public String getIdCanzone() {
@@ -38,61 +55,21 @@ public class Canzone implements Serializable {
         return this.Autore;
     }
 
-    public Integer getAnno() {
-        return this.Anno;
+    public String getAnno() {
+        Calendar date = Calendar.getInstance();
+        date.setTime(Anno);
+        return Integer.toString(date.get(Calendar.YEAR));
     }
 
-    public Double getDurata() {
-        return this.Durata;
+    public String getDurata() {
+        Double dur = this.Duration_ms / 60000;
+        String duration = String.format("%.2f", dur);
+        duration.replace('.', ':');
+        return duration;
     }
 
     public String getAlbum() {
         return this.Album;
     }
 
-    public String getGenere() {
-        return this.Genere;
-    }
-
-    private String setIdCanzone() {
-        boolean unique = false;
-        String id = "";
-        // settare id controlland che non sia gia esistente
-        ArrayList<Canzone> list = null;
-        Object obj = FileManager.readData(PATH);
-        if(obj!=null)
-        {
-            if (obj instanceof ArrayList<?>) {
-                ArrayList<?> al = (ArrayList<?>) obj;
-                list = castList(al);
-            }
-            do {
-                id = UUID.randomUUID().toString();
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).IdCanzone.equals(id)) {
-                        break;
-                    }
-                    if (i == list.size() - 1 && !(list.get(i).IdCanzone.equals(id))) {
-                        unique = true;
-                    }
-                }
-            } while (!unique);
-        }else{
-            id = UUID.randomUUID().toString();
-        }
-      
-
-        return id;
-    }
-
-    private static ArrayList<Canzone> castList(ArrayList<?> al) {
-
-        ArrayList<Canzone> array = new ArrayList<Canzone>();
-        for (Object obj : al) {
-            if (obj instanceof Canzone) {
-                array.add((Canzone) obj);
-            }
-        }
-        return array;
-    }
 }

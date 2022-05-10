@@ -111,58 +111,7 @@ public class Homebuilder implements Initializable {
     }
 
 
-    /************************************************************************/
-    /* Metodo da cancellare in futuro serve solo per aggiungere una canzone */
-    /************************************************************************/
-    public void add_canzone_UI(MouseEvent e) {
-        // myPlaylistcont.getChildren().clear(); //funziona
-        left_side_bpane.getChildren().remove(homePane);
-        VBox hbox = new VBox();
-        Label lb1 = new Label("Titolo");
-        tf1 = new TextField();
-        tf1.setMinWidth(100);
-        Label lb2 = new Label("Autore");
-        tf2 = new TextField();
-        Label lb3 = new Label("Anno");
-        tf3 = new TextField();
-        Label lb4 = new Label("Durata");
-        tf4 = new TextField();
-        Label lb5 = new Label("Album");
-        tf5 = new TextField();
-        Label lb6 = new Label("Genere");
-        tf6 = new TextField();
-        tf1.setMaxWidth(100);
-        tf2.setMaxWidth(100);
-        tf3.setMaxWidth(100);
-        tf4.setMaxWidth(100);
-        tf5.setMaxWidth(100);
-        tf6.setMaxWidth(100);
-        Button submit = new Button("Aggiungi");
-        submit.setOnAction(event -> {
-            submit();
-        });
-        hbox.getChildren().addAll(lb1, tf1, lb2, tf2, lb3, tf3, lb4, tf4, lb5, tf5, lb6, tf6, submit);
-        left_side_bpane.setCenter(hbox);
-
-    }
-
-    public void submit() {
-        String Titolo = tf1.getText();
-        String Autore = tf2.getText();
-        Integer Anno = Integer.parseInt(tf3.getText());
-        double Durata = Double.parseDouble(tf4.getText());
-        String Album = tf5.getText();
-        String Genere = tf6.getText();
-        Canzone canzone = new Canzone(Titolo, Autore, Anno, Durata, Album, Genere);
-        ArrayList<Canzone> canzoni = CanzoniManager.readCanzoni();
-        canzoni.add(canzone);
-        CanzoniManager.getCanzoni(canzoni);
-        System.out.println("Aggiunt0!!!");
-
-    }
-    /************************************************************************/
-    /************************************************************************/
-
+ 
 
 
 

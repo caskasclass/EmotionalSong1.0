@@ -11,17 +11,17 @@ public class CanzoniManager extends FileManager {
     public static ArrayList<Canzone> readCanzoni(){
 
         Object obj= readData(PATH);
-        ArrayList<Canzone> users = new ArrayList<>();
+        ArrayList<Canzone> canzoni = new ArrayList<>();
         if (obj instanceof ArrayList<?>) {
             ArrayList<?> al = (ArrayList<?>) obj;
-            users = castList(al);
+            canzoni = castList(al);
           }
-        return users;
+        return canzoni;
     }
 
-    public static void getCanzoni(ArrayList<Canzone> users){
+    public static void getCanzoni(ArrayList<Canzone> canzoni){
 
-        getData(users, PATH);
+        getData(canzoni, PATH);
     }
 
     private static ArrayList<Canzone> castList(ArrayList<?> al) {

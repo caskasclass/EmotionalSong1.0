@@ -31,7 +31,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label fx:id="add_song_btn" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#add_canzone_UI" prefHeight="53.0" text="Aggiungi Canzoni">
+            <Label fx:id="add_song_btn" accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" text="Aggiungi Canzoni">
                <font>
                   <Font size="22.0" />
                </font>

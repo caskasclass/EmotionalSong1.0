@@ -45,9 +45,9 @@ public class songLineController implements Initializable {
             lb_SongTitle.setText(canzone.getTitolo());
             lb_SongAutore.setText(canzone.getAutore());
             lb_SongAlbum.setText(canzone.getAlbum());
-            lb_SongGenere.setText(canzone.getGenere());
-            lb_SongAnno.setText(canzone.getAnno().toString());
-            lb_SongDurata.setText(canzone.getDurata().toString());
+            lb_SongGenere.setText("toglimi");
+            lb_SongAnno.setText(canzone.getAnno());
+            lb_SongDurata.setText(canzone.getDurata());
         });
     }
 
