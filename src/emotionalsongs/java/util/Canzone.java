@@ -64,7 +64,7 @@ public class Canzone implements Serializable {
     public String getDurata() {
         Double dur = this.Duration_ms / 60000;
         String duration = String.format("%.2f", dur);
-        duration.replace('.', ':');
+        duration = duration.replace('.', ':');
         return duration;
     }
 

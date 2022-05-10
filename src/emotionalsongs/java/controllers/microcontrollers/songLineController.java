@@ -29,8 +29,6 @@ public class songLineController implements Initializable {
     @FXML
     private Label lb_SongAlbum;
     @FXML
-    private Label lb_SongGenere;
-    @FXML
     private Label lb_SongAnno;
     @FXML
     private Label lb_SongDurata;
@@ -45,7 +43,6 @@ public class songLineController implements Initializable {
             lb_SongTitle.setText(canzone.getTitolo());
             lb_SongAutore.setText(canzone.getAutore());
             lb_SongAlbum.setText(canzone.getAlbum());
-            lb_SongGenere.setText("toglimi");
             lb_SongAnno.setText(canzone.getAnno());
             lb_SongDurata.setText(canzone.getDurata());
         });

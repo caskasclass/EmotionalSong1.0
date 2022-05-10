@@ -2,6 +2,7 @@ package emotionalsongs;
 
 import java.io.IOException;
 import java.text.ParseException;
+
 import emotionalsongs.java.Managers.StyleManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,9 +24,9 @@ public class EmotionalSongs extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) throws ParseException{        
+    public static void main(String[] args) throws ParseException {
+
         launch(args);
-       
 
     }
 

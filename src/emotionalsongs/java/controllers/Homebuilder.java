@@ -2,13 +2,12 @@ package emotionalsongs.java.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+
 import java.util.ResourceBundle;
 
-import emotionalsongs.java.Managers.CanzoniManager;
+
 
 import emotionalsongs.java.Managers.StyleManager;
-import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 
 import emotionalsongs.java.util.User;
@@ -29,7 +28,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
 

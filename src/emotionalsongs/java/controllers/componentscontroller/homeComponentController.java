@@ -90,13 +90,19 @@ public class homeComponentController implements Initializable {
         ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
 
         for (Canzone canzone : songs) {
-            FXMLLoader loader = obj.getLoader("SongLine");
-            Pane ui = (Pane) loader.load();
-            ui.getStylesheets().add(style.getStyle("SongLineCss"));
-            songLineController controller = loader.<songLineController>getController();
-            controller.setCanzone(canzone, i);
-            SongsContainer.getChildren().add(ui);
-            i++;
+            if(!(i == 101))
+            {
+                FXMLLoader loader = obj.getLoader("SongLine");
+                Pane ui = (Pane) loader.load();
+                ui.getStylesheets().add(style.getStyle("SongLineCss"));
+                songLineController controller = loader.<songLineController>getController();
+                controller.setCanzone(canzone, i);
+                SongsContainer.getChildren().add(ui);
+                i++;
+            }else{
+                break;
+            }
+            
 
         }
     }
