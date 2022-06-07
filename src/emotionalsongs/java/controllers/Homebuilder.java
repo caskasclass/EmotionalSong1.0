@@ -22,6 +22,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -40,10 +42,11 @@ public class Homebuilder implements Initializable {
     @FXML
     private Label hello_username;
     @FXML
-    private Button btn_signOut;
+    private MenuItem btn_signOut;
     @FXML
     private Label add_song_btn;
-
+    @FXML 
+    private MenuButton usernameBtn;
     @FXML
     private TextField tf1;
     @FXML
@@ -58,6 +61,8 @@ public class Homebuilder implements Initializable {
     private TextField tf6;
     @FXML
     private Pane homePane;
+    @FXML 
+    private Pane navBarPane;
 
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
@@ -71,7 +76,11 @@ public class Homebuilder implements Initializable {
 
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
-            hello_username.setText("Ciao, " + logged.getUsername());
+            navBarPane = obj.getPane("userNavBar");
+            navBarPane.getStylesheets().add(style.getStyle("UserNavBarCss"));
+            left_side_bpane.setTop(navBarPane);
+            //hello_username.setText("Ciao, " + logged.getUsername());
+
 
         });
 
@@ -80,7 +89,7 @@ public class Homebuilder implements Initializable {
     /**********  Servono per tornare alla scermata loggin  *****************/
 
     public void SignOut(ActionEvent e) throws IOException {
-        closewindow(btn_signOut);
+        closewindow(usernameBtn);
         Logwindow();
 
     }

@@ -4,6 +4,11 @@
     font-size: 18;
 }
 
+#userNavBarGrid{
+    -fx-background-color:rgba(0, 0, 0, 0);
+    background-color: rgba(0,0,0,0);
+}
+
 #buttonLoginNavBar .menu-button .label{
     -fx-text-fill : rgb(255,255,255);
     -fx-margin:0;
@@ -35,7 +40,24 @@
     -fx-padding: 0 0 -1 -10;
     padding:  0 0 -1 -10;
     -fx-background-radius: 25 25 25 25;
-;
+}
 
 
+#usernameBtn .context-menu{
+    -fx-min-width:175;
+    min-width: 175;
+    -fx-background-color: rgb(40,40,40);
+    background-color: rgb(40,40,40);
+    -fx-background-radius: 5;
+    -fx-padding:4 0 4 0;
+    padding: 4 0 4 0;
+}
+#usernameBtn .menu-item:hover{
+    -fx-background-color:rgba(62,62,62);
+    background-color: rgba(62,62,62);
+    -fx-background-radius:4;
+}
+#usernameBtn .context-menu  .menu-item .label{
+    -fx-text-fill:rgb(255, 255, 255);
+    
 }

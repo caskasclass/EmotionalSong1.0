@@ -2,16 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -72,55 +67,6 @@
          </padding></VBox>
    </left>
    <center>
-      <BorderPane fx:id="left_side_bpane" BorderPane.alignment="CENTER">
-         <top>
-            <GridPane BorderPane.alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="ALWAYS" />
-                  <ColumnConstraints hgrow="ALWAYS" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <HBox alignment="CENTER_LEFT" minHeight="70.0" nodeOrientation="LEFT_TO_RIGHT">
-                     <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/avatarpreview.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="hello_username" depthTest="DISABLE" text="Ciao,  username">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="15.0" left="25.0" top="25.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
-                     <children>
-                        <Button fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" styleClass="buttonHome" text="Sign Out ">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets right="35.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </GridPane>
-         </top>
-      </BorderPane>
+      <BorderPane fx:id="left_side_bpane" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
