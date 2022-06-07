@@ -1,0 +1,73 @@
+#songPane {
+    -fx-background-color:rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+}
+#songPane #repository{
+    -fx-background-color:rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+}
+
+#repository .column-header-background .filler {
+    -fx-background-color: rgba(136, 7, 7, 0);
+    background-color: rgba(0,0,0,0);
+}
+#repository .corner {
+    -fx-background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+}
+
+#repository .column-header{
+    -fx-border-width:0 0 1 0;
+    border-width:0 0 1 0;
+    -fx-border-color:rgb(47,44,57);
+    border-color:rgb(47,44,57);
+}
+
+
+
+#repository .column-header-background{
+    -fx-background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+    padding: 0 0 5px 0;
+}
+
+#repository .column-header {
+    -fx-background-color: rgba(0,0,0,0);
+    background-color:  rgba(0,0,0,0);
+    
+    
+    
+}
+#repository .column-header  .label{
+    -fx-padding:25 4 5 4;
+    padding: 25 4 5 4;
+    -fx-text-fill:rgb(175,174,174);
+    -fx-font-size:13;
+    font-size:13;
+
+}
+#repository .column-header  .label:hover{
+    -fx-text-fill:rgb(255,255,255);
+}
+
+#repository .table-cell{
+    -fx-border-color: rgba(237, 2, 2, 1);
+    border-color: rgba(0,0,0,0);
+    -fx-padding: 15;
+    padding: 15;
+}
+.table-row-cell:hover {
+    -fx-background-color: rgb(42,42,42);
+    background-color: rgb(42,42,42);
+
+}
+
+.table-row-cell{
+    -fx-background-color: rgba(0,0,0,0);
+    background-color:rgba(0,0,0,0);
+    -fx-text-background-color: rgb(255, 255, 255);
+
+}

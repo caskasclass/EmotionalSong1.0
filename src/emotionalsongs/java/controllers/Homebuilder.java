@@ -135,6 +135,7 @@ public class Homebuilder implements Initializable {
     public void songWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
         Pane ui = obj.getPane("songs");
+        ui.getStylesheets().add(style.getStyle("repositoryCanzoni"));
         left_side_bpane.setCenter(ui);
     }
 

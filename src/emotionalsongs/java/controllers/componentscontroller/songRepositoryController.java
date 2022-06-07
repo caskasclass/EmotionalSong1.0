@@ -35,6 +35,9 @@ public class songRepositoryController implements Initializable{
     private TableColumn<Canzone, String> album;
 
     @FXML
+    private TableColumn<Canzone, String> songindex;
+
+    @FXML
     private TableColumn<Canzone, Integer> anno;
 
     @FXML
@@ -43,8 +46,6 @@ public class songRepositoryController implements Initializable{
     @FXML
     private TableColumn<Canzone, Double> durata;
 
-    @FXML
-    private TableColumn<Canzone, String> genere;
 
     @FXML
     private TableColumn<Canzone, String> titolo;
@@ -63,8 +64,9 @@ public class songRepositoryController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //songindex.setCellFactory() index voglio qui !!!
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        genere.setCellValueFactory(new PropertyValueFactory<Canzone, String>("genere"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));

@@ -37,15 +37,4 @@ public class FileManager {
     }
   }
 
-  /*private static ArrayList<User> castList(ArrayList<?> al) {
-
-    ArrayList<User> array = new ArrayList<User>();
-    for (Object obj : al) {
-      if (obj instanceof User) {
-        array.add((User) obj);
-      }
-    }
-    return array;
-  }*/
-
 }
