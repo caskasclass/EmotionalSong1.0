@@ -15,9 +15,10 @@ import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
-
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -28,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 public class Homebuilder implements Initializable {
@@ -129,6 +131,16 @@ public class Homebuilder implements Initializable {
     }
 
 
+    public void SignUpWind(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/SignUpWindow.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(style.mainStyle());
+        stage.setTitle("EmotionalSong");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 
 
     /*****************************************************

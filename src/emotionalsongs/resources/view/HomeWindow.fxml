@@ -135,7 +135,7 @@
                                                 <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="8.0">
                                                    <children>
                                                       <Button mnemonicParsing="false" onAction="#Login" text="LogIn" />
-                                                      <Hyperlink text="Registrati" />
+                                                      <Hyperlink onAction="#SignUpWind" text="Registrati" />
                                                    </children>
                                                 </HBox>
                                              </children>
