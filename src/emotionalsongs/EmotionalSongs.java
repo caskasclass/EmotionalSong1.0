@@ -15,7 +15,7 @@ public class EmotionalSongs extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("resources/view/LoginWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/view/HomeWindow.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style.mainStyle());
         primaryStage.setTitle("EmotionalSong");

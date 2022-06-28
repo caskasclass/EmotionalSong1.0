@@ -61,3 +61,44 @@
     -fx-text-fill:rgb(255, 255, 255);
     
 }
+
+#LogInMenuButton .context-menu{
+    -fx-min-width:175;
+    min-width: 175;
+    -fx-background-color: rgb(40,40,40);
+    background-color: rgb(40,40,40);
+    -fx-background-radius: 5;
+
+}
+#LogInMenuButton .menu-item{
+    -fx-background-color: rgb(40,40,40);
+    background-color: rgb(40,40,40);
+    -fx-background-radius: 5;
+
+
+}
+#LogInMenuButton .menu-item .label{
+    -fx-padding:0 0 0 0;
+    padding: 0 0 0 0 ;
+    -fx-margin:0 0 0 0;
+    margin: 0 0 0 0;
+
+
+
+}
+#LogInMenuButton .menu-item .button{
+    -fx-min-width:100;
+    min-width: 100;
+    -fx-background-radius:10;
+    -fx-background-color: rgb(101,212,110);
+    background-color: rgb(101,212,110);
+    -fx-text-fill:rgb(255, 255, 255)
+
+}
+
+
+#LogInMenuButton .menu-item:hover {
+    -fx-background-color : none;
+    background-color: none;
+
+}

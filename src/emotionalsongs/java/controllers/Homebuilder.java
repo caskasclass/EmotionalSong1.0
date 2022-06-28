@@ -2,28 +2,26 @@ package emotionalsongs.java.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
 
 import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.FxmlLoader;
 
 import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -31,10 +29,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-import javafx.stage.Stage;
 
 public class Homebuilder implements Initializable {
 
+    @FXML
+    private HBox logbuttons;
+
+    @FXML
+    private TextField usernameEmail;
+    @FXML
+    private PasswordField passwd;
     @FXML
     private HBox myPlaylistcont;
     @FXML
@@ -47,25 +51,17 @@ public class Homebuilder implements Initializable {
     private Label add_song_btn;
     @FXML 
     private MenuButton usernameBtn;
-    @FXML
-    private TextField tf1;
-    @FXML
-    private TextField tf2;
-    @FXML
-    private TextField tf3;
-    @FXML
-    private TextField tf4;
-    @FXML
-    private TextField tf5;
-    @FXML
-    private TextField tf6;
+    @FXML 
+    private MenuButton LogInMenuButton;
     @FXML
     private Pane homePane;
     @FXML 
     private Pane navBarPane;
 
+
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
+
 
     private User logged;
 
@@ -76,41 +72,26 @@ public class Homebuilder implements Initializable {
 
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
-            navBarPane = obj.getPane("userNavBar");
-            navBarPane.getStylesheets().add(style.getStyle("UserNavBarCss"));
-            left_side_bpane.setTop(navBarPane);
-            //hello_username.setText("Ciao, " + logged.getUsername());
-
-
+    
         });
+
+        if(logged==null)
+        {
+            logbuttons.getChildren().remove(usernameBtn);      
+        }
 
     }
     /************************************************************************/
     /**********  Servono per tornare alla scermata loggin  *****************/
 
     public void SignOut(ActionEvent e) throws IOException {
-        closewindow(usernameBtn);
-        Logwindow();
+        logged = null;
+        logbuttons.getChildren().remove(usernameBtn);
+        logbuttons.getChildren().add(LogInMenuButton);
 
     }
 
-    private void Logwindow() throws IOException {
-
-        Stage stage = new Stage();
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("../../resources/view/LoginWindow.fxml"));
-        Parent root = (Parent) fxmlloader.load();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(style.mainStyle());
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    private void closewindow(Node n) {
-        Stage stage = (Stage) n.getScene().getWindow(); // chiusura della finestra
-        stage.close();
-    }
-    /************************************************************************/
-    /************************************************************************/
+   
 
 
     public void setUser(User u) {
@@ -120,7 +101,32 @@ public class Homebuilder implements Initializable {
 
  
 
+    public void Login(ActionEvent e) throws IOException {
+        User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText());
+        ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
+        if (users.contains(loguser)) {
+           
+            User log = users.get(users.indexOf(loguser)); // molto meglio
+            System.out.println(log.printUser());// testing ok!
 
+            updateWindow(log);
+
+
+
+            System.out.println("\n\n\nUser trovato\n\n\n");
+        } else {
+             System.out.println("\n\n\nUser non presente\n\n\n");
+        }
+    }
+
+    private void updateWindow(User u)
+    {
+        logged = u;
+        logbuttons.getChildren().remove(LogInMenuButton);
+        logbuttons.getChildren().add(usernameBtn);
+        usernameBtn.setText(u.getUsername());
+        
+    }
 
 
 
