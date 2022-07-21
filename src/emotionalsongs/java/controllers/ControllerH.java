@@ -8,6 +8,7 @@ import emotionalsongs.java.util.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,16 +33,21 @@ public class ControllerH {
     public PasswordField btn_passwd;
     @FXML
     public Button btn_registra;
+    @FXML
+    public Label msgErr;
 
     StyleManager style = new StyleManager();
 
     public void Registrazione(ActionEvent e) throws IOException {
 
-        // problemi per il cod fiscale perchè ci sono i numeri, problemi con trim di nome e cognome non funzia
-        User newuser = new User(btn_username.getText().trim(), btn_passwd.getText().trim(), btn_mail.getText().trim(), (btn_nome.getText().toLowerCase()).trim(), (btn_cf.getText().toUpperCase()).trim(),btn_ind.getText().toLowerCase());
+        //problemi con trim per ora l'ho tolto
+        User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), (btn_nome.getText()).toLowerCase(), (btn_cf.getText()).toUpperCase(),(btn_ind.getText()).toLowerCase());
         ArrayList<User> users = UserManager.readUsers();
         if (users.contains(newuser)) {
-            System.out.println("\n\n\nUtente gia registrato!!!\n\n\n");
+            System.out.println("utente già registrato\n");
+            //msgErr.setText("utente già registrato");
+            //non funzia
+            
         } else {
             users.add(newuser);
             System.out.println("\n\nuser aggiunto\n" + newuser.printUser() + "\n");
@@ -52,9 +58,19 @@ public class ControllerH {
         // Nel sennso che se la registrazione è avvenuta con successo allora chiuedi
         // altrimenti nulla,
         // magari si stampa un messaggio di errore durante la registrazione!
-
+        /*if( btn_username.getText() != null && btn_passwd.getText() != null && btn_mail.getText() != null && btn_nome.getText() != null 
+            && btn_cf.getText() != null && btn_ind.getText() != null)
+            {
+                msgErr.setText("non hai compilato tutti i campi");
+                users.remove(newuser);
+                //label con "non hai compilato tutti i campi"
+            }
+        else{
+            //
+        }*/
         Stage stage = (Stage) btn_registra.getScene().getWindow(); // chiusura della finestra
-        stage.close(); //
+        stage.close();
+        
 
     }
 }
