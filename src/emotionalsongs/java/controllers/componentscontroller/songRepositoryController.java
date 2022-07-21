@@ -72,7 +72,7 @@ public class songRepositoryController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
- 
+
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
@@ -80,7 +80,11 @@ public class songRepositoryController implements Initializable{
                 if (isEmpty() || index < 0) {
                     setText(null);
                 } else {
+<<<<<<< HEAD
                     setText(Integer.toString(index + 1));
+=======
+                    setText(Integer.toString((index+1)));
+>>>>>>> 3dfc8ec1a8426069cc4a4e06d211295a03aafc2b
                 }
             }
         });   
