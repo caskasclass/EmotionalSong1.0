@@ -38,7 +38,7 @@ public class ControllerH {
     public void Registrazione(ActionEvent e) throws IOException {
 
         // problemi per il cod fiscale perchè ci sono i numeri, problemi con trim di nome e cognome non funzia
-        User newuser = new User(btn_username.getText().trim(), btn_passwd.getText().trim(), btn_mail.getText().trim(), (btn_nome.getText().toLowerCase()).trim(), (btn_cf.getText().toUpperCase()).trim(),btn_ind.getText().toLowerCase());
+        User newuser = new User((btn_username.getText()).trim(), (btn_passwd.getText()).trim(), (btn_mail.getText()).trim(), ((btn_nome.getText()).toLowerCase()).trim(), ((btn_cf.getText()).toUpperCase()).trim(),(btn_ind.getText()).toLowerCase());
         ArrayList<User> users = UserManager.readUsers();
         if (users.contains(newuser)) {
             System.out.println("\n\n\nUtente gia registrato!!!\n\n\n");

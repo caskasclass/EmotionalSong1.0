@@ -80,7 +80,7 @@ public class songRepositoryController implements Initializable{
                 if (isEmpty() || index < 0) {
                     setText(null);
                 } else {
-                    setText(Integer.toString(index));
+                    setText(Integer.toString(index + 1));
                 }
             }
         });   
