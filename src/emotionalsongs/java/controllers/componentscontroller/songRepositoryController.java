@@ -72,8 +72,7 @@ public class songRepositoryController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //songindex.setCellFactory() index voglio qui !!!    
+ 
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
