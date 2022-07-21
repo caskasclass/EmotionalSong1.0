@@ -48,5 +48,11 @@ public class FxmlLoader {
         return loader;
 
     }
+    public FXMLLoader getComponentsLoader(String file)
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/components/" + file + ".fxml"));
+        return loader;
+
+    }
 
 }

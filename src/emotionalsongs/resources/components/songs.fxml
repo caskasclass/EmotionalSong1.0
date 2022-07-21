@@ -14,11 +14,13 @@
       <TableView fx:id="repository">
         <columns>
             <TableColumn fx:id="songindex" prefWidth="121.0" resizable="false" text="#" />
+            <TableColumn fx:id="titoloAutore" prefWidth="121.0" resizable="false" text="TITOLO + AUTORE" />
           <TableColumn fx:id="titolo" prefWidth="121.0" resizable="false" text="TITOLO" />
             <TableColumn fx:id="autore" prefWidth="94.0" resizable="false" text="AUTORE" />
             <TableColumn fx:id="album" prefWidth="127.0" resizable="false" text="ALBUM" />
             <TableColumn fx:id="anno" prefWidth="127.0" resizable="false" text="ANNO" />
             <TableColumn fx:id="durata" prefWidth="127.0" resizable="false" text="DURATA" />
+            <TableColumn fx:id="optionbutton" prefWidth="127.0" resizable="false" text="button" />
         </columns>
       </TableView>
    </center>

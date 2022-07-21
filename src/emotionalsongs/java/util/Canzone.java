@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Canzone implements Serializable {
-    //private static final long serialVersionUID = 6529685098267757690L;
 
     private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
     private String IdCanzone;// ok

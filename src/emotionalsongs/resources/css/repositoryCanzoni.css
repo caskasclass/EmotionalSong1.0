@@ -54,8 +54,10 @@
 }
 
 #repository .table-cell{
-    -fx-border-color: rgba(116, 116, 116, 0.098);
-    border-color: rgba(0,0,0,0);
+    -fx-border-width:0px;
+    border-width: 0px;
+    -fx-aligment:"center";
+    border-width: 0px;
     -fx-padding: 15;
     padding: 15;
 }

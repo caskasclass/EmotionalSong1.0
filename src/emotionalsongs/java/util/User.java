@@ -13,12 +13,18 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String email;
+    private String nomecognome;
+    private String codiceFisc;
+    private String indirizzo;
 
-    public User(String u, String p, String e) {
+    public User(String u, String p, String e, String nc, String cf, String ind) {
         userId = setId();
         username = u;
         password = p;
         email = e;
+        nomecognome = nc;
+        codiceFisc = cf;
+        indirizzo = ind;
     }
 
     private String setId() {
@@ -69,6 +75,15 @@ public class User implements Serializable {
     public String getUsername() {
         return this.username;
     }
+    public String getName() {
+        return this.nomecognome;
+    }
+    public String getCodiceFisc() {
+        return this.codiceFisc;
+    }
+    public String getIndirizzo() {
+        return this.indirizzo;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,7 +97,10 @@ public class User implements Serializable {
          * }
          */
         if ((this.email.equals(other.email) && this.password.equals(other.password))
-                || (this.username.equals(other.username) && this.password.equals(other.password))) {
+                || (this.username.equals(other.username) && this.password.equals(other.password)) 
+                || (this.nomecognome.equals(other.nomecognome) && this.password.equals(other.password))
+                || (this.codiceFisc.equals(other.codiceFisc) && this.password.equals(other.password))
+                || (this.indirizzo.equals(other.indirizzo) && this.password.equals(other.password)))  {
             return true;
         } else {
             return false;
