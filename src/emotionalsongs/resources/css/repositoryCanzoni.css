@@ -2,6 +2,7 @@
     -fx-background-color:rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
 }
+
 #songPane #repository{
     -fx-background-color:rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
@@ -10,6 +11,19 @@
 #repository .column-header-background .filler {
     -fx-background-color: rgba(136, 7, 7, 0);
     background-color: rgba(0,0,0,0);
+}
+#repository .scroll-bar * {
+    -fx-min-width: 0;
+    min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    max-width: 0;
+
+    -fx-min-height: 0;
+    min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    max-height: 0;
 }
 #repository .corner {
     -fx-background-color: rgba(0,0,0,0);
@@ -53,14 +67,49 @@
     -fx-text-fill:rgb(255,255,255);
 }
 
+#repository  #titolo .label{
+    -fx-alignment:LEFT;
+}
+#repository  #album .label{
+    -fx-alignment:LEFT;
+}
+#repository  #autore .label{
+    -fx-alignment:LEFT;
+}
+#repository  #durata .label{
+    -fx-alignment:CENTER-RIGHT;
+}
+#repository  #optionbutton .label{
+    -fx-alignment:LEFT;
+}
+
+
+
 #repository .table-cell{
     -fx-border-width:0px;
     border-width: 0px;
-    -fx-aligment:"center";
+    -fx-alignment:LEFT;
     border-width: 0px;
     -fx-padding: 15;
     padding: 15;
 }
+
+#repository #songindex {
+    -fx-alignment:CENTER;
+    -fx-padding: 1;
+    padding: 1;
+}
+#repository #anno {
+    -fx-alignment:CENTER;
+
+}
+#repository #durata {
+    -fx-alignment:CENTER-RIGHT;
+
+}
+
+
+
 .table-row-cell:hover {
     -fx-background-color: rgb(42,42,42);
     background-color: rgb(42,42,42);

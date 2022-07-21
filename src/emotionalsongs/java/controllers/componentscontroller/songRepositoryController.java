@@ -51,9 +51,7 @@ public class songRepositoryController implements Initializable{
 
     @FXML
     private TableColumn<Canzone, String> titolo;
-    @FXML
 
-    private TableColumn<Canzone, String> titoloAutore;
 
     @FXML
     private TableColumn<Canzone, MenuButton> optionbutton;
@@ -84,7 +82,6 @@ public class songRepositoryController implements Initializable{
                 }
             }
         });   
-        titoloAutore.setCellValueFactory(new PropertyValueFactory<Canzone,String>("titolo"));
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
