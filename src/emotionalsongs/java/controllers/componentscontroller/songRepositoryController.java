@@ -83,7 +83,7 @@ public class songRepositoryController implements Initializable{
                     setText(Integer.toString(index));
                 }
             }
-        });  
+        });   
         titoloAutore.setCellValueFactory(new PropertyValueFactory<Canzone,String>("titolo"));
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));

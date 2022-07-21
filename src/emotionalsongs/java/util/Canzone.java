@@ -9,12 +9,6 @@ import javafx.beans.property.StringProperty;
 
 public class Canzone implements Serializable {
 
-   /*  private final StringProperty titoloProp = new SimpleStringProperty();
-    private final StringProperty albumProp = new SimpleStringProperty();
-    private final StringProperty autoreProp = new SimpleStringProperty();
-    private final StringProperty annoProp = new SimpleStringProperty();
-    private final StringProperty durataProp = new SimpleStringProperty();*/
-
     private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
     private String IdCanzone;// ok
     private String Titolo;// ok
