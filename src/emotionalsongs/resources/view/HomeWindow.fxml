@@ -2,11 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -26,17 +37,6 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label fx:id="add_song_btn" accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" text="Aggiungi Canzoni">
-               <font>
-                  <Font size="22.0" />
-               </font>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-            </Label>
             <Label accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#playWind" prefHeight="53.0" text="Le tue playlist">
                <font>
                   <Font size="22.0" />
@@ -46,6 +46,14 @@
                </padding>
             </Label>
             <Label accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#songWind" prefHeight="53.0" text="Canzoni presenti">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+            <Label accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" text="Vedi Playlist ">
                <font>
                   <Font size="22.0" />
                </font>
@@ -67,6 +75,84 @@
          </padding></VBox>
    </left>
    <center>
-      <BorderPane fx:id="left_side_bpane" BorderPane.alignment="CENTER" />
+      <BorderPane fx:id="left_side_bpane" BorderPane.alignment="CENTER">
+         <top>
+            <GridPane fx:id="userNavBarGrid" maxHeight="75.0" maxWidth="1.7976931348623157E308" minHeight="75.0" minWidth="650.0" prefHeight="75.0" prefWidth="900.0" stylesheets="@../css/UserNavBarCss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane fx:id="buttonLoginNavBar" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+         <GridPane.margin>
+            <Insets right="30.0" />
+         </GridPane.margin>
+                     <children>
+                        <HBox fx:id="logbuttons" layoutX="-10.0" nodeOrientation="LEFT_TO_RIGHT">
+                           <children>
+                              <MenuButton fx:id="usernameBtn" minWidth="160.0" mnemonicParsing="false" text="Username">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Impostazioni" />
+                                  <MenuItem mnemonicParsing="false" text="Vedi le tue PlayList" />
+                                    <MenuItem fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" text="Esci" />
+                                </items>
+                                 <graphic>
+                                    <ImageView fx:id="buttonImage" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/test.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuButton>
+                              <MenuButton fx:id="LogInMenuButton" minWidth="160.0" mnemonicParsing="false" text="Sign In ">
+                                 <graphic>
+                                    <ImageView fx:id="buttonImage1" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/test.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <items>
+                                    <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="Unspecified Action">
+                                       <content>
+                                          <VBox spacing="8.0">
+                                             <children>
+                                                <Pane>
+                                                   <children>
+                                                      <Label text="Username/Email" />
+                                                   </children>
+                                                </Pane>
+                                                <TextField fx:id="usernameEmail" />
+                                                <Pane>
+                                                   <children>
+                                                      <Label text="Password" />
+                                                   </children>
+                                                </Pane>
+                                                <PasswordField fx:id="passwd" />
+                                                <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="8.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#Login" text="LogIn" />
+                                                      <Hyperlink onAction="#SignUpWind" text="Registrati" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="6.0" left="8.0" right="8.0" top="6.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </CustomMenuItem>
+                                 </items>
+                              </MenuButton>
+                           </children>
+                        </HBox>
+                     </children>
+      </Pane>
+   </children>
+</GridPane>
+         </top></BorderPane>
    </center>
 </BorderPane>

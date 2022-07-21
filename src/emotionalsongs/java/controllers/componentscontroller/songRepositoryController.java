@@ -16,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,7 +37,7 @@ public class songRepositoryController implements Initializable{
     private TableColumn<Canzone, String> album;
 
     @FXML
-    private TableColumn<Canzone, String> songindex;
+    private TableColumn<Canzone, Void> songindex;
 
     @FXML
     private TableColumn<Canzone, Integer> anno;
@@ -49,6 +51,12 @@ public class songRepositoryController implements Initializable{
 
     @FXML
     private TableColumn<Canzone, String> titolo;
+    @FXML
+
+    private TableColumn<Canzone, String> titoloAutore;
+
+    @FXML
+    private TableColumn<Canzone, MenuButton> optionbutton;
 
     @FXML
     private BorderPane songPane;
@@ -64,8 +72,19 @@ public class songRepositoryController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //songindex.setCellFactory() index voglio qui !!!
+ 
+        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
+            @Override
+            public void updateIndex(int index) {
+                super.updateIndex(index);
+                if (isEmpty() || index < 0) {
+                    setText(null);
+                } else {
+                    setText(Integer.toString(index));
+                }
+            }
+        });  
+        titoloAutore.setCellValueFactory(new PropertyValueFactory<Canzone,String>("titolo"));
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));

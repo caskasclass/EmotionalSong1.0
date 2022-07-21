@@ -4,8 +4,16 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Canzone implements Serializable {
-    //private static final long serialVersionUID = 6529685098267757690L;
+
+   /*  private final StringProperty titoloProp = new SimpleStringProperty();
+    private final StringProperty albumProp = new SimpleStringProperty();
+    private final StringProperty autoreProp = new SimpleStringProperty();
+    private final StringProperty annoProp = new SimpleStringProperty();
+    private final StringProperty durataProp = new SimpleStringProperty();*/
 
     private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
     private String IdCanzone;// ok
@@ -71,5 +79,21 @@ public class Canzone implements Serializable {
     public String getAlbum() {
         return this.Album;
     }
+   /*  public final StringProperty TitoloProperty() {
+        return this.titoloProp;
+    }
+    public final StringProperty AlbumProperty() {
+        return this.albumProp;
+    }
+    public final StringProperty AutoreProperty() {
+        return this.autoreProp;
+    }
+    public final StringProperty AnnoProperty() {
+        return this.annoProp;
+    }
+    public final StringProperty DurataProperty() {
+        return this.durataProp;
+    }
+*/
 
 }

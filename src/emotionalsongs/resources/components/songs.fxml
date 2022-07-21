@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,16 +10,7 @@
 
 <BorderPane fx:id="songPane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.songRepositoryController">
    <center>
-      <TableView fx:id="repository">
-        <columns>
-            <TableColumn fx:id="songindex" prefWidth="121.0" resizable="false" text="#" />
-          <TableColumn fx:id="titolo" prefWidth="121.0" resizable="false" text="TITOLO" />
-            <TableColumn fx:id="autore" prefWidth="94.0" resizable="false" text="AUTORE" />
-            <TableColumn fx:id="album" prefWidth="127.0" resizable="false" text="ALBUM" />
-            <TableColumn fx:id="anno" prefWidth="127.0" resizable="false" text="ANNO" />
-            <TableColumn fx:id="durata" prefWidth="127.0" resizable="false" text="DURATA" />
-        </columns>
-      </TableView>
+      <TableView fx:id="repository" />
    </center>
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="700.0" spacing="5.0" BorderPane.alignment="CENTER">
