@@ -41,10 +41,11 @@ public class ControllerH {
     public void Registrazione(ActionEvent e) throws IOException {
 
         //problemi con trim per ora l'ho tolto
-        User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), (btn_nome.getText()).toLowerCase(), (btn_cf.getText()).toUpperCase(),(btn_ind.getText()).toLowerCase());
+        
+        User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), btn_nome.getText().toLowerCase(), btn_cf.getText().toUpperCase(), btn_ind.getText().toLowerCase());
         ArrayList<User> users = UserManager.readUsers();
         if (users.contains(newuser)) {
-            System.out.println("utente già registrato\n");
+            System.out.println("tente già registrato\n");
             //msgErr.setText("utente già registrato");
             //non funzia
             

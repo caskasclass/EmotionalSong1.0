@@ -1,5 +1,5 @@
 #songPane {
-    -fx-background-color:rgba(0,0,0,0);
+    -fx-background-color:rgba(250, 0, 0, 0);
     background-color: rgba(0,0,0,0);
 }
 
@@ -49,6 +49,7 @@
 }
 
 #repository .column-header {
+
     -fx-background-color: rgba(0,0,0,0);
     background-color:  rgba(0,0,0,0);
     
@@ -56,8 +57,8 @@
     
 }
 #repository .column-header  .label{
-    -fx-padding:25 4 5 4;
-    padding: 25 4 5 4;
+    -fx-padding:25 0 10 0;
+    padding: 25 0 10 0;
     -fx-text-fill:rgb(175,174,174);
     -fx-font-size:13;
     font-size:13;
@@ -67,20 +68,23 @@
     -fx-text-fill:rgb(255,255,255);
 }
 
+#repository #songindex{
+    -fx-alignment:CENTER;
+}
 #repository  #titolo .label{
-    -fx-alignment:LEFT;
+    -fx-alignment:CENTER-LEFT;
 }
 #repository  #album .label{
-    -fx-alignment:LEFT;
+    -fx-alignment:CENTER-LEFT;
 }
 #repository  #autore .label{
-    -fx-alignment:LEFT;
+    -fx-alignment:CENTER-LEFT;
 }
 #repository  #durata .label{
     -fx-alignment:CENTER-RIGHT;
 }
 #repository  #optionbutton .label{
-    -fx-alignment:LEFT;
+    -fx-alignment:CENTER-LEFT;
 }
 
 
@@ -88,16 +92,23 @@
 #repository .table-cell{
     -fx-border-width:0px;
     border-width: 0px;
-    -fx-alignment:LEFT;
+    -fx-alignment:CENTER-LEFT;
     border-width: 0px;
-    -fx-padding: 15;
-    padding: 15;
-}
 
+}
+#repository .table-cell .label{
+    -fx-padding:15 0 15 0;
+    padding:15 0 15 0;
+ 
+}
+#repository .table-cell #optionbutton  .label{
+    -fx-padding:0 0 0 0;
+    padding:0 0 0 0;
+ 
+ }
 #repository #songindex {
     -fx-alignment:CENTER;
-    -fx-padding: 1;
-    padding: 1;
+
 }
 #repository #anno {
     -fx-alignment:CENTER;
@@ -107,12 +118,17 @@
     -fx-alignment:CENTER-RIGHT;
 
 }
+#repository #optionbutton {
+    -fx-alignment:CENTER;
+
+}
 
 
 
 .table-row-cell:hover {
     -fx-background-color: rgb(42,42,42);
     background-color: rgb(42,42,42);
+    -fx-background-radius:4;
 
 }
 
@@ -121,3 +137,82 @@
     background-color:rgba(0,0,0,0);
     -fx-text-background-color: rgb(255, 255, 255);
 }
+
+
+
+
+
+#repository #optionbutton .menu-button{
+    visibility: visible;
+    -fx-background-color:rgba(0,0,0,0); 
+    background-color: rgba(0,0,0,0); 
+}
+#repository #optionbutton .menu-button .label{
+   -fx-font-size:15;
+   font-size: 15;
+   -fx-font-weight:bold;
+   font-weight: bold;
+}
+ .table-row-cell:hover >  #optionbutton .menu-button {
+    visibility: visible;
+    -fx-background-color:rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0); 
+
+}
+.menu-button > .arrow-button {
+    -fx-padding: 0;
+    padding: 0;
+}
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
+    padding: 0;
+
+}
+.menu-button  .context-menu{
+    -fx-background-color: rgb(40,40,40);
+    background-color: rgb(40,40,40);
+    -fx-background-radius: 5;
+    -fx-padding:4;
+    padding: 4;
+
+}
+
+.menu-button  .menu-item {
+    -fx-padding:0 14 0 7 !important;
+    padding: 0 14 0 7 !important;
+    
+}
+.menu-button  .menu-item .label{
+    -fx-text-fill:rgb(234, 234, 234) !important;
+    
+}
+
+.menu-button .menu-item{
+    -fx-background-color:rgba(0,0,0,0); 
+    background-color: rgba(0,0,0,0); 
+    
+}
+
+
+.menu-button .menu-item:hover{
+    -fx-background-color:rgba(62,62,62);
+    background-color: rgba(62,62,62);
+    -fx-background-radius:4;
+}
+.menu-button .addToPlaylist{
+    -fx-border-width:0 0 1 0;
+    border-width:0 0 1 0;
+    -fx-border-color: rgb(82,82,82);
+    border-color: rgb(82,82,82);
+    
+}
+#repository:focused .table-row-cell:selected {
+    -fx-background-color:rgb(92,90,95);
+    background-color: rgb(92,90,95);
+    -fx-table-cell-border-color: rgb(92,90,95);
+    -fx-background-radius:4;
+
+}
+
+
+

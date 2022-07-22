@@ -15,12 +15,12 @@
          <children>
             <TableView fx:id="repository" nodeOrientation="LEFT_TO_RIGHT" HBox.hgrow="NEVER">
               <columns>
-                  <TableColumn fx:id="songindex" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" resizable="false" text="#" />
-                <TableColumn fx:id="titolo" maxWidth="-1.0" minWidth="125.0" prefWidth="125.0" resizable="false" text="TITOLO" />
-                  <TableColumn fx:id="autore" maxWidth="-1.0" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />
-                  <TableColumn fx:id="album" maxWidth="-1.0" minWidth="125.0" prefWidth="125.0" resizable="false" text="ALBUm" />
-                  <TableColumn fx:id="anno" maxWidth="-1.0" minWidth="125.0" prefWidth="125.0" resizable="false" text="ANNO" />
-                  <TableColumn fx:id="durata" maxWidth="-1.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="DURATA" />
+                  <TableColumn fx:id="songindex" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" text="#" />
+                <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" text="TITOLO" />
+                  <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" text="ALBUM" />
+                  <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />
+                  <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="ANNO" />
+                  <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" text="DURATA" />
                   <TableColumn fx:id="optionbutton" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" resizable="false" />
               </columns>
                <columnResizePolicy>
@@ -31,6 +31,9 @@
                </opaqueInsets>
             </TableView>
          </children>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </BorderPane.margin>
       </HBox>
    </center>
    <top>

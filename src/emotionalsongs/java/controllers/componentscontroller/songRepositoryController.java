@@ -15,8 +15,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 
 public class songRepositoryController implements Initializable{
 
@@ -54,7 +58,7 @@ public class songRepositoryController implements Initializable{
 
 
     @FXML
-    private TableColumn<Canzone, MenuButton> optionbutton;
+    private TableColumn<Canzone, Void> optionbutton;
 
     @FXML
     private BorderPane songPane;
@@ -87,10 +91,52 @@ public class songRepositoryController implements Initializable{
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
+        addButton();
         repository.setItems(list);
         cercaBranoMusicale();
     }
 
+    private void addButton(){
+      
+        Callback<TableColumn<Canzone,Void>, TableCell<Canzone,Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>(){
+            @Override
+            public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
+                final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
+
+                  
+                    MenuItem mi1 = new MenuItem("Aggiungi alla Playlist");
+                    MenuItem mi2 = new MenuItem("Vedi i Tag");
+                    MenuItem mi3 = new MenuItem("Altro ...");
+
+                    private final  MenuButton btn = new MenuButton("•••", null,mi1,mi2,mi3);
+                    
+            
+                    
+
+                    {
+                    mi1.setOnAction((ActionEvent event) -> {
+                            Canzone canzone = getTableView().getItems().get(getIndex());
+                            System.out.println("selectedData: " + canzone.getTitolo());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        optionbutton.setCellFactory(cellFactory);
+
+    }
     private void cercaBranoMusicale(){
         FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b -> true);
         cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
