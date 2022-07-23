@@ -1,18 +1,18 @@
-#songPane {
-    -fx-background-color:rgba(250, 0, 0, 0);
+.tableviewpane {
+    -fx-background-color:rgba(0, 0, 0, 0);
     background-color: rgba(0,0,0,0);
 }
 
-#songPane #repository{
+.repo{
     -fx-background-color:rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
 }
 
-#repository .column-header-background .filler {
+.repo .column-header-background .filler {
     -fx-background-color: rgba(136, 7, 7, 0);
     background-color: rgba(0,0,0,0);
 }
-#repository .scroll-bar * {
+.repo .scroll-bar * {
     -fx-min-width: 0;
     min-width: 0;
     -fx-pref-width: 0;
@@ -25,12 +25,12 @@
     -fx-max-height: 0;
     max-height: 0;
 }
-#repository .corner {
+.repo .corner {
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
 }
 
-#repository .column-header{
+.repo .column-header{
     -fx-border-width:0 0 1 0;
     border-width:0 0 1 0;
     -fx-border-color:rgb(47,44,57);
@@ -39,7 +39,7 @@
 
 
 
-#repository .column-header-background{
+.repo .column-header-background{
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
     -fx-background-radius: 7px 7px 0px 0px;
@@ -48,7 +48,7 @@
     padding: 0 0 5px 0;
 }
 
-#repository .column-header {
+.repo .column-header {
 
     -fx-background-color: rgba(0,0,0,0);
     background-color:  rgba(0,0,0,0);
@@ -56,7 +56,7 @@
     
     
 }
-#repository .column-header  .label{
+.repo .column-header  .label{
     -fx-padding:25 0 10 0;
     padding: 25 0 10 0;
     -fx-text-fill:rgb(175,174,174);
@@ -64,65 +64,75 @@
     font-size:13;
 
 }
-#repository .column-header  .label:hover{
+.repo .column-header  .label:hover{
     -fx-text-fill:rgb(255,255,255);
 }
 
-#repository #songindex{
+.repo #songindex{
     -fx-alignment:CENTER;
 }
-#repository  #titolo .label{
+.repo  #titolo .label{
     -fx-alignment:CENTER-LEFT;
 }
-#repository  #album .label{
+.repo  #album .label{
     -fx-alignment:CENTER-LEFT;
 }
-#repository  #autore .label{
+.repo  #autore .label{
     -fx-alignment:CENTER-LEFT;
 }
-#repository  #durata .label{
+.repo  #durata .label{
     -fx-alignment:CENTER-RIGHT;
 }
-#repository  #optionbutton .label{
+.repo  #optionbutton .label{
     -fx-alignment:CENTER-LEFT;
 }
 
+.repo  #addbuttun .label{
+    -fx-alignment:CENTER-LEFT;
+}
 
-
-#repository .table-cell{
+.repo .table-cell{
     -fx-border-width:0px;
     border-width: 0px;
     -fx-alignment:CENTER-LEFT;
     border-width: 0px;
 
 }
-#repository .table-cell .label{
+.repo .table-cell .label{
     -fx-padding:15 0 15 0;
     padding:15 0 15 0;
  
 }
-#repository .table-cell #optionbutton  .label{
+.repo .table-cell #optionbutton  .label{
     -fx-padding:0 0 0 0;
     padding:0 0 0 0;
  
  }
-#repository #songindex {
+ .repo .table-cell #addbutton  .label{
+    -fx-padding:0 0 0 0;
+    padding:0 0 0 0;
+ 
+ }
+.repo #songindex {
     -fx-alignment:CENTER;
 
 }
-#repository #anno {
+.repo #anno {
     -fx-alignment:CENTER;
 
 }
-#repository #durata {
+.repo #durata {
     -fx-alignment:CENTER-RIGHT;
 
 }
-#repository #optionbutton {
+.repo #optionbutton {
     -fx-alignment:CENTER;
 
 }
+.repo #addbutton {
+    -fx-alignment:CENTER;
 
+}
 
 
 .table-row-cell:hover {
@@ -142,12 +152,12 @@
 
 
 
-#repository #optionbutton .menu-button{
+.repo #optionbutton .menu-button{
     visibility: visible;
     -fx-background-color:rgba(0,0,0,0); 
     background-color: rgba(0,0,0,0); 
 }
-#repository #optionbutton .menu-button .label{
+.repo #optionbutton .menu-button .label{
    -fx-font-size:15;
    font-size: 15;
    -fx-font-weight:bold;
@@ -206,7 +216,7 @@
     border-color: rgb(82,82,82);
     
 }
-#repository:focused .table-row-cell:selected {
+.repo:focused .table-row-cell:selected {
     -fx-background-color:rgb(92,90,95);
     background-color: rgb(92,90,95);
     -fx-table-cell-border-color: rgb(92,90,95);
@@ -216,20 +226,3 @@
 
 
 
-
-.imgViewbox{
-    -fx-background-color:rgb(40,40,40);
-    background-color: rgb(40,40,40);
-}
-
-.labelNomePlaylist{
-    -fx-font-size:70px;
-    font-size: 70px;
-    -fx-padding:0 0 0 0 ;
-    padding:0 0 0 0 ;
-    -fx-background-color:rgba(0,0,0,0);
-    background-color:rgba(0,0,0,0);
-    -fx-text-fill:rgb(255,255,255);
-
-    
-}
