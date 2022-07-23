@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane fx:id="regPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.ControllerH">
+<BorderPane fx:id="regPane" stylesheets="@../css/registration.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.ControllerH">
    <center>
       <VBox fx:id="regVbox" alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -33,40 +33,40 @@
             </HBox>
             <Pane>
                <children>
-                  <Label text="Inserire nome e cognome" />
+                  <Label styleClass="label_other" text="Nome e cognome" />
                </children>
             </Pane>
-            <TextField fx:id="btn_nome" />
+            <TextField fx:id="btn_nome" promptText="Inserisci" styleClass="transparent_box" />
             <Pane>
                <children>
-                  <Label text="Inserire codice fiscale" />
+                  <Label styleClass="label_other" text="Codice fiscale" />
                </children>
             </Pane>
-            <TextField fx:id="btn_cf" />
+            <TextField fx:id="btn_cf" promptText="Inserisci" styleClass="transparent_box" />
             <Pane>
                <children>
-                  <Label text="Inserire username" />
+                  <Label styleClass="label_other" text="Username" />
                </children>
             </Pane>
-            <TextField fx:id="btn_username" />
+            <TextField fx:id="btn_username" promptText="Inserisci" styleClass="transparent_box" />
             <Pane>
                <children>
-                  <Label text="Inserire la mail" />
+                  <Label styleClass="label_other" text="Mail" />
                </children>
             </Pane>
-            <TextField fx:id="btn_mail" />
+            <TextField fx:id="btn_mail" promptText="Inserisci" styleClass="transparent_box" />
             <Pane>
                <children>
-                  <Label text="Inserire la password" />
+                  <Label styleClass="label_other" text="Password" />
                </children>
             </Pane>
-            <PasswordField fx:id="btn_passwd" />
+            <PasswordField fx:id="btn_passwd" promptText="Inserisci" styleClass="transparent_box" />
             <Pane>
                <children>
-                  <Label text="Inserire indirizzo di residenza" />
+                  <Label styleClass="label_other" text="Indirizzo di residenza" />
                </children>
             </Pane>
-            <TextField fx:id="btn_ind" />
+            <TextField fx:id="btn_ind" promptText="Inserisci" styleClass="transparent_box" />
             <VBox alignment="CENTER" spacing="5.0">
                <children>
                   <Label fx:id="msgErr" textFill="RED" />

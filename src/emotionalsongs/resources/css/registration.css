@@ -16,6 +16,10 @@
     -fx-padding: 10 0 20 -20 ;
 }
 
+#regHbox .label{
+    -fx-font-size: 25;
+    font-size: 25;
+}
 #regVbox{
     
     -fx-min-width: 600;
@@ -25,27 +29,50 @@
     
     -fx-spacing: 10;
     -fx-alignment: center-left;
-    -fx-padding: 30 30 30 30;
+    -fx-padding: 30 50 30 50;
    
 }
 
+.transparent_box{
+    -fx-background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    -fx-prompt-text-fill:rgba(111, 108, 108, 0.651);
+    -fx-text-fill: rgb(255,255,255);
+    -fx-padding: -5 0 0 -2;
+    -fx-cursor: text;
+    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgba(111, 108, 108, 0.651) rgb(0, 0, 0);
+    -fx-border-width: 2;
+    -fx-border-radius:3;
+
+}
+
+.transparent_box:hover{
+    -fx-prompt-text-fill:rgb(255, 255, 255);
+    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(255, 255, 255) rgb(0, 0, 0);
+}
+
+.transparent_box:active{
+    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(255, 255, 255) rgb(0, 0, 0);
+}
+
 #signUpLabel{
+    -fx-text-fill:rgb(255, 255, 255);
     -fx-font-weight: 700;
     font-weight:700;
-    -fx-font-size: 25;
-    font-size: 25;
     -fx-label-padding:0 0 0 -10;
+}
+
+.label_other{
+    -fx-text-fill:rgba(255, 255, 255, 0.688);
+    -fx-font-size: 18;
+    font-size: 18;
+    -fx-label-padding: 0 0 0 -2;
 }
 
 #msgErr{
     -fx-text-fill:rgb(120, 116, 116);
     -fx-underline:true;
     -fx-label-padding:20 0 0 0;
-}
-.label{
-    -fx-text-fill:rgb(255, 255, 255);
-    -fx-font-size: 18;
-    font-size: 18;
 }
 
 .text-field{
@@ -56,6 +83,7 @@
     -fx-padding:10;
     padding: 10;
 }
+
 #btn_registra {
     -fx-background-color: rgba(0,0,0,0);
     background-color:  rgba(0, 0, 0, 0);
@@ -70,6 +98,9 @@
     -fx-text-fill: rgb(255, 255, 255);
    
 }
+
+
+
 
 
 
