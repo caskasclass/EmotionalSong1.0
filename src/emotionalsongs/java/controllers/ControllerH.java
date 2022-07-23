@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 // ****************************************
 // Controller della finestra Regisrtazione!
@@ -75,5 +77,47 @@ public class ControllerH {
         stage.close();
         
 
+    }
+    public void focus(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_cf.requestFocus();
+        }
+    }
+    public void focus2(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_username.requestFocus();
+        }
+    }
+    public void focus3(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_mail.requestFocus();
+        }
+    }
+    public void focus4(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_passwd.requestFocus();
+        }
+    }
+    public void focus5(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_ind.requestFocus();
+        }
+    }
+    public void focus6(KeyEvent key)
+    {
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.btn_registra.requestFocus();
+        }
     }
 }

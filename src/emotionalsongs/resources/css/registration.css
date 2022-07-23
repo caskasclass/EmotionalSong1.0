@@ -7,8 +7,9 @@
     min-height: 800;
     /*-fx-background-color: rgb(8, 1, 43);
      background-color: rgb(8, 1, 43);*/
-     -fx-background-color: rgb(0, 0, 0);
-     background-color: rgb(0, 0, 0);
+     -fx-background-color : linear-gradient(to top,rgb(18,18,18)85%,rgb(30,18,88) 100%);
+    background-color: rgb(30,18,88); 
+    background-color: linear-gradient(to top,rgb(18,18,18)85%,rgb(30,18,88) 100%);
 
 }
 
@@ -34,13 +35,13 @@
 }
 
 .transparent_box{
-    -fx-background-color: rgb(0, 0, 0);
-    background-color: rgb(0, 0, 0);
+    -fx-background-color: rgb(18,18,18);
+    background-color: rgb(18,18,18);
     -fx-prompt-text-fill:rgba(111, 108, 108, 0.651);
     -fx-text-fill: rgb(255,255,255);
     -fx-padding: -5 0 0 -2;
     -fx-cursor: text;
-    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgba(111, 108, 108, 0.651) rgb(0, 0, 0);
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgba(111, 108, 108, 0.651) rgb(18,18,18);
     -fx-border-width: 2;
     -fx-border-radius:3;
 
@@ -48,11 +49,11 @@
 
 .transparent_box:hover{
     -fx-prompt-text-fill:rgb(255, 255, 255);
-    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(255, 255, 255) rgb(0, 0, 0);
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
 }
 
 .transparent_box:active{
-    -fx-border-color: rgb(0, 0, 0) rgb(0, 0, 0) rgb(255, 255, 255) rgb(0, 0, 0);
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
 }
 
 #signUpLabel{
