@@ -1,0 +1,76 @@
+
+#regPane{
+   
+    -fx-min-width: 600;
+    min-width: 600;
+    -fx-min-height:800;
+    min-height: 800;
+    /*-fx-background-color: rgb(8, 1, 43);
+     background-color: rgb(8, 1, 43);*/
+     -fx-background-color: rgb(0, 0, 0);
+     background-color: rgb(0, 0, 0);
+
+}
+
+#regHbox{
+    -fx-padding: 10 0 20 -20 ;
+}
+
+#regVbox{
+    
+    -fx-min-width: 600;
+    min-width: 600;
+    -fx-min-height:800;
+    min-height: 800;
+    
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 30 30 30 30;
+   
+}
+
+#signUpLabel{
+    -fx-font-weight: 700;
+    font-weight:700;
+    -fx-font-size: 25;
+    font-size: 25;
+    -fx-label-padding:0 0 0 -10;
+}
+
+#msgErr{
+    -fx-text-fill:rgb(120, 116, 116);
+    -fx-underline:true;
+    -fx-label-padding:20 0 0 0;
+}
+.label{
+    -fx-text-fill:rgb(255, 255, 255);
+    -fx-font-size: 18;
+    font-size: 18;
+}
+
+.text-field{
+    -fx-font-size: 18;
+    font-size: 18;
+}
+.image-view{
+    -fx-padding:10;
+    padding: 10;
+}
+#btn_registra {
+    -fx-background-color: rgba(0,0,0,0);
+    background-color:  rgba(0, 0, 0, 0);
+    -fx-text-fill: rgb(169, 169, 169);
+    -fx-font-weight:700;
+    font-weight: 700;
+    -fx-font-size: 20;
+    font-size: 20;
+}
+
+#btn_registra:hover {
+    -fx-text-fill: rgb(255, 255, 255);
+   
+}
+
+
+
+

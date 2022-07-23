@@ -130,7 +130,7 @@ public class Homebuilder implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/SignUpWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(style.mainStyle());
+        scene.getStylesheets().add(style.getStyle("registration"));
         stage.setTitle("EmotionalSong");
         stage.setScene(scene);
         stage.setResizable(false);
