@@ -5,12 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
-import emotionalsongs.java.controllers.microcontrollers.songLineController;
-import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.Playlist;
 import javafx.application.Platform;
@@ -26,13 +23,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+
 
 public class homeComponentController implements Initializable {
     @FXML
     private HBox UserPlaylistContainer;
     @FXML
-    private VBox SongsContainer;
+    private HBox SongsContainer;
     @FXML
     private FlowPane notMyPlaylistContainer;
 
@@ -83,28 +80,7 @@ public class homeComponentController implements Initializable {
     }
 
     private void createHomeSongUI() throws IOException {
-        int i = 1;
-        SongsContainer.setPadding(new Insets(30, 30, 30, 20));
-        SongsContainer.setSpacing(1);
-
-        ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
-
-        for (Canzone canzone : songs) {
-            if(!(i == 101))
-            {
-                FXMLLoader loader = obj.getLoader("SongLine");
-                Pane ui = (Pane) loader.load();
-                ui.getStylesheets().add(style.getStyle("SongLineCss"));
-                songLineController controller = loader.<songLineController>getController();
-                controller.setCanzone(canzone, i);
-                SongsContainer.getChildren().add(ui);
-                i++;
-            }else{
-                break;
-            }
-            
-
-        }
+        
     }
 
     private void createHomeOthersPlaylistUI() throws IOException {

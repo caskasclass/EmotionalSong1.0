@@ -232,13 +232,43 @@
 }
 
 .labelNomePlaylist{
-    -fx-font-size:70px;
-    font-size: 70px;
+    -fx-font-size:60;
+    font-size: 60px;
     -fx-padding:0 0 0 0 ;
     padding:0 0 0 0 ;
     -fx-background-color:rgba(0,0,0,0);
     background-color:rgba(0,0,0,0);
     -fx-text-fill:rgb(255,255,255);
 
+    
+}
+
+.searchField{
+    -fx-text-fill:rgb(169, 169, 169);
+    -fx-background-color:rgba(45,45,45);
+    background-color:rgba(45,45,45);
+    -fx-border-width:1;
+    border-width:1;
+    -fx-border-radius: 15;
+    border-radius: 15;
+    -fx-background-radius:15;
+    -fx-border-color: rgb(82,82,82);
+    border-color: rgb(82,82,82);
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    -ms-border-radius: 15;
+    -o-border-radius: 15;
+}
+#createPlaylist{
+    -fx-padding:15 35 15 35;
+    padding:15 45 15 45;
+    -fx-text-fill:rgb(255,255,255);
+    -fx-background-color:rgb(101,212,110);
+    background-color:rgb(101,212,110);
+    -fx-background-radius:30;
+    -fx-border-color: rgb(58, 172, 68);
+    border-color: rgb(58, 172, 68);
+    -fx-border-radius:30;
+    border-radius:15;
     
 }

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class Canzone implements Serializable {
 
@@ -73,21 +71,5 @@ public class Canzone implements Serializable {
     public String getAlbum() {
         return this.Album;
     }
-   /*  public final StringProperty TitoloProperty() {
-        return this.titoloProp;
-    }
-    public final StringProperty AlbumProperty() {
-        return this.albumProp;
-    }
-    public final StringProperty AutoreProperty() {
-        return this.autoreProp;
-    }
-    public final StringProperty AnnoProperty() {
-        return this.annoProp;
-    }
-    public final StringProperty DurataProperty() {
-        return this.durataProp;
-    }
-*/
 
 }

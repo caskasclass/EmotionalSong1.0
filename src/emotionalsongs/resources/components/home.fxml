@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -23,7 +25,7 @@
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <ScrollPane fx:id="homePane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="900.0" vbarPolicy="NEVER">
+      <ScrollPane fx:id="homePane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="1000.0" vbarPolicy="NEVER">
          <content>
             <VBox style="-fx-background-color: rgba(0,0,0,0);">
                <children>
@@ -70,12 +72,21 @@
                               <Insets left="10.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <HBox style="-fx-background-color: rgba(0,0,0,0);" />
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="600.0" vbarPolicy="NEVER">
-                           <content>
-                              <VBox fx:id="SongsContainer" style="-fx-background-color: rgba(0,0,0,0);" />
-                           </content>
-                        </ScrollPane>
+                        <HBox fx:id="SongsContainer" alignment="CENTER" maxHeight="400.0" prefHeight="400.0" styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css">
+                           <children>
+                              <TableView maxHeight="500.0" prefHeight="500.0" styleClass="repo">
+                                <columns>
+                                  <TableColumn maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" text="#" />
+                                    <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" text="TITOLO" />
+                                    <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" text="ALBUM" />
+                                    <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />
+                                    <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="ANNO" />
+                                    <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" text="DURATA" />
+                                    <TableColumn fx:id="optionbutton" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" resizable="false" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
                         <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: rgba(0,0,0,0);">
                            <opaqueInsets>
                               <Insets />

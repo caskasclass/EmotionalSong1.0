@@ -21,7 +21,7 @@ public class Playlist implements Serializable {
     public String  getPng(){
         return png;
     }
-    
+
     public void addCanzone(String idCanzone) {
         listaCanzoni.add(idCanzone);
     }
