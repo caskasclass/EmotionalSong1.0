@@ -1,13 +1,15 @@
 package emotionalsongs.java.controllers.componentscontroller;
 
-import java.io.IOError;
+
 import java.io.IOException;
 
 import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.util.Canzone;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -21,6 +23,8 @@ public class createPlaylistController {
     private ImageView playlistImage;
     @FXML 
     private TextField PlayListName;
+    @FXML 
+    private TableView<Canzone> addPlaylistrepository;
 
 
     StyleManager style = new StyleManager();
@@ -38,7 +42,10 @@ public class createPlaylistController {
     }
     public void NoFocus(KeyEvent key)
     {
-        System.out.println("ok");
+        if(key.getCode().equals(KeyCode.ENTER))
+        {
+            this.addPlaylistrepository.requestFocus();
+        }
     }
 
 
