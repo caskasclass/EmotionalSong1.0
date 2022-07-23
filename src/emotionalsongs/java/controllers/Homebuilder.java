@@ -93,15 +93,10 @@ public class Homebuilder implements Initializable {
 
     }
 
-   
-
-
     public void setUser(User u) {
         logged = u;
     }
 
-
- 
 
     public void Login(ActionEvent e) throws IOException {
         User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(), (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(), (usernameEmail.getText()).toLowerCase());
@@ -150,6 +145,13 @@ public class Homebuilder implements Initializable {
     public void backHome(MouseEvent e) throws IOException {
         System.out.println("funzia");
         Pane ui = obj.getPane("home");
+        left_side_bpane.setCenter(ui);
+    }
+
+    public void newPlaylist(MouseEvent e)throws IOException{
+        System.out.println("funzia");
+        Pane ui = obj.getPane("createPlaylist");
+        ui.getStylesheets().add(style.getStyle("repositoryCanzoni"));
         left_side_bpane.setCenter(ui);
     }
 

@@ -61,7 +61,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <Label accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" text="Nuova Playlist">
+            <Label accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#newPlaylist" prefHeight="53.0" text="Nuova Playlist">
                <font>
                   <Font size="22.0" />
                </font>

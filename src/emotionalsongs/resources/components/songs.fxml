@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="songPane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.songRepositoryController">
+<BorderPane fx:id="songPane" styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emotionalsongs.java.controllers.componentscontroller.songRepositoryController">
    <center>
       <HBox alignment="TOP_CENTER">
          <children>
-            <TableView fx:id="repository" nodeOrientation="LEFT_TO_RIGHT" HBox.hgrow="NEVER">
+            <TableView fx:id="repository" nodeOrientation="LEFT_TO_RIGHT" styleClass="repo" HBox.hgrow="NEVER">
               <columns>
                   <TableColumn fx:id="songindex" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" text="#" />
                 <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" text="TITOLO" />
