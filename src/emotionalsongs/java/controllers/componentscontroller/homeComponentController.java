@@ -8,9 +8,11 @@ import java.util.ResourceBundle;
 import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
+import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
+import emotionalsongs.java.util.SongTableView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -33,6 +38,32 @@ public class homeComponentController implements Initializable {
     private HBox SongsContainer;
     @FXML
     private FlowPane notMyPlaylistContainer;
+    
+    @FXML
+    private TableView<Canzone> Tabella;
+
+    @FXML
+    private TableColumn<Canzone, Void> indx;
+
+    @FXML
+    private TableColumn<Canzone, String> album;
+
+    @FXML
+    private TableColumn<Canzone, Integer> anno;
+
+    @FXML
+    private TableColumn<Canzone, String> autore;
+
+    @FXML
+    private TableColumn<Canzone, Double> durata;
+
+    @FXML
+    private TableColumn<Canzone, Void> optionbutton;
+
+    @FXML
+    private TableColumn<Canzone, String> titolo;
+
+    
 
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
@@ -81,7 +112,9 @@ public class homeComponentController implements Initializable {
     }
 
     private void createHomeSongUI() throws IOException {
-        
+        SongTableView table = new SongTableView(Tabella, album, indx, anno, autore, durata, titolo);
+        table.initializeFiltered(15);
+        table.addButton(optionbutton);
     }
 
     private void createHomeOthersPlaylistUI() throws IOException {

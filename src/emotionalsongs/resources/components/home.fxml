@@ -74,9 +74,9 @@
                         </HBox>
                         <HBox fx:id="SongsContainer" alignment="CENTER" maxHeight="400.0" prefHeight="400.0" styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css">
                            <children>
-                              <TableView maxHeight="500.0" prefHeight="500.0" styleClass="repo">
+                              <TableView fx:id="Tabella" minHeight="-Infinity" prefHeight="500.0" styleClass="repo">
                                 <columns>
-                                  <TableColumn maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" text="#" />
+                                  <TableColumn fx:id="indx" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" text="#" />
                                     <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" text="TITOLO" />
                                     <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" text="ALBUM" />
                                     <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />

@@ -2,15 +2,20 @@ package emotionalsongs.java.controllers.componentscontroller;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.GlobalsVariables;
+import emotionalsongs.java.util.SongTableView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -20,21 +25,52 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class createPlaylistController {
+public class createPlaylistController implements Initializable{
 
     @FXML
     private ImageView playlistImage;
     @FXML 
     private TextField PlayListName;
+
+    @FXML 
+    private TextField cerca;
     @FXML 
     private TableView<Canzone> addPlaylistrepository;
     @FXML 
     private Button createPlaylist;
 
+    @FXML
+    private TableColumn<Canzone, Void> addbuttun;
+
+    @FXML
+    private TableColumn<Canzone, String> album;
+
+    @FXML
+    private TableColumn<Canzone, Integer> anno;
+
+    @FXML
+    private TableColumn<Canzone, String> autore;
+
+    @FXML
+    private TableColumn<Canzone, Double> durata;
+
+    @FXML
+    private TableColumn<Canzone, Void> songindex;
+
+    @FXML
+    private TableColumn<Canzone, String> titolo;
+
 
     StyleManager style = new StyleManager();
 
+    @Override
+    public void initialize(URL urilink, ResourceBundle reb){
+        SongTableView table = new SongTableView(addPlaylistrepository, album, songindex, anno, autore, durata, titolo);
+        addPlaylistrepository.setFixedCellSize(50);
+        table.initializeFiltered(10);
+        table.cercaBranoMusicale(cerca,addPlaylistrepository.getItems().size());
 
+    }
     public void changeImage(MouseEvent e)throws IOException{
         Stage stage= new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../../../resources/view/PlaylistImagePicker.fxml"));

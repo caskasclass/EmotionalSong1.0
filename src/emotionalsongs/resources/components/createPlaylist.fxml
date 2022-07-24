@@ -92,7 +92,7 @@
                   <Insets left="20.0" />
                </VBox.margin>
                <children>
-                  <TextField prefWidth="475.0" promptText="Titolo, Autore, Album" styleClass="searchField">
+                  <TextField fx:id="cerca" prefWidth="475.0" promptText="Titolo, Autore, Album" styleClass="searchField">
                      <font>
                         <Font name="Proxima Nova" size="18.0" />
                      </font>

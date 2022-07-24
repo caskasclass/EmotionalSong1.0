@@ -10,6 +10,7 @@ import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
+import emotionalsongs.java.util.SongTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -74,133 +75,19 @@ public class songRepositoryController implements Initializable {
     private Label songToAdd;
     FxmlLoader loader = new FxmlLoader();
 
-    private final ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
-
-    private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
-
     FxmlLoader obj = new FxmlLoader();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        repository.setRowFactory(tableView -> {
-            TableRow<Canzone> row = new TableRow<Canzone>();
-            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    Canzone c = tableView.getItems().get(row.getIndex());
-                    Node n = (Node) mouseEvent.getSource();
-                    Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                    GlobalsVariables.left_side_bpane.getChildren().remove(p);
-
-                    SendData(c);
-
-                }
-            });
-            return row;
-
-        });
-        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
-            @Override
-            public void updateIndex(int index) {
-                super.updateIndex(index);
-                if (isEmpty() || index < 0) {
-                    setText(null);
-                } else {
-                    setText(Integer.toString((index + 1)));
-                }
-            }
-        });
-        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
-        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
-        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        addButton();
-        repository.setItems(list);
-        cercaBranoMusicale();
+    public void initialize(URL urilink, ResourceBundle reb) {
+        
+        SongTableView table = new SongTableView(repository, album, songindex, anno, autore, durata, titolo);
+        table.initialize();
+        table.addButton(optionbutton);
+        table.cercaBranoMusicale(cercaCanzone,repository.getItems().size());
+        
+        //table.setNumberofCells(25);
     }
 
-    private void addButton() {
-
-        Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
-            @Override
-            public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
-                final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
-
-                    MenuItem mi1 = new MenuItem("Aggiungi alla Playlist");
-                    MenuItem mi2 = new MenuItem("Vedi i Tag");
-                    MenuItem mi3 = new MenuItem("Altro ...");
-
-                    private final MenuButton btn = new MenuButton("•••", null, mi1, mi2, mi3);
-
-                    {
-                        mi1.setOnAction((ActionEvent event) -> {
-                            Canzone canzone = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + canzone.getTitolo());
-                        });
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-
-        optionbutton.setCellFactory(cellFactory);
-
-    }
-
-    private void cercaBranoMusicale() {
-        FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b -> true);
-        cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Canzone>) (Canzone canzone) -> {
-
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCase = newValue.toLowerCase();
-
-                if (canzone.getTitolo().toLowerCase().contains(lowerCase) != false) {
-                    return true;
-                } else if (canzone.getAutore().toLowerCase().contains(lowerCase) != false) {
-                    return true;
-                } else if (String.valueOf(canzone.getAnno()).contains(lowerCase) != false) {
-                    return true;
-                } else
-                    return false;
-            });
-        });
-
-        SortedList<Canzone> sortedData = new SortedList<Canzone>(filteredData);
-
-        sortedData.comparatorProperty().bind(repository.comparatorProperty());
-
-        repository.setItems(sortedData);
-    }
-
-    private void SendData(Canzone canz) {
-        try {
-            FXMLLoader load = loader.getComponentsLoader("WindowCanzone");
-            WindowCanzoneController windowCanzoneController = new WindowCanzoneController();
-            windowCanzoneController.setCanzone(canz);
-            load.setController(windowCanzoneController);
-            Pane ui = load.load();
-            GlobalsVariables.left_side_bpane.setCenter(ui);
-        } catch (IOException e) {
-            System.err.println(String.format("Error: %s", e.getMessage()));
-        }
-
-    }
 
     public void InserisciEmozioniBrano(ActionEvent e) {
 
