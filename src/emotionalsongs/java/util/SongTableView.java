@@ -1,17 +1,11 @@
 package emotionalsongs.java.util;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.controllers.componentscontroller.WindowCanzoneController;
-import emotionalsongs.java.util.Canzone;
-import emotionalsongs.java.util.FxmlLoader;
-import emotionalsongs.java.util.GlobalsVariables;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,11 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 
@@ -33,16 +24,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
 
-public class SongTableView implements Serializable{
+public class SongTableView{
 
     
     @FXML

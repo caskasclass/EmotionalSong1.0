@@ -9,6 +9,8 @@ import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.SongTableView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +26,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class createPlaylistController implements Initializable{
 
@@ -59,6 +62,9 @@ public class createPlaylistController implements Initializable{
 
     @FXML
     private TableColumn<Canzone, String> titolo;
+    private Callback songs;
+
+    private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
 
 
     StyleManager style = new StyleManager();
@@ -68,7 +74,8 @@ public class createPlaylistController implements Initializable{
         SongTableView table = new SongTableView(addPlaylistrepository, album, songindex, anno, autore, durata, titolo);
         addPlaylistrepository.setFixedCellSize(50);
         table.initializeFiltered(10);
-        table.cercaBranoMusicale(cerca,addPlaylistrepository.getItems().size());
+        table.cercaBranoMusicale(cerca,list.size());
+        
 
     }
     public void changeImage(MouseEvent e)throws IOException{

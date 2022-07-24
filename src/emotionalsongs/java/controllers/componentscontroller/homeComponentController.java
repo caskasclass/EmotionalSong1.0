@@ -10,7 +10,7 @@ import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
-import emotionalsongs.java.util.GlobalsVariables;
+
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.SongTableView;
 import javafx.application.Platform;
@@ -24,7 +24,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
