@@ -64,8 +64,6 @@ public class createPlaylistController implements Initializable{
     private TableColumn<Canzone, String> titolo;
     private Callback songs;
 
-    private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
-
 
     StyleManager style = new StyleManager();
 
