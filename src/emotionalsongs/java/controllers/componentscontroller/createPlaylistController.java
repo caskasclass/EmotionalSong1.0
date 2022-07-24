@@ -74,7 +74,7 @@ public class createPlaylistController implements Initializable{
         SongTableView table = new SongTableView(addPlaylistrepository, album, songindex, anno, autore, durata, titolo);
         addPlaylistrepository.setFixedCellSize(50);
         table.initializeFiltered(10);
-        table.cercaBranoMusicale(cerca,list.size());
+        table.cercaBranoMusicale(cerca,addPlaylistrepository.getItems().size());
         
 
     }
