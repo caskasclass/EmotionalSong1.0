@@ -1,0 +1,39 @@
+.songinfocontainer{
+    -fx-border-width:0 0 1 0;
+    border-width:0 0 1 0;
+    -fx-border-color:rgb(40,40,40);
+    border-color:rgb(40,40,40);
+}
+.ratePane{
+
+}
+.vbox{
+    -fx-background-color:rgb(64, 173, 71);
+    background-color:rgb(64, 173, 71);;
+}
+.prospecticbox
+{
+    -fx-border-width:1 0 0 0;
+    border-width:1 0 0 0;
+    -fx-border-color:rgb(40,40,40);
+    border-color:rgb(40,40,40); 
+}
+#prospetticoBar{
+    -fx-border-color:rgb(255,255,255);
+    border-color:rgb(255,255,255);
+    -fx-border-radius:17;
+    border-radius:17;
+    -fx-background-radius:17;
+    -fx-background-color:  linear-gradient(to right, rgba(255,0,0,1) 20%,
+     rgba(0,255,14,1) 20%, rgba(0,255,14,1) 40%, rgba(68,92,255,1) 40%,
+      rgba(68,92,255,1) 60%, rgba(255,246,0,1) 60%, rgba(255,246,0,1) 80%,
+       rgba(81,203,188,1) 80%, rgba(81,203,188,1) 100%);
+    -webkit-border-radius:17;
+    -moz-border-radius:17;
+    -ms-border-radius:17;
+    -o-border-radius:17;
+}
+.emotionColor{
+    -fx-background-color:red;
+    -fx-background-radius:15;
+}

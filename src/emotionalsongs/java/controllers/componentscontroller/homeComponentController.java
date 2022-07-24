@@ -9,6 +9,7 @@ import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.FxmlLoader;
+import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

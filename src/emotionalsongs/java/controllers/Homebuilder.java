@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.FxmlLoader;
-
+import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -71,6 +71,7 @@ public class Homebuilder implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         Platform.runLater(() -> {
+            GlobalsVariables.left_side_bpane = this.left_side_bpane;
 
             homePane = obj.getPane("home");
             left_side_bpane.setCenter(homePane);
