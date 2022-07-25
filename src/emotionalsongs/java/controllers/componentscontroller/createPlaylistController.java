@@ -38,7 +38,7 @@ public class createPlaylistController implements Initializable {
     private Button createPlaylist;
 
     @FXML
-    private TableColumn<Canzone, Void> addbuttun;
+    private TableColumn<Canzone, Void> addbutton;
 
     @FXML
     private TableColumn<Canzone, String> album;
@@ -59,6 +59,8 @@ public class createPlaylistController implements Initializable {
     private TableColumn<Canzone, String> titolo;
 
 
+
+
     StyleManager style = new StyleManager();
 
     @Override
@@ -66,6 +68,7 @@ public class createPlaylistController implements Initializable {
         SongTableView table = new SongTableView(addPlaylistrepository, album, songindex, anno, autore, durata, titolo);
         addPlaylistrepository.setFixedCellSize(50);
         table.initializeFiltered(10);
+        table.addToPlylistButton(addbutton);
         table.cercaBranoMusicale(cerca, addPlaylistrepository.getItems().size());
 
     }

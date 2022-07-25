@@ -87,8 +87,8 @@
     -fx-alignment:CENTER-LEFT;
 }
 
-.repo  #addbuttun .label{
-    -fx-alignment:CENTER-LEFT;
+.repo  #addbutton .label{
+    -fx-alignment:CENTER;
 }
 
 .repo .table-cell{
@@ -108,10 +108,35 @@
     padding:0 0 0 0;
  
  }
- .repo .table-cell #addbutton  .label{
-    -fx-padding:0 0 0 0;
-    padding:0 0 0 0;
+
+
+
+ .repo .table-cell  .button{
+    -fx-font-family:"Proxima Nova";
+    font-family:"Proxima Nova";
+    -fx-alignment:CENTER;
+    -fx-min-width:60;
+    min-width:60px;
+    -fx-text-fill:rgb(255,255,255);
+    -fx-padding:7 10 7 10;
+    padding:7 10 7 10;
+    -fx-background-color:rgba(0,0,0,0);
+    background-color:rgba(0,0,0,0);
+    -fx-background-radius:15;
+    -fx-border-radius:15;
+    border-radius:15;
+    -fx-border-width:1;
+    border-width:1;
+    -fx-border-color:rgb(108,107,107);
+    border-color:rgb(108,107,107);
+
  
+ }
+ .repo .table-cell  .button:hover{
+    -fx-border-width:2;
+    border-width:2;
+    -fx-border-color:rgb(255,255,255);
+    border-color:rgb(255,255,255); 
  }
 .repo #songindex {
     -fx-alignment:CENTER;
@@ -125,11 +150,10 @@
     -fx-alignment:CENTER-RIGHT;
 
 }
-.repo #optionbutton {
-    -fx-alignment:CENTER;
-
-}
 .repo #addbutton {
+    -fx-alignment:CENTER;
+}
+.repo #optionbutton {
     -fx-alignment:CENTER;
 
 }
@@ -147,8 +171,6 @@
     background-color:rgba(0,0,0,0);
     -fx-text-background-color: rgb(255, 255, 255);
 }
-
-
 
 
 

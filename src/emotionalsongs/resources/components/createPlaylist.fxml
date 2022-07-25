@@ -124,7 +124,7 @@
                   <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />
                   <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="ANNO" />
                   <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" text="DURATA" />
-                  <TableColumn fx:id="addbuttun" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" resizable="false" />
+                  <TableColumn fx:id="addbutton" maxWidth="120.0" minWidth="120.0" prefWidth="60.0" resizable="false" />
                </columns>
             </TableView>
          </children>

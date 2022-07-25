@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
@@ -57,6 +58,9 @@ public class SongTableView{
 
     @FXML
     private TableColumn<Canzone, Void> optionbutton;
+
+    @FXML
+    private TableColumn<Canzone, Void> addbutton;
 
     FxmlLoader loader = new FxmlLoader();
 
@@ -120,7 +124,7 @@ public class SongTableView{
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        //************************************************************************************//
+        //*************************************************************************************//
 
         //******************************** per riempire la playlist **************************//
         repository.setItems(list);
@@ -214,6 +218,39 @@ public class SongTableView{
 
     }
 
+    public void addToPlylistButton(TableColumn<Canzone, Void> buttonadder) {
+        this.addbutton=buttonadder;
+        Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
+            @Override
+            public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
+                final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
+
+
+                    private final Button btn = new Button("ADD");
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            Canzone canzone = getTableView().getItems().get(getIndex());
+                            System.out.println("hai aggiunto: " + canzone.getTitolo());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        addbutton.setCellFactory(cellFactory);
+
+    }
     //******************************* hmmmm forse ho capito **********************************************//
     public void cercaBranoMusicale(TextField CercaCanzone,int num) {
         this.cercaCanzone=CercaCanzone;

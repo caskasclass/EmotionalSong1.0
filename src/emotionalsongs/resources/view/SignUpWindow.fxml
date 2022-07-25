@@ -25,7 +25,7 @@
                   </ImageView>
                   <Label fx:id="signUpLabel" alignment="CENTER" maxHeight="-Infinity" text="Emotional Song">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Proxima Nova" size="18.0" />
                      </font>
                   </Label>
                </children>
