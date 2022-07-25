@@ -109,12 +109,13 @@ public class homeComponentController implements Initializable {
         }
 
     }
-
+    //***************************************** bene *********************************************//
     private void createHomeSongUI() throws IOException {
         SongTableView table = new SongTableView(Tabella, album, indx, anno, autore, durata, titolo);
         table.initializeFiltered(15);
         table.addButton(optionbutton);
     }
+    // ********************************************************************************************//
 
     private void createHomeOthersPlaylistUI() throws IOException {
         System.out.println("\n\nFunzia bene");
@@ -146,7 +147,8 @@ public class homeComponentController implements Initializable {
 
     }
 
-    // porco due quesat funzione funziona
+    // porco due quesat funzione funziona // ora a rivedere la funzia ... che merda, pero funziona 
+    // da cambiare !!! Ora che ce la variabile Gloable risalire a left_side_bpane è una cabbata 
     private Parent getParent(String target_Id, Node n) {
         Parent p;
         p = n.getParent();

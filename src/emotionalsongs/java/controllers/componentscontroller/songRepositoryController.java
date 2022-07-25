@@ -67,7 +67,10 @@ public class songRepositoryController implements Initializable {
         SongTableView table = new SongTableView(repository, album, songindex, anno, autore, durata, titolo);
         table.initialize();
         table.addButton(optionbutton);
+
+        //*********************** questa tanta roba *********************************// 
         table.cercaBranoMusicale(cercaCanzone,repository.getItems().size());
+        //***************************************************************************//
         
         //table.setNumberofCells(25);
     }

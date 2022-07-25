@@ -14,11 +14,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -71,7 +69,6 @@ public class SongTableView{
     public SongTableView(TableView<Canzone> Repository,TableColumn<Canzone, String> album2,TableColumn<Canzone, Void> indx,
     TableColumn<Canzone, Integer> anno2,TableColumn<Canzone, String> autore2, TableColumn<Canzone, Double> durata2, 
     TableColumn<Canzone, String> titolo2){
-
         this.repository= Repository;
         this.album=album2;
         this.songindex=indx;
@@ -79,19 +76,18 @@ public class SongTableView{
         this.autore=autore2;
         this.durata= durata2;
         this.titolo= titolo2;
-        
-
     }
   
     public void initialize() {
 
+        //******************* questa funzione rende la riga cliccabile ***************************************//
         repository.setRowFactory(tableView -> {
             TableRow<Canzone> row = new TableRow<Canzone>();
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     Canzone c = tableView.getItems().get(row.getIndex());
-                    Node n = (Node) mouseEvent.getSource();
+                    //Node n = (Node) mouseEvent.getSource();
                     Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
                     GlobalsVariables.left_side_bpane.getChildren().remove(p);
 
@@ -102,6 +98,9 @@ public class SongTableView{
             return row;
 
         });
+        //****************************************************************************************************//
+
+        //********************* questa serve sempre e setta l'index ! ************************//
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
@@ -113,23 +112,30 @@ public class SongTableView{
                 }
             }
         });
+        //************************************************************************************//
+
+        //***************** queste settano le collone principali della canzone ****************//
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
+        //************************************************************************************//
+
+        //******************************** per riempire la playlist **************************//
         repository.setItems(list);
+        //************************************************************************************//
         
     }
-    public void initializeFiltered(int num) {
 
+    public void initializeFiltered(int num) {
+        //******************* questa funzione rende la riga cliccabile ***************************************//
         repository.setRowFactory(tableView -> {
             TableRow<Canzone> row = new TableRow<Canzone>();
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     Canzone c = tableView.getItems().get(row.getIndex());
-                    Node n = (Node) mouseEvent.getSource();
                     Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
                     GlobalsVariables.left_side_bpane.getChildren().remove(p);
 
@@ -140,6 +146,9 @@ public class SongTableView{
             return row;
 
         });
+        //****************************************************************************************************//
+
+        //********************* questa serve sempre e setta l'index ! ************************//
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
@@ -151,12 +160,19 @@ public class SongTableView{
                 }
             }
         });
+        //************************************************************************************//
+
+        //***************** queste settano le collone principali della canzone ****************//
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
+        //************************************************************************************//
+
+        //******************************** per riempire la playlist **************************//
         repository.setItems(setNumberofRows(num));
+        //************************************************************************************//
         
     }
 
@@ -198,6 +214,7 @@ public class SongTableView{
 
     }
 
+    //******************************* hmmmm forse ho capito **********************************************//
     public void cercaBranoMusicale(TextField CercaCanzone,int num) {
         this.cercaCanzone=CercaCanzone;
         FilteredList<Canzone> filteredData = new FilteredList<Canzone>(setNumberofRows(num), b -> true);
@@ -227,7 +244,9 @@ public class SongTableView{
 
         repository.setItems(sortedData);
     }
+    //********************************************************************************************//
 
+    //*************** per visualizzaere il brano su un altra scene *************************//
     private void SendData(Canzone canz) {
         try {
             FXMLLoader load = loader.getComponentsLoader("WindowCanzone");
@@ -241,15 +260,17 @@ public class SongTableView{
         }
 
     }
+    //**************************************************************************************//
 
-   public FilteredList<Canzone> setNumberofRows(int num){
-    FilteredList<Canzone> filteredData = new FilteredList<>(
-    list,
-    song -> list.indexOf(song) < num
-    );
-    return filteredData;
-   }
-
+    //***************************** questa la voglio spiegata ******************************//
+    public FilteredList<Canzone> setNumberofRows(int num){
+        FilteredList<Canzone> filteredData = new FilteredList<>(
+        list,
+        song -> list.indexOf(song) < num
+        );
+        return filteredData;
+    }
+    //*************************************************************************************//
   
 
 }
