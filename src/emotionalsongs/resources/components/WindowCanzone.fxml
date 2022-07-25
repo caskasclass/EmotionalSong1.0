@@ -13,16 +13,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefWidth="1000.0" stylesheets="@../css/SongWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox styleClass="songinfocontainer" BorderPane.alignment="CENTER">
          <children>
-            <VBox />
+            <VBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Album">
+                           <font>
+                              <Font name="Proxima Nova" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label text="AlbumEffettivo">
+                           <font>
+                              <Font name="Proxima Nova" size="50.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox spacing="25.0">
+                     <children>
+                        <Label text="AutoreEffettivo + Anno + Durata">
+                           <font>
+                              <Font name="Proxima Nova" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label text="Valutazioni : xxx">
+                           <font>
+                              <Font name="Proxima Nova" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children></VBox>
             <VBox />
          </children>
          <padding>
-            <Insets bottom="25.0" />
+            <Insets bottom="25.0" left="25.0" top="40.0" />
          </padding>
          <BorderPane.margin>
             <Insets bottom="50.0" />
@@ -30,7 +59,7 @@
       </HBox>
    </top>
    <center>
-      <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="invisibleScrollPane" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
@@ -49,17 +78,100 @@
                         </Label>
                      </children>
                   </HBox>
-                  <FlowPane alignment="CENTER" cacheShape="false" hgap="25.0" maxHeight="400.0" vgap="20.0">
+                  <FlowPane alignment="CENTER" cacheShape="false" hgap="25.0" maxHeight="500.0" vgap="20.0">
                      <children>
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
-                        <VBox prefHeight="225.0" prefWidth="125.0" styleClass="vbox" />
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Amazement">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children></VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Solemnity">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Tenderness">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Nostalgia">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Calmness">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Power">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Joy">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Tension">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
+                           <children>
+                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
+                              <Label text="Sadness">
+                                 <font>
+                                    <Font name="Proxima Nova" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -256,4 +368,18 @@
          </content>
       </ScrollPane>
    </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Titolo Canzone">
+               <font>
+                  <Font name="Proxima Nova" size="50.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
