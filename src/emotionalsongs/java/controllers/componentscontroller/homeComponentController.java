@@ -42,7 +42,7 @@ public class homeComponentController implements Initializable {
     private TableView<Canzone> Tabella;
 
     @FXML
-    private TableColumn<Canzone, Void> indx;
+    private TableColumn<Canzone, Void> songindex;
 
     @FXML
     private TableColumn<Canzone, String> album;
@@ -111,7 +111,7 @@ public class homeComponentController implements Initializable {
     }
     //***************************************** bene *********************************************//
     private void createHomeSongUI() throws IOException {
-        SongTableView table = new SongTableView(Tabella, album, indx, anno, autore, durata, titolo);
+        SongTableView table = new SongTableView(Tabella, album, songindex, anno, autore, durata, titolo);
         table.initializeFiltered(15);
         table.addButton(optionbutton);
     }
