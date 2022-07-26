@@ -91,12 +91,16 @@ public class SongTableView{
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    Canzone c = tableView.getItems().get(row.getIndex());
-                    //Node n = (Node) mouseEvent.getSource();
-                    Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                    GlobalsVariables.left_side_bpane.getChildren().remove(p);
-
-                    SendData(c);
+                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                        if(mouseEvent.getClickCount() == 2)
+                        {
+                            Canzone c = tableView.getItems().get(row.getIndex());
+                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
+                            SendData(c);
+                        }
+                    }
+                   
 
                 }
             });
