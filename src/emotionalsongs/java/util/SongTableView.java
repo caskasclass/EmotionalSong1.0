@@ -24,6 +24,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -139,11 +140,16 @@ public class SongTableView{
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    Canzone c = tableView.getItems().get(row.getIndex());
-                    Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                    GlobalsVariables.left_side_bpane.getChildren().remove(p);
-
-                    SendData(c);
+                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                        if(mouseEvent.getClickCount() == 2)
+                        {
+                            Canzone c = tableView.getItems().get(row.getIndex());
+                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
+                            SendData(c);
+                        }
+                    }
+                   
 
                 }
             });
@@ -152,6 +158,7 @@ public class SongTableView{
         });
         //****************************************************************************************************//
 
+      
         //********************* questa serve sempre e setta l'index ! ************************//
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
@@ -228,6 +235,7 @@ public class SongTableView{
 
                     private final Button btn = new Button("ADD");
                     {
+                        
                         btn.setOnAction((ActionEvent event) -> {
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             System.out.println("hai aggiunto: " + canzone.getTitolo());
@@ -251,6 +259,9 @@ public class SongTableView{
         addbutton.setCellFactory(cellFactory);
 
     }
+   
+   
+   
     //******************************* hmmmm forse ho capito **********************************************//
     public void cercaBranoMusicale(TextField CercaCanzone,int num) {
         this.cercaCanzone=CercaCanzone;
