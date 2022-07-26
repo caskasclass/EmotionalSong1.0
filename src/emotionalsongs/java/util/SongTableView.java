@@ -24,15 +24,14 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
+public class SongTableView {
 
-public class SongTableView{
-
-    
     @FXML
     private TextField cercaCanzone;
 
@@ -70,29 +69,32 @@ public class SongTableView{
     private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
 
     FxmlLoader obj = new FxmlLoader();
-    
-    public SongTableView(TableView<Canzone> Repository,TableColumn<Canzone, String> album2,TableColumn<Canzone, Void> indx,
-    TableColumn<Canzone, Integer> anno2,TableColumn<Canzone, String> autore2, TableColumn<Canzone, Double> durata2, 
-    TableColumn<Canzone, String> titolo2){
-        this.repository= Repository;
-        this.album=album2;
-        this.songindex=indx;
-        this.anno=anno2;
-        this.autore=autore2;
-        this.durata= durata2;
-        this.titolo= titolo2;
+
+    public SongTableView(TableView<Canzone> Repository, TableColumn<Canzone, String> album2,
+            TableColumn<Canzone, Void> indx,
+            TableColumn<Canzone, Integer> anno2, TableColumn<Canzone, String> autore2,
+            TableColumn<Canzone, Double> durata2,
+            TableColumn<Canzone, String> titolo2) {
+        this.repository = Repository;
+        this.album = album2;
+        this.songindex = indx;
+        this.anno = anno2;
+        this.autore = autore2;
+        this.durata = durata2;
+        this.titolo = titolo2;
     }
-  
+
     public void initialize() {
 
-        //******************* questa funzione rende la riga cliccabile ***************************************//
+        // ******************* questa funzione rende la riga cliccabile
+        // ***************************************//
         repository.setRowFactory(tableView -> {
             TableRow<Canzone> row = new TableRow<Canzone>();
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
                     Canzone c = tableView.getItems().get(row.getIndex());
-                    //Node n = (Node) mouseEvent.getSource();
+                    // Node n = (Node) mouseEvent.getSource();
                     Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
                     GlobalsVariables.left_side_bpane.getChildren().remove(p);
 
@@ -103,9 +105,10 @@ public class SongTableView{
             return row;
 
         });
-        //****************************************************************************************************//
+        // ****************************************************************************************************//
 
-        //********************* questa serve sempre e setta l'index ! ************************//
+        // ********************* questa serve sempre e setta l'index !
+        // ************************//
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
@@ -117,49 +120,50 @@ public class SongTableView{
                 }
             }
         });
-        //************************************************************************************//
+        // ************************************************************************************//
 
-        //***************** queste settano le collone principali della canzone ****************//
+        // ***************** queste settano le collone principali della canzone
+        // ****************//
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        //*************************************************************************************//
+        // *************************************************************************************//
 
-        //******************************** per riempire la playlist **************************//
+        // ******************************** per riempire la playlist
+        // **************************//
         repository.setItems(list);
-        //************************************************************************************//
-        
+        // ************************************************************************************//
+
     }
 
     public void initializeFiltered(int num) {
-        //******************* questa funzione rende la riga cliccabile ***************************************//
+        // ******************* questa funzione rende la riga cliccabile
+        // ***************************************//
         repository.setRowFactory(tableView -> {
             TableRow<Canzone> row = new TableRow<Canzone>();
             row.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                        if(mouseEvent.getClickCount() == 2)
-                        {
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+                        if (mouseEvent.getClickCount() == 2) {
                             Canzone c = tableView.getItems().get(row.getIndex());
                             Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
                             GlobalsVariables.left_side_bpane.getChildren().remove(p);
                             SendData(c);
                         }
                     }
-                   
 
                 }
             });
             return row;
 
         });
-        //****************************************************************************************************//
+        // ****************************************************************************************************//
 
-      
-        //********************* questa serve sempre e setta l'index ! ************************//
+        // ********************* questa serve sempre e setta l'index !
+        // ************************//
         songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
             @Override
             public void updateIndex(int index) {
@@ -171,24 +175,26 @@ public class SongTableView{
                 }
             }
         });
-        //************************************************************************************//
+        // ************************************************************************************//
 
-        //***************** queste settano le collone principali della canzone ****************//
+        // ***************** queste settano le collone principali della canzone
+        // ****************//
         album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
         titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
         autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
         anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
         durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        //************************************************************************************//
+        // ************************************************************************************//
 
-        //******************************** per riempire la playlist **************************//
+        // ******************************** per riempire la playlist
+        // **************************//
         repository.setItems(setNumberofRows(num));
-        //************************************************************************************//
-        
+        // ************************************************************************************//
+
     }
 
     public void addButton(TableColumn<Canzone, Void> optionbutton2) {
-        this.optionbutton=optionbutton2;
+        this.optionbutton = optionbutton2;
         Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
             @Override
             public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
@@ -226,16 +232,15 @@ public class SongTableView{
     }
 
     public void addToPlylistButton(TableColumn<Canzone, Void> buttonadder) {
-        this.addbutton=buttonadder;
+        this.addbutton = buttonadder;
         Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
             @Override
             public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
                 final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
 
-
                     private final Button btn = new Button("ADD");
                     {
-                        
+
                         btn.setOnAction((ActionEvent event) -> {
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             System.out.println("hai aggiunto: " + canzone.getTitolo());
@@ -259,42 +264,95 @@ public class SongTableView{
         addbutton.setCellFactory(cellFactory);
 
     }
-   
-   
-   
-    //******************************* hmmmm forse ho capito **********************************************//
-    public void cercaBranoMusicale(TextField CercaCanzone,int num) {
-        this.cercaCanzone=CercaCanzone;
-        FilteredList<Canzone> filteredData = new FilteredList<Canzone>(setNumberofRows(num), b -> true);
-        cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Canzone>) (Canzone canzone) -> {
 
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
+    // ******************************* hmmmm forse ho capito
+    // **********************************************//
+    public void cercaBranoMusicale(TextField CercaCanzone) {
+        this.cercaCanzone = CercaCanzone;
+        /*
+         * FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b ->
+         * true);
+         * cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
+         * filteredData.setPredicate((Predicate<? super Canzone>) (Canzone canzone) -> {
+         * 
+         * if (newValue == null || newValue.isEmpty()) {
+         * return true;
+         * }
+         * 
+         * String lowerCase = newValue.toLowerCase();
+         * 
+         * if (canzone.getTitolo().toLowerCase().contains(lowerCase) != false) {
+         * return true;
+         * } else if (canzone.getAutore().toLowerCase().contains(lowerCase) != false) {
+         * return true;
+         * } else if (String.valueOf(canzone.getAnno()).contains(lowerCase) != false) {
+         * return true;
+         * } else
+         * return false;
+         * });
+         * });
+         */
+        /*
+         * TableRow<Canzone> row = new TableRow<Canzone>();
+         * row.setOnMouseClicked(new EventHandler<MouseEvent>() {
+         * 
+         * @Override
+         * public void handle(MouseEvent mouseEvent) {
+         * if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+         * if(mouseEvent.getClickCount() == 2)
+         * {
+         * Canzone c = tableView.getItems().get(row.getIndex());
+         * Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+         * GlobalsVariables.left_side_bpane.getChildren().remove(p);
+         * SendData(c);
+         * }
+         * }
+         * 
+         * 
+         * }
+         * });
+         * return row;
+         */
+        cercaCanzone.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent key) {
+                if (cercaCanzone.getText().isEmpty()) {
+                    repository.setItems(setNumberofRows(15));
+
+                } else {
+
+                    FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b -> true);
+                    filteredData.setPredicate((Predicate<? super Canzone>) (Canzone canzone) -> {
+                        String str = "";
+                        str += cercaCanzone.getText().toLowerCase();
+
+                        if (canzone.getTitolo().toLowerCase().contains(str) != false) {
+                            return true;
+                        } else if (canzone.getAutore().toLowerCase().contains(str) != false) {
+                            return true;
+                        } else if (String.valueOf(canzone.getAnno()).contains(str) != false) {
+                            return true;
+                        } else
+                            return false;
+                    });
+
+                    SortedList<Canzone> sortedData = new SortedList<Canzone>(filteredData);
+
+                    sortedData.comparatorProperty().bind(repository.comparatorProperty());
+
+                    repository.setItems(sortedData);
+
                 }
 
-                String lowerCase = newValue.toLowerCase();
+            }
 
-                if (canzone.getTitolo().toLowerCase().contains(lowerCase) != false) {
-                    return true;
-                } else if (canzone.getAutore().toLowerCase().contains(lowerCase) != false) {
-                    return true;
-                } else if (String.valueOf(canzone.getAnno()).contains(lowerCase) != false) {
-                    return true;
-                } else
-                    return false;
-            });
         });
 
-        SortedList<Canzone> sortedData = new SortedList<Canzone>(filteredData);
-
-        sortedData.comparatorProperty().bind(repository.comparatorProperty());
-
-        repository.setItems(sortedData);
     }
-    //********************************************************************************************//
+    // ********************************************************************************************//
 
-    //*************** per visualizzaere il brano su un altra scene *************************//
+    // *************** per visualizzaere il brano su un altra scene
+    // *************************//
     private void SendData(Canzone canz) {
         try {
             FXMLLoader load = loader.getComponentsLoader("WindowCanzone");
@@ -308,18 +366,16 @@ public class SongTableView{
         }
 
     }
-    //**************************************************************************************//
+    // **************************************************************************************//
 
-    //***************************** questa la voglio spiegata ******************************//
-    public FilteredList<Canzone> setNumberofRows(int num){
+    // ***************************** questa la voglio spiegata
+    // ******************************//
+    public FilteredList<Canzone> setNumberofRows(int num) {
         FilteredList<Canzone> filteredData = new FilteredList<>(
-        list,
-        song -> list.indexOf(song) < num
-        );
+                list,
+                song -> list.indexOf(song) < num);
         return filteredData;
     }
-    //*************************************************************************************//
-  
+    // *************************************************************************************//
 
 }
-
