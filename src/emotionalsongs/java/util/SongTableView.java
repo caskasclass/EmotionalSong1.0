@@ -26,7 +26,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 
@@ -241,6 +244,7 @@ public class SongTableView{
                     {
                         
                         btn.setOnAction((ActionEvent event) -> {
+                            //btn.setBackground(new Background(new Background(Color.GREEN,)));
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             System.out.println("hai aggiunto: " + canzone.getTitolo());
                         });
