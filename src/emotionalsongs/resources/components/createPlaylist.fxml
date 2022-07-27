@@ -126,6 +126,9 @@
                   <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" text="DURATA" />
                   <TableColumn fx:id="addbutton" maxWidth="120.0" minWidth="120.0" prefWidth="60.0" resizable="false" />
                </columns>
+               <HBox.margin>
+                  <Insets bottom="25.0" />
+               </HBox.margin>
             </TableView>
          </children>
       </HBox>

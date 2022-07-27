@@ -27,7 +27,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -150,6 +149,7 @@ public class SongTableView{
                     if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                         if(mouseEvent.getClickCount() == 2)
                         {
+                            //row.setStyle("-fx-background-color: RED");
                             Canzone c = tableView.getItems().get(row.getIndex());
                             Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
                             GlobalsVariables.left_side_bpane.getChildren().remove(p);
@@ -271,9 +271,9 @@ public class SongTableView{
    
    
     //******************************* hmmmm forse ho capito **********************************************//
-    public void cercaBranoMusicale(TextField CercaCanzone,int num) {
+    public void cercaBranoMusicale(TextField CercaCanzone) {
         this.cercaCanzone=CercaCanzone;
-        FilteredList<Canzone> filteredData = new FilteredList<Canzone>(setNumberofRows(num), b -> true);
+        FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b -> true);
         cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate((Predicate<? super Canzone>) (Canzone canzone) -> {
 
