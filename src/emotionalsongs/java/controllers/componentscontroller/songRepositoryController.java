@@ -69,7 +69,7 @@ public class songRepositoryController implements Initializable {
         table.addButton(optionbutton);
 
         //*********************** questa tanta roba *********************************// 
-        table.cercaBranoMusicale(cercaCanzone);
+        table.cercaBranoMusicale(cercaCanzone,repository.getItems().size());
         //***************************************************************************//
         
         //table.setNumberofCells(25);
