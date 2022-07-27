@@ -25,7 +25,6 @@ public class EmotionalSongs extends Application {
     }
 
     public static void main(String[] args) throws ParseException {
-
         launch(args);
 
     }

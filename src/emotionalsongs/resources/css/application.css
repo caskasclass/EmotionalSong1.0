@@ -85,3 +85,10 @@
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0); 
 }
+
+
+.added{
+    -fx-background-color:rgb(101,212,110)!important; 
+    background-color:rgb(101,212,110)!important; 
+
+}
