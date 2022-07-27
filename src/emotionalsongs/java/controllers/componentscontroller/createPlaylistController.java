@@ -69,7 +69,7 @@ public class createPlaylistController implements Initializable {
         addPlaylistrepository.setFixedCellSize(50);
         table.initialize();
         table.addToPlylistButton(addbutton);
-        table.cercaBranoMusicale(cerca,addPlaylistrepository.getItems().size());
+        table.cercaBranoMusicale(cerca);
 
     }
 

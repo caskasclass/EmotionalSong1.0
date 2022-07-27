@@ -2,6 +2,9 @@ package emotionalsongs.java.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.User;
@@ -45,39 +48,37 @@ public class ControllerH {
     public void Registrazione(ActionEvent e) throws IOException {
 
         //problemi con trim per ora l'ho tolto
-        
-        User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), btn_nome.getText().toLowerCase(), btn_cf.getText().toUpperCase(), btn_ind.getText().toLowerCase());
-        ArrayList<User> users = UserManager.readUsers();
-        if (users.contains(newuser)) {
-            System.out.println("tente già registrato\n");
-            //msgErr.setText("utente già registrato");
-            //non funzia
-            
-        } else {
-            users.add(newuser);
-            System.out.println("\n\nuser aggiunto\n" + newuser.printUser() + "\n");
+        String[] s = {btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), btn_nome.getText() 
+       , btn_cf.getText(), btn_ind.getText()};
+       List<String> s2 = Arrays.asList(s);
+        if(s2.contains("")){
+            msgErr.setText("non hai compilato tutti i campi");
         }
-        UserManager.getUsers(users);
-
-        // le prossime due righe sono da mettere dentro il controllo tipo if
+            
+        else {
+            User newuser = new User(btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), btn_nome.getText().toLowerCase(), btn_cf.getText().toUpperCase(), btn_ind.getText().toLowerCase());
+            ArrayList<User> users = UserManager.readUsers();
+            if(users.contains(newuser)){
+                msgErr.setText("utente già registrato");
+                System.out.println("tente già registrato\n");
+            }
+            else {
+                users.add(newuser);
+                System.out.println("\n\nuser aggiunto\n" + newuser.printUser() + "\n");
+                Stage stage = (Stage) btn_registra.getScene().getWindow(); // chiusura della finestra
+                stage.close();
+            
+            }
+            UserManager.getUsers(users); 
+            
+        } 
+        
+        }
+         // le prossime due righe sono da mettere dentro il controllo tipo if
         // Nel sennso che se la registrazione è avvenuta con successo allora chiuedi
         // altrimenti nulla,
         // magari si stampa un messaggio di errore durante la registrazione!
-        /*if( btn_username.getText() != null && btn_passwd.getText() != null && btn_mail.getText() != null && btn_nome.getText() != null 
-            && btn_cf.getText() != null && btn_ind.getText() != null)
-            {
-                msgErr.setText("non hai compilato tutti i campi");
-                users.remove(newuser);
-                //label con "non hai compilato tutti i campi"
-            }
-        else{
-            //
-        }*/
-        Stage stage = (Stage) btn_registra.getScene().getWindow(); // chiusura della finestra
-        stage.close();
         
-
-    }
     public void focus(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))

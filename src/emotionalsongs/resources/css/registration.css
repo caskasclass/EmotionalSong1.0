@@ -71,9 +71,11 @@
 }
 
 #msgErr{
-    -fx-text-fill:rgb(120, 116, 116);
+    -fx-text-fill:rgb(227, 227, 227);
     -fx-underline:true;
     -fx-label-padding:20 0 0 0;
+    -fx-font-size: 15;
+    font-size: 15;
 }
 
 .text-field{

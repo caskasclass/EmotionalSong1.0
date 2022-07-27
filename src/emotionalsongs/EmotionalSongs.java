@@ -26,6 +26,8 @@ public class EmotionalSongs extends Application {
 
     public static void main(String[] args) throws ParseException {
 
+        String s = "\u2713";
+        System.out.print(s);
         launch(args);
 
     }
