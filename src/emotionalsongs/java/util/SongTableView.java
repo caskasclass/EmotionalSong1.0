@@ -242,7 +242,7 @@ public class SongTableView{
                     {
                         
                         btn.setOnAction((ActionEvent event) -> {
-                            if(btn.getStyleClass().contains("added")){
+                            /*if(btn.getStyleClass().contains("added")){
                                 btn.setText("ADD");
                                 btn.getStyleClass().remove("added");
                                 //code...
@@ -250,7 +250,8 @@ public class SongTableView{
 
                                 btn.setText("ADDED");
                                 btn.getStyleClass().add("added");
-                            }   
+                            }*/   
+                            //btn.setText("ADDED");
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             System.out.println("hai aggiunto: " + canzone.getTitolo());
                         });

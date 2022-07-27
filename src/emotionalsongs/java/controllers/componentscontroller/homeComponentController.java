@@ -13,6 +13,7 @@ import emotionalsongs.java.util.FxmlLoader;
 
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.SongTableView;
+import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,12 +23,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 
 public class homeComponentController implements Initializable {
@@ -62,27 +65,44 @@ public class homeComponentController implements Initializable {
     @FXML
     private TableColumn<Canzone, String> titolo;
 
+    @FXML
+    private VBox vboxTuePlaylist;
     
+    @FXML
+    private VBox vboxHome;
 
+    
+    User u = null; 
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
 
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
 
-        Platform.runLater(() -> {
+        
             try {
-                createHomePlaylistUI();
-                createHomeSongUI();
-                createHomeOthersPlaylistUI();
+                if(u == null){
+                    vboxHome.getChildren().remove(vboxTuePlaylist);
+                    createHomeSongUI();
+                    createHomeOthersPlaylistUI();
+                    
+                }
+                else{
+
+                    createHomePlaylistUI();
+                }
+                
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-        });
+        
 
     }
 
+    public void setUser(User u){
+        this.u= u;
+    }
     private void createHomePlaylistUI() throws IOException {
         UserPlaylistContainer.setPadding(new Insets(15));
         UserPlaylistContainer.setAlignment(Pos.CENTER_LEFT);

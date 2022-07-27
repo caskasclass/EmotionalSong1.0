@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
+import emotionalsongs.java.controllers.componentscontroller.homeComponentController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.User;
@@ -29,6 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -59,6 +61,12 @@ public class Homebuilder implements Initializable {
     private Pane homePane;
     @FXML 
     private Pane navBarPane;
+    @FXML
+    private Label labelNuovaPlaylist;
+    @FXML
+    private Label labelPlaylist;
+    @FXML
+    private VBox menubar;
 
 
     StyleManager style = new StyleManager();
@@ -80,6 +88,8 @@ public class Homebuilder implements Initializable {
 
         if(logged==null)
         {
+            menubar.getChildren().removeAll(labelNuovaPlaylist,labelPlaylist);
+
             logbuttons.getChildren().remove(usernameBtn);      
         }
 
@@ -91,6 +101,7 @@ public class Homebuilder implements Initializable {
         logged = null;
         logbuttons.getChildren().remove(usernameBtn);
         logbuttons.getChildren().add(LogInMenuButton);
+        menubar.getChildren().removeAll(labelNuovaPlaylist,labelPlaylist);
 
     }
 
@@ -108,6 +119,15 @@ public class Homebuilder implements Initializable {
             System.out.println(log.printUser());// testing ok!
 
             updateWindow(log);
+            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+            GlobalsVariables.left_side_bpane.getChildren().remove(p);
+            /*FXMLLoader load= obj.getComponentsLoader("home");
+            homeComponentController homeComponentController = new homeComponentController();
+            homeComponentController.setUser(log);
+            load.setController(homeComponentController);
+            homePane= load.load();
+            System.out.print("obj");
+            left_side_bpane.setCenter(homePane);*/
 
 
 
@@ -123,6 +143,7 @@ public class Homebuilder implements Initializable {
         logbuttons.getChildren().remove(LogInMenuButton);
         logbuttons.getChildren().add(usernameBtn);
         usernameBtn.setText(u.getUsername());
+        menubar.getChildren().addAll(labelNuovaPlaylist,labelPlaylist);
         
     }
 

@@ -27,9 +27,9 @@
    <children>
       <ScrollPane fx:id="homePane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minWidth="1000.0" styleClass="invisibleScrollPane" vbarPolicy="NEVER">
          <content>
-            <VBox style="-fx-background-color: rgba(0,0,0,0);">
+            <VBox fx:id="vboxHome" style="-fx-background-color: rgba(0,0,0,0);">
                <children>
-                  <VBox style="-fx-background-color: rgba(0,0,0,0);">
+                  <VBox fx:id="vboxTuePlaylist" style="-fx-background-color: rgba(0,0,0,0);">
                      <children>
                         <HBox style="-fx-background-color: rgba(0,0,0,0);">
                            <children>
