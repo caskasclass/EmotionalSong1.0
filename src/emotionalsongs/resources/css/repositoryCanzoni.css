@@ -68,26 +68,26 @@
     -fx-text-fill:rgb(255,255,255);
 }
 
-.repo #songindex{
+.repo .songindex{
     -fx-alignment:CENTER;
 }
-.repo  #titolo .label{
+.repo  .titolo .label{
     -fx-alignment:CENTER-LEFT;
 }
-.repo  #album .label{
+.repo  .album .label{
     -fx-alignment:CENTER-LEFT;
 }
-.repo  #autore .label{
+.repo  .autore .label{
     -fx-alignment:CENTER-LEFT;
 }
-.repo  #durata .label{
+.repo  .durata .label{
     -fx-alignment:CENTER-RIGHT;
 }
-.repo  #optionbutton .label{
+.repo  .optionbutton .label{
     -fx-alignment:CENTER-LEFT;
 }
 
-.repo  #addbutton .label{
+.repo  .addbutton .label{
     -fx-alignment:CENTER;
 }
 
@@ -103,7 +103,7 @@
     padding:15 0 15 0;
  
 }
-.repo .table-cell #optionbutton  .label{
+.repo .table-cell .optionbutton  .label{
     -fx-padding:0 0 0 0;
     padding:0 0 0 0;
  
@@ -138,22 +138,22 @@
     -fx-border-color:rgb(255,255,255);
     border-color:rgb(255,255,255); 
  }
-.repo #songindex {
+.repo .songindex {
     -fx-alignment:CENTER;
 
 }
-.repo #anno {
+.repo .anno {
     -fx-alignment:CENTER;
 
 }
-.repo #durata {
+.repo .durata {
     -fx-alignment:CENTER-RIGHT;
 
 }
-.repo #addbutton {
+.repo .addbutton {
     -fx-alignment:CENTER;
 }
-.repo #optionbutton {
+.repo .optionbutton {
     -fx-alignment:CENTER;
 
 }
@@ -174,18 +174,18 @@
 
 
 
-.repo #optionbutton .menu-button{
+.repo .optionbutton .menu-button{
     visibility: visible;
     -fx-background-color:rgba(0,0,0,0); 
     background-color: rgba(0,0,0,0); 
 }
-.repo #optionbutton .menu-button .label{
+.repo .optionbutton .menu-button .label{
    -fx-font-size:15;
    font-size: 15;
    -fx-font-weight:bold;
    font-weight: bold;
 }
- .table-row-cell:hover >  #optionbutton .menu-button {
+ .table-row-cell:hover >  .optionbutton .menu-button {
     visibility: visible;
     -fx-background-color:rgba(0,0,0,0);
     background-color: rgba(0,0,0,0); 

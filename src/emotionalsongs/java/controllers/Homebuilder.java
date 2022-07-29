@@ -5,10 +5,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
-
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
+import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
+import emotionalsongs.java.controllers.componentscontroller.homeComponentController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.User;
@@ -25,12 +25,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 
 public class Homebuilder implements Initializable {
 
@@ -51,19 +50,21 @@ public class Homebuilder implements Initializable {
     private MenuItem btn_signOut;
     @FXML
     private Label add_song_btn;
-    @FXML 
+    @FXML
     private MenuButton usernameBtn;
-    @FXML 
+    @FXML
     private MenuButton LogInMenuButton;
     @FXML
-    private Pane homePane;
-    @FXML 
     private Pane navBarPane;
-
+    @FXML
+    private Label labelLeTuePlaylist;
+    @FXML
+    private Label labelNuovaPlaylist;
+    @FXML
+    private VBox menubar;
 
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
-
 
     private User logged;
 
@@ -71,61 +72,94 @@ public class Homebuilder implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         Platform.runLater(() -> {
+            
+            menubar.getChildren().removeAll(labelLeTuePlaylist,labelNuovaPlaylist);
             GlobalsVariables.left_side_bpane = this.left_side_bpane;
+            createHome();
+            
 
-            homePane = obj.getPane("home");
-            left_side_bpane.setCenter(homePane);
-    
         });
 
-        if(logged==null)
-        {
-            logbuttons.getChildren().remove(usernameBtn);      
+        if (logged == null) {
+            logbuttons.getChildren().remove(usernameBtn);
         }
 
     }
+
     /************************************************************************/
-    /**********  Servono per tornare alla scermata loggin  *****************/
+    /********** Servono per tornare alla scermata loggin *****************/
 
     public void SignOut(ActionEvent e) throws IOException {
+        GlobalsVariables.clearSession();
         logged = null;
+        Parent p = (Parent) left_side_bpane.getCenter();
+        left_side_bpane.getChildren().remove(p);
+        createHome();
+        menubar.getChildren().removeAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(usernameBtn);
         logbuttons.getChildren().add(LogInMenuButton);
 
     }
 
-    public void setUser(User u) {
-        logged = u;
-    }
-
 
     public void Login(ActionEvent e) throws IOException {
-        User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(), (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(), (usernameEmail.getText()).toLowerCase());
+        User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(),
+                (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(),
+                (usernameEmail.getText()).toLowerCase());
         ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
         if (users.contains(loguser)) {
-           
+
             User log = users.get(users.indexOf(loguser)); // molto meglio
             System.out.println(log.printUser());// testing ok!
 
             updateWindow(log);
 
-
-
             System.out.println("\n\n\nUser trovato\n\n\n");
         } else {
-             System.out.println("\n\n\nUser non presente\n\n\n");
+            System.out.println("\n\n\nUser non presente\n\n\n");
         }
     }
 
-    private void updateWindow(User u)
-    {
+    private void updateWindow(User u) {
+        Parent p = (Parent) left_side_bpane.getCenter();
+        left_side_bpane.getChildren().remove(p);
         logged = u;
+        createHome();
+        menubar.getChildren().addAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(LogInMenuButton);
         logbuttons.getChildren().add(usernameBtn);
         usernameBtn.setText(u.getUsername());
+
+
+    }
+    private void createHome()
+    {
+        FXMLLoader loader = obj.getComponentsLoader("home");
+        homeComponentController homeComponentController = new homeComponentController();
+        homeComponentController.setUser(logged);
+        loader.setController(homeComponentController);
+        try {
+            Parent p = loader.load();
+            left_side_bpane.setCenter(p);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        
         
     }
-
+    private void createNewPlaylistUI(){
+        FXMLLoader loader = obj.getComponentsLoader("createPlaylist");
+        createPlaylistController createPlaylistController = new createPlaylistController();
+        createPlaylistController.setUser(logged);
+        loader.setController(createPlaylistController);
+        try {
+            Parent p = loader.load();
+            p.getStylesheets().add(style.getStyle("repositoryCanzoni"));
+            left_side_bpane.setCenter(p);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+    }
 
     public void SignUpWind(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/SignUpWindow.fxml"));
@@ -138,22 +172,22 @@ public class Homebuilder implements Initializable {
         stage.show();
     }
 
-
     /*****************************************************
      * metodi per i button della homeWindow
      *****************************************************/
 
     public void backHome(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        Pane ui = obj.getPane("home");
-        left_side_bpane.setCenter(ui);
+        Parent p = (Parent) left_side_bpane.getCenter();
+        left_side_bpane.getChildren().remove(p);
+        createHome();
     }
 
-    public void newPlaylist(MouseEvent e)throws IOException{
+    public void newPlaylist(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        Pane ui = obj.getPane("createPlaylist");
-        ui.getStylesheets().add(style.getStyle("repositoryCanzoni"));
-        left_side_bpane.setCenter(ui);
+        Parent p = (Parent) left_side_bpane.getCenter();
+        left_side_bpane.getChildren().remove(p);
+        createNewPlaylistUI();
     }
 
     public void playWind(MouseEvent e) throws IOException {
