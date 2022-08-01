@@ -2,7 +2,6 @@ package emotionalsongs.java.controllers.microcontrollers;
 
 import java.io.IOException;
 
-import javax.security.auth.login.CredentialException;
 
 import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.util.FxmlLoader;
