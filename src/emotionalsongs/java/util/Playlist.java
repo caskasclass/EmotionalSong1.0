@@ -10,11 +10,11 @@ public class Playlist implements Serializable {
     private String nomePlaylist;
     private ArrayList<String> listaCanzoni;
 
-    public Playlist(String np, String img, String userId, String idCanzone) {
+    public Playlist(String np, String img, String userId, ArrayList<String>idCanzoni) {
         idUser = userId;
         png = img;
         nomePlaylist = np;
-        listaCanzoni.add(idCanzone);
+        listaCanzoni = idCanzoni;
     }
 
 

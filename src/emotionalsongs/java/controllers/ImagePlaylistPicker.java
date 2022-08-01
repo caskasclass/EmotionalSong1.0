@@ -27,7 +27,7 @@ public class ImagePlaylistPicker {
         //int start = path.indexOf("emotionalsongs");
         //path = "/bin/"+path.substring(start);
 
-        GlobalsVariables.ImageWindowPicker = path;
+        GlobalsVariables.PlaylistImg = path;
         Stage stage = (Stage) imgview.getScene().getWindow();
         stage.close();
     }

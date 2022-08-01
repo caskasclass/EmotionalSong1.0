@@ -37,7 +37,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label fx:id="labelPlaylist" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#playWind" prefHeight="53.0" text="Le tue playlist">
+            <Label fx:id="labelLeTuePlaylist" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#playWind" prefHeight="53.0" text="Le tue playlist">
                <font>
                   <Font size="22.0" />
                </font>

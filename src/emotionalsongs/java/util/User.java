@@ -78,6 +78,9 @@ public class User implements Serializable {
     public String getName() {
         return this.nomecognome;
     }
+    public String getId() {
+        return this.userId;
+    }
     public String getCodiceFisc() {
         return this.codiceFisc;
     }

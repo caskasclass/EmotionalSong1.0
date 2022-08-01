@@ -19,13 +19,13 @@
          <children>
             <TableView fx:id="repository" nodeOrientation="LEFT_TO_RIGHT" styleClass="repo" HBox.hgrow="NEVER">
               <columns>
-                  <TableColumn fx:id="songindex" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" text="#" />
-                <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" text="TITOLO" />
-                  <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" text="ALBUM" />
-                  <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="AUTORE" />
-                  <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" text="ANNO" />
-                  <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" text="DURATA" />
-                  <TableColumn fx:id="optionbutton" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" resizable="false" />
+                  <TableColumn fx:id="songindex" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="songindex" text="#" />
+                <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" styleClass="titolo" text="TITOLO" />
+                  <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" styleClass="album" text="ALBUM" />
+                  <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="autore" text="AUTORE" />
+                  <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="anno" text="ANNO" />
+                  <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" styleClass="durata" text="DURATA" />
+                  <TableColumn fx:id="optionbutton" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" resizable="false" styleClass="optionbutton" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

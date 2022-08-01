@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
@@ -23,15 +24,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
+import javafx.scene.text.Font;
 
 public class homeComponentController implements Initializable {
     @FXML
@@ -40,7 +40,7 @@ public class homeComponentController implements Initializable {
     private HBox SongsContainer;
     @FXML
     private FlowPane notMyPlaylistContainer;
-    
+
     @FXML
     private TableView<Canzone> Tabella;
 
@@ -65,71 +65,75 @@ public class homeComponentController implements Initializable {
     @FXML
     private TableColumn<Canzone, String> titolo;
 
-    @FXML
-    private VBox vboxTuePlaylist;
-    
-    @FXML
-    private VBox vboxHome;
+    User u = null;
 
-    
-    User u = null; 
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
+    ArrayList<Playlist> mine = new ArrayList<Playlist>();
+    ArrayList<Playlist> others = new ArrayList<Playlist>();
 
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
 
-        
-            try {
-                if(u == null){
-                    vboxHome.getChildren().remove(vboxTuePlaylist);
-                    createHomeSongUI();
-                    createHomeOthersPlaylistUI();
-                    
-                }
-                else{
+        Platform.runLater(() -> {
+            if (u != null) {
+                filterPlaylist();
+            }
 
+            try {
+                if (u == null) {
+                    Label avviso = new Label("Per usufruire di altre funzione bisogna effetuare il login");
+                    avviso.setFont(new Font("Proxima Nova", 25));
+                    UserPlaylistContainer.getChildren().add(avviso);
+
+                } else {
                     createHomePlaylistUI();
                 }
-                
+                createHomeSongUI();
+                createHomeOthersPlaylistUI();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-        
+        });
 
     }
 
-    public void setUser(User u){
-        this.u= u;
+    public void setUser(User u) {
+        this.u = u;
     }
+
     private void createHomePlaylistUI() throws IOException {
         UserPlaylistContainer.setPadding(new Insets(15));
         UserPlaylistContainer.setAlignment(Pos.CENTER_LEFT);
         UserPlaylistContainer.setSpacing(20);
 
         System.out.println("\n\nFunzia bene");
-        ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
+        ArrayList<Playlist> playlists = mine;
         if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 10; i++) {
-                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
-                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-                UserPlaylistContainer.getChildren().add(ui);
-            }
-
+            FXMLLoader loader = obj.getLoader("AddPlaylistBox");
+            AddPlaylistBoxController addPlaylistBoxController = new AddPlaylistBoxController();
+            addPlaylistBoxController.setUser(u);
+            loader.setController(addPlaylistBoxController);
+            Parent ui = loader.load();
+            ui.getStylesheets().add(style.getStyle("PlaylistBox"));
+            UserPlaylistContainer.getChildren().add(ui);
+            
         } else {
-            for (Playlist playlist : playlists) {
+            for (Playlist playlist : mine) {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-                Pane ui = loader.load();
-                PlaylistBoxController controller = loader.<PlaylistBoxController>getController();
-                controller.setPlaylist(playlist);
+                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                playlistBoxController.setPlaylist(playlist);
+                loader.setController(playlistBoxController);
+                Parent ui = loader.load();
                 UserPlaylistContainer.getChildren().add(ui);
 
             }
         }
 
     }
-    //***************************************** bene *********************************************//
+
+    // ***************************************** bene
+    // *********************************************//
     private void createHomeSongUI() throws IOException {
         SongTableView table = new SongTableView(Tabella, album, songindex, anno, autore, durata, titolo);
         table.initializeFiltered(15);
@@ -139,7 +143,7 @@ public class homeComponentController implements Initializable {
 
     private void createHomeOthersPlaylistUI() throws IOException {
         System.out.println("\n\nFunzia bene");
-        ArrayList<Playlist> playlists = PlaylistManager.readPlaylist();
+        ArrayList<Playlist> playlists = others;
         if (playlists == null || playlists.isEmpty()) {
             for (int i = 0; i < 6; i++) {
                 BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
@@ -150,9 +154,10 @@ public class homeComponentController implements Initializable {
         } else {
             for (Playlist playlist : playlists) {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-                Pane ui = loader.load();
-                PlaylistBoxController controller = loader.<PlaylistBoxController>getController();
-                controller.setPlaylist(playlist);
+                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                playlistBoxController.setPlaylist(playlist);
+                loader.setController(playlistBoxController);
+                Parent ui = loader.load();
                 notMyPlaylistContainer.getChildren().add(ui);
             }
         }
@@ -167,8 +172,10 @@ public class homeComponentController implements Initializable {
 
     }
 
-    // porco due quesat funzione funziona // ora a rivedere la funzia ... che merda, pero funziona 
-    // da cambiare !!! Ora che ce la variabile Gloable risalire a left_side_bpane è una cabbata 
+    // porco due quesat funzione funziona // ora a rivedere la funzia ... che merda,
+    // pero funziona
+    // da cambiare !!! Ora che ce la variabile Gloable risalire a left_side_bpane è
+    // una cabbata
     private Parent getParent(String target_Id, Node n) {
         Parent p;
         p = n.getParent();
@@ -182,4 +189,18 @@ public class homeComponentController implements Initializable {
         } while (p.getId() == null || !p.getId().equals(target_Id));
         return p;
     }
+
+    private void filterPlaylist() {
+        ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
+        for (Playlist playlist : pl) {
+            if (playlist.getOwner().equals(u.getId())) {
+                mine.add(playlist);
+            } else {
+                others.add(playlist);
+            }
+
+        }
+
+    }
+
 }
