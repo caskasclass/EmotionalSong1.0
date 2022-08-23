@@ -24,13 +24,12 @@ public class ImagePlaylistPicker {
            path = img.getUrl();
 
         }
-        //int start = path.indexOf("emotionalsongs");
-        //path = "/bin/"+path.substring(start);
+
+        
 
         GlobalsVariables.PlaylistImg = path;
         Stage stage = (Stage) imgview.getScene().getWindow();
         stage.close();
     }
 
-    
 }

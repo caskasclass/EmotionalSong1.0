@@ -195,7 +195,6 @@ public class Homebuilder implements Initializable {
         Pane ui = obj.getPane("playlist");
         left_side_bpane.setCenter(ui);
     }
-
     public void songWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
         Pane ui = obj.getPane("songs");
