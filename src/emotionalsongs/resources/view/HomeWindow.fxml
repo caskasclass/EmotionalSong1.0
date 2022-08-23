@@ -53,7 +53,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <Label fx:id="labelVediPlaylist" accessibleRole="BUTTON" contentDisplay="CENTER" prefHeight="53.0" text="Vedi Playlist ">
+            <Label fx:id="labelVediPlaylist" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#playWind" prefHeight="53.0" text="Vedi Playlist ">
                <font>
                   <Font size="22.0" />
                </font>

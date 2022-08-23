@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 public class playlistWindController implements Initializable {
 
     User u = null;
+    private boolean lemie;
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
     ArrayList<Playlist> others = new ArrayList<Playlist>();
     StyleManager style = new StyleManager();
@@ -46,7 +47,14 @@ public class playlistWindController implements Initializable {
             filterPlaylist();
         }
         try {
-            createHomePlaylistUI();
+            if(lemie)
+            {
+                createHomePlaylistUI();
+            }else
+            {
+                createHomeOthersPlaylistUI();
+            }
+            
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,6 +64,10 @@ public class playlistWindController implements Initializable {
     }
     public void setUser(User u) {
         this.u = u;
+    }
+    public void setLemie(boolean x)
+    {
+        lemie = x;
     }
     private void createHomePlaylistUI() throws IOException {
 

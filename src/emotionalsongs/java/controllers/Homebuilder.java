@@ -62,6 +62,8 @@ public class Homebuilder implements Initializable {
     @FXML
     private Label labelNuovaPlaylist;
     @FXML
+    private Label labelVediPlaylist;
+    @FXML
     private VBox menubar;
 
     StyleManager style = new StyleManager();
@@ -196,23 +198,25 @@ public class Homebuilder implements Initializable {
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setUser(logged);
+        playlistWindController.setLemie(true);
         load.setController(playlistWindController);
         Parent ui = load.load();
         Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         left_side_bpane.setCenter(ui);
     }
-    /*public void playWind(MouseEvent e) throws IOException {
+    public void playWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("otherplaylist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setUser(logged);
+         playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();
         Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         left_side_bpane.setCenter(ui);
-    }*/
+    }
 
     public void songWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
