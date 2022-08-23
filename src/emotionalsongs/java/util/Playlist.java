@@ -2,9 +2,12 @@ package emotionalsongs.java.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
+
 
 public class Playlist implements Serializable {
 
+    private String idPlaylist;
     private String idUser;
     private String png;
     private String nomePlaylist;
@@ -15,6 +18,12 @@ public class Playlist implements Serializable {
         png = img;
         nomePlaylist = np;
         listaCanzoni = idCanzoni;
+        idPlaylist = UUID.randomUUID().toString();
+    }
+
+    public String getIDPlaylist()
+    {
+        return idPlaylist;
     }
 
 
@@ -37,14 +46,5 @@ public class Playlist implements Serializable {
     public ArrayList<String> getCanzoni() {
         return listaCanzoni;
     }
- 
-
-    //creare print playlist
-    /*public String printPlaylist(String s){
-        for (String nome : listaCanzoni) {
-           println()
-            
-        }
-    }*/
 
 }

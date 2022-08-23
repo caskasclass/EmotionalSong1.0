@@ -1,15 +1,21 @@
 package emotionalsongs.java.controllers.microcontrollers;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.UserManager;
+import emotionalsongs.java.controllers.componentscontroller.ShowPlaylistController;
+import emotionalsongs.java.util.FxmlLoader;
+import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,8 +28,10 @@ public class PlaylistBoxController implements Initializable{
     private Label usernameowner;
     @FXML
     private ImageView PlaylistImageTag;
+
+
     private Playlist playlist; 
-    
+    private FxmlLoader obj= new FxmlLoader();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +56,23 @@ public class PlaylistBoxController implements Initializable{
         }
         return username;
 
+    }
+
+    public void ShowPlaylist() throws IOException
+    {
+       FXMLLoader load = obj.getComponentsLoader("ShowPlaylist");
+       ShowPlaylistController showPlaylistController = new ShowPlaylistController();
+       showPlaylistController.getPlaylist(playlist);
+       load.setController(showPlaylistController);
+       Parent ui = load.load();
+       Parent currentWind =(Parent) GlobalsVariables.left_side_bpane.getCenter();
+       GlobalsVariables.left_side_bpane.getChildren().remove(currentWind);
+       GlobalsVariables.left_side_bpane.setCenter(ui);
+
+
+       
+
+       
     }
 
     
