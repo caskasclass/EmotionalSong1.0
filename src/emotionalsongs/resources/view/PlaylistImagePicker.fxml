@@ -57,7 +57,11 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(223,96,79);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="160.0" layoutY="1.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/calmness.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -69,7 +73,10 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(162,202,94);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" layoutY="1.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/sadness.jpg" />
+                           </image></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
