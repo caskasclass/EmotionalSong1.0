@@ -9,6 +9,7 @@ import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.controllers.componentscontroller.homeComponentController;
+import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.User;
@@ -190,11 +191,29 @@ public class Homebuilder implements Initializable {
         createNewPlaylistUI();
     }
 
-    public void playWind(MouseEvent e) throws IOException {
+    public void MyplayWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        Pane ui = obj.getPane("playlist");
+        FXMLLoader load = obj.getComponentsLoader("playlist");
+        playlistWindController playlistWindController = new playlistWindController();
+        playlistWindController.setUser(logged);
+        load.setController(playlistWindController);
+        Parent ui = load.load();
+        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
         left_side_bpane.setCenter(ui);
     }
+    /*public void playWind(MouseEvent e) throws IOException {
+        System.out.println("funzia");
+        FXMLLoader load = obj.getComponentsLoader("otherplaylist");
+        playlistWindController playlistWindController = new playlistWindController();
+        playlistWindController.setUser(logged);
+        load.setController(playlistWindController);
+        Parent ui = load.load();
+        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
+        left_side_bpane.setCenter(ui);
+    }*/
+
     public void songWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
         Pane ui = obj.getPane("songs");

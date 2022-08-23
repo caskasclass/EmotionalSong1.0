@@ -11,7 +11,7 @@ import emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
-
+import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.SongTableView;
 import emotionalsongs.java.util.User;
@@ -171,6 +171,20 @@ public class homeComponentController implements Initializable {
         p.setCenter(ui);
 
     }
+
+    public void showMyPlaylists(ActionEvent e) throws IOException{
+        System.out.println("funzia");
+        FXMLLoader load = obj.getComponentsLoader("playlist");
+        playlistWindController playlistWindController = new playlistWindController();
+        playlistWindController.setUser(u);
+        load.setController(playlistWindController);
+        Parent ui = load.load();
+        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
+        GlobalsVariables.left_side_bpane.setCenter(ui);
+
+    }
+   
 
     // porco due quesat funzione funziona // ora a rivedere la funzia ... che merda,
     // pero funziona

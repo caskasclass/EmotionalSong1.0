@@ -34,7 +34,7 @@
                               <Insets left="10.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="316.0" vbarPolicy="NEVER">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="316.0" minWidth="998.0" vbarPolicy="NEVER">
                            <content>
                               <HBox fx:id="UserPlaylistContainer" alignment="CENTER" style="-fx-background-color: rgba(0,0,0,0);" />
                            </content>
@@ -44,7 +44,7 @@
                               <Insets bottom="10.0" left="25.0" />
                            </padding>
                            <children>
-                              <Button mnemonicParsing="false" styleClass="buttonHome" text="Vedi tutte " />
+                              <Button mnemonicParsing="false" onAction="#showMyPlaylists" styleClass="buttonHome" text="Vedi tutte " />
                            </children>
                         </HBox>
                      </children>
