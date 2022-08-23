@@ -45,7 +45,7 @@ public class PlaylistBoxController implements Initializable{
     {
         playlist =p;
     }
-    private String getUsername(String id){
+    public String getUsername(String id){
         String username="";
         ArrayList<User> users = UserManager.readUsers();
         for (User user : users) {

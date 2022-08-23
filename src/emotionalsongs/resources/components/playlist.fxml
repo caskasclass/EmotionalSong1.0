@@ -7,15 +7,19 @@
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="551.0" styleClass="invisibleScrollPane" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="551.0" styleClass="invisibleScrollPane" vbarPolicy="NEVER">
          <content>
-            <FlowPane fx:id="Container" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
-               
-            </FlowPane>
+            <FlowPane fx:id="Container" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" rowValignment="TOP" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
+               <opaqueInsets>
+                  <Insets left="20.0" />
+               </opaqueInsets></FlowPane>
          </content>
+         <BorderPane.margin>
+            <Insets left="50.0" top="60.0" />
+         </BorderPane.margin>
       </ScrollPane>
    </center>
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      <Insets left="20.0" />
    </padding>
 </BorderPane>

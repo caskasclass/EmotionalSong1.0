@@ -9,7 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -44,7 +43,7 @@
                               <Insets bottom="10.0" left="25.0" />
                            </padding>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#showMyPlaylists" styleClass="buttonHome" text="Vedi tutte " />
+                              <Button fx:id="myPlayButt" mnemonicParsing="false" onAction="#showMyPlaylists" styleClass="buttonHome" text="Vedi tutte " />
                            </children>
                         </HBox>
                      </children>
@@ -105,14 +104,18 @@
                               </Label>
                            </children>
                         </HBox>
-                        <FlowPane fx:id="notMyPlaylistContainer" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
-                           <padding>
-                              <Insets bottom="30.0" left="20.0" right="30.0" top="30.0" />
-                           </padding>
-                        </FlowPane>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="316.0" minWidth="998.0" vbarPolicy="NEVER">
+                           <content>
+                              <HBox fx:id="notMyPlaylistContainer" alignment="CENTER" style="-fx-background-color: rgba(0,0,0,0);">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </HBox>
+                           </content>
+                        </ScrollPane>
                         <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: rgba(0,0,0,0);">
                            <children>
-                              <Button mnemonicParsing="false" styleClass="buttonHome" text="Vedi tutte" />
+                              <Button mnemonicParsing="false" onAction="#showPlaylists" styleClass="buttonHome" text="Vedi tutte" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="25.0" />
