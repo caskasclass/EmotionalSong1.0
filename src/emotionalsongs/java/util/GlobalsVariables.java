@@ -13,6 +13,7 @@ public class GlobalsVariables {
 // queste vanno azzerate quando si esce dall'app + quadno si crea (si pigia il bottone Salva) la playlist 
     public static ArrayList<Canzone> canzoni = new ArrayList<Canzone>();
     public static TableView<Canzone> addedSongs;
+    
     public static String  PlaylistName ="";
     public static String  PlaylistImg ="";
 
