@@ -9,7 +9,7 @@
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="551.0" styleClass="invisibleScrollPane" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="MyplaylistContainer" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
+            <FlowPane fx:id="Container" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
                
             </FlowPane>
          </content>

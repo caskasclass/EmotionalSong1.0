@@ -16,63 +16,67 @@ import emotionalsongs.java.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
-
-
 
 public class playlistWindController implements Initializable {
 
     User u = null;
     private boolean lemie;
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
+    ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
     ArrayList<Playlist> others = new ArrayList<Playlist>();
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
 
     @FXML
-    private FlowPane MyplaylistContainer;
+    private FlowPane Container;
 
-    @FXML
-    private FlowPane OtherplaylistContainer;
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
-        if(u!= null){
-            filterPlaylist();
-        }
         try {
-            if(lemie)
-            {
-                createHomePlaylistUI();
-            }else
-            {
-                createHomeOthersPlaylistUI();
+            if(u != null) {
+                filterPlaylist();
+                if (lemie) {
+                    createHomePlaylistUI();
+                } else {
+                    createHomeOthersPlaylistUI();
+                }
+            } else {
+                PlaylistUI();
             }
-            
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
-    
+
     }
+
     public void setUser(User u) {
         this.u = u;
     }
-    public void setLemie(boolean x)
-    {
+
+    public void setLemie(boolean x) {
         lemie = x;
     }
+
+    private void PlaylistUI() throws IOException {
+        for (Playlist playlist : pl) {
+            FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+            PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+            playlistBoxController.setPlaylist(playlist);
+            loader.setController(playlistBoxController);
+            Parent ui = loader.load();
+            Container.getChildren().add(ui);
+
+        }
+    }
+
     private void createHomePlaylistUI() throws IOException {
 
         System.out.println("\n\nFunzia bene");
-        MyplaylistContainer.setMinSize(GlobalsVariables.left_side_bpane.getHeight(), 825);
+        Container.setMinSize(GlobalsVariables.left_side_bpane.getHeight(), 825);
         ArrayList<Playlist> playlists = mine;
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
@@ -81,8 +85,8 @@ public class playlistWindController implements Initializable {
             loader.setController(addPlaylistBoxController);
             Parent ui = loader.load();
             ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-            MyplaylistContainer.getChildren().add(ui);
-            
+            Container.getChildren().add(ui);
+
         } else {
             for (Playlist playlist : mine) {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
@@ -90,12 +94,13 @@ public class playlistWindController implements Initializable {
                 playlistBoxController.setPlaylist(playlist);
                 loader.setController(playlistBoxController);
                 Parent ui = loader.load();
-                MyplaylistContainer.getChildren().add(ui);
+                Container.getChildren().add(ui);
 
             }
         }
 
     }
+
     private void createHomeOthersPlaylistUI() throws IOException {
         System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = others;
@@ -103,7 +108,7 @@ public class playlistWindController implements Initializable {
             for (int i = 0; i < 6; i++) {
                 BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
                 ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-                OtherplaylistContainer.getChildren().add(ui);
+                Container.getChildren().add(ui);
             }
 
         } else {
@@ -113,14 +118,13 @@ public class playlistWindController implements Initializable {
                 playlistBoxController.setPlaylist(playlist);
                 loader.setController(playlistBoxController);
                 Parent ui = loader.load();
-                OtherplaylistContainer.getChildren().add(ui);
+                Container.getChildren().add(ui);
             }
         }
 
     }
 
     private void filterPlaylist() {
-        ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
         for (Playlist playlist : pl) {
             if (playlist.getOwner().equals(u.getId())) {
                 mine.add(playlist);
@@ -132,6 +136,4 @@ public class playlistWindController implements Initializable {
 
     }
 
-
-    
 }

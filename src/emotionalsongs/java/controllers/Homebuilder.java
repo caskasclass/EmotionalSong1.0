@@ -207,10 +207,13 @@ public class Homebuilder implements Initializable {
     }
     public void playWind(MouseEvent e) throws IOException {
         System.out.println("funzia");
-        FXMLLoader load = obj.getComponentsLoader("otherplaylist");
+        FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        playlistWindController.setUser(logged);
-         playlistWindController.setLemie(false);
+        if(logged!=null)
+        {
+             playlistWindController.setUser(logged);
+        }
+        playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();
         Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
