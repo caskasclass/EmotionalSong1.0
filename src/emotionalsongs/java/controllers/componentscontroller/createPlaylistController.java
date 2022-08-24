@@ -45,6 +45,8 @@ public class createPlaylistController implements Initializable {
     @FXML
     private Button createPlaylist;
 
+    
+
     @FXML
     private TableColumn<Canzone, Void> addbutton;
 
@@ -169,7 +171,9 @@ public class createPlaylistController implements Initializable {
         backToHome();
 
     }
-    private void backToHome()
+
+    
+    public void backToHome()
     {
         FXMLLoader loader = obj.getComponentsLoader("home");
         homeComponentController homeComponentController = new homeComponentController();

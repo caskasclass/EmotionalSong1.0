@@ -176,13 +176,23 @@ public class homeComponentController implements Initializable {
 
     }
     private void PlaylistUI() throws IOException {
-        for (Playlist playlist : pl) {
-            FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-            PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-            playlistBoxController.setPlaylist(playlist);
-            loader.setController(playlistBoxController);
-            Parent ui = loader.load();
-            notMyPlaylistContainer.getChildren().add(ui);
+        ArrayList<Playlist> playlists = pl;
+        if (playlists == null || playlists.isEmpty()) {
+            for (int i = 0; i < 6; i++) {
+                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
+                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
+                notMyPlaylistContainer.getChildren().add(ui);
+            }
+        }else{
+            for (Playlist playlist : pl) {
+                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                playlistBoxController.setPlaylist(playlist);
+                loader.setController(playlistBoxController);
+                Parent ui = loader.load();
+                notMyPlaylistContainer.getChildren().add(ui);
+
+            }
 
         }
     }
