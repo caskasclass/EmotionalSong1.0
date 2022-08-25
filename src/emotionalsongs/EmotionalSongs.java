@@ -1,6 +1,5 @@
 package emotionalsongs;
 
-import java.io.IOException;
 import java.text.ParseException;
 
 import emotionalsongs.java.Managers.StyleManager;
@@ -29,11 +28,4 @@ public class EmotionalSongs extends Application {
 
     }
 
-    public void changeScene(String fxml) throws IOException {
-        Stage stg = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxml));
-        Scene scene = new Scene(root);
-        stg.setScene(scene);
-        stg.show();
-    }
 }
