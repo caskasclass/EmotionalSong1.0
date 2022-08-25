@@ -28,6 +28,7 @@
 .repo .corner {
     -fx-background-color: rgba(0,0,0,0);
     background-color: rgba(0,0,0,0);
+
 }
 
 .repo .column-header{

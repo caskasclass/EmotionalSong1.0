@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
 public class Playlist implements Serializable {
 
     private String idPlaylist;
@@ -13,7 +12,7 @@ public class Playlist implements Serializable {
     private String nomePlaylist;
     private ArrayList<Canzone> listaCanzoni;
 
-    public Playlist(String np, String img, String userId, ArrayList<Canzone>idCanzoni) {
+    public Playlist(String np, String img, String userId, ArrayList<Canzone> idCanzoni) {
         idUser = userId;
         png = img;
         nomePlaylist = np;
@@ -21,13 +20,11 @@ public class Playlist implements Serializable {
         idPlaylist = UUID.randomUUID().toString();
     }
 
-    public String getIDPlaylist()
-    {
+    public String getIDPlaylist() {
         return idPlaylist;
     }
 
-
-    public String  getPng(){
+    public String getPng() {
         return png;
     }
 
@@ -45,6 +42,17 @@ public class Playlist implements Serializable {
 
     public ArrayList<Canzone> getCanzoni() {
         return listaCanzoni;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        Playlist p = (Playlist) o;
+        if(this.idPlaylist.equals(p.idPlaylist)&&this.idUser.equals(p.idUser)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

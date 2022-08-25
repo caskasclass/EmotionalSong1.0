@@ -22,14 +22,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -44,6 +41,9 @@ public class homeComponentController implements Initializable {
 
     @FXML
     private Button myPlayButt;
+
+    @FXML
+    private Button otherPlaylsitButton;
 
     @FXML
     private TableView<Canzone> Tabella;
@@ -71,6 +71,8 @@ public class homeComponentController implements Initializable {
 
     User u = null;
 
+    private Label avviso = new Label();
+
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
@@ -81,28 +83,23 @@ public class homeComponentController implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         Platform.runLater(() -> {
-            if (u != null) {
-                filterPlaylist();
-            }
-
             try {
-                if (u == null) {
+                createHomeSongUI();
+                if (u != null) {
+                    filterPlaylist();
+                    createHomePlaylistUI();
+                    createHomeOthersPlaylistUI();
+                } else {
                     Label avviso = new Label("Per usufruire di altre funzione bisogna effetuare il login");
                     avviso.setFont(new Font("Proxima Nova", 25));
                     UserPlaylistContainer.getChildren().add(avviso);
                     myPlayButt.setDisable(true);
-                    PlaylistUI();
-                    
-
-
-                } else {
-                    createHomePlaylistUI();
+                    createHomeOthersPlaylistUI();
                 }
-                createHomeSongUI();
-                createHomeOthersPlaylistUI();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+
         });
 
     }
@@ -124,14 +121,13 @@ public class homeComponentController implements Initializable {
             addPlaylistBoxController.setUser(u);
             loader.setController(addPlaylistBoxController);
             Parent ui = loader.load();
-            ui.getStylesheets().add(style.getStyle("PlaylistBox"));
             UserPlaylistContainer.getChildren().add(ui);
-            
         } else {
             for (Playlist playlist : mine) {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
                 PlaylistBoxController playlistBoxController = new PlaylistBoxController();
                 playlistBoxController.setPlaylist(playlist);
+                playlistBoxController.setUser(u);
                 loader.setController(playlistBoxController);
                 Parent ui = loader.load();
                 UserPlaylistContainer.getChildren().add(ui);
@@ -155,57 +151,78 @@ public class homeComponentController implements Initializable {
         notMyPlaylistContainer.setAlignment(Pos.CENTER_LEFT);
         notMyPlaylistContainer.setSpacing(20);
         System.out.println("\n\nFunzia bene");
-        ArrayList<Playlist> playlists = others;
-        if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 6; i++) {
-                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
-                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-                notMyPlaylistContainer.getChildren().add(ui);
-            }
+        if (pl.isEmpty() || pl == null) {
+                notMyPlaylistContainer.setAlignment(Pos.CENTER);
+                avviso.setText("Nessuna Playlist presete");
+                avviso.setFont(new Font("Proxima Nova", 25));
+                notMyPlaylistContainer.getChildren().add(avviso);
+                otherPlaylsitButton.setDisable(true);
 
-        } else {
-            for (Playlist playlist : playlists) {
-                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-                playlistBoxController.setPlaylist(playlist);
-                loader.setController(playlistBoxController);
-                Parent ui = loader.load();
-                notMyPlaylistContainer.getChildren().add(ui);
+        } else{
+            if (u != null) {
+                if (others.isEmpty() || others == null) {
+                    notMyPlaylistContainer.setAlignment(Pos.CENTER);
+                    avviso = new Label("Nessuna Playlist presete");
+                    avviso.setFont(new Font("Proxima Nova", 25));
+                    notMyPlaylistContainer.getChildren().add(avviso);
+                    otherPlaylsitButton.setDisable(true);
+                } else {
+                    for (Playlist playlist : others) {
+                        FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                        PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                        playlistBoxController.setPlaylist(playlist);
+                        playlistBoxController.setUser(u);
+                        loader.setController(playlistBoxController);
+                        Parent ui = loader.load();
+                        notMyPlaylistContainer.getChildren().add(ui);
+                    }
+                }
+            } else {
+                for (Playlist playlist : pl) {
+                    FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                    PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                    playlistBoxController.setPlaylist(playlist);
+                    loader.setController(playlistBoxController);
+                    Parent ui = loader.load();
+                    notMyPlaylistContainer.getChildren().add(ui);
+                }
             }
-        }
-
-    }
-    private void PlaylistUI() throws IOException {
-        ArrayList<Playlist> playlists = pl;
-        if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 6; i++) {
-                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
-                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-                notMyPlaylistContainer.getChildren().add(ui);
-            }
-        }else{
-            for (Playlist playlist : pl) {
-                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-                playlistBoxController.setPlaylist(playlist);
-                loader.setController(playlistBoxController);
-                Parent ui = loader.load();
-                notMyPlaylistContainer.getChildren().add(ui);
-
-            }
-
+    
         }
     }
+
+    /*
+     * private void PlaylistUI() throws IOException {
+     * ArrayList<Playlist> playlists = pl;
+     * if (playlists == null || playlists.isEmpty()) {
+     * for (int i = 0; i < 6; i++) {
+     * BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
+     * ui.getStylesheets().add(style.getStyle("PlaylistBox"));
+     * notMyPlaylistContainer.getChildren().add(ui);
+     * }
+     * } else {
+     * for (Playlist playlist : pl) {
+     * FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+     * PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+     * playlistBoxController.setPlaylist(playlist);
+     * loader.setController(playlistBoxController);
+     * Parent ui = loader.load();
+     * notMyPlaylistContainer.getChildren().add(ui);
+     * 
+     * }
+     * 
+     * }
+     * }
+     */
 
     public void showSongs(ActionEvent e) throws IOException {
         System.out.println("funzia");
         Pane ui = obj.getPane("songs");
-        BorderPane p = (BorderPane) getParent("left_side_bpane", SongsContainer);
-        p.setCenter(ui);
+        GlobalsVariables.left_side_bpane.setCenter(ui);
 
     }
 
-    public void showMyPlaylists(ActionEvent e) throws IOException{
+    public void showMyPlaylists(ActionEvent e) throws IOException {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
@@ -213,46 +230,26 @@ public class homeComponentController implements Initializable {
         playlistWindController.setLemie(true);
         load.setController(playlistWindController);
         Parent ui = load.load();
-        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         GlobalsVariables.left_side_bpane.setCenter(ui);
 
     }
 
-    public void showPlaylists(ActionEvent e) throws IOException{
+    public void showPlaylists(ActionEvent e) throws IOException {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        if(u!=null)
-        {
-             playlistWindController.setUser(u);
+        if (u != null) {
+            playlistWindController.setUser(u);
         }
         playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();
-        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         GlobalsVariables.left_side_bpane.setCenter(ui);
 
-    }
-   
-
-    // porco due quesat funzione funziona // ora a rivedere la funzia ... che merda,
-    // pero funziona
-    // da cambiare !!! Ora che ce la variabile Gloable risalire a left_side_bpane è
-    // una cabbata
-    private Parent getParent(String target_Id, Node n) {
-        Parent p;
-        p = n.getParent();
-        do {
-            p = p.getParent();
-            System.out.print(p.getId());
-            if (p.getId() == null) {
-                System.out.print("null");
-                continue;
-            }
-        } while (p.getId() == null || !p.getId().equals(target_Id));
-        return p;
     }
 
     private void filterPlaylist() {

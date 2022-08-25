@@ -6,20 +6,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.ShowPlaylistController;
-import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,7 +29,7 @@ public class PlaylistBoxController implements Initializable{
     @FXML
     private ImageView PlaylistImageTag;
 
-    
+    private User visitor =null;
     private Playlist playlist; 
     private FxmlLoader obj= new FxmlLoader();
 
@@ -48,6 +44,10 @@ public class PlaylistBoxController implements Initializable{
     public void setPlaylist(Playlist p)
     {
         playlist =p;
+    }
+    public void setUser(User u)
+    {
+        visitor =u;
     }
     public String getUsername(String id){
         String username="";
@@ -67,15 +67,12 @@ public class PlaylistBoxController implements Initializable{
        FXMLLoader load = obj.getComponentsLoader("ShowPlaylist");
        ShowPlaylistController showPlaylistController = new ShowPlaylistController();
        showPlaylistController.getPlaylist(playlist);
+       showPlaylistController.setUser(visitor);
        load.setController(showPlaylistController);
        Parent ui = load.load();
        Parent currentWind =(Parent) GlobalsVariables.left_side_bpane.getCenter();
        GlobalsVariables.left_side_bpane.getChildren().remove(currentWind);
        GlobalsVariables.left_side_bpane.setCenter(ui);
-
-
-       
-
        
     }
     

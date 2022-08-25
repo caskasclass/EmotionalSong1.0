@@ -180,6 +180,7 @@ public class Homebuilder implements Initializable {
      *****************************************************/
 
     public void backHome(MouseEvent e) throws IOException {
+        GlobalsVariables.cleardeleteFromPlaylistSessio();
         System.out.println("funzia");
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
