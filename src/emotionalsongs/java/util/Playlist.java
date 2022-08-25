@@ -11,9 +11,9 @@ public class Playlist implements Serializable {
     private String idUser;
     private String png;
     private String nomePlaylist;
-    private ArrayList<String> listaCanzoni;
+    private ArrayList<Canzone> listaCanzoni;
 
-    public Playlist(String np, String img, String userId, ArrayList<String>idCanzoni) {
+    public Playlist(String np, String img, String userId, ArrayList<Canzone>idCanzoni) {
         idUser = userId;
         png = img;
         nomePlaylist = np;
@@ -31,7 +31,7 @@ public class Playlist implements Serializable {
         return png;
     }
 
-    public void addCanzone(String idCanzone) {
+    public void addCanzone(Canzone idCanzone) {
         listaCanzoni.add(idCanzone);
     }
 
@@ -43,7 +43,7 @@ public class Playlist implements Serializable {
         return idUser;
     }
 
-    public ArrayList<String> getCanzoni() {
+    public ArrayList<Canzone> getCanzoni() {
         return listaCanzoni;
     }
 

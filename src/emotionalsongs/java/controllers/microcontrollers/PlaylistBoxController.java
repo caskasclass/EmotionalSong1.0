@@ -6,16 +6,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.ShowPlaylistController;
+import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +33,7 @@ public class PlaylistBoxController implements Initializable{
     @FXML
     private ImageView PlaylistImageTag;
 
-
+    
     private Playlist playlist; 
     private FxmlLoader obj= new FxmlLoader();
 
@@ -45,7 +49,7 @@ public class PlaylistBoxController implements Initializable{
     {
         playlist =p;
     }
-    private String getUsername(String id){
+    public String getUsername(String id){
         String username="";
         ArrayList<User> users = UserManager.readUsers();
         for (User user : users) {
@@ -74,6 +78,7 @@ public class PlaylistBoxController implements Initializable{
 
        
     }
-
+    
+    
     
 }

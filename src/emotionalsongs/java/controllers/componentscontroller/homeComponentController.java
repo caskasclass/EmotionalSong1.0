@@ -24,6 +24,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,7 +40,10 @@ public class homeComponentController implements Initializable {
     @FXML
     private HBox SongsContainer;
     @FXML
-    private FlowPane notMyPlaylistContainer;
+    private HBox notMyPlaylistContainer;
+
+    @FXML
+    private Button myPlayButt;
 
     @FXML
     private TableView<Canzone> Tabella;
@@ -71,6 +75,7 @@ public class homeComponentController implements Initializable {
     FxmlLoader obj = new FxmlLoader();
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
     ArrayList<Playlist> others = new ArrayList<Playlist>();
+    ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
 
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
@@ -85,6 +90,10 @@ public class homeComponentController implements Initializable {
                     Label avviso = new Label("Per usufruire di altre funzione bisogna effetuare il login");
                     avviso.setFont(new Font("Proxima Nova", 25));
                     UserPlaylistContainer.getChildren().add(avviso);
+                    myPlayButt.setDisable(true);
+                    PlaylistUI();
+                    
+
 
                 } else {
                     createHomePlaylistUI();
@@ -142,6 +151,9 @@ public class homeComponentController implements Initializable {
     // ********************************************************************************************//
 
     private void createHomeOthersPlaylistUI() throws IOException {
+        notMyPlaylistContainer.setPadding(new Insets(15));
+        notMyPlaylistContainer.setAlignment(Pos.CENTER_LEFT);
+        notMyPlaylistContainer.setSpacing(20);
         System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = others;
         if (playlists == null || playlists.isEmpty()) {
@@ -163,6 +175,27 @@ public class homeComponentController implements Initializable {
         }
 
     }
+    private void PlaylistUI() throws IOException {
+        ArrayList<Playlist> playlists = pl;
+        if (playlists == null || playlists.isEmpty()) {
+            for (int i = 0; i < 6; i++) {
+                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
+                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
+                notMyPlaylistContainer.getChildren().add(ui);
+            }
+        }else{
+            for (Playlist playlist : pl) {
+                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                playlistBoxController.setPlaylist(playlist);
+                loader.setController(playlistBoxController);
+                Parent ui = loader.load();
+                notMyPlaylistContainer.getChildren().add(ui);
+
+            }
+
+        }
+    }
 
     public void showSongs(ActionEvent e) throws IOException {
         System.out.println("funzia");
@@ -177,6 +210,24 @@ public class homeComponentController implements Initializable {
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setUser(u);
+        playlistWindController.setLemie(true);
+        load.setController(playlistWindController);
+        Parent ui = load.load();
+        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
+        GlobalsVariables.left_side_bpane.setCenter(ui);
+
+    }
+
+    public void showPlaylists(ActionEvent e) throws IOException{
+        System.out.println("funzia");
+        FXMLLoader load = obj.getComponentsLoader("playlist");
+        playlistWindController playlistWindController = new playlistWindController();
+        if(u!=null)
+        {
+             playlistWindController.setUser(u);
+        }
+        playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();
         Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
