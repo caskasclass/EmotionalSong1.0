@@ -32,7 +32,7 @@
                                     <Image url="@../images/edit.png" />
                                  </image>
                                  <cursor>
-                                    <Cursor fx:constant="HAND" />
+                                    <Cursor fx:constant="DEFAULT" />
                                  </cursor>
                               </ImageView>
                            </children>
@@ -70,25 +70,34 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT">
+                  <HBox fx:id="deleteButtContainer">
                      <children>
                         <Button fx:id="deleteButt" mnemonicParsing="false" onAction="#deletePlaylist" styleClass="buttonHome" text="Delete">
                            <HBox.margin>
                               <Insets right="90.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="Proxima Nova" size="18.0" />
+                           </font>
                         </Button>
-                     </children></HBox>
+                     </children>
+                     <padding>
+                        <Insets left="75.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></HBox>
                   <HBox alignment="CENTER" fillHeight="false">
                      <children>
-                        <TableView fx:id="PlaylistSongs" fixedCellSize="15.0" styleClass="repo">
+                        <TableView fx:id="PlaylistSongs" styleClass="repo">
                            <columns>
                               <TableColumn fx:id="index" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="songindex" text="#" />
-                              <TableColumn fx:id="tit" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" styleClass="titolo" text="TITOLO" />
-                              <TableColumn fx:id="album1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" styleClass="album" text="ALBUM" />
-                              <TableColumn fx:id="autore1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="autore" text="AUTORE" />
-                              <TableColumn fx:id="anno1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="anno" text="ANNO" />
-                              <TableColumn fx:id="durata1" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" styleClass="durata" text="DURATA" />
-                              <TableColumn fx:id="optionbutton" maxWidth="120.0" minWidth="120.0" prefWidth="60.0" resizable="false" styleClass="optionbutton" />
+                              <TableColumn fx:id="titolo" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" styleClass="titolo" text="TITOLO" />
+                              <TableColumn fx:id="album" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" styleClass="album" text="ALBUM" />
+                              <TableColumn fx:id="autore" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="autore" text="AUTORE" />
+                              <TableColumn fx:id="anno" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="anno" text="ANNO" />
+                              <TableColumn fx:id="durata" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" styleClass="durata" text="DURATA" />
+                              <TableColumn fx:id="deletebutton" maxWidth="120.0" minWidth="120.0" prefWidth="60.0" resizable="false" styleClass="optionbutton" />
                            </columns>
                            <opaqueInsets>
                               <Insets />

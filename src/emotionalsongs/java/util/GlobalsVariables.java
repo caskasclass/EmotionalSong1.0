@@ -1,6 +1,7 @@
 package emotionalsongs.java.util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
@@ -13,11 +14,17 @@ public class GlobalsVariables {
 // queste vanno azzerate quando si esce dall'app + quadno si crea (si pigia il bottone Salva) la playlist 
     public static ArrayList<Canzone> canzoni = new ArrayList<Canzone>();
     public static TableView<Canzone> addedSongs;
+    public static List<Canzone> playlsit;
+    public static Playlist plist;
     
     public static String  PlaylistName ="";
     public static String  PlaylistImg ="";
 
 
+    public static void cleardeleteFromPlaylistSessio()
+    {
+       playlsit.clear();
+    }
     public static void clearSession(){
         canzoni.clear();
         PlaylistImg = "";

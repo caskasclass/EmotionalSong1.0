@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.PlaylistManager;
-import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
+import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
+import emotionalsongs.java.util.SongTableView;
 import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +40,29 @@ public class ShowPlaylistController  implements Initializable{
 
     @FXML
     private TableView<Canzone> PlaylistSongs;
+    @FXML
+    private TableColumn<Canzone, Void> deletebutton;
+
+    @FXML
+    private TableColumn<Canzone, String> album;
+
+    @FXML
+    private TableColumn<Canzone, Integer> anno;
+
+    @FXML
+    private TableColumn<Canzone, String> autore;
+
+    @FXML
+    private TableColumn<Canzone, Double> durata;
+
+    @FXML
+    private TableColumn<Canzone, Void> index;
+
+    @FXML
+    private TableColumn<Canzone, String> titolo;
+
+    @FXML
+    private HBox deleteButtContainer;
 
     @FXML
     private Label owner;
@@ -53,24 +78,41 @@ public class ShowPlaylistController  implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(()->{
+            
+            if(u == null || !(current.getOwner().equals(u.getId())))
+            {
+                deleteButtContainer.getChildren().remove(deleteButt);
+            }
+            setPlaylist();
+            
+            GlobalsVariables.playlsit = PlaylistSongs.getItems();
+            GlobalsVariables.plist = current;
+        });
         
-        setPlaylist();
+        
     }
 
     public void getPlaylist(Playlist p){
         current = p;
     }
 
-    public void setPlaylist(){
+    private void setPlaylist(){
 
         String path = getClass().getResource(("../../../resources/images/"+current.getPng())).toExternalForm();
         playlistImage.setImage(new Image(path)); 
-        PlayListName.setText(current.getNomePlaylist());
-        PlaylistBoxController playlistBoxController= new PlaylistBoxController();
-        playlistBoxController.setPlaylist(current);
-        owner.setText(playlistBoxController.getUsername(current.getOwner()));
+        PlayListName.setText(current.getNomePlaylist()); 
+        owner.setText(getUsername());
+
+        SongTableView table  = new SongTableView(PlaylistSongs, album, index, anno, autore, durata, titolo);
         ObservableList<Canzone> list= FXCollections.observableArrayList(current.getCanzoni());
-        PlaylistSongs.setItems(list);
+        table.initializePlaylsitList(list);
+        if(u == null || !(current.getOwner().equals(u.getId()))){
+            table.addButton(deletebutton);
+        }else{
+            table.deleteFromPlaylist(deletebutton);
+        }
+     
         
         
     }
@@ -81,12 +123,15 @@ public class ShowPlaylistController  implements Initializable{
 
     public void deletePlaylist(ActionEvent e){
         ArrayList<Playlist> array = PlaylistManager.readPlaylist();
+        // non trova la playlist 
         array.remove(current);
         PlaylistManager.getPlaylist(array);
+        GlobalsVariables.cleardeleteFromPlaylistSessio();
         backToHome();
        
     }
 
+    // lo dabbiamo fare globale
     public void backToHome(){
         FXMLLoader loader = obj.getComponentsLoader("home");
         homeComponentController homeComponentController = new homeComponentController();
@@ -98,5 +143,17 @@ public class ShowPlaylistController  implements Initializable{
         } catch (Exception e) {
            e.printStackTrace();
         }
+    }
+    private String getUsername()
+    {
+        String username="";
+        ArrayList<User> users = UserManager.readUsers();
+        for (User user : users) {
+            if(user.getId().equals(current.getOwner())){
+                username = user.getUsername();
+                break;
+            }
+        }
+        return username;
     }
 }

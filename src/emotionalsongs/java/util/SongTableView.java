@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import emotionalsongs.java.Managers.CanzoniManager;
+import emotionalsongs.java.Managers.PlaylistManager;
 import emotionalsongs.java.controllers.componentscontroller.WindowCanzoneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -139,6 +140,62 @@ public class SongTableView {
 
     }
 
+    public void initializePlaylsitList(ObservableList<Canzone> track) {
+
+        // ******************* questa funzione rende la riga cliccabile
+        // ***************************************//
+        repository.setRowFactory(tableView -> {
+            TableRow<Canzone> row = new TableRow<Canzone>();
+            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+                        if (mouseEvent.getClickCount() == 2) {
+                            Canzone c = tableView.getItems().get(row.getIndex());
+                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
+                            SendData(c);
+                        }
+                    }
+
+                }
+            });
+            return row;
+
+        });
+        // ****************************************************************************************************//
+
+        // ********************* questa serve sempre e setta l'index !
+        // ************************//
+        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
+            @Override
+            public void updateIndex(int index) {
+                super.updateIndex(index);
+                if (isEmpty() || index < 0) {
+                    setText(null);
+                } else {
+                    setText(Integer.toString((index + 1)));
+                }
+            }
+        });
+        // ************************************************************************************//
+
+        // ***************** queste settano le collone principali della canzone
+        // ****************//
+        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
+        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
+        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
+        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
+        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
+        // *************************************************************************************//
+
+        // ******************************** per riempire la playlist
+        // **************************//
+        repository.setItems(track);
+        // ************************************************************************************//
+
+    }
+
     public void initializeAdded() {
 
        
@@ -247,6 +304,54 @@ public class SongTableView {
                         mi1.setOnAction((ActionEvent event) -> {
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             System.out.println("selectedData: " + canzone.getTitolo());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        optionbutton.setCellFactory(cellFactory);
+
+    }
+    public void deleteFromPlaylist(TableColumn<Canzone, Void> deletebutton) {
+        this.optionbutton = deletebutton;
+        Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
+            @Override
+            public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
+                final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
+
+                    MenuItem mi1 = new MenuItem("Rimuovi dalla playlist");
+                    MenuItem mi3 = new MenuItem("Altro ...");
+
+                    private final MenuButton btn = new MenuButton("•••", null, mi1,mi3);
+
+                    {
+                        mi1.setOnAction((ActionEvent event) -> {
+                            Canzone canzone = getTableView().getItems().get(getIndex());
+                            //da sistemare in un modo carino 
+                            ///////////////////////////////////////////////////////////////////////
+                            ObservableList<Canzone> list =  repository.getItems();
+                            list.remove(canzone);
+                            repository.setItems(list);
+                            repository.refresh();//grafica per eliminare la canzone dalla playlist
+                            ///////////////////////////////////////////////////////////////////////
+                            ArrayList<Playlist> tmp = PlaylistManager.readPlaylist();
+                            tmp.remove(tmp.indexOf(GlobalsVariables.plist));
+                            GlobalsVariables.plist.getCanzoni().remove(canzone);
+                            tmp.add(GlobalsVariables.plist);
+                            PlaylistManager.getPlaylist(tmp);
+                            System.out.println("Hai eliminato : " + canzone.getTitolo());
                         });
                     }
 

@@ -115,7 +115,7 @@
                         </ScrollPane>
                         <HBox nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: rgba(0,0,0,0);">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#showPlaylists" styleClass="buttonHome" text="Vedi tutte" />
+                              <Button fx:id="otherPlaylsitButton" mnemonicParsing="false" onAction="#showPlaylists" styleClass="buttonHome" text="Vedi tutte" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="25.0" />
