@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -21,12 +19,12 @@
                <children>
                   <VBox>
                      <children>
-                        <Label text="Album">
+                        <Label text="Singolo">
                            <font>
                               <Font name="Proxima Nova" size="25.0" />
                            </font>
                         </Label>
-                        <Label text="AlbumEffettivo">
+                        <Label fx:id="titolo" text="titolo">
                            <font>
                               <Font name="Proxima Nova" size="50.0" />
                            </font>
@@ -35,12 +33,12 @@
                   </VBox>
                   <HBox spacing="25.0">
                      <children>
-                        <Label text="AutoreEffettivo + Anno + Durata">
+                        <Label fx:id="Info" text="AutoreEffettivo + Anno + Durata">
                            <font>
                               <Font name="Proxima Nova" size="30.0" />
                            </font>
                         </Label>
-                        <Label text="Valutazioni : xxx">
+                        <Label fx:id="Data" text="Valutazioni : xxx">
                            <font>
                               <Font name="Proxima Nova" size="30.0" />
                            </font>
@@ -66,118 +64,33 @@
          <content>
             <VBox alignment="TOP_CENTER" styleClass="ratePane">
                <children>
-                  <HBox alignment="CENTER">
+                  <VBox>
                      <children>
-                        <Label text="Valuta la canzone">
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Valuta la canzone">
+                                 <font>
+                                    <Font name="Proxima Nova" size="38.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label styleClass="label_other" stylesheets="@../css/registration.css" text="Inserisci un valore da 1 (per niente) a 5 (molto)">
                            <font>
-                              <Font name="Proxima Nova" size="38.0" />
+                              <Font size="24.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets bottom="25.0" top="5.0" />
-                           </HBox.margin>
+                           <VBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
-                  </HBox>
-                  <FlowPane alignment="CENTER" cacheShape="false" hgap="25.0" maxHeight="500.0" vgap="20.0">
-                     <children>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Amazement">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children></VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Solemnity">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Tenderness">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Nostalgia">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Calmness">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Power">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Joy">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Tension">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fillWidth="false" prefHeight="225.0" prefWidth="125.0" styleClass="vbox">
-                           <children>
-                              <VBox prefHeight="180.0" prefWidth="95.0" styleClass="pile" />
-                              <Label text="Sadness">
-                                 <font>
-                                    <Font name="Proxima Nova" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </children>
+                  </VBox>
+                  <FlowPane fx:id="emotionsContainer" alignment="CENTER" cacheShape="false" hgap="15.0" maxHeight="500.0" vgap="10.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </FlowPane>
-                  <Button mnemonicParsing="false" text="Salva">
+                  <Button fx:id="saveButt" mnemonicParsing="false" onAction="#setEmotionsValue" text="Salva">
                      <VBox.margin>
                         <Insets bottom="25.0" top="25.0" />
                      </VBox.margin>
@@ -187,177 +100,7 @@
                   </Button>
                   <VBox alignment="CENTER" styleClass="prospecticbox">
                      <children>
-                        <Label text="Prospettico delle Emozioni ">
-                           <font>
-                              <Font name="Proxima Nova" size="38.0" />
-                           </font>
-                        </Label>
-                        <HBox fx:id="prospetticoBar" maxHeight="50.0" maxWidth="600.0" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="600.0">
-                           <VBox.margin>
-                              <Insets bottom="25.0" top="25.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <GridPane alignment="CENTER" maxWidth="750.0" prefWidth="750.0">
-                          <columnConstraints>
-                            <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="100.0" valignment="CENTER" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <VBox.margin>
-                              <Insets bottom="150.0" />
-                           </VBox.margin>
-                           <children>
-                              <HBox alignment="CENTER_LEFT">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Amazement">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Solemnity">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="50.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Nostalgia">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Calmness">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="50.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Tenderness">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="70.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Power">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="70.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.rowIndex="2">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Joy">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Tension">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="50.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                 <children>
-                                    <HBox maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="emotionColor">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </HBox>
-                                    <Label text="Sadness">
-                                       <font>
-                                          <Font name="Proxima Nova" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="70.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                           </children>
-                        </GridPane>
+                        <PieChart fx:id="pieEmotions" />
                      </children>
                      <padding>
                         <Insets top="20.0" />
@@ -371,7 +114,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Titolo Canzone">
+            <Label fx:id="Album" text="Album">
                <font>
                   <Font name="Proxima Nova" size="50.0" />
                </font>

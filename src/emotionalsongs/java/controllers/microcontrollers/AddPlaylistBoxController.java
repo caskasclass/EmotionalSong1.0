@@ -14,21 +14,16 @@ import javafx.scene.input.MouseEvent;
 public class AddPlaylistBoxController {
 
     FxmlLoader obj = new FxmlLoader();
-    User u = null;
+    User u = GlobalsVariables.currentUser;
 
     public void CreatePlaylistMethod(MouseEvent e) throws IOException{
         Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         FXMLLoader loader = obj.getComponentsLoader("createPlaylist");
         createPlaylistController createPlaylistController = new createPlaylistController();
-        createPlaylistController.setUser(u);
         loader.setController(createPlaylistController);
         Parent ui = loader.load();
         GlobalsVariables.left_side_bpane.setCenter(ui);
     }
 
-    public void setUser(User u)
-    {
-        this.u = u;
-    }
 }

@@ -69,7 +69,7 @@ public class homeComponentController implements Initializable {
     @FXML
     private TableColumn<Canzone, String> titolo;
 
-    User u = null;
+    User u = GlobalsVariables.currentUser;
 
     private Label avviso = new Label();
 
@@ -104,9 +104,6 @@ public class homeComponentController implements Initializable {
 
     }
 
-    public void setUser(User u) {
-        this.u = u;
-    }
 
     private void createHomePlaylistUI() throws IOException {
         UserPlaylistContainer.setPadding(new Insets(15));
@@ -118,7 +115,6 @@ public class homeComponentController implements Initializable {
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
             AddPlaylistBoxController addPlaylistBoxController = new AddPlaylistBoxController();
-            addPlaylistBoxController.setUser(u);
             loader.setController(addPlaylistBoxController);
             Parent ui = loader.load();
             UserPlaylistContainer.getChildren().add(ui);
@@ -127,7 +123,6 @@ public class homeComponentController implements Initializable {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
                 PlaylistBoxController playlistBoxController = new PlaylistBoxController();
                 playlistBoxController.setPlaylist(playlist);
-                playlistBoxController.setUser(u);
                 loader.setController(playlistBoxController);
                 Parent ui = loader.load();
                 UserPlaylistContainer.getChildren().add(ui);
@@ -171,7 +166,6 @@ public class homeComponentController implements Initializable {
                         FXMLLoader loader = obj.getLoader("PlaylistBoxView");
                         PlaylistBoxController playlistBoxController = new PlaylistBoxController();
                         playlistBoxController.setPlaylist(playlist);
-                        playlistBoxController.setUser(u);
                         loader.setController(playlistBoxController);
                         Parent ui = loader.load();
                         notMyPlaylistContainer.getChildren().add(ui);
@@ -226,7 +220,6 @@ public class homeComponentController implements Initializable {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        playlistWindController.setUser(u);
         playlistWindController.setLemie(true);
         load.setController(playlistWindController);
         Parent ui = load.load();
@@ -240,9 +233,6 @@ public class homeComponentController implements Initializable {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        if (u != null) {
-            playlistWindController.setUser(u);
-        }
         playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();

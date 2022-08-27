@@ -11,3 +11,5 @@ public enum Emozione {
     Tension,
     Sadness
 }
+
+

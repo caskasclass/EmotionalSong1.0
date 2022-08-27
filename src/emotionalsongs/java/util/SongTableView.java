@@ -70,6 +70,8 @@ public class SongTableView {
 
     FxmlLoader obj = new FxmlLoader();
 
+    private User u = GlobalsVariables.currentUser;
+
     public SongTableView(TableView<Canzone> Repository, TableColumn<Canzone, String> album2,
             TableColumn<Canzone, Void> indx,
             TableColumn<Canzone, Integer> anno2, TableColumn<Canzone, String> autore2,
@@ -460,7 +462,7 @@ public class SongTableView {
         try {
             FXMLLoader load = loader.getComponentsLoader("WindowCanzone");
             WindowCanzoneController windowCanzoneController = new WindowCanzoneController();
-            windowCanzoneController.setCanzone(canz);
+            windowCanzoneController.getCanzone(canz);
             load.setController(windowCanzoneController);
             Pane ui = load.load();
             GlobalsVariables.left_side_bpane.setCenter(ui);

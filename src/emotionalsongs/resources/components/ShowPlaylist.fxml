@@ -70,24 +70,29 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="deleteButtContainer">
+                  <HBox fx:id="deleteButtContainer" spacing="30.0">
                      <children>
                         <Button fx:id="deleteButt" mnemonicParsing="false" onAction="#deletePlaylist" styleClass="buttonHome" text="Delete">
                            <HBox.margin>
-                              <Insets right="90.0" />
+                              <Insets />
                            </HBox.margin>
                            <font>
                               <Font name="Proxima Nova" size="18.0" />
                            </font>
                         </Button>
+                        <Button fx:id="editButt" mnemonicParsing="false" onAction="#editPlaylist" styleClass="buttonHome" text="Edit">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
-                     <padding>
-                        <Insets left="75.0" />
-                     </padding>
                      <VBox.margin>
-                        <Insets />
+                        <Insets left="75.0" />
                      </VBox.margin></HBox>
-                  <HBox alignment="CENTER" fillHeight="false">
+                  <VBox>
                      <children>
                         <TableView fx:id="PlaylistSongs" styleClass="repo">
                            <columns>
@@ -103,8 +108,14 @@
                               <Insets />
                            </opaqueInsets>
                         </TableView>
+                        <TableView fx:id="tabprova" styleClass="repo" visible="false">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </content>

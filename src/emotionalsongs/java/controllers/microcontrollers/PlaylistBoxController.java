@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.ShowPlaylistController;
+import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
@@ -29,7 +30,7 @@ public class PlaylistBoxController implements Initializable{
     @FXML
     private ImageView PlaylistImageTag;
 
-    private User visitor =null;
+    private User visitor =GlobalsVariables.currentUser;
     private Playlist playlist; 
     private FxmlLoader obj= new FxmlLoader();
 
@@ -45,10 +46,7 @@ public class PlaylistBoxController implements Initializable{
     {
         playlist =p;
     }
-    public void setUser(User u)
-    {
-        visitor =u;
-    }
+    
     public String getUsername(String id){
         String username="";
         ArrayList<User> users = UserManager.readUsers();
@@ -67,7 +65,6 @@ public class PlaylistBoxController implements Initializable{
        FXMLLoader load = obj.getComponentsLoader("ShowPlaylist");
        ShowPlaylistController showPlaylistController = new ShowPlaylistController();
        showPlaylistController.getPlaylist(playlist);
-       showPlaylistController.setUser(visitor);
        load.setController(showPlaylistController);
        Parent ui = load.load();
        Parent currentWind =(Parent) GlobalsVariables.left_side_bpane.getCenter();

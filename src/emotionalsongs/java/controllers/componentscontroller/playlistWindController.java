@@ -22,7 +22,7 @@ import javafx.scene.layout.FlowPane;
 
 public class playlistWindController implements Initializable {
 
-    User u = null;
+    User u = GlobalsVariables.currentUser;
     private boolean lemie;
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
     ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
@@ -53,9 +53,6 @@ public class playlistWindController implements Initializable {
 
     }
 
-    public void setUser(User u) {
-        this.u = u;
-    }
 
     public void setLemie(boolean x) {
         lemie = x;
@@ -81,7 +78,6 @@ public class playlistWindController implements Initializable {
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
             AddPlaylistBoxController addPlaylistBoxController = new AddPlaylistBoxController();
-            addPlaylistBoxController.setUser(u);
             loader.setController(addPlaylistBoxController);
             Parent ui = loader.load();
             ui.getStylesheets().add(style.getStyle("PlaylistBox"));

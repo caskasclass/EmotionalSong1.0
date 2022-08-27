@@ -61,3 +61,25 @@
     background-color:red;
     -fx-background-radius:15;
 }
+
+.transparent_box{
+    -fx-background-color: rgb(18,18,18);
+    background-color: rgb(18,18,18);
+    -fx-prompt-text-fill:rgba(111, 108, 108, 0.651);
+    -fx-text-fill: rgb(255,255,255);
+    -fx-padding: -5 0 0 -2;
+    -fx-cursor: text;
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgba(111, 108, 108, 0.651) rgb(18,18,18);
+    -fx-border-width: 2;
+    -fx-border-radius:3;
+
+}
+
+.transparent_box:hover{
+    -fx-prompt-text-fill:rgb(255, 255, 255);
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
+}
+
+.transparent_box:active{
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
+}

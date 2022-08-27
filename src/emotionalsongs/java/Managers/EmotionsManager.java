@@ -2,16 +2,16 @@ package emotionalsongs.java.Managers;
 
 import java.util.ArrayList;
 
-import emotionalsongs.java.util.Emozione;
+import emotionalsongs.java.util.CanzoneEvaluation;
 
 public class EmotionsManager extends FileManager {
   final static String PATH="./src/emotionalsongs/resources/DataBaseBrutto/Emozioni.dati.txt";
     
     
-  public static ArrayList<Emozione> readEmozioni(){
+  public static ArrayList<CanzoneEvaluation> readEmozioni(){
 
       Object obj= readData(PATH);
-      ArrayList<Emozione> emos = new ArrayList<>();
+      ArrayList<CanzoneEvaluation> emos = new ArrayList<>();
       if (obj instanceof ArrayList<?>) {
           ArrayList<?> al = (ArrayList<?>) obj;
           emos = castList(al);
@@ -19,17 +19,17 @@ public class EmotionsManager extends FileManager {
       return emos;
   }
 
-  public static void getEmozioni(ArrayList<Emozione> emos){
+  public static void getEmozioni(ArrayList<CanzoneEvaluation> emos){
 
       getData(emos, PATH);
   }
 
-  private static ArrayList<Emozione> castList(ArrayList<?> al) {
+  private static ArrayList<CanzoneEvaluation> castList(ArrayList<?> al) {
 
-      ArrayList<Emozione> array = new ArrayList<Emozione>();
+      ArrayList<CanzoneEvaluation> array = new ArrayList<CanzoneEvaluation>();
       for (Object obj : al) {
-        if (obj instanceof Emozione) {
-          array.add((Emozione) obj);
+        if (obj instanceof CanzoneEvaluation) {
+          array.add((CanzoneEvaluation) obj);
         }
       }
       return array;

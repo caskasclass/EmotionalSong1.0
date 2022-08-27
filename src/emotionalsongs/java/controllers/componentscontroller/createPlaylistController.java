@@ -93,7 +93,8 @@ public class createPlaylistController implements Initializable {
     @FXML
     private Label owner;
 
-    User u = null;
+    User u = GlobalsVariables.currentUser;
+
     ArrayList<Canzone> aggiungere = new ArrayList<Canzone>();
     FxmlLoader obj = new FxmlLoader();
     StyleManager style = new StyleManager();
@@ -151,9 +152,6 @@ public class createPlaylistController implements Initializable {
         }
     }
 
-    public void setUser(User u){
-        this.u =u;
-    }
 
     public void createPlaylist(ActionEvent e){
 
@@ -175,12 +173,8 @@ public class createPlaylistController implements Initializable {
     
     public void backToHome()
     {
-        FXMLLoader loader = obj.getComponentsLoader("home");
-        homeComponentController homeComponentController = new homeComponentController();
-        homeComponentController.setUser(u);
-        loader.setController(homeComponentController);
-        try {
-            Parent p = loader.load();
+         try {
+            Parent p = obj.getPane("home");
             GlobalsVariables.left_side_bpane.setCenter(p);
         } catch (Exception e) {
            e.printStackTrace();

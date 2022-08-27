@@ -44,6 +44,9 @@ public class ShowPlaylistController  implements Initializable{
     private TableColumn<Canzone, Void> deletebutton;
 
     @FXML
+    private Button editButt;
+
+    @FXML
     private TableColumn<Canzone, String> album;
 
     @FXML
@@ -70,11 +73,14 @@ public class ShowPlaylistController  implements Initializable{
     @FXML
     private ImageView playlistImage;
 
+    @FXML
+    private TableView<?> tabprova;
+
     FxmlLoader obj = new FxmlLoader();
 
     private Playlist current = null;
 
-    User u = null;
+    User u = GlobalsVariables.currentUser;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,10 +89,11 @@ public class ShowPlaylistController  implements Initializable{
             if(u == null || !(current.getOwner().equals(u.getId())))
             {
                 deleteButtContainer.getChildren().remove(deleteButt);
+                deleteButtContainer.getChildren().remove(editButt);
             }
             setPlaylist();
             
-            GlobalsVariables.playlsit = PlaylistSongs.getItems();
+            GlobalsVariables.playlist = PlaylistSongs.getItems();
             GlobalsVariables.plist = current;
         });
         
@@ -117,9 +124,6 @@ public class ShowPlaylistController  implements Initializable{
         
     }
 
-    public void setUser(User u){
-        this.u =u;
-    }
 
     public void deletePlaylist(ActionEvent e){
         ArrayList<Playlist> array = PlaylistManager.readPlaylist();
@@ -135,7 +139,6 @@ public class ShowPlaylistController  implements Initializable{
     public void backToHome(){
         FXMLLoader loader = obj.getComponentsLoader("home");
         homeComponentController homeComponentController = new homeComponentController();
-        homeComponentController.setUser(u);
         loader.setController(homeComponentController);
         try {
             Parent p = loader.load();
@@ -155,5 +158,9 @@ public class ShowPlaylistController  implements Initializable{
             }
         }
         return username;
+    }
+
+    public void editPlaylist(ActionEvent e){
+        tabprova.setVisible(true);
     }
 }

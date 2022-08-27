@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller ="emotionalsongs.java.controllers.componentscontroller.createPlaylistController">
    <center>
       <ScrollPane fitToWidth="true" styleClass="invisibleScrollPane" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>

@@ -7,8 +7,6 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
-import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
-import emotionalsongs.java.controllers.componentscontroller.homeComponentController;
 import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
@@ -69,7 +67,7 @@ public class Homebuilder implements Initializable {
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
 
-    private User logged;
+    private User logged = GlobalsVariables.currentUser;
 
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
@@ -94,7 +92,8 @@ public class Homebuilder implements Initializable {
 
     public void SignOut(ActionEvent e) throws IOException {
         GlobalsVariables.clearSession();
-        logged = null;
+        GlobalsVariables.exitSession();
+        logged = GlobalsVariables.currentUser;
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
         createHome();
@@ -114,8 +113,8 @@ public class Homebuilder implements Initializable {
 
             User log = users.get(users.indexOf(loguser)); // molto meglio
             System.out.println(log.printUser());// testing ok!
-
-            updateWindow(log);
+            GlobalsVariables.currentUser = log;
+            updateWindow();
 
             System.out.println("\n\n\nUser trovato\n\n\n");
         } else {
@@ -123,26 +122,22 @@ public class Homebuilder implements Initializable {
         }
     }
 
-    private void updateWindow(User u) {
+    private void updateWindow() {
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
-        logged = u;
+        logged = GlobalsVariables.currentUser;
         createHome();
         menubar.getChildren().addAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(LogInMenuButton);
         logbuttons.getChildren().add(usernameBtn);
-        usernameBtn.setText(u.getUsername());
+        usernameBtn.setText(logged.getUsername());
 
 
     }
     private void createHome()
     {
-        FXMLLoader loader = obj.getComponentsLoader("home");
-        homeComponentController homeComponentController = new homeComponentController();
-        homeComponentController.setUser(logged);
-        loader.setController(homeComponentController);
         try {
-            Parent p = loader.load();
+            Parent p = obj.getPane("home");
             left_side_bpane.setCenter(p);
         } catch (Exception e) {
            e.printStackTrace();
@@ -151,14 +146,9 @@ public class Homebuilder implements Initializable {
         
     }
     private void createNewPlaylistUI(){
-        FXMLLoader loader = obj.getComponentsLoader("createPlaylist");
-        createPlaylistController createPlaylistController = new createPlaylistController();
-        createPlaylistController.setUser(logged);
-        loader.setController(createPlaylistController);
         try {
-            Parent p = loader.load();
-            p.getStylesheets().add(style.getStyle("repositoryCanzoni"));
-            left_side_bpane.setCenter(p);
+            Parent p = obj.getPane("createPlaylist");
+            GlobalsVariables.left_side_bpane.setCenter(p);
         } catch (Exception e) {
            e.printStackTrace();
         }
@@ -183,7 +173,7 @@ public class Homebuilder implements Initializable {
         GlobalsVariables.cleardeleteFromPlaylistSessio();
         System.out.println("funzia");
         Parent p = (Parent) left_side_bpane.getCenter();
-        left_side_bpane.getChildren().remove(p);
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
         createHome();
     }
 
@@ -198,7 +188,6 @@ public class Homebuilder implements Initializable {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        playlistWindController.setUser(logged);
         playlistWindController.setLemie(true);
         load.setController(playlistWindController);
         Parent ui = load.load();
@@ -210,10 +199,6 @@ public class Homebuilder implements Initializable {
         System.out.println("funzia");
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
-        if(logged!=null)
-        {
-             playlistWindController.setUser(logged);
-        }
         playlistWindController.setLemie(false);
         load.setController(playlistWindController);
         Parent ui = load.load();
