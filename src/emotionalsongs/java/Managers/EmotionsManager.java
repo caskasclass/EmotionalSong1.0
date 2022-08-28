@@ -1,5 +1,6 @@
 package emotionalsongs.java.Managers;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import emotionalsongs.java.util.CanzoneEvaluation;
@@ -34,4 +35,12 @@ public class EmotionsManager extends FileManager {
       }
       return array;
     }
+
+    public static boolean checkLengthFile(){
+      if(new File(PATH).length() == 0){
+        return true;
+      }
+      return false;
+    }
+    
 }

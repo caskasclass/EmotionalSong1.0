@@ -12,6 +12,9 @@ public class ValutazioneUtente implements Serializable{
         this.Values = v;
         this.IdUtente = id;
     }
+    public ValutazioneUtente(){
+        
+    }
 
     public HashMap<Emozione,Integer> getValutazione(){
         return Values;

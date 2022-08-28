@@ -62,9 +62,9 @@
             <Insets />
          </BorderPane.margin>
          <content>
-            <VBox alignment="TOP_CENTER" styleClass="ratePane">
+            <VBox alignment="CENTER_RIGHT" styleClass="ratePane">
                <children>
-                  <VBox>
+                  <VBox alignment="CENTER">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
@@ -80,27 +80,41 @@
                               <Font size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets left="20.0" top="20.0" />
+                              <Insets top="20.0" />
                            </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
-                  <FlowPane fx:id="emotionsContainer" alignment="CENTER" cacheShape="false" hgap="15.0" maxHeight="500.0" vgap="10.0">
+                  <FlowPane fx:id="emotionsContainer" alignment="CENTER" cacheShape="false" hgap="15.0" vgap="10.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets left="10.0" top="60.0" />
                      </VBox.margin>
                   </FlowPane>
-                  <Button fx:id="saveButt" mnemonicParsing="false" onAction="#setEmotionsValue" text="Salva">
+                  <HBox fx:id="hbox1" alignment="CENTER">
                      <VBox.margin>
-                        <Insets bottom="25.0" top="25.0" />
+                        <Insets bottom="40.0" />
                      </VBox.margin>
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Button>
-                  <VBox alignment="CENTER" styleClass="prospecticbox">
                      <children>
-                        <PieChart fx:id="pieEmotions" />
+                        <Label fx:id="labelNoUser" styleClass="label_other" stylesheets="@../css/registration.css" text="Per inserire la valutazione fare login">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="saveButt" mnemonicParsing="false" onAction="#setEmotionsValue" styleClass="buttonHome" stylesheets="@../css/repositoryCanzoni.css" text="Salva">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="pieBox" alignment="CENTER" styleClass="prospecticbox">
+                     <children>
+                        <Label fx:id="labelNoUser2" alignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="pieEmotions" styleClass="chart-legend" />
                      </children>
                      <padding>
                         <Insets top="20.0" />

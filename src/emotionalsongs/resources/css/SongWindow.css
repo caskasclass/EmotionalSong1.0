@@ -32,30 +32,7 @@
     -fx-border-color:rgb(40,40,40);
     border-color:rgb(40,40,40); 
 }
-#prospetticoBar{
-    -fx-border-color:rgb(255,255,255);
-    border-color:rgb(255,255,255);
-    -fx-border-radius:17;
-    border-radius:17;
-    -fx-background-radius:17;
-    -fx-background-color:  linear-gradient(to right, rgba(255,0,0,1) 20%,
-     rgba(0,255,14,1) 20%, rgba(0,255,14,1) 40%, rgba(68,92,255,1) 40%,
-      rgba(68,92,255,1) 60%, rgba(255,246,0,1) 60%, rgba(255,246,0,1) 80%,
-       rgba(81,203,188,1) 80%, rgba(81,203,188,1) 100%);
 
-
-
-
-       
-       background-color:  linear-gradient(to right, rgba(255,0,0,1) 20%,
-     rgba(0,255,14,1) 20%, rgba(0,255,14,1) 40%, rgba(68,92,255,1) 40%,
-      rgba(68,92,255,1) 60%, rgba(255,246,0,1) 60%, rgba(255,246,0,1) 80%,
-       rgba(81,203,188,1) 80%, rgba(81,203,188,1) 100%);
-    -webkit-border-radius:17;
-    -moz-border-radius:17;
-    -ms-border-radius:17;
-    -o-border-radius:17;
-}
 .emotionColor{
     -fx-background-color:red;
     background-color:red;
@@ -82,4 +59,11 @@
 
 .transparent_box:active{
     -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
+}
+
+.chart-legend {
+    -fx-background-color: rgb(18,18,18);
+    background-color: rgb(18,18,18);
+    -fx-text-fill: rgb(255,255,255);
+    -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(18,18,18) rgb(18,18,18);
 }
