@@ -146,7 +146,8 @@ public class WindowCanzoneController implements Initializable {
     private void setChoiceBox(ChoiceBox<Integer> choice) {
 
         if (u == null) {
-
+            int target = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
+            valutazioneCanzone = listValutazioni.get(target);
             hbox1.getChildren().remove(saveButt);
             choice.setDisable(true);
             labelNoUser.setText("Per inserire la valutazione fare login");
