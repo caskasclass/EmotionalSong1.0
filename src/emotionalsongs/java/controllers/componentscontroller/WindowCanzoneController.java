@@ -4,13 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-
-import javax.lang.model.util.ElementScanner14;
-
 import emotionalsongs.java.Managers.EmotionsManager;
-import emotionalsongs.java.Managers.FileManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.CanzoneEvaluation;
 import emotionalsongs.java.util.Emozione;
@@ -20,22 +15,20 @@ import emotionalsongs.java.util.ValutazioneUtente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 public class WindowCanzoneController implements Initializable {
 
@@ -106,8 +99,9 @@ public class WindowCanzoneController implements Initializable {
             listValutazioni = EmotionsManager.readEmozioni();
         }
 
-        setCanzone();
+        
         createBoxes();
+        setCanzone();
         setPieChart();
 
     }
@@ -122,6 +116,13 @@ public class WindowCanzoneController implements Initializable {
         Album.setText(c.getAlbum());
         Info.setText(c.getAutore() + " • " + c.getAnno() + " • " + c.getDurata() + " min");
         titolo.setText(c.getTitolo());
+        if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
+            Data.setText("Numero Valutazioni : 0");
+
+        }else{
+            Data.setText("Numero Valutazioni : "+ valutazioneCanzone.getValutazione().size());
+        }
+        
     }
 
     private void createBoxes() {
@@ -177,18 +178,18 @@ public class WindowCanzoneController implements Initializable {
 
         if (listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))) {
             indxCanzEv = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
-            if (listValutazioni.get(indxCanzEv).getValutazione().contains(new ValutazioneUtente(null, u.getId()))) {
+            valutazioneCanzone = listValutazioni.get(listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null)));
+            if (valutazioneCanzone.getValutazione().contains(new ValutazioneUtente(null, u.getId()))) {
                 valutazioneUtente = listValutazioni.get(indxCanzEv).getValutazione().get(listValutazioni.get(indxCanzEv)
                         .getValutazione().indexOf(new ValutazioneUtente(null, u.getId())));
                 return true;
             } else {
-                valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());
+                //valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());
                 return false;
             }
         }else{
-            
-            valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());        }
-
+            valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>()); 
+        }
         return false;
 
     }
@@ -216,11 +217,14 @@ public class WindowCanzoneController implements Initializable {
         
         valutazioneUtente = new ValutazioneUtente(newmap, u.getId());
         valutazioneCanzone.addEvaluation(valutazioneUtente);
-        if(listValutazioni.isEmpty() || listValutazioni == null){
-            listValutazioni.remove(new CanzoneEvaluation(c.getIdCanzone(),null));
+        /*if(listValutazioni.isEmpty() || listValutazioni == null){
+            listValutazioni.add(valutazioneCanzone);
+        }*/
+        if(!listValutazioni.isEmpty() || listValutazioni == null){
+            listValutazioni.remove(indxCanzEv);
         }
+       
         listValutazioni.add(valutazioneCanzone);
-        
         
         EmotionsManager.getEmozioni(listValutazioni);
         pieEmotions.setVisible(true);
@@ -228,7 +232,13 @@ public class WindowCanzoneController implements Initializable {
         hbox1.getChildren().remove(saveButt);
         for(ChoiceBox<Integer> cb : list){
             cb.setDisable(true);
-        }   
+        }
+        if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
+            Data.setText("Numero Valutazioni : 0");
+
+        }else{
+            Data.setText("Numero Valutazioni : "+ valutazioneCanzone.getValutazione().size());
+        }
 
 
     }
