@@ -3,7 +3,6 @@ package emotionalsongs.java.util;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javafx.scene.control.Label;
 
 public class CanzoneEvaluation implements Serializable {
 

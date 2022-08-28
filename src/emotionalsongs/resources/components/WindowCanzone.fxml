@@ -109,15 +109,15 @@
                   </HBox>
                   <VBox fx:id="pieBox" alignment="CENTER" styleClass="prospecticbox">
                      <children>
-                        <Label fx:id="labelNoUser2" alignment="CENTER">
+                        <Label alignment="CENTER" text="Prospettico Emzioni">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Proxima Nova" size="30.0" />
                            </font>
                         </Label>
-                        <PieChart fx:id="pieEmotions" styleClass="chart-legend" />
+                        <PieChart fx:id="pieEmotions" />
                      </children>
                      <padding>
-                        <Insets top="20.0" />
+                        <Insets top="15.0" />
                      </padding>
                   </VBox>
                </children>
