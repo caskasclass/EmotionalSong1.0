@@ -5,9 +5,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import emotionalsongs.java.Managers.CanzoniManager;
+import emotionalsongs.java.Managers.CommentiManager;
 import emotionalsongs.java.Managers.EmotionsManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.CanzoneEvaluation;
+import emotionalsongs.java.util.Commenti;
+import emotionalsongs.java.util.Dettagli;
 import emotionalsongs.java.util.Emozione;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.User;
@@ -20,12 +25,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -48,10 +53,25 @@ public class WindowCanzoneController implements Initializable {
     private Label Info;
 
     @FXML
+    private Label noComments;
+
+    @FXML
+    private Button commentButt;
+
+    @FXML
+    private TextField commentField;
+
+    @FXML
     private HBox prospetticoBar;
 
     @FXML
     private Label titolo;
+
+    @FXML
+    private VBox commentsBox;
+
+    @FXML
+    private VBox commentsContainer;
 
     @FXML
     private FlowPane emotionsContainer;
@@ -63,10 +83,15 @@ public class WindowCanzoneController implements Initializable {
     private Button saveButt;
 
     @FXML
+    private HBox textBox;
+
+    @FXML
     private HBox hbox1;
 
     @FXML
     private VBox pieBox;
+
+    private int indxComm=0;
 
     private int indxCanzEv=0;
 
@@ -75,6 +100,12 @@ public class WindowCanzoneController implements Initializable {
     private User u = GlobalsVariables.currentUser;
 
     private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
+
+    private ArrayList<Commenti> comments = new ArrayList<Commenti>();
+
+    private Commenti com = new Commenti();
+
+    private Dettagli d = new Dettagli();
 
     private CanzoneEvaluation valutazioneCanzone = new CanzoneEvaluation();
 
@@ -86,6 +117,7 @@ public class WindowCanzoneController implements Initializable {
 
     final String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Emozioni.dati.txt";
 
+    
 
     Canzone c = null;
 
@@ -99,10 +131,15 @@ public class WindowCanzoneController implements Initializable {
             listValutazioni = EmotionsManager.readEmozioni();
         }
 
+        if(!CommentiManager.checkLengthFile()){
+            comments= CommentiManager.readCommenti();
+        }
+
         
         createBoxes();
         setCanzone();
         setPieChart();
+        setCommenti();
 
     }
 
@@ -116,6 +153,7 @@ public class WindowCanzoneController implements Initializable {
         Album.setText(c.getAlbum());
         Info.setText(c.getAutore() + " • " + c.getAnno() + " • " + c.getDurata() + " min");
         titolo.setText(c.getTitolo());
+        valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(),new ArrayList<ValutazioneUtente>());
         if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
             Data.setText("Numero Valutazioni : 0");
 
@@ -149,6 +187,7 @@ public class WindowCanzoneController implements Initializable {
             int target = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
             valutazioneCanzone = listValutazioni.get(target);
             hbox1.getChildren().remove(saveButt);
+            commentsContainer.getChildren().remove(textBox);
             choice.setDisable(true);
             labelNoUser.setText("Per inserire la valutazione fare login");
 
@@ -243,6 +282,72 @@ public class WindowCanzoneController implements Initializable {
 
 
     }
+    private boolean isCommented() {
+
+        if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
+            indxComm= comments.indexOf(new Commenti(c.getIdCanzone(), null));
+                 com= comments.get(indxComm);
+                 if(u == null){
+                    return true;
+                 }
+                 else{
+                    if (com.getDetails().contains(new Dettagli(u, null))) {
+                        d = comments.get(indxComm).getDetails().get(comments.get(indxComm)
+                                .getDetails().indexOf(new Dettagli(u, null)));
+                        return true;
+                    } else {
+                        
+                        return false;
+                    }
+                 }
+                 
+        }else{
+            com = new Commenti(c.getIdCanzone(), new ArrayList<Dettagli>()); 
+        }
+        return false;
+
+    }
+
+    public void getCommenti(ActionEvent e){
+        
+
+        isCommented();
+        d = new Dettagli(u,commentField.getText());
+        com.addComment(d);
+        if(!comments.isEmpty() || comments == null){
+            comments.remove(indxComm);
+        }
+        comments.add(com);
+        CommentiManager.getEmozioni(comments);
+        setCommenti();
+    }
+
+    private void setCommenti(){
+        Label l = new Label();
+        if(isCommented()){
+            commentsContainer.getChildren().remove(noComments);
+                for(Dettagli d: comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()){
+                    l.setText(d.getIdUtente().getUsername() + " ha commentato: " + d.getCommento());
+                    commentsBox.getChildren().add(l);
+                }
+        }
+        else{
+            if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
+                for(Dettagli d: comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()){
+                    l.setText(d.getIdUtente().getUsername() + " ha commentato: " + d.getCommento());
+                    commentsBox.getChildren().add(l);
+                }
+            } else {
+                noComments.setText("Non ci sono commenti");
+                commentsBox.getChildren().add(l);
+            }
+
+        }
+    }
+        
+        
+
+    
 
     private void setPieChart() {
 
