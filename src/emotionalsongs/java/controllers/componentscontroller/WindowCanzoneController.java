@@ -3,8 +3,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-
-import emotionalsongs.java.Managers.CommentiManager;
 import emotionalsongs.java.Managers.EmotionsManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.CanzoneEvaluation;
@@ -28,8 +26,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -53,10 +49,25 @@ public class WindowCanzoneController implements Initializable {
     private Label Info;
 
     @FXML
+    private Label noComments;
+
+    @FXML
+    private Button commentButt;
+
+    @FXML
+    private TextField commentField;
+
+    @FXML
     private HBox prospetticoBar;
 
     @FXML
     private Label titolo;
+
+    @FXML
+    private VBox commentsBox;
+
+    @FXML
+    private VBox commentsContainer;
 
     @FXML
     private FlowPane emotionsContainer;
@@ -65,12 +76,19 @@ public class WindowCanzoneController implements Initializable {
     private PieChart pieEmotions;
 
     @FXML
+    private Button saveButt;
+
+    @FXML
+    private HBox textBox;
+
+    @FXML
+>>>>>>> 0746c0362aed9f9a0b38488a80c255ba89987df6
     private HBox hbox1;
 
     @FXML
     private VBox pieBox;
 
-    private int indxCanzEv = 0;
+    private int indxCanzEv=0;
 
     private Integer y = 0;
     @FXML
@@ -102,6 +120,12 @@ public class WindowCanzoneController implements Initializable {
 
     private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
 
+    private ArrayList<Commenti> comments = new ArrayList<Commenti>();
+
+    private Commenti com = new Commenti();
+
+    private Dettagli d = new Dettagli();
+
     private CanzoneEvaluation valutazioneCanzone = new CanzoneEvaluation();
 
     private ValutazioneUtente valutazioneUtente = new ValutazioneUtente();
@@ -111,6 +135,7 @@ public class WindowCanzoneController implements Initializable {
     private ArrayList<Emozione> emList = GlobalsVariables.getEmotions();
 
     final String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Emozioni.dati.txt";
+
 
     Canzone c = null;
 
@@ -126,7 +151,7 @@ public class WindowCanzoneController implements Initializable {
             comments= CommentiManager.readCommenti();
         }
 
-
+        
         createBoxes();
         setCanzone();
         setPieChart();
@@ -144,7 +169,7 @@ public class WindowCanzoneController implements Initializable {
         Album.setText(c.getAlbum());
         Info.setText(c.getAutore() + " • " + c.getAnno() + " • " + c.getDurata() + " min");
         titolo.setText(c.getTitolo());
-        if (valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null) {
+        if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
             Data.setText("Numero Valutazioni : 0");
 
         } else {
@@ -180,6 +205,7 @@ public class WindowCanzoneController implements Initializable {
                 valutazioneCanzone = listValutazioni.get(target);
             }
             hbox1.getChildren().remove(saveButt);
+            commentsContainer.getChildren().remove(textBox);
             choice.setDisable(true);
             labelNoUser.setText("Per inserire la valutazione fare login");
 
@@ -282,50 +308,42 @@ public class WindowCanzoneController implements Initializable {
         if (valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null) {
             Data.setText("Numero Valutazioni : 0");
 
-        } else {
-            Data.setText("Numero Valutazioni : " + valutazioneCanzone.getValutazione().size());
+        }else{
+            Data.setText("Numero Valutazioni : "+ valutazioneCanzone.getValutazione().size());
         }
 
+
     }
+
+        
+
+    
 
     private void setPieChart() {
 
         pieEmotions.setLegendSide(Side.LEFT);
 
-        pieEmotions.setData(createList());
-        final Label caption = new Label("");
-        caption.setTextFill(Color.DARKORANGE);
-        //caption.setStyle("-fx-font: 24 arial;");
+        // Label lab= new Label("");
+        // lab.setTextFill(Color.WHITE);
+        // lab.setStyle("-fx-font: 24 Arials;");
+        if (!(new File(PATH).length() == 0)) {
 
-        for (final PieChart.Data data : pieEmotions.getData()) {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET,new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    caption.setTranslateX(e.getSceneX());
-                    caption.setTranslateY(e.getSceneY());
-                    caption.setText(String.valueOf(data.getPieValue()) + "%");
-                    System.out.print(caption.getText());
-                }
-            });
+            pieEmotions.setData(createList());
+            /*
+             * for(final PieChart.Data obj : pieEmotions.getData()){
+             * obj.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new
+             * EventHandler<MouseEvent>() {
+             * 
+             * @Override
+             * public void handle(MouseEvent e){
+             * lab.setTranslateX(e.getSceneX());
+             * lab.setTranslateY(e.getSceneY());
+             * lab.setText(String.valueOf(obj.getPieValue())+ "%");
+             * }
+             * });
+             * }
+             */
         }
-
-        pieEmotions.setLegendSide(Side.LEFT);
-        pieEmotions.setMinHeight(425);
-
-        /*
-         * for(final PieChart.Data obj : pieEmotions.getData()){
-         * obj.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new
-         * EventHandler<MouseEvent>() {
-         * 
-         * @Override
-         * public void handle(MouseEvent e){
-         * lab.setTranslateX(e.getSceneX());
-         * lab.setTranslateY(e.getSceneY());
-         * lab.setText(String.valueOf(obj.getPieValue())+ "%");
-         * }
-         * });
-         * }
-         */
 
     }
 
