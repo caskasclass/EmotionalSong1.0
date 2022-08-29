@@ -407,5 +407,6 @@ public class WindowCanzoneController implements Initializable {
         Label l = new Label(d.getUser().getUsername()+ " ha commentato: " + d.getCommento());
         commentsBox.getChildren().add(l);
     }
+//non ho aggiusnto niente
 
 }
