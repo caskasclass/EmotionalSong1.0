@@ -121,6 +121,28 @@
                         <Insets top="20.0" />
                      </padding>
                   </VBox>
+                  <VBox fx:id="commentsContainer" alignment="TOP_CENTER" minHeight="500.0" spacing="30.0">
+                     <children>
+                        <HBox fx:id="textBox" alignment="CENTER" spacing="50.0">
+                           <children>
+                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento.." styleClass="transparent_box">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="commentButt" mnemonicParsing="false" onAction="#getCommenti" styleClass="buttonHome" stylesheets="@../css/repositoryCanzoni.css" text="Salva" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="noComments" />
+                        <VBox fx:id="commentsBox" alignment="CENTER_LEFT" spacing="10.0" stylesheets="@../css/repositoryCanzoni.css" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="75.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
             </VBox>
          </content>
@@ -141,3 +163,4 @@
       </HBox>
    </bottom>
 </BorderPane>
+
