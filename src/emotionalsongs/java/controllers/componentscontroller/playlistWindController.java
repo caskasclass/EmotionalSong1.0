@@ -16,9 +16,11 @@ import emotionalsongs.java.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Font;
 
 public class playlistWindController implements Initializable {
 
@@ -32,6 +34,8 @@ public class playlistWindController implements Initializable {
 
     @FXML
     private FlowPane Container;
+
+    private Label avviso = new Label();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,16 +77,13 @@ public class playlistWindController implements Initializable {
     private void createHomePlaylistUI() throws IOException {
 
         System.out.println("\n\nFunzia bene");
-        Container.setMinSize(GlobalsVariables.left_side_bpane.getHeight(), 825);
         ArrayList<Playlist> playlists = mine;
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
             AddPlaylistBoxController addPlaylistBoxController = new AddPlaylistBoxController();
             loader.setController(addPlaylistBoxController);
             Parent ui = loader.load();
-            ui.getStylesheets().add(style.getStyle("PlaylistBox"));
             Container.getChildren().add(ui);
-
         } else {
             for (Playlist playlist : mine) {
                 FXMLLoader loader = obj.getLoader("PlaylistBoxView");
@@ -95,27 +96,46 @@ public class playlistWindController implements Initializable {
             }
         }
 
+
     }
 
     private void createHomeOthersPlaylistUI() throws IOException {
         System.out.println("\n\nFunzia bene");
-        ArrayList<Playlist> playlists = others;
-        if (playlists == null || playlists.isEmpty()) {
-            for (int i = 0; i < 6; i++) {
-                BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
-                ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-                Container.getChildren().add(ui);
-            }
+        if (pl.isEmpty() || pl == null) {
+                Container.setAlignment(Pos.CENTER);
+                avviso.setText("Nessuna Playlist presente");
+                avviso.setFont(new Font("Proxima Nova", 25));
+                Container.getChildren().add(avviso);
 
-        } else {
-            for (Playlist playlist : playlists) {
-                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-                playlistBoxController.setPlaylist(playlist);
-                loader.setController(playlistBoxController);
-                Parent ui = loader.load();
-                Container.getChildren().add(ui);
+        } else{
+            if (u != null) {
+                if (others.isEmpty() || others == null) {
+                    Container.setAlignment(Pos.CENTER);
+                    avviso = new Label("Nessuna Playlist presente");
+                    avviso.setFont(new Font("Proxima Nova", 25));
+                    Container.getChildren().add(avviso);
+
+                } else {
+                    for (Playlist playlist : others) {
+                        FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                        PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                        playlistBoxController.setPlaylist(playlist);
+                        loader.setController(playlistBoxController);
+                        Parent ui = loader.load();
+                        Container.getChildren().add(ui);
+                    }
+                }
+            } else {
+                for (Playlist playlist : pl) {
+                    FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                    PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                    playlistBoxController.setPlaylist(playlist);
+                    loader.setController(playlistBoxController);
+                    Parent ui = loader.load();
+                    Container.getChildren().add(ui);
+                }
             }
+    
         }
 
     }

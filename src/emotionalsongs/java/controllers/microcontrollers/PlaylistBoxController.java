@@ -29,7 +29,6 @@ public class PlaylistBoxController implements Initializable{
     @FXML
     private ImageView PlaylistImageTag;
 
-    private User visitor =GlobalsVariables.currentUser;
     private Playlist playlist; 
     private FxmlLoader obj= new FxmlLoader();
 

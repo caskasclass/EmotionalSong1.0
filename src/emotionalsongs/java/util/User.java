@@ -7,7 +7,7 @@ import java.util.UUID;
 import emotionalsongs.java.Managers.FileManager;
 
 public class User implements Serializable {
-    private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/UtentiRegistrati.dati.txt";
+    private static String PATH = "./src/emotionalsongs/resources/database/UtentiRegistrati.dati.txt";
 
     private String userId;
     private String username;

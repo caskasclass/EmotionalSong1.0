@@ -6,8 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -129,22 +127,6 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </VBox>
-                  <BorderPane minHeight="250.0" style="-fx-background-color: rgba(0,0,0,0);">
-                     <center>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <ImageView fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/blend2.gif" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                     </center>
-                     <padding>
-                        <Insets bottom="75.0" top="35.0" />
-                     </padding>
-                  </BorderPane>
                </children>
             </VBox>
          </content>

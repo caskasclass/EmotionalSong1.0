@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
+import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
@@ -100,6 +101,8 @@ public class Homebuilder implements Initializable {
         menubar.getChildren().removeAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(usernameBtn);
         logbuttons.getChildren().add(LogInMenuButton);
+        usernameEmail.setText("");
+        passwd.setText("");
 
     }
 
@@ -145,13 +148,14 @@ public class Homebuilder implements Initializable {
         
         
     }
-    private void createNewPlaylistUI(){
-        try {
-            Parent p = obj.getPane("createPlaylist");
-            GlobalsVariables.left_side_bpane.setCenter(p);
-        } catch (Exception e) {
-           e.printStackTrace();
-        }
+    private void createNewPlaylistUI()throws IOException{
+        FXMLLoader load = obj.getComponentsLoader("createPlaylist");
+        createPlaylistController createPlaylistController = new createPlaylistController();
+        load.setController(createPlaylistController);
+        Parent ui = load.load();
+        Parent p = (Parent)GlobalsVariables.left_side_bpane.getCenter();
+        GlobalsVariables.left_side_bpane.getChildren().remove(p);
+        left_side_bpane.setCenter(ui);
     }
 
     public void SignUpWind(ActionEvent e) throws IOException {
@@ -178,7 +182,9 @@ public class Homebuilder implements Initializable {
     }
 
     public void newPlaylist(MouseEvent e) throws IOException {
+
         System.out.println("funzia");
+        createNewPlaylistUI();
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
         createNewPlaylistUI();

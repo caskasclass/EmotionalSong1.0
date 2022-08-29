@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Canzone implements Serializable {
 
-    private static String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Canzoni.dati.txt";
+    private static String PATH = "./src/emotionalsongs/resources/database/Canzoni.dati.txt";
     private String IdCanzone;// ok
     private String Titolo;// ok
     private String Autore;// ok

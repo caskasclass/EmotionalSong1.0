@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
@@ -32,22 +33,25 @@
                         </Label>
                      </children>
                   </VBox>
-                  <HBox spacing="25.0">
+                  <VBox>
                      <children>
-                        <Label fx:id="Info" text="AutoreEffettivo + Anno + Durata">
-                           <font>
-                              <Font name="Proxima Nova" size="30.0" />
-                           </font>
-                        </Label>
+                        <HBox spacing="25.0">
+                           <children>
+                              <Label fx:id="Info" text="AutoreEffettivo + Anno + Durata">
+                                 <font>
+                                    <Font name="Proxima Nova" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <Label fx:id="Data" text="Valutazioni : xxx">
                            <font>
                               <Font name="Proxima Nova" size="30.0" />
                            </font>
                         </Label>
                      </children>
-                  </HBox>
+                  </VBox>
                </children></VBox>
-            <VBox />
          </children>
          <padding>
             <Insets bottom="25.0" left="25.0" top="40.0" />
@@ -71,12 +75,12 @@
                            <children>
                               <Label text="Valuta la canzone">
                                  <font>
-                                    <Font name="Proxima Nova" size="38.0" />
+                                    <Font size="30.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label styleClass="label_other" stylesheets="@../css/registration.css" text="Inserisci un valore da 1 (per niente) a 5 (molto)">
+                        <Label styleClass="label_other" stylesheets="@../css/registration.css" text="Indicare l’intensità dell’emozione percepita durante l’ascolto del brano da 1 (per niente) a 5 (molto)">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -86,14 +90,14 @@
                         </Label>
                      </children>
                   </VBox>
-                  <FlowPane fx:id="emotionsContainer" alignment="CENTER" cacheShape="false" hgap="15.0" vgap="10.0">
+                  <FlowPane fx:id="emotionsContainer" alignment="CENTER" cacheShape="false" hgap="120.0" vgap="40.0">
                      <VBox.margin>
                         <Insets left="10.0" top="60.0" />
                      </VBox.margin>
                   </FlowPane>
                   <HBox fx:id="hbox1" alignment="CENTER">
                      <VBox.margin>
-                        <Insets bottom="40.0" />
+                        <Insets bottom="40.0" top="40.0" />
                      </VBox.margin>
                      <children>
                         <Label fx:id="labelNoUser" styleClass="label_other" stylesheets="@../css/registration.css" text="Per inserire la valutazione fare login">
@@ -112,23 +116,23 @@
                      <children>
                         <Label alignment="CENTER" text="Prospettico Emozioni">
                            <font>
-                              <Font name="Proxima Nova" size="31.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
                         <PieChart fx:id="pieEmotions">
                            <VBox.margin>
-                              <Insets left="200.0" />
+                              <Insets left="100.0" />
                            </VBox.margin></PieChart>
                      </children>
                      <padding>
                         <Insets top="20.0" />
                      </padding>
                   </VBox>
-                  <VBox fx:id="commentsContainer" alignment="TOP_CENTER" minHeight="500.0" spacing="30.0">
+                  <VBox fx:id="commentsContainer" alignment="TOP_CENTER" spacing="30.0">
                      <children>
-                        <HBox fx:id="textBox" alignment="CENTER" spacing="50.0">
+                        <HBox fx:id="textBox" alignment="CENTER" spacing="40.0">
                            <children>
-                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento max 250 caratteri.." styleClass="transparent_box">
+                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento.." styleClass="transparent_box">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -138,9 +142,31 @@
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
                         </HBox>
-                        <Label fx:id="noComments" />
-                        <VBox fx:id="commentsBox" alignment="CENTER_LEFT" spacing="10.0" stylesheets="@../css/repositoryCanzoni.css" />
+                        <Label fx:id="noComments">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="300.0" maxWidth="1050.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/application.css" vbarPolicy="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="50.0" left="20.0" />
+                           </VBox.margin>
+                           <content>
+                              <VBox fx:id="commentsBox" alignment="CENTER" spacing="10.0" styleClass="hbox">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                           <styleClass>
+                              <String fx:value="invisibleScrollPane" />
+                              <String fx:value="vbox" />
+                           </styleClass>
+                        </ScrollPane>
                      </children>
                      <VBox.margin>
                         <Insets top="75.0" />
@@ -151,18 +177,4 @@
          </content>
       </ScrollPane>
    </center>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="Album" text="Album">
-               <font>
-                  <Font name="Proxima Nova" size="50.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="20.0" top="10.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-   </bottom>
 </BorderPane>

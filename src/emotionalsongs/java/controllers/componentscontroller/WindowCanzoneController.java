@@ -1,5 +1,6 @@
 package emotionalsongs.java.controllers.componentscontroller;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
@@ -92,6 +93,7 @@ public class WindowCanzoneController implements Initializable {
 
     @FXML
     private Button saveButt;
+    
 
     @FXML
     private HBox textBox;
@@ -114,7 +116,7 @@ public class WindowCanzoneController implements Initializable {
 
     private ArrayList<Emozione> emList = GlobalsVariables.getEmotions();
 
-    final String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Emozioni.dati.txt";
+    final String PATH = "./src/emotionalsongs/resources/database/Emozioni.dati.txt";
 
     Canzone c = null;
 
@@ -133,8 +135,8 @@ public class WindowCanzoneController implements Initializable {
         createBoxes();
         setCanzone();
         setPieChart();
-        setTextField();
         setCommenti();
+        setTextField();
 
     }
 
@@ -145,8 +147,7 @@ public class WindowCanzoneController implements Initializable {
 
     public void setCanzone() {
 
-        Album.setText(c.getAlbum());
-        Info.setText(c.getAutore() + " • " + c.getAnno() + " • " + c.getDurata() + " min");
+        Info.setText(c.getAutore() + " • " + c.getAlbum()+ " • " + c.getAnno() + " • " + c.getDurata() + " min");
         titolo.setText(c.getTitolo());
         if (valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null) {
             Data.setText("Numero Valutazioni : 0");
@@ -160,12 +161,13 @@ public class WindowCanzoneController implements Initializable {
     private void createBoxes() {
 
         for (Emozione e : Emozione.values()) {
-
             VBox boxEmozione = new VBox();
-            boxEmozione.setPadding(new Insets(0, 0, 0, 0));
-            boxEmozione.setPrefSize(100, 200);
+            boxEmozione.setAlignment(Pos.CENTER);
+            boxEmozione.setSpacing(5);
+            boxEmozione.setPrefWidth(100);
             Label tipoEmozione = new Label(e.name());
             ChoiceBox<Integer> choiceBox = new ChoiceBox<Integer>();
+            choiceBox.setPrefWidth(100);
             choiceBox.getStyleClass().add("transparent_box");
             setChoiceBox(choiceBox);
             boxEmozione.getChildren().addAll(tipoEmozione, choiceBox);
@@ -199,6 +201,7 @@ public class WindowCanzoneController implements Initializable {
             hbox1.getChildren().remove(labelNoUser);
             for (int i = 0; i < 5; i++) {
                 choice.getItems().add(i + 1);
+                
             }
         }
     }
@@ -264,8 +267,11 @@ public class WindowCanzoneController implements Initializable {
         valutazioneUtente = new ValutazioneUtente(newmap, u.getId());
         valutazioneCanzone.addEvaluation(valutazioneUtente);
 
-        if (!listValutazioni.isEmpty() || listValutazioni == null) {
-            listValutazioni.remove(indxCanzEv);
+        if (!(listValutazioni.isEmpty() || listValutazioni == null)) {
+            if(listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))){
+                listValutazioni.remove(indxCanzEv);
+            }
+            
         }
 
         listValutazioni.add(valutazioneCanzone);
@@ -288,7 +294,6 @@ public class WindowCanzoneController implements Initializable {
 
     private void setPieChart() {
 
-        int help=0;
         pieEmotions.setLegendSide(Side.LEFT);
 
         pieEmotions.setData(createList());
@@ -303,13 +308,9 @@ public class WindowCanzoneController implements Initializable {
                     caption.setTranslateX(e.getSceneX());
                     caption.setTranslateY(e.getSceneY());
                     caption.setText(String.valueOf(data.getPieValue()) + "%");
-                    //pieEmotions.getData().remove(data);
-                    //PieChart.Data d = new PieChart.Data(emList.get(i).toString() + data.getPieValue() + "%" ,data.getPieValue());
-                    //pieEmotions.getData().add(d);
                     System.out.print(caption.getText());
                 }
             });
-            
         }
 
         pieEmotions.setLegendSide(Side.LEFT);
@@ -321,18 +322,25 @@ public class WindowCanzoneController implements Initializable {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
         // int [] array = new int[9];
         HashMap<Emozione, Integer> tmp = createMap();
-
-        for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
-            if (canzEv.getIdCanzone().equals(c.getIdCanzone())) {
-                for (ValutazioneUtente v : canzEv.getValutazione()) {
-                    v.getValutazione().forEach((key, value) -> {
-                        tmp.put(key, (tmp.get(key) + value));
-                    });
-
+        
+        if(EmotionsManager.checkLengthFile()){
+            
+            }
+        else{
+            for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
+                if (canzEv.getIdCanzone().equals(c.getIdCanzone())) {
+                    for (ValutazioneUtente v : canzEv.getValutazione()) {
+                        v.getValutazione().forEach((key, value) -> {
+                            tmp.put(key, (tmp.get(key) + value));
+                        });
+    
+                    }
+                    break;
                 }
-                break;
             }
         }
+
+        
 
         tmp.forEach((key, value) -> {
             PieChart.Data obj = new PieChart.Data(key.toString(), value);
@@ -356,75 +364,90 @@ public class WindowCanzoneController implements Initializable {
         }
         return array;
     }
+
+    private void setCommenti() {
+
+        if(u == null){
+            commentsContainer.getChildren().remove(textBox);
+        }
+        
+        if (isCommented()) {
+            noComments.setText("Commenti");
+            for (Dettagli d : comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()) {
+                HBox hb = new HBox();
+                Label l = new Label(d.getUser().getUsername().toUpperCase() + " ha commentato: " + d.getCommento());
+                hb.getChildren().add(l);
+                hb.getStyleClass().add("hbox");
+                commentsBox.getChildren().add(hb);
+            }
+        } else {
+            if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
+                noComments.setText("Commenti");
+                for (Dettagli d : comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()) {
+                    HBox hb = new HBox();
+                    Label l = new Label(d.getUser().getUsername().toUpperCase() + " ha commentato: " + d.getCommento());
+                    hb.getChildren().add(l);
+                    hb.getStyleClass().add("hbox");
+                    commentsBox.getChildren().add(hb);
+                }
+            } else {
+                noComments.setText("Non ci sono commenti");
+            }
+
+        }
+    }
+
     private boolean isCommented() {
 
         if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
-            indxComm= comments.indexOf(new Commenti(c.getIdCanzone(), null));
-                 com= comments.get(indxComm);
-                 if(u == null){
+            indxComm = comments.indexOf(new Commenti(c.getIdCanzone(), null));
+            com = comments.get(indxComm);
+            if(u == null) {
+                return true;
+            } else {
+                if (com.getDetails().contains(new Dettagli(u, null))) {
+                    d = comments.get(indxComm).getDetails().get(comments.get(indxComm)
+                            .getDetails().indexOf(new Dettagli(u, null)));
                     return true;
-                 }
-                 else{
-                    if (com.getDetails().contains(new Dettagli(u, null))) {
-                        d = comments.get(indxComm).getDetails().get(comments.get(indxComm)
-                                .getDetails().indexOf(new Dettagli(u, null)));
-                        return true;
-                    } else {
-                        
-                        return false;
-                    }
-                 }
-                 
-        }else{
-            com = new Commenti(c.getIdCanzone(), new ArrayList<Dettagli>()); 
+                } else {
+
+                    return false;
+                }
+            }
+
+        } else {
+            com = new Commenti(c.getIdCanzone(), new ArrayList<Dettagli>());
         }
         return false;
 
     }
 
-    public void getCommenti(ActionEvent e){
-        
+    public void getCommenti(ActionEvent e) {
 
         isCommented();
-        d = new Dettagli(u,commentField.getText());
+        d = new Dettagli(u, commentField.getText());
         com.addComment(d);
-        if(!comments.isEmpty() || comments == null){
-            comments.remove(indxComm);
+        if (!(comments.isEmpty() || comments == null)) {
+            if(comments.contains(new Commenti(c.getIdCanzone(), null))){
+                comments.remove(indxComm);
+            } 
         }
         comments.add(com);
         CommentiManager.getEmozioni(comments);
-        setCommenti();
+        HBox hb = new HBox();
+        Label l = new Label(d.getUser().getUsername().toUpperCase() + " ha commentato: " + d.getCommento());
+        hb.getChildren().add(l);
+        hb.getStyleClass().add("hbox");
+        commentsBox.getChildren().add(hb);
+        noComments.setText("Commenti");
+        commentField.setText("");
     }
 //non ho aggiusnto niente
-
-    private void setCommenti(){
-        Label l = new Label();
-        if(isCommented()){
-            commentsContainer.getChildren().remove(noComments);
-                for(Dettagli d: comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()){
-                    l.setText(d.getUser().getUsername() + " ha commentato: " + d.getCommento());
-                    commentsBox.getChildren().add(l);
-                }
-        }
-        else{
-            if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
-                for(Dettagli d: comments.get(comments.indexOf(new Commenti(c.getIdCanzone(), null))).getDetails()){
-                    l.setText(d.getUser().getUsername() + " ha commentato: " + d.getCommento());
-                    commentsBox.getChildren().add(l);
-                }
-            } else {
-                noComments.setText("Non ci sono commenti");
-                commentsBox.getChildren().add(l);
-            }
-
-        }
-    }
     private void setTextField(){
         Pattern pattern = Pattern.compile(".{0,250}");
-        TextFormatter formatter = new TextFormatter<>((UnaryOperator<TextFormatter.Change>) change -> {
+        TextFormatter<TextField> formatter = new TextFormatter<>((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        commentField.setTextFormatter(formatter);
+    });
+    commentField.setTextFormatter(formatter);
     }
-
 }

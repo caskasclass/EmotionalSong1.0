@@ -6,7 +6,7 @@ import emotionalsongs.java.util.User;
 
 public class UserManager extends FileManager {
     
-    final static String PATH="./src/emotionalsongs/resources/DataBaseBrutto/UtentiRegistrati.dati.txt";
+    final static String PATH="./src/emotionalsongs/resources/database/UtentiRegistrati.dati.txt";
     
     
     public static ArrayList<User> readUsers(){

@@ -9,13 +9,13 @@
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="551.0" styleClass="invisibleScrollPane" vbarPolicy="NEVER">
          <content>
-            <FlowPane fx:id="Container" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" rowValignment="TOP" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
+            <FlowPane fx:id="Container" alignment="CENTER_LEFT" hgap="35.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="399.0" prefWidth="1142.0" rowValignment="TOP" style="-fx-background-color: rgba(0,0,0,0);" vgap="20.0">
                <opaqueInsets>
-                  <Insets left="20.0" />
+                  <Insets />
                </opaqueInsets></FlowPane>
          </content>
          <BorderPane.margin>
-            <Insets left="50.0" top="60.0" />
+            <Insets />
          </BorderPane.margin>
       </ScrollPane>
    </center>

@@ -90,7 +90,7 @@ public class homeComponentController implements Initializable {
                     createHomePlaylistUI();
                     createHomeOthersPlaylistUI();
                 } else {
-                    Label avviso = new Label("Per usufruire di altre funzione bisogna effetuare il login");
+                    Label avviso = new Label("Per usufruire di altre funzione bisogna effettuare il login");
                     avviso.setFont(new Font("Proxima Nova", 25));
                     UserPlaylistContainer.getChildren().add(avviso);
                     myPlayButt.setDisable(true);
@@ -148,7 +148,7 @@ public class homeComponentController implements Initializable {
         System.out.println("\n\nFunzia bene");
         if (pl.isEmpty() || pl == null) {
                 notMyPlaylistContainer.setAlignment(Pos.CENTER);
-                avviso.setText("Nessuna Playlist presete");
+                avviso.setText("Nessuna Playlist presente");
                 avviso.setFont(new Font("Proxima Nova", 25));
                 notMyPlaylistContainer.getChildren().add(avviso);
                 otherPlaylsitButton.setDisable(true);
@@ -157,7 +157,7 @@ public class homeComponentController implements Initializable {
             if (u != null) {
                 if (others.isEmpty() || others == null) {
                     notMyPlaylistContainer.setAlignment(Pos.CENTER);
-                    avviso = new Label("Nessuna Playlist presete");
+                    avviso = new Label("Nessuna Playlist presente");
                     avviso.setFont(new Font("Proxima Nova", 25));
                     notMyPlaylistContainer.getChildren().add(avviso);
                     otherPlaylsitButton.setDisable(true);
@@ -184,30 +184,6 @@ public class homeComponentController implements Initializable {
     
         }
     }
-
-    /*
-     * private void PlaylistUI() throws IOException {
-     * ArrayList<Playlist> playlists = pl;
-     * if (playlists == null || playlists.isEmpty()) {
-     * for (int i = 0; i < 6; i++) {
-     * BorderPane ui = (BorderPane) obj.getMicroPane("AddPlaylistBox");
-     * ui.getStylesheets().add(style.getStyle("PlaylistBox"));
-     * notMyPlaylistContainer.getChildren().add(ui);
-     * }
-     * } else {
-     * for (Playlist playlist : pl) {
-     * FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-     * PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-     * playlistBoxController.setPlaylist(playlist);
-     * loader.setController(playlistBoxController);
-     * Parent ui = loader.load();
-     * notMyPlaylistContainer.getChildren().add(ui);
-     * 
-     * }
-     * 
-     * }
-     * }
-     */
 
     public void showSongs(ActionEvent e) throws IOException {
         System.out.println("funzia");

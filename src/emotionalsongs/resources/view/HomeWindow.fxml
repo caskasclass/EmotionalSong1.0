@@ -36,6 +36,9 @@
                      </cursor>
                   </ImageView>
                </children>
+               <VBox.margin>
+                  <Insets bottom="100.0" left="10.0" top="20.0" />
+               </VBox.margin>
             </Pane>
             <Label fx:id="labelLeTuePlaylist" accessibleRole="BUTTON" contentDisplay="CENTER" onMouseClicked="#MyplayWind" prefHeight="53.0" text="Le tue playlist">
                <font>
@@ -95,8 +98,6 @@
                            <children>
                               <MenuButton fx:id="usernameBtn" minWidth="160.0" mnemonicParsing="false" text="Username">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="Impostazioni" />
-                                  <MenuItem mnemonicParsing="false" text="Vedi le tue PlayList" />
                                     <MenuItem fx:id="btn_signOut" mnemonicParsing="false" onAction="#SignOut" text="Esci" />
                                 </items>
                                  <graphic>

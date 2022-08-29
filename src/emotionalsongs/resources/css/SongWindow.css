@@ -5,26 +5,6 @@
     border-color:rgb(40,40,40);
 }
 
-.vbox{
-    -fx-alignment:CENTER;
-    -fx-background-color:rgba(0,0,0,0);
-    background-color:rgba(0,0,0,0);
-}
-.vbox .pile{
-    -fx-background-radius:45;
-    -fx-border-width:3;
-    border-width:3;
-    -fx-border-radius:43;
-    border-radius:43;
-    -fx-border-color:rgb(179,179,170);
-    border-color:rgb(179,179,170);
-    -fx-background-color:rgba(0,0,0,0);
-    background-color:rgba(0,0,0,0);
-    -webkit-border-radius:43;
-    -moz-border-radius:43;
-    -ms-border-radius:43;
-    -o-border-radius:43;
-}
 .prospecticbox
 {
     -fx-border-width:1 0 0 0;
@@ -33,10 +13,36 @@
     border-color:rgb(40,40,40); 
 }
 
+.vbox{
+    -fx-border-color: rgba(111, 108, 108, 0.651);
+    border-color: rgba(111, 108, 108, 0.651);
+    -fx-border-width: 2;
+    border-width: 2;
+    -fx-border-radius:3;
+    border-radius:3;
+}
+
+
+.hbox{
+    -fx-background-color: rgb(40,40,40);
+    background-color: rgb(40,40,40);
+
+    
+}
+
+.hbox .label{
+
+    -fx-font-size: 15;
+    font-size: 15;
+
+
+}
+
 
 /***************************  sistemare  ************************************/
 
 .transparent_box{
+    -fx-mark-color: rgb(255, 255, 255);
     -fx-background-color: rgb(18,18,18);
     background-color: rgb(18,18,18);
     -fx-prompt-text-fill:rgba(111, 108, 108, 0.651);
@@ -54,6 +60,14 @@
 
 }
 
+
+
+.transparent_box .label{
+
+    -fx-alignment:CENTER;
+}
+
+
 .transparent_box:hover{
     -fx-prompt-text-fill:rgb(255, 255, 255);
     -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
@@ -65,6 +79,19 @@
     -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
     border-color: rgb(18,18,18) rgb(18,18,18) rgb(255, 255, 255) rgb(18,18,18);
 }
+
+.transparent_box .context-menu{
+    -fx-background-color: black;
+    background-color: black;
+}
+.transparent_box .menu-item { 
+    -fx-pref-width: 100;
+ }
+.transparent_box .menu-item:focused { -fx-background-color: rgb(42,42,42);
+    background-color: rgb(42,42,42); }
+.transparent_box .menu-item > .label { -fx-text-fill: white; }
+
+.transparent_box .menu-item:focused > .label { -fx-text-fill: black; }
 /****************************************************************************/
 
 
