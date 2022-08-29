@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import emotionalsongs.java.Managers.CanzoniManager;
 import emotionalsongs.java.Managers.CommentiManager;
 import emotionalsongs.java.Managers.EmotionsManager;
 import emotionalsongs.java.util.Canzone;
@@ -353,10 +352,6 @@ public class WindowCanzoneController implements Initializable {
 
         pieEmotions.setTitle("Prospettico Emozioni");
         pieEmotions.setLegendSide(Side.LEFT);
-
-        // Label lab= new Label("");
-        // lab.setTextFill(Color.WHITE);
-        // lab.setStyle("-fx-font: 24 Arials;");
         if (!(new File(PATH).length() == 0)) {
 
             pieEmotions.setData(createList());

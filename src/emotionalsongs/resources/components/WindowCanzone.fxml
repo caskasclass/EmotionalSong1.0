@@ -125,7 +125,7 @@
                      <children>
                         <HBox fx:id="textBox" alignment="CENTER" spacing="50.0">
                            <children>
-                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento..">
+                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento.." styleClass="transparent_box">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -137,7 +137,7 @@
                            </VBox.margin>
                         </HBox>
                         <Label fx:id="noComments" />
-                        <VBox fx:id="commentsBox" prefHeight="200.0" prefWidth="100.0" />
+                        <VBox fx:id="commentsBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/repositoryCanzoni.css" />
                      </children>
                   </VBox>
                </children>
