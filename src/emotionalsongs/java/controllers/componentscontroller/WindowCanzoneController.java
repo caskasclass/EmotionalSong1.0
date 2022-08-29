@@ -395,6 +395,7 @@ public class WindowCanzoneController implements Initializable {
         CommentiManager.getEmozioni(comments);
         setCommenti();
     }
+//non ho aggiusnto niente
 
     private void setCommenti(){
         Label l = new Label();
