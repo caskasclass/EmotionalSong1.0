@@ -70,7 +70,6 @@ public class SongTableView {
 
     FxmlLoader obj = new FxmlLoader();
 
-    private User u = GlobalsVariables.currentUser;
 
     public SongTableView(TableView<Canzone> Repository, TableColumn<Canzone, String> album2,
             TableColumn<Canzone, Void> indx,

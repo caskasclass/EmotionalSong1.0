@@ -17,7 +17,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -137,11 +136,8 @@ public class ShowPlaylistController  implements Initializable{
 
     // lo dabbiamo fare globale
     public void backToHome(){
-        FXMLLoader loader = obj.getComponentsLoader("home");
-        homeComponentController homeComponentController = new homeComponentController();
-        loader.setController(homeComponentController);
         try {
-            Parent p = loader.load();
+            Parent p = obj.getPane("home");
             GlobalsVariables.left_side_bpane.setCenter(p);
         } catch (Exception e) {
            e.printStackTrace();

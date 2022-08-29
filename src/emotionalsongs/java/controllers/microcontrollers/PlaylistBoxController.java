@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.ShowPlaylistController;
-import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
