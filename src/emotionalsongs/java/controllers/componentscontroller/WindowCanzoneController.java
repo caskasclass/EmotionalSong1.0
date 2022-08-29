@@ -1,10 +1,10 @@
 package emotionalsongs.java.controllers.componentscontroller;
-
-import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import emotionalsongs.java.Managers.CommentiManager;
 import emotionalsongs.java.Managers.EmotionsManager;
@@ -19,6 +19,7 @@ import emotionalsongs.java.util.ValutazioneUtente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -30,9 +31,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class WindowCanzoneController implements Initializable {
 
@@ -52,25 +56,10 @@ public class WindowCanzoneController implements Initializable {
     private Label Info;
 
     @FXML
-    private Label noComments;
-
-    @FXML
-    private Button commentButt;
-
-    @FXML
-    private TextField commentField;
-
-    @FXML
     private HBox prospetticoBar;
 
     @FXML
     private Label titolo;
-
-    @FXML
-    private VBox commentsBox;
-
-    @FXML
-    private VBox commentsContainer;
 
     @FXML
     private FlowPane emotionsContainer;
@@ -79,32 +68,42 @@ public class WindowCanzoneController implements Initializable {
     private PieChart pieEmotions;
 
     @FXML
-    private Button saveButt;
-
-    @FXML
-    private HBox textBox;
-
-    @FXML
     private HBox hbox1;
 
     @FXML
     private VBox pieBox;
 
-    private int indxComm=0;
-
-    private int indxCanzEv=0;
+    private int indxCanzEv = 0;
 
     private Integer y = 0;
+    @FXML
+    private Label noComments;
 
-    private User u = GlobalsVariables.currentUser;
+    @FXML
+    private Button commentButt;
 
-    private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
+    @FXML
+    private TextField commentField;
+    @FXML
+    private VBox commentsBox;
+    @FXML
+    private VBox commentsContainer;
+    
+    @FXML
+    private Button saveButt;
 
+    @FXML
+    private HBox textBox;
+    private int indxComm=0;
     private ArrayList<Commenti> comments = new ArrayList<Commenti>();
 
     private Commenti com = new Commenti();
 
     private Dettagli d = new Dettagli();
+
+    private User u = GlobalsVariables.currentUser;
+
+    private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
 
     private CanzoneEvaluation valutazioneCanzone = new CanzoneEvaluation();
 
@@ -116,10 +115,7 @@ public class WindowCanzoneController implements Initializable {
 
     final String PATH = "./src/emotionalsongs/resources/DataBaseBrutto/Emozioni.dati.txt";
 
-    
-
     Canzone c = null;
-
 
     Integer i = 1;
 
@@ -129,15 +125,15 @@ public class WindowCanzoneController implements Initializable {
         if (!EmotionsManager.checkLengthFile()) {
             listValutazioni = EmotionsManager.readEmozioni();
         }
-
         if(!CommentiManager.checkLengthFile()){
             comments= CommentiManager.readCommenti();
         }
 
-        
+
         createBoxes();
         setCanzone();
         setPieChart();
+        setTextField();
         setCommenti();
 
     }
@@ -152,14 +148,13 @@ public class WindowCanzoneController implements Initializable {
         Album.setText(c.getAlbum());
         Info.setText(c.getAutore() + " • " + c.getAnno() + " • " + c.getDurata() + " min");
         titolo.setText(c.getTitolo());
-        valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(),new ArrayList<ValutazioneUtente>());
-        if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
+        if (valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null) {
             Data.setText("Numero Valutazioni : 0");
 
-        }else{
-            Data.setText("Numero Valutazioni : "+ valutazioneCanzone.getValutazione().size());
+        } else {
+            Data.setText("Numero Valutazioni : " + valutazioneCanzone.getValutazione().size());
         }
-        
+
     }
 
     private void createBoxes() {
@@ -183,10 +178,12 @@ public class WindowCanzoneController implements Initializable {
     private void setChoiceBox(ChoiceBox<Integer> choice) {
 
         if (u == null) {
+            setClassData();
             int target = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
-            valutazioneCanzone = listValutazioni.get(target);
+            if (!(target == -1)) {
+                valutazioneCanzone = listValutazioni.get(target);
+            }
             hbox1.getChildren().remove(saveButt);
-            commentsContainer.getChildren().remove(textBox);
             choice.setDisable(true);
             labelNoUser.setText("Per inserire la valutazione fare login");
 
@@ -197,7 +194,7 @@ public class WindowCanzoneController implements Initializable {
             choice.setValue(valutazioneUtente.getValutazione().get(e));
             choice.setDisable(true);
             y++;
-            
+
         } else {
             hbox1.getChildren().remove(labelNoUser);
             for (int i = 0; i < 5; i++) {
@@ -212,22 +209,35 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
+    private void setClassData() {
+        if (listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))) {
+            indxCanzEv = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
+            valutazioneCanzone = listValutazioni
+                    .get(listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null)));
+        } else {
+            valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());
+        }
+
+    }
+
     //////////////////////// ok/////////////////////////////////
     private boolean getEvaluation() {
 
         if (listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))) {
             indxCanzEv = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
-            valutazioneCanzone = listValutazioni.get(listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null)));
+            valutazioneCanzone = listValutazioni
+                    .get(listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null)));
             if (valutazioneCanzone.getValutazione().contains(new ValutazioneUtente(null, u.getId()))) {
                 valutazioneUtente = listValutazioni.get(indxCanzEv).getValutazione().get(listValutazioni.get(indxCanzEv)
                         .getValutazione().indexOf(new ValutazioneUtente(null, u.getId())));
                 return true;
             } else {
-                //valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());
+                // valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new
+                // ArrayList<ValutazioneUtente>());
                 return false;
             }
-        }else{
-            valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>()); 
+        } else {
+            valutazioneCanzone = new CanzoneEvaluation(c.getIdCanzone(), new ArrayList<ValutazioneUtente>());
         }
         return false;
 
@@ -248,38 +258,132 @@ public class WindowCanzoneController implements Initializable {
         int i = 0;
         HashMap<Emozione, Integer> newmap = createMap();
 
-
         for (ChoiceBox<Integer> choice : list) {
             updateMap(emList.get(i), choice.getValue(), newmap);
             i++;
         }
-        
+
         valutazioneUtente = new ValutazioneUtente(newmap, u.getId());
         valutazioneCanzone.addEvaluation(valutazioneUtente);
-        /*if(listValutazioni.isEmpty() || listValutazioni == null){
-            listValutazioni.add(valutazioneCanzone);
-        }*/
-        if(!listValutazioni.isEmpty() || listValutazioni == null){
+        /*
+         * if(listValutazioni.isEmpty() || listValutazioni == null){
+         * listValutazioni.add(valutazioneCanzone);
+         * }
+         */
+        if (!listValutazioni.isEmpty() || listValutazioni == null) {
             listValutazioni.remove(indxCanzEv);
         }
-       
+
         listValutazioni.add(valutazioneCanzone);
-        
+
         EmotionsManager.getEmozioni(listValutazioni);
         pieEmotions.setVisible(true);
-        setPieChart(); 
+        setPieChart();
         hbox1.getChildren().remove(saveButt);
-        for(ChoiceBox<Integer> cb : list){
+        for (ChoiceBox<Integer> cb : list) {
             cb.setDisable(true);
         }
-        if(valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null){
+        if (valutazioneCanzone.getValutazione().size() == 0 || valutazioneCanzone.getValutazione() == null) {
             Data.setText("Numero Valutazioni : 0");
 
-        }else{
-            Data.setText("Numero Valutazioni : "+ valutazioneCanzone.getValutazione().size());
+        } else {
+            Data.setText("Numero Valutazioni : " + valutazioneCanzone.getValutazione().size());
         }
 
+    }
 
+    private void setPieChart() {
+
+        int help=0;
+        pieEmotions.setLegendSide(Side.LEFT);
+
+        pieEmotions.setData(createList());
+        final Label caption = new Label("");
+        caption.setTextFill(Color.DARKORANGE);
+        //caption.setStyle("-fx-font: 24 arial;");
+
+        for (final PieChart.Data data : pieEmotions.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET,new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent e) {
+                    caption.setTranslateX(e.getSceneX());
+                    caption.setTranslateY(e.getSceneY());
+                    caption.setText(String.valueOf(data.getPieValue()) + "%");
+                    //pieEmotions.getData().remove(data);
+                    //PieChart.Data d = new PieChart.Data(emList.get(i).toString() + data.getPieValue() + "%" ,data.getPieValue());
+                    //pieEmotions.getData().add(d);
+                    System.out.print(caption.getText());
+                }
+            });
+            
+        }
+
+        pieEmotions.setLegendSide(Side.LEFT);
+        pieEmotions.setMinHeight(425);
+
+        /*
+         * for(final PieChart.Data obj : pieEmotions.getData()){
+         * obj.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new
+         * EventHandler<MouseEvent>() {
+         * 
+         * @Override
+         * public void handle(MouseEvent e){
+         * lab.setTranslateX(e.getSceneX());
+         * lab.setTranslateY(e.getSceneY());
+         * lab.setText(String.valueOf(obj.getPieValue())+ "%");
+         * }
+         * });
+         * }
+         */
+
+    }
+
+    private ObservableList<PieChart.Data> createList() {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        // int [] array = new int[9];
+        HashMap<Emozione, Integer> tmp = createMap();
+
+        for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
+            if (canzEv.getIdCanzone().equals(c.getIdCanzone())) {
+                for (ValutazioneUtente v : canzEv.getValutazione()) {
+                    v.getValutazione().forEach((key, value) -> {
+                        tmp.put(key, (tmp.get(key) + value));
+                    });
+
+                }
+                break;
+            }
+        }
+
+        tmp.forEach((key, value) -> {
+            PieChart.Data obj = new PieChart.Data(key.toString(), value);
+            pieChartData.add(obj);
+        });
+        return pieChartData;
+    }
+
+    public ArrayList<MenuItem> createArray(MenuButton menu) {
+        ArrayList<MenuItem> array = castList(menu.getItems());
+        return array;
+    }
+
+    public static ArrayList<MenuItem> castList(ObservableList<?> al) {
+
+        ArrayList<MenuItem> array = new ArrayList<MenuItem>();
+        for (Object obj : al) {
+            if (obj instanceof MenuItem) {
+                array.add((MenuItem) obj);
+            }
+        }
+        return array;
+    }
+
+    private void setTextField(){
+        Pattern pattern = Pattern.compile(".{0,250}");
+        TextFormatter formatter = new TextFormatter<>((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        commentField.setTextFormatter(formatter);
     }
     private boolean isCommented() {
 
@@ -322,6 +426,9 @@ public class WindowCanzoneController implements Initializable {
     }
 
     private void setCommenti(){
+        if(u == null){
+            commentsContainer.getChildren().remove(textBox);
+        }
         Label l = new Label();
         if(isCommented()){
             commentsContainer.getChildren().remove(noComments);
@@ -342,75 +449,6 @@ public class WindowCanzoneController implements Initializable {
             }
 
         }
-    }
-        
-        
-
-    
-
-    private void setPieChart() {
-
-        pieEmotions.setTitle("Prospettico Emozioni");
-        pieEmotions.setLegendSide(Side.LEFT);
-        if (!(new File(PATH).length() == 0)) {
-
-            pieEmotions.setData(createList());
-            /*
-             * for(final PieChart.Data obj : pieEmotions.getData()){
-             * obj.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED, new
-             * EventHandler<MouseEvent>() {
-             * 
-             * @Override
-             * public void handle(MouseEvent e){
-             * lab.setTranslateX(e.getSceneX());
-             * lab.setTranslateY(e.getSceneY());
-             * lab.setText(String.valueOf(obj.getPieValue())+ "%");
-             * }
-             * });
-             * }
-             */
-        }
-
-    }
-
-    private ObservableList<PieChart.Data> createList() {
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        // int [] array = new int[9];
-        HashMap<Emozione, Integer> tmp = createMap();
-
-        for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
-            if (canzEv.getIdCanzone().equals(c.getIdCanzone())) {
-                for (ValutazioneUtente v : canzEv.getValutazione()) {
-                    v.getValutazione().forEach((key, value) -> {
-                        tmp.put(key, (tmp.get(key) + value));
-                    });
-
-                }
-                break;
-            }
-        }
-
-        tmp.forEach((key, value) -> {
-            PieChart.Data obj = new PieChart.Data(key.toString(), value);
-            pieChartData.add(obj);
-        });
-        return pieChartData;
-    }
-
-    public ArrayList<MenuItem> createArray(MenuButton menu) {
-        ArrayList<MenuItem> array = castList(menu.getItems());
-        return array;
-    }
-
-    public static ArrayList<MenuItem> castList(ObservableList<?> al) {
-
-        ArrayList<MenuItem> array = new ArrayList<MenuItem>();
-        for (Object obj : al) {
-            if (obj instanceof MenuItem) {
-                array.add((MenuItem) obj);
-            }
-        }
-        return array;
     }
 
 }

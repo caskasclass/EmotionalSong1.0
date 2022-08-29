@@ -44,9 +44,6 @@ public class ShowPlaylistController  implements Initializable{
     private TableColumn<Canzone, Void> deletebutton;
 
     @FXML
-    private Button editButt;
-
-    @FXML
     private TableColumn<Canzone, String> album;
 
     @FXML
@@ -89,7 +86,6 @@ public class ShowPlaylistController  implements Initializable{
             if(u == null || !(current.getOwner().equals(u.getId())))
             {
                 deleteButtContainer.getChildren().remove(deleteButt);
-                deleteButtContainer.getChildren().remove(editButt);
             }
             setPlaylist();
             
@@ -137,11 +133,8 @@ public class ShowPlaylistController  implements Initializable{
 
     // lo dabbiamo fare globale
     public void backToHome(){
-        FXMLLoader loader = obj.getComponentsLoader("home");
-        homeComponentController homeComponentController = new homeComponentController();
-        loader.setController(homeComponentController);
         try {
-            Parent p = loader.load();
+            Parent p = obj.getPane("home");
             GlobalsVariables.left_side_bpane.setCenter(p);
         } catch (Exception e) {
            e.printStackTrace();
@@ -160,7 +153,4 @@ public class ShowPlaylistController  implements Initializable{
         return username;
     }
 
-    public void editPlaylist(ActionEvent e){
-        tabprova.setVisible(true);
-    }
 }

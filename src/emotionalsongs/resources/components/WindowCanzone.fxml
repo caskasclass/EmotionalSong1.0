@@ -110,22 +110,25 @@
                   </HBox>
                   <VBox fx:id="pieBox" alignment="CENTER" styleClass="prospecticbox">
                      <children>
-                        <Label fx:id="labelNoUser2" alignment="CENTER">
+                        <Label alignment="CENTER" text="Prospettico Emozioni">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Proxima Nova" size="31.0" />
                            </font>
                         </Label>
-                        <PieChart fx:id="pieEmotions" styleClass="chart-legend" />
+                        <PieChart fx:id="pieEmotions">
+                           <VBox.margin>
+                              <Insets left="200.0" />
+                           </VBox.margin></PieChart>
                      </children>
                      <padding>
                         <Insets top="20.0" />
                      </padding>
                   </VBox>
-                  <VBox fx:id="commentsContainer" alignment="CENTER" spacing="30.0">
+                  <VBox fx:id="commentsContainer" alignment="TOP_CENTER" minHeight="500.0" spacing="30.0">
                      <children>
                         <HBox fx:id="textBox" alignment="CENTER" spacing="50.0">
                            <children>
-                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento.." styleClass="transparent_box">
+                              <TextField fx:id="commentField" prefHeight="61.0" prefWidth="608.0" promptText="Inserisci commento max 250 caratteri.." styleClass="transparent_box">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -137,8 +140,11 @@
                            </VBox.margin>
                         </HBox>
                         <Label fx:id="noComments" />
-                        <VBox fx:id="commentsBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/repositoryCanzoni.css" />
+                        <VBox fx:id="commentsBox" alignment="CENTER_LEFT" spacing="10.0" stylesheets="@../css/repositoryCanzoni.css" />
                      </children>
+                     <VBox.margin>
+                        <Insets top="75.0" />
+                     </VBox.margin>
                   </VBox>
                </children>
             </VBox>

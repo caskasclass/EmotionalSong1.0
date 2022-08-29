@@ -80,14 +80,6 @@
                               <Font name="Proxima Nova" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="editButt" mnemonicParsing="false" onAction="#editPlaylist" styleClass="buttonHome" text="Edit">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets left="75.0" />
@@ -107,12 +99,6 @@
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
-                        </TableView>
-                        <TableView fx:id="tabprova" styleClass="repo" visible="false">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
                         </TableView>
                      </children>
                   </VBox>
