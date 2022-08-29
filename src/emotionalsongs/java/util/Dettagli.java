@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Dettagli implements Serializable{
 
-    private User Utente;
+    private User user;
     private String commento;
     
     
-    public Dettagli(User Id,String com){
-        this.Utente = Id;
+    public Dettagli(User us,String com){
+        this.user = us;
         this.commento= com;
     }
 
@@ -17,8 +17,8 @@ public class Dettagli implements Serializable{
         
     }
 
-    public User getIdUtente(){
-        return Utente;
+    public User getUser(){
+        return user;
     }
 
     public String getCommento(){
@@ -28,7 +28,7 @@ public class Dettagli implements Serializable{
     @Override
     public boolean equals(Object o) {
         Dettagli tmp = (Dettagli) o;
-        if (this.Utente.equals(tmp.Utente)) {
+        if (this.user.equals(tmp.user)) {
             return true;
         }
         return false;
