@@ -24,6 +24,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -159,6 +160,7 @@ public class Homebuilder implements Initializable {
     }
 
     public void SignUpWind(ActionEvent e) throws IOException {
+        String imgPath = getClass().getResource("../../resources/images/icon3.png").toExternalForm();
         Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/SignUpWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -166,6 +168,7 @@ public class Homebuilder implements Initializable {
         stage.setTitle("EmotionalSong");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.getIcons().add(new Image(imgPath));
         stage.show();
     }
 

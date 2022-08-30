@@ -128,13 +128,15 @@ public class createPlaylistController implements Initializable {
     }
 
     public void changeImage(MouseEvent e) throws IOException {
+        String imgPath = getClass().getResource("../../../resources/images/icon3.png").toExternalForm();
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../../../resources/view/PlaylistImagePicker.fxml"));
         Scene scene = new Scene(root, 1100, 600);
         scene.getStylesheets().add(style.getStyle("imagePickerWindow"));
-        stage.setTitle("EmotioanlSongs");
+        stage.setTitle("EmotionalSongs");
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(imgPath));
         stage.showAndWait();
 
         String s = GlobalsVariables.PlaylistImg;
