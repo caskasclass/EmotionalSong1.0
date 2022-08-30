@@ -57,7 +57,7 @@ public class playlistWindController implements Initializable {
 
     }
 
-
+//ciao
     public void setLemie(boolean x) {
         lemie = x;
     }
