@@ -31,7 +31,7 @@
                            <children>
                               <ImageView fx:id="playlistImage" accessibleRole="BUTTON" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#changeImage" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/edit.png" />
+                                    <Image url="@../images/matita.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

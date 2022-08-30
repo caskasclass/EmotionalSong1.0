@@ -28,7 +28,7 @@
                      <children>
                         <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../images/edit.png" />
+                              <Image url="@../images/matita.png" />
                            </image>
                         </ImageView>
                      </children>

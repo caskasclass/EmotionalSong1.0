@@ -29,7 +29,7 @@
                            <children>
                               <ImageView fx:id="playlistImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/edit.png" />
+                                    <Image url="@../images/matita.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />

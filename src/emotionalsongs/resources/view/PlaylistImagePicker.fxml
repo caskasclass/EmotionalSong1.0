@@ -19,15 +19,15 @@
          <center>
             <FlowPane alignment="CENTER" hgap="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1100.0" styleClass="flow-pane" vgap="50.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane style="-fx-background-color: rgb(133,201,218);">
+                  <Pane maxHeight="150.0" style="-fx-background-color: rgb(133,201,218);">
                      <children>
-                        <ImageView accessibleRole="BUTTON" fitHeight="150.0" fitWidth="150.0" layoutY="2.0" onMouseClicked="#selectPicture" pickOnBounds="true">
-                           <image>
-                              <Image url="@../images/loghi08.jpg" />
-                           </image>
+                        <ImageView accessibleRole="BUTTON" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
+                           </cursor>
+                           <image>
+                              <Image url="@../images/img3.png" />
+                           </image></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -37,15 +37,15 @@
                         </DropShadow>
                      </effect>
                   </Pane>
-                  <Pane style="-fx-background-color: rgb(247,211,117);">
+                  <Pane maxHeight="150.0" style="-fx-background-color: rgb(247,211,117);">
                      <children>
                         <ImageView accessibleRole="BUTTON" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/images.jpeg" />
-                           </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
+                           </cursor>
+                           <image>
+                              <Image url="@../images/img7.png" />
+                           </image></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -55,12 +55,15 @@
                         </DropShadow>
                      </effect>
                   </Pane>
-                  <Pane style="-fx-background-color: rgb(223,96,79);">
+                  <Pane maxHeight="150.0" style="-fx-background-color: rgb(223,96,79);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="160.0" layoutY="1.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="160.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/calmness.jpg" />
+                              <Image url="@../images/img1.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </children>
                      <effect>
@@ -71,12 +74,15 @@
                         </DropShadow>
                      </effect>
                   </Pane>
-                  <Pane style="-fx-background-color: rgb(162,202,94);">
+                  <Pane maxHeight="150.0" style="-fx-background-color: rgb(162,202,94);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" layoutY="1.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/sadness.jpg" />
-                           </image></ImageView>
+                              <Image url="@../images/img9.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -88,7 +94,13 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(95,128,223);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img10.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -100,7 +112,13 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(230,124,94);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img5.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -112,7 +130,13 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(232,152,62);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img2.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -124,7 +148,13 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(101,112,177);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img6.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -136,7 +166,13 @@
                   </Pane>
                   <Pane style="-fx-background-color: rgb(78,171,178);">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img8.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
@@ -146,9 +182,15 @@
                         </DropShadow>
                      </effect>
                   </Pane>
-                  <Pane style="-fx-background-color: rgb(52, 207, 130);">
+                  <Pane styleClass="rgb(52, 207, 130)">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#selectPicture" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/img4.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
                      </children>
                      <effect>
                         <DropShadow height="40.0" radius="19.5" width="40.0">
