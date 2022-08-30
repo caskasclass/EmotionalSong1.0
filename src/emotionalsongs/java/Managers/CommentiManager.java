@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import emotionalsongs.java.util.Commenti;
 
 public class CommentiManager extends FileManager {
-    final static String PATH="./src/emotionalsongs/resources/database/Commenti.dati.txt";
+    final static String PATH="./DATA/Commenti.dati.txt";
 
     public static ArrayList<Commenti> readCommenti(){
 

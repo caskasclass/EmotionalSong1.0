@@ -3,7 +3,7 @@ package emotionalsongs.java.Managers;
 
 public class StyleManager {
     
-    private  String maincss = getClass().getResource("../../resources/css/application.css").toExternalForm();
+    private  String maincss = "/emotionalsongs/resources/css/application.css";
 
     public  String mainStyle(){
         return maincss;
@@ -17,7 +17,7 @@ public class StyleManager {
     }
     public String getStyle(String filename)
     {
-        return getClass().getResource("../../resources/css/"+filename+".css").toExternalForm();
+        return getClass().getResource("/emotionalsongs/resources/css/"+filename+".css").toExternalForm();
     }
 
 }

@@ -1,3 +1,9 @@
+/**
+ * Rappresenta un oggetto CanzoneEvaluation. 
+ * Racchiude l'id di un oggetto Canzone e tutte le sue valutazioni tramite array di oggetti ValutazioneUtente.
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 package emotionalsongs.java.util;
 
 import java.io.Serializable;

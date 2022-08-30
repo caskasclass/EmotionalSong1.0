@@ -1,3 +1,9 @@
+/**
+ * Rappresenta un oggetto Commenti. 
+ * Racchiude l'id di un oggetto Canzone e i commenti a lui attribuiti tramite array di oggetti Dettagli.
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 package emotionalsongs.java.util;
 
 import java.io.Serializable;

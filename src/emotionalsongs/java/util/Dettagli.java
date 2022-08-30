@@ -1,3 +1,9 @@
+/**
+ * Rappresenta un oggetto Dettagli. 
+ * Racchiude l'id di un oggetto User e il commento da esso scritto.
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 package emotionalsongs.java.util;
 
 import java.io.Serializable;

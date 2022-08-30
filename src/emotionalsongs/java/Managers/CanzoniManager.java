@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import emotionalsongs.java.util.Canzone;
 
 public class CanzoniManager extends FileManager {
-    final static String PATH="./src/emotionalsongs/resources/database/Canzoni.dati.txt";
+    final static String PATH="./DATA/Canzoni.dati.txt";
     
     
     public static ArrayList<Canzone> readCanzoni(){

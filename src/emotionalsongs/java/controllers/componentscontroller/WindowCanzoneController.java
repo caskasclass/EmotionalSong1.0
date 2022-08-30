@@ -123,7 +123,7 @@ public class WindowCanzoneController implements Initializable {
 
     private ArrayList<Emozione> emList = GlobalsVariables.getEmotions();
 
-    final String PATH = "./src/emotionalsongs/resources/database/Emozioni.dati.txt";
+    final String PATH = "./DATA/Emozioni.dati.txt";
 
     Canzone c = null;
 

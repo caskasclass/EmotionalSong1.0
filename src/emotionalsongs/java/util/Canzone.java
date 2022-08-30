@@ -1,3 +1,9 @@
+/**
+ * Rappresenta un oggetto Canzone con tutti i suoi attributi come titolo, autore ecc..
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
+
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -7,7 +13,7 @@ import java.util.Date;
 
 public class Canzone implements Serializable {
 
-    private static String PATH = "./src/emotionalsongs/resources/database/Canzoni.dati.txt";
+    private static String PATH = "./DATA/Canzoni.dati.txt";
     private String IdCanzone;// ok
     private String Titolo;// ok
     private String Autore;// ok
