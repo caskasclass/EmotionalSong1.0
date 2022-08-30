@@ -6,6 +6,11 @@ import java.util.UUID;
 
 import emotionalsongs.java.Managers.FileManager;
 
+/**
+ * Represents a User object.
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 public class User implements Serializable {
     private static String PATH = "./DATA/UtentiRegistrati.dati.txt";
 
@@ -17,6 +22,15 @@ public class User implements Serializable {
     private String codiceFisc;
     private String indirizzo;
 
+    /**
+     * Returns an object of type User.
+     * @param u the username of the User object
+     * @param p the password of the User object
+     * @param e the email of the User object
+     * @param nc the name and surname of the User object
+     * @param cf the codice fiscale of the User object
+     * @param ind the address of the User object
+     */
     public User(String u, String p, String e, String nc, String cf, String ind) {
         userId = setId();
         username = u;
@@ -27,6 +41,10 @@ public class User implements Serializable {
         indirizzo = ind;
     }
 
+    /**
+     * Returns a random Id of the type User object
+     * @return random Id of the type User object
+     */
     private String setId() {
         boolean unique = false;
         String id = "";
@@ -55,7 +73,11 @@ public class User implements Serializable {
 
         return id;
     }
-
+    /**
+     * Casts arrays from type Object to type User
+     * @param al generic arraylist
+     * @return ArrayList of type User
+     */
     private static ArrayList<User> castList(ArrayList<?> al) {
 
         ArrayList<User> array = new ArrayList<User>();
@@ -67,27 +89,47 @@ public class User implements Serializable {
         return array;
     }
 
-    public String printUser() {
-        return ("\nUsername : " + username + "\nPassword : " + password + "\nEmail : " + email + "\nId : " + userId);
-    }
-
-    // da sviluppare motodi getParametro() perché sono privati.
+    /**
+     * Returns username of type User object
+     * @return Current username of type User object
+     */
     public String getUsername() {
         return this.username;
     }
+
+    /**
+     * Returns name and surname of type User object
+     * @return Current nomecognome of type User object
+     */
     public String getName() {
         return this.nomecognome;
     }
+
+    /**
+     * Returns Id of type User object
+     * @return Current Id of type User object
+     */
     public String getId() {
         return this.userId;
     }
+
+    /**
+     * Returns codice fiscale of type User object
+     * @return Current codiceFisc of type User object
+     */
     public String getCodiceFisc() {
         return this.codiceFisc;
     }
+
+    /**
+     * Returns address of type User object
+     * @return Current address of type User object
+     */
     public String getIndirizzo() {
         return this.indirizzo;
     }
 
+    
     @Override
     public boolean equals(Object o) {
         User other = (User) o;

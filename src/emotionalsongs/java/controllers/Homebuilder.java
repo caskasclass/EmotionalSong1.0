@@ -116,7 +116,6 @@ public class Homebuilder implements Initializable {
         if (users.contains(loguser)) {
 
             User log = users.get(users.indexOf(loguser)); // molto meglio
-            System.out.println(log.printUser());// testing ok!
             GlobalsVariables.currentUser = log;
             updateWindow();
 

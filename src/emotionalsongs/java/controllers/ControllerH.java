@@ -60,11 +60,9 @@ public class ControllerH {
             ArrayList<User> users = UserManager.readUsers();
             if(users.contains(newuser)){
                 msgErr.setText("utente già registrato");
-                System.out.println("tente già registrato\n");
             }
             else {
                 users.add(newuser);
-                System.out.println("\n\nuser aggiunto\n" + newuser.printUser() + "\n");
                 Stage stage = (Stage) btn_registra.getScene().getWindow(); // chiusura della finestra
                 stage.close();
             
