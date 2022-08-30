@@ -1,3 +1,6 @@
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -5,6 +8,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import emotionalsongs.java.Managers.FileManager;
+import emotionalsongs.java.Managers.UserManager;
 
 /**
  * Represents a User object.
@@ -14,12 +18,19 @@ import emotionalsongs.java.Managers.FileManager;
 public class User implements Serializable {
     private static String PATH = "./DATA/UtentiRegistrati.dati.txt";
 
+    /**Represents the ID of the user*/
     private String userId;
+    /**Represents the username of the user*/
     private String username;
+    /**Represents the password of the user*/
     private String password;
+    /**Represents the email of the user*/
     private String email;
+    /**Represents the name and surname of the user*/
     private String nomecognome;
+    /**Represents the codice fiscale of the user*/
     private String codiceFisc;
+    /**Represents the address of the user*/
     private String indirizzo;
 
     /**
@@ -48,13 +59,12 @@ public class User implements Serializable {
     private String setId() {
         boolean unique = false;
         String id = "";
-        // settare id controlland che non sia gia esistente
         ArrayList<User> list = null;
         Object obj = FileManager.readData(PATH);
         if (obj != null) {
             if (obj instanceof ArrayList<?>) {
                 ArrayList<?> al = (ArrayList<?>) obj;
-                list = castList(al);
+                list = UserManager.castList(al);
             }
             do {
                 id = UUID.randomUUID().toString();
@@ -72,21 +82,6 @@ public class User implements Serializable {
         }
 
         return id;
-    }
-    /**
-     * Casts arrays from type Object to type User
-     * @param al generic arraylist
-     * @return ArrayList of type User
-     */
-    private static ArrayList<User> castList(ArrayList<?> al) {
-
-        ArrayList<User> array = new ArrayList<User>();
-        for (Object obj : al) {
-            if (obj instanceof User) {
-                array.add((User) obj);
-            }
-        }
-        return array;
     }
 
     /**
@@ -129,7 +124,9 @@ public class User implements Serializable {
         return this.indirizzo;
     }
 
-    
+    /**
+     * Compares User objects based on fields username and password 
+     */
     @Override
     public boolean equals(Object o) {
         User other = (User) o;

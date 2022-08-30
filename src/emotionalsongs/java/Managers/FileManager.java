@@ -1,3 +1,6 @@
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
 package emotionalsongs.java.Managers;
 
 import java.io.FileInputStream;
@@ -7,9 +10,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * This Class manages the txt files in the application.
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 public class FileManager {
 
 
+  /**
+   * Import the data from the file who has this path
+   * @param PATH path to the file
+   * @return ArrayList of generic objects
+   */
   public static Object readData(String PATH) {
     Object obj = null;
     try {
@@ -25,6 +38,12 @@ public class FileManager {
     return obj;
 
   }
+
+  /**
+   * Export the data to the file who has this path
+   * @param data ArrayList of generic objects
+   * @param PATH path to the file
+   */
   public static void getData(ArrayList<?> data,String PATH) {
     try {
       FileOutputStream fileOutputStream = new FileOutputStream(PATH);

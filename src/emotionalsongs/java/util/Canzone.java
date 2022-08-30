@@ -1,4 +1,6 @@
-
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -7,27 +9,43 @@ import java.util.Date;
 
 /**
  * Represents a Canzone object.
+ * It has the info about the song like title, author ecc..
  * @author Beatrice Bastianello
  * @author Nazar Viytyuk
  */
 
 public class Canzone implements Serializable {
 
+    /** Useful to manage object type Canzone */
     private static String PATH = "./DATA/Canzoni.dati.txt";
-    private String IdCanzone;// ok
-    private String Titolo;// ok
-    private String Autore;// ok
-    private Double DanceAbility;// ok
-    private Double Energy;// ok
-    private Double Loudness;// ok
-    private Double Speechiness;// ok
-    private Boolean Mode;// ok
-    private Double Liveness;// ok
-    private Double Tempo;// ok
-    private Date Anno;// ok
-    private Double Duration_ms;// ok
-    private String Album;// ok
-    private Integer Time_signature;// ok
+    /** Represents the ID of the song */
+    private String IdCanzone;
+    /** Represents the title of the song */
+    private String Titolo;
+    /** Represents the author of the song */
+    private String Autore;
+    /** Useful to manage object type Canzone */
+    private Double DanceAbility;
+    /** Useful to manage object type Canzone */
+    private Double Energy;
+    /** Useful to manage object type Canzone */
+    private Double Loudness;
+    /** Useful to manage object type Canzone */
+    private Double Speechiness;
+    /** Useful to manage object type Canzone */
+    private Boolean Mode;
+    /** Useful to manage object type Canzone */
+    private Double Liveness;
+    /** Useful to manage object type Canzone */
+    private Double Tempo;
+    /** Represents the year of the song */  
+    private Date Anno;
+    /** Represents the duration of the song */
+    private Double Duration_ms;
+    /** Represents the album containing the song */
+    private String Album;
+    /** Useful to manage object type Canzone */
+    private Integer Time_signature;
 
     /**
      * Returns an object of type Canzone.
@@ -68,7 +86,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the Id of the Canzone object
-     * @return current Id of this object
+     * @return Current Id of this Canzone object
      */
     public String getIdCanzone() {
         return this.IdCanzone;
@@ -76,7 +94,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the title of the Canzone object
-     * @return current title of this object
+     * @return Current title of this Canzone object
      */
     public String getTitolo() {
         return this.Titolo;
@@ -84,7 +102,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the author of the Canzone object
-     * @return current author of this object
+     * @return Current author of this Canzone object
      */
     public String getAutore() {
         return this.Autore;
@@ -92,7 +110,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the year of the Canzone object
-     * @return current year of this object
+     * @return Current year of this Canzone object
      */
     public String getAnno() {
         Calendar date = Calendar.getInstance();
@@ -102,7 +120,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the duration of the Canzone object
-     * @return current duration of this object
+     * @return Current duration of this Canzone object
      */
     public String getDurata() {
         Double dur = this.Duration_ms / 60000;
@@ -113,7 +131,7 @@ public class Canzone implements Serializable {
 
     /**
      * Returns the album of the Canzone object
-     * @return current album of this object
+     * @return Current album of this Canzone object
      */
     public String getAlbum() {
         return this.Album;

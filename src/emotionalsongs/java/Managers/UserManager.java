@@ -1,14 +1,26 @@
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
 package emotionalsongs.java.Managers;
 
 import java.util.ArrayList;
 
 import emotionalsongs.java.util.User;
 
+/**
+ * This Class manages the users in the application (type Playlist).
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 public class UserManager extends FileManager {
     
+  /**Path to the file containing the users (type User) */
     final static String PATH="./DATA/UtentiRegistrati.dati.txt";
     
-    
+    /**
+    * Imports and returns the users (type User) in the file User.dati.txt as an ArrayList
+    * @return ArrayList of type User objects
+    */
     public static ArrayList<User> readUsers(){
 
         Object obj= readData(PATH);
@@ -20,19 +32,28 @@ public class UserManager extends FileManager {
         return users;
     }
 
+    /**
+    * Export the users (type User) to the file User.dati.txt
+    * @param emos ArrayList of type User objects
+    */
     public static void getUsers(ArrayList<User> users){
 
         getData(users, PATH);
     }
 
-    private static ArrayList<User> castList(ArrayList<?> al) {
+    /**
+    * Casts arrays from type Object to type User
+    * @param al generic arraylist
+    * @return ArrayList of type User
+    */
+    public static ArrayList<User> castList(ArrayList<?> al) {
 
         ArrayList<User> array = new ArrayList<User>();
         for (Object obj : al) {
-          if (obj instanceof User) {
-            array.add((User) obj);
-          }
+            if (obj instanceof User) {
+                array.add((User) obj);
+            }
         }
         return array;
-      }
+    }
 }

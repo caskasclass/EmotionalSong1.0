@@ -1,3 +1,6 @@
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
 package emotionalsongs.java.controllers.componentscontroller;
 
 import java.io.IOException;

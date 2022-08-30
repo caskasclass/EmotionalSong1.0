@@ -20,6 +20,12 @@ import javafx.stage.Stage;
 // ****************************************
 // Controller della finestra Regisrtazione!
 // ****************************************
+
+/**
+ * Controller Class for the file SignUpWindow.fxml .
+ * @author Beatrice Bastianello
+ * @author Nazar Viytyuk
+ */
 public class ControllerH {
 
     // questi sotto servono per la view di SignUP
@@ -34,17 +40,24 @@ public class ControllerH {
 
     @FXML
     public TextField btn_username;
+
     @FXML
     public TextField btn_mail;
+
     @FXML
     public PasswordField btn_passwd;
+
     @FXML
     public Button btn_registra;
+
     @FXML
     public Label msgErr;
 
-    StyleManager style = new StyleManager();
-
+    /**
+     * Metodo per la registrazione dell'utente. Agisce quando btn_registra viene premuto
+     * @param e javafx action event 
+     * @throws IOException IOexception
+     */
     public void Registrazione(ActionEvent e) throws IOException {
 
         //problemi con trim per ora l'ho tolto

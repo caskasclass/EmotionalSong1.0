@@ -1,20 +1,31 @@
+/*Beatrice Bastianello, matricola 751864
+Nazar Viytyuk, matricola 748964
+sede VA*/
+package emotionalsongs.java.util;
+
 /**
- * Classe Enum che rappresenta tutte i possibili valori di Emozione in ValutazioneUtente   
- * Racchiude l'id di un oggetto Canzone e i commenti a lui attribuiti tramite array di oggetti Dettagli.
+ * Enum Class that represents every possible emotion that will be evaluated in ValutazioneUtente.   
  * @author Beatrice Bastianello
  * @author Nazar Viytyuk
  */
-package emotionalsongs.java.util;
-
 public enum Emozione {
+    /**Amazemente */
     Amazement,
+    /**Solemnity */
     Solemnity,
+    /**Tenderness */
     Tenderness,
+    /**Nostalgia */
     Nostalgia,
+    /**Calmness */
     Calmness,
+    /**Power */
     Power,
+    /**Joy */
     Joy,
+    /**Tension */
     Tension,
+    /**Sadness */
     Sadness
 }
 
