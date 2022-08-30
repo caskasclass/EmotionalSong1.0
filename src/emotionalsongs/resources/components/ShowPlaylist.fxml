@@ -7,12 +7,10 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -82,16 +80,6 @@
                               <Font name="Proxima Nova" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="editButt" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addSong" styleClass="buttonHome" text="Aggiungi Canzone">
-                           <font>
-                              <Font name="Proxima Nova" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="saveButt" layoutX="124.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteAddBox" styleClass="buttonHome" text="Salva">
-                           <font>
-                              <Font name="Proxima Nova" size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets left="75.0" />
@@ -117,63 +105,6 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <VBox fx:id="addBox" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Cerchiamo qualcosa per la tua playlist">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <StackPane maxWidth="475.0" prefWidth="475.0">
-                                 <children>
-                                    <TextField fx:id="cerca" prefWidth="475.0" promptText="Titolo, Autore, Album">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TextField>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
-                                       <image>
-                                          <Image url="@../images/search-icon.png" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                 </children>
-                              </StackPane>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="25.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="25.0" />
-                           </padding>
-                        </VBox>
-                        <HBox alignment="CENTER" minHeight="550.0">
-                           <children>
-                              <TableView fx:id="AddSongs" prefWidth="1042.0" styleClass="repo">
-                                <columns>
-                                    <TableColumn fx:id="index1" maxWidth="-Infinity" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="songindex" text="#" />
-                                    <TableColumn fx:id="titolo1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="275.0" resizable="false" styleClass="titolo" text="TITOLO" />
-                                    <TableColumn fx:id="album1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="225.0" resizable="false" styleClass="album" text="ALBUM" />
-                                    <TableColumn fx:id="autore1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="autore" text="AUTORE" />
-                                    <TableColumn fx:id="anno1" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" resizable="false" styleClass="anno" text="ANNO" />
-                                    <TableColumn fx:id="durata1" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="125.0" resizable="false" styleClass="durata" text="DURATA" />
-                                    <TableColumn fx:id="deletebutton1" maxWidth="120.0" minWidth="120.0" prefWidth="60.0" resizable="false" styleClass="optionbutton" />
-                                </columns>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TableView>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="150.0" left="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </content>

@@ -23,11 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class ShowPlaylistController  implements Initializable{
 
@@ -35,37 +33,12 @@ public class ShowPlaylistController  implements Initializable{
 
     @FXML
     private Button deleteButt;
-    
-    @FXML
-    private Button saveButt;
-
-    @FXML
-    private Button editButt;
-
-    @FXML
-    private VBox addBox;
-
-    @FXML
-    private VBox allBox;
 
     @FXML
     private Label PlayListName;
 
     @FXML
-    private TextField cerca;
-
-    @FXML
-    private TableColumn<Canzone, Void> addbutton;
-
-    @FXML
     private TableView<Canzone> PlaylistSongs;
-    
-    @FXML
-    private TableView<Canzone> AddSongs;
-
-    @FXML
-    private TableColumn<Canzone, Void> deletebutton1;
-
     @FXML
     private TableColumn<Canzone, Void> deletebutton;
 
@@ -88,24 +61,6 @@ public class ShowPlaylistController  implements Initializable{
     private TableColumn<Canzone, String> titolo;
 
     @FXML
-    private TableColumn<Canzone, String> album1;
-
-    @FXML
-    private TableColumn<Canzone, Integer> anno1;
-
-    @FXML
-    private TableColumn<Canzone, String> autore1;
-
-    @FXML
-    private TableColumn<Canzone, Double> durata1;
-
-    @FXML
-    private TableColumn<Canzone, Void> index1;
-
-    @FXML
-    private TableColumn<Canzone, String> titolo1;
-
-    @FXML
     private HBox deleteButtContainer;
 
     @FXML
@@ -114,8 +69,6 @@ public class ShowPlaylistController  implements Initializable{
     @FXML
     private ImageView playlistImage;
 
-    @FXML
-    private TableView<?> tabprova;
 
     FxmlLoader obj = new FxmlLoader();
 
@@ -125,24 +78,17 @@ public class ShowPlaylistController  implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        Platform.runLater(()->{
+            
             if(u == null || !(current.getOwner().equals(u.getId())))
             {
-                deleteButtContainer.getChildren().removeAll(deleteButt,saveButt,editButt);
-                allBox.getChildren().remove(addBox);
-
-            }
-            else{
-                deleteButtContainer.getChildren().remove(saveButt);
-                allBox.getChildren().remove(addBox);
+                deleteButtContainer.getChildren().remove(deleteButt);
             }
             setPlaylist();
             
-            
             GlobalsVariables.playlist = PlaylistSongs.getItems();
             GlobalsVariables.plist = current;
-            
-        
+        });
         
         
     }
@@ -203,24 +149,4 @@ public class ShowPlaylistController  implements Initializable{
         }
         return username;
     }
-
-    public void addSong(ActionEvent e){
-
-        deleteButtContainer.getChildren().add(saveButt);
-        allBox.getChildren().add(addBox);
-        SongTableView table = new SongTableView(AddSongs, album1, index1, anno1, autore1, durata1, titolo1);
-        AddSongs.setFixedCellSize(50);
-        table.initialize();
-        table.addToPlylistButton(addbutton);
-        table.cercaBranoMusicale(cerca);
-
-
-    }
-
-    public void deleteAddBox(ActionEvent e){
-
-        deleteButtContainer.getChildren().remove(saveButt);
-        allBox.getChildren().remove(addBox);
-    }
-
 }
