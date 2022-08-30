@@ -155,7 +155,7 @@ public class Homebuilder implements Initializable {
     }
 
     public void SignUpWind(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/SignUpWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/SignUpWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style.getStyle("registration"));

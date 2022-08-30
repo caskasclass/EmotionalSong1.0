@@ -11,8 +11,8 @@ public class FxmlLoader {
     public Pane getPane(String file) {
 
         try {
-
-            URL fileUrl = getClass().getResource("../../resources/components/" + file + ".fxml");
+            
+            URL fileUrl = getClass().getResource("/emotionalsongs/resources/components/"+file+".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("File non trovato");
             }
@@ -29,7 +29,7 @@ public class FxmlLoader {
     {
         try {
 
-            URL fileUrl = getClass().getResource("../../resources/microcomponents/" + file + ".fxml");
+            URL fileUrl = getClass().getResource("/emotionalsongs/resources/microcomponents/" + file + ".fxml");
             if (fileUrl == null) {
                 throw new java.io.FileNotFoundException("File non trovato");
             }
@@ -44,13 +44,14 @@ public class FxmlLoader {
     }
     public FXMLLoader getLoader(String file)
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/microcomponents/" + file + ".fxml"));
+        URL loaderfile = getClass().getResource("/emotionalsongs/resources/microcomponents/" + file + ".fxml");
+        FXMLLoader loader = new FXMLLoader(loaderfile);
         return loader;
 
     }
     public FXMLLoader getComponentsLoader(String file)
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/components/" + file + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/emotionalsongs/resources/components/" + file + ".fxml"));
         return loader;
 
     }

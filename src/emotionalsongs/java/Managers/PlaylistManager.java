@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import emotionalsongs.java.util.Playlist;
 
 public class PlaylistManager extends FileManager {
-    final static String PATH="./src/emotionalsongs/resources/database/Playlist.dati.txt";
+    final static String PATH="./DATA/Playlist.dati.txt";
     
     
     public static ArrayList<Playlist> readPlaylist(){

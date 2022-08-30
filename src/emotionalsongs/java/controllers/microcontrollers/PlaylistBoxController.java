@@ -36,7 +36,8 @@ public class PlaylistBoxController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         playListName.setText(playlist.getNomePlaylist());
         usernameowner.setText(getUsername(playlist.getOwner()));
-        String path = getClass().getResource(("../../../resources/images/"+playlist.getPng())).toExternalForm();
+        
+        String path = getClass().getResource("/emotionalsongs/resources/images/"+playlist.getPng()).toExternalForm();
         PlaylistImageTag.setImage(new Image(path));
 
     }

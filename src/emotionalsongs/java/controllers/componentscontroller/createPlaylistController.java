@@ -127,7 +127,7 @@ public class createPlaylistController implements Initializable {
 
     public void changeImage(MouseEvent e) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../../../resources/view/PlaylistImagePicker.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/PlaylistImagePicker.fxml"));
         Scene scene = new Scene(root, 1100, 600);
         scene.getStylesheets().add(style.getStyle("imagePickerWindow"));
         stage.setTitle("EmotioanlSongs");

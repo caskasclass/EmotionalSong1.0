@@ -99,7 +99,7 @@ public class ShowPlaylistController  implements Initializable{
 
     private void setPlaylist(){
 
-        String path = getClass().getResource(("../../../resources/images/"+current.getPng())).toExternalForm();
+        String path = getClass().getResource(("/emotionalsongs/resources/images/"+current.getPng())).toExternalForm();
         playlistImage.setImage(new Image(path)); 
         PlayListName.setText(current.getNomePlaylist()); 
         owner.setText(getUsername());

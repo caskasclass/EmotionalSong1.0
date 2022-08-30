@@ -17,8 +17,10 @@ public class EmotionalSongs extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String imgPath = getClass().getResource("resources/images/icon3.png").toExternalForm();
-        Parent root = FXMLLoader.load(getClass().getResource("resources/view/HomeWindow.fxml"));
+        GlobalsVariables.currentUser = new User("guest","guest","guest","guest","guest","guest",true);
+
+        String imgPath = getClass().getResource("/emotionalsongs/resources/images/icon3.png").toExternalForm();
+        Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/HomeWindow.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(style.mainStyle());
         primaryStage.setTitle("EmotionalSong");
@@ -29,7 +31,6 @@ public class EmotionalSongs extends Application {
     } 
 
     public static void main(String[] args) throws ParseException {
-        GlobalsVariables.currentUser = new User("guest","guest","guest","guest","guest","guest",true);
         launch(args);
 
     }
