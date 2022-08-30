@@ -123,7 +123,7 @@
                                              <children>
                                                 <Pane>
                                                    <children>
-                                                      <Label text="Username/Email" />
+                                                      <Label text="Username" />
                                                    </children>
                                                 </Pane>
                                                 <TextField fx:id="usernameEmail" />

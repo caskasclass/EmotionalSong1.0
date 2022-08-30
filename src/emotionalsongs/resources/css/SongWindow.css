@@ -101,6 +101,10 @@
     -fx-text-fill: rgb(255,255,255);
     -fx-border-color: rgb(18,18,18) rgb(18,18,18) rgb(18,18,18) rgb(18,18,18);
     border-color: rgb(18,18,18) rgb(18,18,18) rgb(18,18,18) rgb(18,18,18);
+    -fx-margin: 0;
+    margin: 0;
+    -fx-padding: 0 -30 0 0;
+    padding: 0 -30 0 0;
 }
 
 .chart-pie-label { /*this is what you need for labels*/

@@ -34,6 +34,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -80,6 +81,12 @@ public class WindowCanzoneController implements Initializable {
     private Integer y = 0;
     @FXML
     private Label noComments;
+
+    @FXML
+    private Label percentuale;
+
+    @FXML
+    private ImageView nodataImg;
 
     @FXML
     private Button commentButt;
@@ -277,7 +284,12 @@ public class WindowCanzoneController implements Initializable {
         listValutazioni.add(valutazioneCanzone);
 
         EmotionsManager.getEmozioni(listValutazioni);
-        pieEmotions.setVisible(true);
+
+        if(pieBox.getChildren().contains(nodataImg)){
+            pieBox.getChildren().remove(nodataImg);
+            pieBox.getChildren().add(pieEmotions);
+        }
+        
         setPieChart();
         hbox1.getChildren().remove(saveButt);
         for (ChoiceBox<Integer> cb : list) {
@@ -294,28 +306,25 @@ public class WindowCanzoneController implements Initializable {
 
     private void setPieChart() {
 
-        pieEmotions.setLegendSide(Side.LEFT);
 
-        pieEmotions.setData(createList());
-        final Label caption = new Label("");
-        caption.setTextFill(Color.DARKORANGE);
-        // caption.setStyle("-fx-font: 24 arial;");
+        ObservableList<PieChart.Data> Piedata = createList();
+        if(Piedata.isEmpty()){
+            pieBox.getChildren().remove(pieEmotions);
 
-        for (final PieChart.Data data : pieEmotions.getData()) {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    caption.setTranslateX(e.getSceneX());
-                    caption.setTranslateY(e.getSceneY());
-                    caption.setText(String.valueOf(data.getPieValue()) + "%");
-                    System.out.print(caption.getText());
-                }
-            });
+        }else{
+            pieBox.getChildren().remove(nodataImg);
+            pieEmotions.setData(Piedata);
+            pieEmotions.setLegendSide(Side.LEFT);
+
+            for (final PieChart.Data data : Piedata) {
+                data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, e ->{
+                        String s = String.format("%.1f",data.getPieValue()/valutazioneCanzone.getValutazione().size());
+                        percentuale.setText(data.getName()+" : "+ s);
+                    }
+                );
+            }
+            pieEmotions.setLegendSide(Side.LEFT);
         }
-
-        pieEmotions.setLegendSide(Side.LEFT);
-        pieEmotions.setMinHeight(425);
-
     }
 
     private ObservableList<PieChart.Data> createList() {
@@ -323,10 +332,6 @@ public class WindowCanzoneController implements Initializable {
         // int [] array = new int[9];
         HashMap<Emozione, Integer> tmp = createMap();
         
-        if(EmotionsManager.checkLengthFile()){
-            
-            }
-        else{
             for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
                 if (canzEv.getIdCanzone().equals(c.getIdCanzone())) {
                     for (ValutazioneUtente v : canzEv.getValutazione()) {
@@ -338,13 +343,16 @@ public class WindowCanzoneController implements Initializable {
                     break;
                 }
             }
-        }
+        
 
         
 
         tmp.forEach((key, value) -> {
-            PieChart.Data obj = new PieChart.Data(key.toString(), value);
-            pieChartData.add(obj);
+            if(value != 0){
+                PieChart.Data obj = new PieChart.Data(key.toString(), value);
+                pieChartData.add(obj);
+            }
+            
         });
         return pieChartData;
     }

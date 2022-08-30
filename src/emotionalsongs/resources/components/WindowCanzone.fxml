@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -123,10 +125,26 @@
                            <VBox.margin>
                               <Insets left="100.0" />
                            </VBox.margin></PieChart>
+                        <Label fx:id="percentuale">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ImageView fx:id="nodataImg" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/noData.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <padding>
                         <Insets top="20.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets left="150.0" right="150.0" />
+                     </VBox.margin>
                   </VBox>
                   <VBox fx:id="commentsContainer" alignment="TOP_CENTER" spacing="30.0">
                      <children>

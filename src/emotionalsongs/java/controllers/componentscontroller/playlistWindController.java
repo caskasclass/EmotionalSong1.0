@@ -63,15 +63,24 @@ public class playlistWindController implements Initializable {
     }
 
     private void PlaylistUI() throws IOException {
-        for (Playlist playlist : pl) {
-            FXMLLoader loader = obj.getLoader("PlaylistBoxView");
-            PlaylistBoxController playlistBoxController = new PlaylistBoxController();
-            playlistBoxController.setPlaylist(playlist);
-            loader.setController(playlistBoxController);
-            Parent ui = loader.load();
-            Container.getChildren().add(ui);
+        if (pl.isEmpty() || pl == null) {
+            Container.setAlignment(Pos.CENTER);
+            avviso.setText("Nessuna Playlist presente");
+            avviso.setFont(new Font("Proxima Nova", 25));
+            Container.getChildren().add(avviso);
 
+        }else{
+            for (Playlist playlist : pl) {
+                FXMLLoader loader = obj.getLoader("PlaylistBoxView");
+                PlaylistBoxController playlistBoxController = new PlaylistBoxController();
+                playlistBoxController.setPlaylist(playlist);
+                loader.setController(playlistBoxController);
+                Parent ui = loader.load();
+                Container.getChildren().add(ui);
+
+            }
         }
+        
     }
 
     private void createHomePlaylistUI() throws IOException {

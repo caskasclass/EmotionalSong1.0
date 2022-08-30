@@ -52,7 +52,7 @@
                   </Label>
                   <StackPane>
                      <children>
-                        <TextField fx:id="cercaCanzone" prefWidth="400.0" promptText="Titolo, Autore, Album" styleClass="searchField">
+                        <TextField fx:id="cercaCanzone" prefWidth="400.0" promptText="Titolo, Autore, Anno" styleClass="searchField">
                            <font>
                               <Font name="Proxima Nova" size="18.0" />
                            </font>

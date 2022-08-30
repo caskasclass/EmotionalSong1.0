@@ -29,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
 import javafx.stage.Stage;
 
 public class createPlaylistController implements Initializable {
@@ -42,10 +43,9 @@ public class createPlaylistController implements Initializable {
     private TextField cerca;
     @FXML
     private TableView<Canzone> addPlaylistrepository;
+
     @FXML
     private Button createPlaylist;
-
-    
 
     @FXML
     private TableColumn<Canzone, Void> addbutton;
@@ -102,6 +102,7 @@ public class createPlaylistController implements Initializable {
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
 
+        
         owner.setText(u.getUsername());
         GlobalsVariables.addedSongs=  this.addedSongs;
         if(!GlobalsVariables.PlaylistImg.equals(""))
@@ -169,6 +170,8 @@ public class createPlaylistController implements Initializable {
         backToHome();
 
     }
+
+    
 
     
     public void backToHome()

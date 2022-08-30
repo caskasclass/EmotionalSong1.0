@@ -90,7 +90,7 @@ public class homeComponentController implements Initializable {
                     createHomePlaylistUI();
                     createHomeOthersPlaylistUI();
                 } else {
-                    Label avviso = new Label("Per usufruire di altre funzione bisogna effettuare il login");
+                    Label avviso = new Label("Per usufruire di altre funzioni effettuare il login");
                     avviso.setFont(new Font("Proxima Nova", 25));
                     UserPlaylistContainer.getChildren().add(avviso);
                     myPlayButt.setDisable(true);

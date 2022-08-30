@@ -170,7 +170,7 @@
          <top>
             <HBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Seleziona un immagine ">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Seleziona un'immagine ">
                      <font>
                         <Font name="Proxima Nova" size="40.0" />
                      </font>

@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane styleClass="tableviewpane" stylesheets="@../css/repositoryCanzoni.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane fitToWidth="true" styleClass="invisibleScrollPane" BorderPane.alignment="TOP_LEFT">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="invisibleScrollPane" vbarPolicy="NEVER" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets top="25.0" />
          </BorderPane.margin>
@@ -116,7 +116,7 @@
                               </Label>
                               <StackPane>
                                  <children>
-                                    <TextField fx:id="cerca" prefWidth="475.0" promptText="Titolo, Autore, Album" styleClass="searchField">
+                                    <TextField fx:id="cerca" prefWidth="475.0" promptText="Titolo, Autore, Anno" styleClass="searchField">
                                        <font>
                                           <Font name="Proxima Nova" size="18.0" />
                                        </font>

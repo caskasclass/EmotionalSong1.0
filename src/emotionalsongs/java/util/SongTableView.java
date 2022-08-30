@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
@@ -295,18 +296,8 @@ public class SongTableView {
             public TableCell<Canzone, Void> call(final TableColumn<Canzone, Void> param) {
                 final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
 
-                    MenuItem mi1 = new MenuItem("Aggiungi alla Playlist");
-                    MenuItem mi2 = new MenuItem("Vedi i Tag");
-                    MenuItem mi3 = new MenuItem("Altro ...");
 
-                    private final MenuButton btn = new MenuButton("•••", null, mi1, mi2, mi3);
-
-                    {
-                        mi1.setOnAction((ActionEvent event) -> {
-                            Canzone canzone = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + canzone.getTitolo());
-                        });
-                    }
+                    private final Label btn = new Label("•••");
 
                     @Override
                     public void updateItem(Void item, boolean empty) {
@@ -333,9 +324,8 @@ public class SongTableView {
                 final TableCell<Canzone, Void> cell = new TableCell<Canzone, Void>() {
 
                     MenuItem mi1 = new MenuItem("Rimuovi dalla playlist");
-                    MenuItem mi3 = new MenuItem("Altro ...");
 
-                    private final MenuButton btn = new MenuButton("•••", null, mi1,mi3);
+                    private final MenuButton btn = new MenuButton("•••", null, mi1);
 
                     {
                         mi1.setOnAction((ActionEvent event) -> {
