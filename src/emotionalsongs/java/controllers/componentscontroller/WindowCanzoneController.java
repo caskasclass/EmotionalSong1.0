@@ -16,12 +16,10 @@ import emotionalsongs.java.util.Commenti;
 import emotionalsongs.java.util.Dettagli;
 import emotionalsongs.java.util.Emozione;
 import emotionalsongs.java.util.GlobalsVariables;
-import emotionalsongs.java.util.User;
 import emotionalsongs.java.util.ValutazioneUtente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -39,7 +37,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 public class WindowCanzoneController implements Initializable {
 
@@ -111,7 +108,7 @@ public class WindowCanzoneController implements Initializable {
 
     private Dettagli d = new Dettagli();
 
-    private User u = GlobalsVariables.currentUser;
+
 
     private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
 
@@ -186,7 +183,7 @@ public class WindowCanzoneController implements Initializable {
 
     private void setChoiceBox(ChoiceBox<Integer> choice) {
 
-        if (u == null) {
+        if (GlobalsVariables.currentUser.getGuest()) {
             setClassData();
             int target = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
             if (!(target == -1)) {
@@ -237,9 +234,9 @@ public class WindowCanzoneController implements Initializable {
             indxCanzEv = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
             valutazioneCanzone = listValutazioni
                     .get(listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null)));
-            if (valutazioneCanzone.getValutazione().contains(new ValutazioneUtente(null, u.getId()))) {
+            if (valutazioneCanzone.getValutazione().contains(new ValutazioneUtente(null,GlobalsVariables.currentUser.getId()))) {
                 valutazioneUtente = listValutazioni.get(indxCanzEv).getValutazione().get(listValutazioni.get(indxCanzEv)
-                        .getValutazione().indexOf(new ValutazioneUtente(null, u.getId())));
+                        .getValutazione().indexOf(new ValutazioneUtente(null, GlobalsVariables.currentUser.getId())));
                 return true;
             } else {
                 return false;
@@ -271,7 +268,7 @@ public class WindowCanzoneController implements Initializable {
             i++;
         }
 
-        valutazioneUtente = new ValutazioneUtente(newmap, u.getId());
+        valutazioneUtente = new ValutazioneUtente(newmap, GlobalsVariables.currentUser.getId());
         valutazioneCanzone.addEvaluation(valutazioneUtente);
 
         if (!(listValutazioni.isEmpty() || listValutazioni == null)) {
@@ -375,7 +372,7 @@ public class WindowCanzoneController implements Initializable {
 
     private void setCommenti() {
 
-        if(u == null){
+        if(GlobalsVariables.currentUser.getGuest()){
             commentsContainer.getChildren().remove(textBox);
         }
         
@@ -410,12 +407,12 @@ public class WindowCanzoneController implements Initializable {
         if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
             indxComm = comments.indexOf(new Commenti(c.getIdCanzone(), null));
             com = comments.get(indxComm);
-            if(u == null) {
+            if(GlobalsVariables.currentUser.getGuest()) {
                 return true;
             } else {
-                if (com.getDetails().contains(new Dettagli(u, null))) {
+                if (com.getDetails().contains(new Dettagli(GlobalsVariables.currentUser, null))) {
                     d = comments.get(indxComm).getDetails().get(comments.get(indxComm)
-                            .getDetails().indexOf(new Dettagli(u, null)));
+                            .getDetails().indexOf(new Dettagli(GlobalsVariables.currentUser, null)));
                     return true;
                 } else {
 
@@ -433,7 +430,7 @@ public class WindowCanzoneController implements Initializable {
     public void getCommenti(ActionEvent e) {
 
         isCommented();
-        d = new Dettagli(u, commentField.getText());
+        d = new Dettagli(GlobalsVariables.currentUser, commentField.getText());
         com.addComment(d);
         if (!(comments.isEmpty() || comments == null)) {
             if(comments.contains(new Commenti(c.getIdCanzone(), null))){

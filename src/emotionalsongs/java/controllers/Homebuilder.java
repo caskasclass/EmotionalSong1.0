@@ -68,11 +68,8 @@ public class Homebuilder implements Initializable {
     StyleManager style = new StyleManager();
     FxmlLoader obj = new FxmlLoader();
 
-    private User logged = GlobalsVariables.currentUser;
-
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
-
         Platform.runLater(() -> {
             
             menubar.getChildren().removeAll(labelLeTuePlaylist,labelNuovaPlaylist);
@@ -82,7 +79,7 @@ public class Homebuilder implements Initializable {
 
         });
 
-        if (logged == null) {
+        if (GlobalsVariables.currentUser.getGuest()) {
             logbuttons.getChildren().remove(usernameBtn);
         }
 
@@ -94,7 +91,7 @@ public class Homebuilder implements Initializable {
     public void SignOut(ActionEvent e) throws IOException {
         GlobalsVariables.clearSession();
         GlobalsVariables.exitSession();
-        logged = GlobalsVariables.currentUser;
+        GlobalsVariables.currentUser = new User("guest","guest","guest","guest","guest","guest",true);
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
         createHome();
@@ -110,7 +107,7 @@ public class Homebuilder implements Initializable {
     public void Login(ActionEvent e) throws IOException {
         User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(),
                 (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(),
-                (usernameEmail.getText()).toLowerCase());
+                (usernameEmail.getText()).toLowerCase(),false);
         ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
         if (users.contains(loguser)) {
 
@@ -128,12 +125,11 @@ public class Homebuilder implements Initializable {
     private void updateWindow() {
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
-        logged = GlobalsVariables.currentUser;
         createHome();
         menubar.getChildren().addAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(LogInMenuButton);
         logbuttons.getChildren().add(usernameBtn);
-        usernameBtn.setText(logged.getUsername());
+        usernameBtn.setText(GlobalsVariables.currentUser.getUsername());
 
 
     }

@@ -11,7 +11,7 @@ public class GlobalsVariables {
 
     public static BorderPane left_side_bpane;
 
-    public static User currentUser=null;
+    public static User currentUser;
 
 // queste vanno azzerate quando si esce dall'app + quadno si crea (si pigia il bottone Salva) la playlist 
     public static ArrayList<Canzone> canzoni = new ArrayList<Canzone>();

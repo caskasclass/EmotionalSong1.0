@@ -14,7 +14,6 @@ import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.SongTableView;
-import emotionalsongs.java.util.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +68,6 @@ public class homeComponentController implements Initializable {
     @FXML
     private TableColumn<Canzone, String> titolo;
 
-    User u = GlobalsVariables.currentUser;
 
     private Label avviso = new Label();
 
@@ -85,7 +83,7 @@ public class homeComponentController implements Initializable {
         Platform.runLater(() -> {
             try {
                 createHomeSongUI();
-                if (u != null) {
+                if(!GlobalsVariables.currentUser.getGuest()) {
                     filterPlaylist();
                     createHomePlaylistUI();
                     createHomeOthersPlaylistUI();
@@ -154,7 +152,7 @@ public class homeComponentController implements Initializable {
                 otherPlaylsitButton.setDisable(true);
 
         } else{
-            if (u != null) {
+            if (!GlobalsVariables.currentUser.getGuest()) {
                 if (others.isEmpty() || others == null) {
                     notMyPlaylistContainer.setAlignment(Pos.CENTER);
                     avviso = new Label("Nessuna Playlist presente");
@@ -221,7 +219,7 @@ public class homeComponentController implements Initializable {
     private void filterPlaylist() {
         ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
         for (Playlist playlist : pl) {
-            if (playlist.getOwner().equals(u.getId())) {
+            if (playlist.getOwner().equals(GlobalsVariables.currentUser.getId())) {
                 mine.add(playlist);
             } else {
                 others.add(playlist);

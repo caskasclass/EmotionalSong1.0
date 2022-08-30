@@ -12,7 +12,6 @@ import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
-import emotionalsongs.java.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +23,6 @@ import javafx.scene.text.Font;
 
 public class playlistWindController implements Initializable {
 
-    User u = GlobalsVariables.currentUser;
     private boolean lemie;
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
     ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
@@ -40,7 +38,7 @@ public class playlistWindController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            if(u != null) {
+            if(GlobalsVariables.currentUser.getGuest()) {
                 filterPlaylist();
                 if (lemie) {
                     createHomePlaylistUI();
@@ -117,7 +115,7 @@ public class playlistWindController implements Initializable {
                 Container.getChildren().add(avviso);
 
         } else{
-            if (u != null) {
+            if (GlobalsVariables.currentUser.getGuest()) {
                 if (others.isEmpty() || others == null) {
                     Container.setAlignment(Pos.CENTER);
                     avviso = new Label("Nessuna Playlist presente");
@@ -151,7 +149,7 @@ public class playlistWindController implements Initializable {
 
     private void filterPlaylist() {
         for (Playlist playlist : pl) {
-            if (playlist.getOwner().equals(u.getId())) {
+            if (playlist.getOwner().equals(GlobalsVariables.currentUser.getId())) {
                 mine.add(playlist);
             } else {
                 others.add(playlist);

@@ -74,13 +74,13 @@ public class ShowPlaylistController  implements Initializable{
 
     private Playlist current = null;
 
-    User u = GlobalsVariables.currentUser;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Platform.runLater(()->{
             
-            if(u == null || !(current.getOwner().equals(u.getId())))
+            if(GlobalsVariables.currentUser.getGuest() || !(current.getOwner().equals(GlobalsVariables.currentUser.getId())))
             {
                 deleteButtContainer.getChildren().remove(deleteButt);
             }
@@ -107,7 +107,7 @@ public class ShowPlaylistController  implements Initializable{
         SongTableView table  = new SongTableView(PlaylistSongs, album, index, anno, autore, durata, titolo);
         ObservableList<Canzone> list= FXCollections.observableArrayList(current.getCanzoni());
         table.initializePlaylsitList(list);
-        if(u == null || !(current.getOwner().equals(u.getId()))){
+        if(GlobalsVariables.currentUser.getGuest() || !(current.getOwner().equals(GlobalsVariables.currentUser.getId()))){
             table.addButton(deletebutton);
         }else{
             table.deleteFromPlaylist(deletebutton);

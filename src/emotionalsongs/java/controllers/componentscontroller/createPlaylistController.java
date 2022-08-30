@@ -12,7 +12,6 @@ import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
 import emotionalsongs.java.util.SongTableView;
-import emotionalsongs.java.util.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -93,7 +92,6 @@ public class createPlaylistController implements Initializable {
     @FXML
     private Label owner;
 
-    User u = GlobalsVariables.currentUser;
 
     ArrayList<Canzone> aggiungere = new ArrayList<Canzone>();
     FxmlLoader obj = new FxmlLoader();
@@ -103,7 +101,7 @@ public class createPlaylistController implements Initializable {
     public void initialize(URL urilink, ResourceBundle reb) {
 
         
-        owner.setText(u.getUsername());
+        owner.setText(GlobalsVariables.currentUser.getUsername());
         GlobalsVariables.addedSongs=  this.addedSongs;
         if(!GlobalsVariables.PlaylistImg.equals(""))
         {
@@ -158,7 +156,7 @@ public class createPlaylistController implements Initializable {
 
         String path = pathformatter(playlistImage.getImage().getUrl()) ;
         String playlistname = PlayListName.getText();
-        String userId = u.getId();
+        String userId = GlobalsVariables.currentUser.getId();
         ArrayList<Canzone> arr = createSongList();
         Playlist pl = new Playlist(playlistname, path, userId, arr);
         ArrayList<Playlist> array = PlaylistManager.readPlaylist();

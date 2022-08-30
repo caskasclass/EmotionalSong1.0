@@ -3,6 +3,8 @@ package emotionalsongs;
 import java.text.ParseException;
 
 import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.util.GlobalsVariables;
+import emotionalsongs.java.util.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +29,7 @@ public class EmotionalSongs extends Application {
     } 
 
     public static void main(String[] args) throws ParseException {
+        GlobalsVariables.currentUser = new User("guest","guest","guest","guest","guest","guest",true);
         launch(args);
 
     }
