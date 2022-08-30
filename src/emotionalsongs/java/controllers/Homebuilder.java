@@ -104,7 +104,7 @@ public class Homebuilder implements Initializable {
     }
 
 
-    public void Login(ActionEvent e) throws IOException {
+    public void Login(ActionEvent e){
         User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(),
                 (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(),
                 (usernameEmail.getText()).toLowerCase(),false);
