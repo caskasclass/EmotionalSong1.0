@@ -16,7 +16,7 @@ public class FileManager {
 
 
   /**
-   * Import the data from the file who has this path
+   * Import the data from the file which has this path
    * @param PATH path to the file
    * @return ArrayList of generic objects
    */
@@ -37,7 +37,7 @@ public class FileManager {
   }
 
   /**
-   * Export the data to the file who has this path
+   * Export the data to the file which has this path
    * @param data ArrayList of generic objects
    * @param PATH path to the file
    */

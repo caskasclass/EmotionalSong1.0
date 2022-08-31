@@ -30,8 +30,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.ImageView;
@@ -40,95 +38,89 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * Controller Class for the file WindowCanzone.fxml .
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class WindowCanzoneController implements Initializable {
 
+    /**fxml element for graphics */
     @FXML
     private Label labelNoUser;
-
-    @FXML
-    private Label labelNoUser2;
-
-    @FXML
-    private Label Album;
-
+    /**fxml element for graphics */
     @FXML
     private Label Data;
-
+    /**fxml element for graphics */
     @FXML
     private Label Info;
-
-    @FXML
-    private HBox prospetticoBar;
-
+    /**fxml element for graphics */
     @FXML
     private Label titolo;
-
+    /**fxml element for graphics */
     @FXML
     private FlowPane emotionsContainer;
-
+    /**fxml element for graphics */
     @FXML
     private PieChart pieEmotions;
-
+    /**fxml element for graphics */
     @FXML
     private HBox hbox1;
-
+    /**fxml element for graphics */
     @FXML
     private VBox pieBox;
-
-    private int indxCanzEv = 0;
-
-    private Integer y = 0;
+    /**fxml element for graphics */
     @FXML
     private Label noComments;
-
+    /**fxml element for graphics */
     @FXML
     private Label percentuale;
-
+    /**fxml element for graphics */
     @FXML
     private ImageView nodataImg;
-
-    @FXML
-    private Button commentButt;
-
+    /**fxml element for graphics */
     @FXML
     private TextField commentField;
+    /**fxml element for graphics */
     @FXML
     private VBox commentsBox;
+    /**fxml element for graphics */
     @FXML
     private VBox commentsContainer;
-
+    /**fxml element for graphics */
     @FXML
     private Button saveButt;
-    
-
+    /**fxml element for graphics */
     @FXML
     private HBox textBox;
+    /**Useful variable to manage comments */
     private int indxComm = 0;
+    /**Useful variable to manage songs */
+    private int indxCanzEv = 0;
+    /**Useful variable to manage evaluations */
+    private Integer y = 0;
+    /**Useful ArrayList of type Commenti objects */
     private ArrayList<Commenti> comments = new ArrayList<Commenti>();
-
+    /**Instantiates a type Commenti object*/
     private Commenti com = new Commenti();
-
+    /**Instantiates a type Dettagli object*/
     private Dettagli d = new Dettagli();
-
+    /**Sets the User to current*/
     private User u = GlobalsVariables.currentUser;
-
+    /**Useful ArrayList of type CanzoneEvaluation objects */
     private ArrayList<CanzoneEvaluation> listValutazioni = new ArrayList<CanzoneEvaluation>();
-
+    /**Instantiates a type CanzoneEvaluation object*/
     private CanzoneEvaluation valutazioneCanzone = new CanzoneEvaluation();
-
+    /**Instantiates a type ValutazioneUtente object*/
     private ValutazioneUtente valutazioneUtente = new ValutazioneUtente();
-
+    /**Useful ArrayList of type ChoiceBox<Integer> objects */
     private ArrayList<ChoiceBox<Integer>> list = new ArrayList<ChoiceBox<Integer>>();
-
+    /**Useful ArrayList of type Emozione objects */
     private ArrayList<Emozione> emList = GlobalsVariables.getEmotions();
-
-    final String PATH = "./DATA/Emozioni.dati.txt";
-
+    /**Instantiates a type Canzone object to null*/
     Canzone c = null;
 
-    Integer i = 1;
-
+    /**Initializes the fxml file*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -147,11 +139,16 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
+    /**
+     * Sets the song to the current one
+     * @param canzone type Canzone object selected from a TableView
+     */
     public void getCanzone(Canzone canzone) {
         c = canzone;
 
     }
 
+    /**Sets the graphic of the song window */
     public void setCanzone() {
 
         Info.setText(c.getAutore() + " • " + c.getAlbum()+ " • " + c.getAnno() + " • " + c.getDurata() + " min");
@@ -165,6 +162,7 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
+    /**Sets the graphic with the fxml elements ChoiceBox for the evaluation of the emotions*/
     private void createBoxes() {
 
         for (Emozione e : Emozione.values()) {
@@ -183,7 +181,11 @@ public class WindowCanzoneController implements Initializable {
         }
 
     }
-
+    
+    /**
+     * Sets the fxml elements ChoiceBox
+     * @param choice ChoiceBox that is going to be set
+     */
     private void setChoiceBox(ChoiceBox<Integer> choice) {
 
         if (u == null) {
@@ -213,12 +215,19 @@ public class WindowCanzoneController implements Initializable {
         }
     }
 
+    /**
+     * Method that updates the HashMap object with a new value
+     * @param e
+     * @param i
+     * @param map
+     */
     private void updateMap(Emozione e, Integer i, HashMap<Emozione, Integer> map) {
 
         map.put(e, i);
 
     }
 
+    /**Sets a the current evaluation */
     private void setClassData() {
         if (listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))) {
             indxCanzEv = listValutazioni.indexOf(new CanzoneEvaluation(c.getIdCanzone(), null));
@@ -230,7 +239,10 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
-    //////////////////////// ok/////////////////////////////////
+    /**
+     * Returns if the song has already been evaluated by anyone, the current user or no one. Sets the field valutazioneCanzone based on that
+     * @return boolean value true if it has already been evaluated by the current user, false in the other cases
+     */
     private boolean getEvaluation() {
 
         if (listValutazioni.contains(new CanzoneEvaluation(c.getIdCanzone(), null))) {
@@ -251,7 +263,10 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
-    ////////////////////////////////////////////////////////////
+    /**
+     * Method that initializes a new HashMap with enum class Emotion values as keys and values at 0
+     * @return HashMap<Emozione, Integer> with values at 0
+     */
     private HashMap<Emozione, Integer> createMap() {
 
         HashMap<Emozione, Integer> map = new HashMap<Emozione, Integer>();
@@ -260,9 +275,12 @@ public class WindowCanzoneController implements Initializable {
         }
         return map;
     }
-    ////////////////////////////////////////////////////////////
-
-    public void setEmotionsValue(ActionEvent e) {
+    
+    /**
+     * Gets the evaluations from the ChoiceBox elements for every enum class Emotion value and adds the total evaluation to Emozioni.dati.txt
+     * @param e
+     */
+    public void inserisciEmozioniBrano(ActionEvent e) {
         int i = 0;
         HashMap<Emozione, Integer> newmap = createMap();
 
@@ -304,6 +322,7 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
+    /**Sets the graphic for the PieChart containing all the evaluations of the song*/
     private void setPieChart() {
 
 
@@ -327,9 +346,12 @@ public class WindowCanzoneController implements Initializable {
         }
     }
 
+    /**
+     * Creates the ObservableList object that contains the data that will be shown in the PieChart
+     * @return
+     */
     private ObservableList<PieChart.Data> createList() {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        // int [] array = new int[9];
         HashMap<Emozione, Integer> tmp = createMap();
         
             for (CanzoneEvaluation canzEv : EmotionsManager.readEmozioni()) {
@@ -344,9 +366,6 @@ public class WindowCanzoneController implements Initializable {
                 }
             }
         
-
-        
-
         tmp.forEach((key, value) -> {
             if(value != 0){
                 PieChart.Data obj = new PieChart.Data(key.toString(), value);
@@ -357,22 +376,7 @@ public class WindowCanzoneController implements Initializable {
         return pieChartData;
     }
 
-    public ArrayList<MenuItem> createArray(MenuButton menu) {
-        ArrayList<MenuItem> array = castList(menu.getItems());
-        return array;
-    }
-
-    public static ArrayList<MenuItem> castList(ObservableList<?> al) {
-
-        ArrayList<MenuItem> array = new ArrayList<MenuItem>();
-        for (Object obj : al) {
-            if (obj instanceof MenuItem) {
-                array.add((MenuItem) obj);
-            }
-        }
-        return array;
-    }
-
+    /**Sets the graphic showing the comments of the song */
     private void setCommenti() {
 
         if(u == null){
@@ -405,6 +409,10 @@ public class WindowCanzoneController implements Initializable {
         }
     }
 
+    /**
+     * Returns if the song has been commented by anyone, the current user or no one. Sets the field com on that
+     * @return true if the song has been commented by the current user or anyone andthe user is null, false in other cases
+     */
     private boolean isCommented() {
 
         if (comments.contains(new Commenti(c.getIdCanzone(), null))) {
@@ -430,6 +438,10 @@ public class WindowCanzoneController implements Initializable {
 
     }
 
+    /**
+     * Gets and adds to the file Commenti.data.txt the new type Commenti object when a button is clicked
+     * @param e javafx action event
+     */
     public void getCommenti(ActionEvent e) {
 
         isCommented();
@@ -450,7 +462,8 @@ public class WindowCanzoneController implements Initializable {
         noComments.setText("Commenti");
         commentField.setText("");
     }
-//non ho aggiusnto niente
+
+    /**Sets the maximum length of a comment */
     private void setTextField(){
         Pattern pattern = Pattern.compile(".{0,250}");
         TextFormatter<TextField> formatter = new TextFormatter<>((UnaryOperator<TextFormatter.Change>) change -> {

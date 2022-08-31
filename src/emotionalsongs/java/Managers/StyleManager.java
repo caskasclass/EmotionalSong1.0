@@ -19,9 +19,9 @@ public class StyleManager {
     }
 
     /**
-     * Gets the stylesheet (as String) of the css file who has this filename
+     * Gets the stylesheet (as String) of the css file which has this filename
      * @param filename name of the css file to get
-     * @return stylesheet (as String) of the css file who has this filename
+     * @return stylesheet (as String) of the css file which has this filename
      */
     public String getStyle(String filename)
     {

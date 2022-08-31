@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.PlaylistManager;
-import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.Canzone;
@@ -31,54 +30,64 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
+/**
+ * Controller Class for the file home.fxml .
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class homeComponentController implements Initializable {
+
+    /**fxml element for graphics */
     @FXML
     private HBox UserPlaylistContainer;
-    @FXML
-    private HBox SongsContainer;
+    /**fxml element for graphics */
     @FXML
     private HBox notMyPlaylistContainer;
-
+    /**fxml element for graphics */
     @FXML
     private Button myPlayButt;
-
+    /**fxml element for graphics */
     @FXML
     private Button otherPlaylsitButton;
-
+    /**fxml element for graphics */
     @FXML
     private TableView<Canzone> Tabella;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Void> songindex;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> album;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Integer> anno;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> autore;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Double> durata;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Void> optionbutton;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> titolo;
-
+    
+    /**Sets the User to the current one */
     User u = GlobalsVariables.currentUser;
-
+    /**fxml element for graphics */
     private Label avviso = new Label();
-
-    StyleManager style = new StyleManager();
+    /**Useful object to load fxml file*/
     FxmlLoader obj = new FxmlLoader();
+    /**Useful ArrayList of type Playlist objects */
     ArrayList<Playlist> mine = new ArrayList<Playlist>();
+    /**Useful ArrayList of type Playlist objects */
     ArrayList<Playlist> others = new ArrayList<Playlist>();
+    /**Useful ArrayList of type Playlist objects that are in the Playlist.data.txt file*/
     ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
 
+    /**Initializes the fxml file*/
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
 
@@ -104,13 +113,15 @@ public class homeComponentController implements Initializable {
 
     }
 
-
+    /**
+     * Creates the graphic for the playlists of the current user
+     * @throws IOException IOException
+     */
     private void createHomePlaylistUI() throws IOException {
         UserPlaylistContainer.setPadding(new Insets(15));
         UserPlaylistContainer.setAlignment(Pos.CENTER_LEFT);
         UserPlaylistContainer.setSpacing(20);
 
-        System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = mine;
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
@@ -132,20 +143,25 @@ public class homeComponentController implements Initializable {
 
     }
 
-    // ***************************************** bene
-    // *********************************************//
+    /**
+     * Creates the graphic for the playlists of the current user
+     * @throws IOException IOException
+     */
     private void createHomeSongUI() throws IOException {
         SongTableView table = new SongTableView(Tabella, album, songindex, anno, autore, durata, titolo);
         table.initializeFiltered(15);
         table.addButton(optionbutton);
     }
-    // ********************************************************************************************//
 
+    /**
+     * Creates the graphic for the playlists of other users
+     * @throws IOException IOException
+     */
     private void createHomeOthersPlaylistUI() throws IOException {
         notMyPlaylistContainer.setPadding(new Insets(15));
         notMyPlaylistContainer.setAlignment(Pos.CENTER_LEFT);
         notMyPlaylistContainer.setSpacing(20);
-        System.out.println("\n\nFunzia bene");
+
         if (pl.isEmpty() || pl == null) {
                 notMyPlaylistContainer.setAlignment(Pos.CENTER);
                 avviso.setText("Nessuna Playlist presente");
@@ -185,15 +201,25 @@ public class homeComponentController implements Initializable {
         }
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the songs window
+     * @param e javafx action event
+     * @throws IOException IOException
+     */
     public void showSongs(ActionEvent e) throws IOException {
-        System.out.println("funzia");
+
         Pane ui = obj.getPane("songs");
         GlobalsVariables.left_side_bpane.setCenter(ui);
 
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the current user's playlists window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void showMyPlaylists(ActionEvent e) throws IOException {
-        System.out.println("funzia");
+
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setLemie(true);
@@ -205,8 +231,13 @@ public class homeComponentController implements Initializable {
 
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of other users' playlists window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void showPlaylists(ActionEvent e) throws IOException {
-        System.out.println("funzia");
+
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setLemie(false);
@@ -218,6 +249,7 @@ public class homeComponentController implements Initializable {
 
     }
 
+    /**Filters the list of playlists that are in the Playlist.data.txt file based on the user Id. */
     private void filterPlaylist() {
         ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
         for (Playlist playlist : pl) {

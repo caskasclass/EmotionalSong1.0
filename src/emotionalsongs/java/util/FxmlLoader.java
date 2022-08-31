@@ -6,11 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 /**
- * Useful Class that  every possible emotion that will be evaluated in ValutazioneUtente.   
+ * Useful Class that manages the loading of fxml files.   
  * @author Beatrice Bastianello, matricola 751864
  * @author Nazar Viytyuk, matricola 748964
  */
 public class FxmlLoader {
+    
     private Pane ui;
 
     public Pane getPane(String file) {

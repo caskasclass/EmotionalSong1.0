@@ -21,7 +21,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -50,19 +49,7 @@ public class Homebuilder implements Initializable {
     private PasswordField passwd;
     /**fxml element for graphics */
     @FXML
-    private HBox myPlaylistcont;
-    /**fxml element for graphics */
-    @FXML
     private BorderPane left_side_bpane;
-    /**fxml element for graphics */
-    @FXML
-    private Label hello_username;
-    /**fxml element for graphics */
-    @FXML
-    private MenuItem btn_signOut;
-    /**fxml element for graphics */
-    @FXML
-    private Label add_song_btn;
     /**fxml element for graphics */
     @FXML
     private MenuButton usernameBtn;
@@ -71,19 +58,16 @@ public class Homebuilder implements Initializable {
     private MenuButton LogInMenuButton;
     /**fxml element for graphics */
     @FXML
-    private Pane navBarPane;
-    /**fxml element for graphics */
-    @FXML
     private Label labelLeTuePlaylist;
     /**fxml element for graphics */
     @FXML
     private Label labelNuovaPlaylist;
     /**fxml element for graphics */
     @FXML
-    private Label labelVediPlaylist;
-    /**fxml element for graphics */
-    @FXML
     private VBox menubar;
+    
+    @FXML
+    private Label noUser;
 
     /**Useful object css file*/
     StyleManager style = new StyleManager();
@@ -144,13 +128,17 @@ public class Homebuilder implements Initializable {
                 (usernameEmail.getText()).toLowerCase());
         ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
         if (users.contains(loguser)) {
-
             User log = users.get(users.indexOf(loguser)); // molto meglio
             GlobalsVariables.currentUser = log;
+            noUser.setVisible(false);
             updateWindow();
-
-
-        } 
+        }
+        else{
+            usernameEmail.setText("");
+            passwd.setText("");
+            noUser.setVisible(true);
+            noUser.setText("Utente non trovato");
+        }
     }
 
     /**
@@ -180,8 +168,7 @@ public class Homebuilder implements Initializable {
         } catch (Exception e) {
            e.printStackTrace();
         }
-        
-        
+         
     }
 
     /**
@@ -240,7 +227,7 @@ public class Homebuilder implements Initializable {
     }
 
     /**
-     * Method that sets the center of the BorderPane with the graphic of my playlists window
+     * Method that sets the center of the BorderPane with the graphic of current user's playlists window
      * @param e javafx mouse event
      * @throws IOException IOException
      */

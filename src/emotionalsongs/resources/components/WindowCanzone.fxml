@@ -107,7 +107,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button fx:id="saveButt" mnemonicParsing="false" onAction="#setEmotionsValue" styleClass="buttonHome" stylesheets="@../css/repositoryCanzoni.css" text="Salva">
+                        <Button fx:id="saveButt" mnemonicParsing="false" onAction="#inserisciEmozioniBrano" styleClass="buttonHome" stylesheets="@../css/repositoryCanzoni.css" text="Salva">
                            <font>
                               <Font size="18.0" />
                            </font>

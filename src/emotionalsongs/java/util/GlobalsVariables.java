@@ -14,14 +14,23 @@ import javafx.scene.layout.BorderPane;
  */
 public class GlobalsVariables {
 
+    /**Global fxml element */
     public static BorderPane left_side_bpane;
+    /**Global User initialized to null */
     public static User currentUser=null;
+    /**Global ArrayList of type Canzone objects */
     public static ArrayList<Canzone> canzoni = new ArrayList<Canzone>();
+    /**Global fxml TableView of type Canzone objects */
     public static TableView<Canzone> addedSongs;
+    /**Global List of type Canzone objects */
     public static List<Canzone> playlist =  new ArrayList<>();
+    /**Global type Playlist object */
     public static Playlist plist;
+    /**Global type String object representing name of a playlist*/
     public static String  PlaylistName ="";
+    /**Global type String object representing image of a playlist*/
     public static String  PlaylistImg ="";
+    /**Global type StyleManager object */
     public static StyleManager style= new StyleManager();
 
     /**Removes all the songs (type Canzone)*/

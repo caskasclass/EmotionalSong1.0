@@ -94,7 +94,5 @@ public class PlaylistBoxController implements Initializable{
        GlobalsVariables.left_side_bpane.setCenter(ui);
        
     }
-    
-    
-    
+      
 }

@@ -6,7 +6,6 @@ import java.io.IOException;
 import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
-import emotionalsongs.java.util.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
@@ -20,8 +19,6 @@ public class AddPlaylistBoxController {
 
     /**Useful object to load fxml file*/
     FxmlLoader obj = new FxmlLoader();
-    /**Sets User to current user */
-    User u = GlobalsVariables.currentUser;
 
     /**
      * Method that sets the center of the BorderPane with the graphic of the create playlist window
