@@ -1,3 +1,7 @@
+/**
+ * Provides the Classes that represent the main objects of the program
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.util;
 
 import java.util.ArrayList;
@@ -8,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 
 /**
- * Useful Class that creates static variables and methods that will be used in the program.   
+ * Useful Class that creates static variables and methods that are used to simulate a session.   
  * @author Beatrice Bastianello, matricola 751864
  * @author Nazar Viytyuk, matricola 748964
  */

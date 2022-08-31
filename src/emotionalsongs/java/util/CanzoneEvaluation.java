@@ -1,3 +1,7 @@
+/**
+ * Provides the Classes that represent the main objects of the program
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.util;
 
 import java.io.Serializable;

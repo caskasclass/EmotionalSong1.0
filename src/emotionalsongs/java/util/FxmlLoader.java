@@ -1,3 +1,7 @@
+/**
+ * Provides the Classes that represent the main objects of the program
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.util;
 
 import java.net.URL;
@@ -12,8 +16,14 @@ import javafx.scene.layout.Pane;
  */
 public class FxmlLoader {
     
+    /**Useful fxml element */
     private Pane ui;
 
+    /**
+     * Creates the fxml Pane object initialised with a fxml file passed by the String
+     * @param file name of the file 
+     * @return fxml Pane object
+     */
     public Pane getPane(String file) {
 
         try {
@@ -31,6 +41,12 @@ public class FxmlLoader {
 
         return ui;
     }
+
+    /**
+     * Creates the fxml Pane object initialised with a fxml file representing a microcomponent passed by the String
+     * @param file name of the file 
+     * @return fxml Pane object
+     */
     public Pane getMicroPane(String file)
     {
         try {
@@ -48,12 +64,24 @@ public class FxmlLoader {
 
         return ui;
     }
+
+    /**
+     * Gets the object loader of the microcomponent file
+     * @param file name of the file 
+     * @return FXML loader object
+     */
     public FXMLLoader getLoader(String file)
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/emotionalsongs/resources/microcomponents/" + file + ".fxml"));
         return loader;
 
     }
+
+    /**
+     * Gets the object loader of the component file
+     * @param file name of the file 
+     * @return FXML loader object
+     */
     public FXMLLoader getComponentsLoader(String file)
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/emotionalsongs/resources/components/" + file + ".fxml"));
