@@ -1,3 +1,7 @@
+/**
+ * Provides the Classes that represent the main objects of the program
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.util;
 
 import java.util.ArrayList;
@@ -7,39 +11,51 @@ import emotionalsongs.java.Managers.StyleManager;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * Useful Class that creates static variables and methods that are used to simulate a session.   
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class GlobalsVariables {
 
+    /**Global fxml element */
     public static BorderPane left_side_bpane;
-
-    public static User currentUser;
-
-// queste vanno azzerate quando si esce dall'app + quadno si crea (si pigia il bottone Salva) la playlist 
+    /**Global User initialized to null */
+    public static User currentUser=null;
+    /**Global ArrayList of type Canzone objects */
     public static ArrayList<Canzone> canzoni = new ArrayList<Canzone>();
+    /**Global fxml TableView of type Canzone objects */
     public static TableView<Canzone> addedSongs;
+    /**Global List of type Canzone objects */
     public static List<Canzone> playlist =  new ArrayList<>();
+    /**Global type Playlist object */
     public static Playlist plist;
-    
-
-    
+    /**Global type String object representing name of a playlist*/
     public static String  PlaylistName ="";
+    /**Global type String object representing image of a playlist*/
     public static String  PlaylistImg ="";
+    /**Global type StyleManager object */
     public static StyleManager style= new StyleManager();
 
-
+    /**Removes all the songs (type Canzone)*/
     public static void cleardeleteFromPlaylistSessio()
     {
        playlist.clear();
     }
+
+    /**Removes all the songs (type Canzone)*/
     public static void clearSession(){
         canzoni.clear();
         PlaylistImg = "";
         PlaylistName = "";
     }
 
+    /**Sets the user null*/
     public static void exitSession(){
         currentUser= null;
     }
 
+    /**Creates an ArrayList with all the emotions from the enum class Emozione*/
     public static ArrayList<Emozione> getEmotions(){
         ArrayList<Emozione> emList = new ArrayList<Emozione>();
         for(Emozione e : Emozione.values()){

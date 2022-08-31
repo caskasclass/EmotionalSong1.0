@@ -1,5 +1,9 @@
+/**
+ * Provides the controller classes necessary to 
+ * manage smaller graphic elements spread in the application.
+ * @see package.emotionalsongs.java.controllers
+ */
 package emotionalsongs.java.controllers.microcontrollers;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,32 +24,51 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Controller Class for the file PlaylistBoxView.fxml .
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class PlaylistBoxController implements Initializable{
 
+    /**fxml element for graphics */
     @FXML
     private Label playListName;
+    /**fxml element for graphics */
     @FXML
     private Label usernameowner;
+    /**fxml element for graphics */
     @FXML
     private ImageView PlaylistImageTag;
-
+    /**Playlist object */
     private Playlist playlist; 
+    /**Useful object to load fxml file*/
     private FxmlLoader obj= new FxmlLoader();
 
+    /**Initializes the fxml file*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         playListName.setText(playlist.getNomePlaylist());
         usernameowner.setText(getUsername(playlist.getOwner()));
-        
-        String path = getClass().getResource("/emotionalsongs/resources/images/"+playlist.getPng()).toExternalForm();
+        String path = getClass().getResource(("/emotionalsongs/resources/images/"+playlist.getPng())).toExternalForm();
         PlaylistImageTag.setImage(new Image(path));
 
     }
+
+    /**
+     * Sets current playlist
+     * @param p Playlist object
+     */
     public void setPlaylist(Playlist p)
     {
         playlist =p;
     }
     
+    /**
+     * Gets the owner of the playlist
+     * @param id Id of the owner of the playlist
+     * @return Id of the owner
+     */
     public String getUsername(String id){
         String username="";
         ArrayList<User> users = UserManager.readUsers();
@@ -59,6 +82,10 @@ public class PlaylistBoxController implements Initializable{
 
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the playlist window
+     * @throws IOException IOException
+     */
     public void ShowPlaylist() throws IOException
     {
        FXMLLoader load = obj.getComponentsLoader("ShowPlaylist");
@@ -71,7 +98,5 @@ public class PlaylistBoxController implements Initializable{
        GlobalsVariables.left_side_bpane.setCenter(ui);
        
     }
-    
-    
-    
+      
 }

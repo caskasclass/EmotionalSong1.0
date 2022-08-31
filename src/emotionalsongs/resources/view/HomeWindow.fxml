@@ -133,6 +133,11 @@
                                                    </children>
                                                 </Pane>
                                                 <PasswordField fx:id="passwd" />
+                                                <Pane layoutX="10.0" layoutY="10.0">
+                                                   <children>
+                                                      <Label fx:id="noUser" visible="false" />
+                                                   </children>
+                                                </Pane>
                                                 <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="8.0">
                                                    <children>
                                                       <Button mnemonicParsing="false" onAction="#Login" text="LogIn" />

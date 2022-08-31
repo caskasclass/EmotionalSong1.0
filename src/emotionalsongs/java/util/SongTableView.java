@@ -1,3 +1,7 @@
+/**
+ * Provides the Classes that represent the main objects of the program
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.util;
 
 import java.io.IOException;
@@ -31,47 +35,63 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
+/**
+ * Represents a SongTableView object. fxml TableView
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class SongTableView {
 
+    /**fxml element for graphics */
     @FXML
     private TextField cercaCanzone;
-
+    /**fxml element for graphics */
     @FXML
     private TableView<Canzone> repository;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> album;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Void> songindex;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Integer> anno;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> autore;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Double> durata;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, String> titolo;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Void> optionbutton;
-
+    /**fxml element for graphics */
     @FXML
     private TableColumn<Canzone, Void> addbutton;
 
-    FxmlLoader loader = new FxmlLoader();
-
-    private final ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
-
-    private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
-
+    /**Useful object to load fxml file*/
     FxmlLoader obj = new FxmlLoader();
 
+    /**Useful ArrayList of type Canzone objects that are in the Canzoni.data.txt file*/
+    private final ArrayList<Canzone> songs = CanzoniManager.readCanzoni();
 
+    /**Useful ObservableList of type Canzone objects that will fill the TableView*/
+    private final ObservableList<Canzone> list = FXCollections.observableArrayList(songs);
+
+    /**
+     * Returns an object of type SongTableView.
+     * @param Repository the TableView of the songs
+     * @param album2 column for albums of the songs
+     * @param indx column for indexes of the songs
+     * @param anno2 column for years of the songs
+     * @param autore2 column for authors of the songs
+     * @param durata2 column for durations of the songs
+     * @param titolo2 column for titles of the songs
+     */
     public SongTableView(TableView<Canzone> Repository, TableColumn<Canzone, String> album2,
             TableColumn<Canzone, Void> indx,
             TableColumn<Canzone, Integer> anno2, TableColumn<Canzone, String> autore2,
@@ -86,209 +106,55 @@ public class SongTableView {
         this.titolo = titolo2;
     }
 
+    /**Sets the TableView with all the songs in Canzoni.data.txt and makes the row of a song accessible */
     public void initialize() {
 
-        // ******************* questa funzione rende la riga cliccabile
-        // ***************************************//
-        repository.setRowFactory(tableView -> {
-            TableRow<Canzone> row = new TableRow<Canzone>();
-            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-                        if (mouseEvent.getClickCount() == 2) {
-                            Canzone c = tableView.getItems().get(row.getIndex());
-                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
-                            SendData(c);
-                        }
-                    }
-
-                }
-            });
-            return row;
-
-        });
-        // ****************************************************************************************************//
-
-        // ********************* questa serve sempre e setta l'index !
-        // ************************//
-        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
-            @Override
-            public void updateIndex(int index) {
-                super.updateIndex(index);
-                if (isEmpty() || index < 0) {
-                    setText(null);
-                } else {
-                    setText(Integer.toString((index + 1)));
-                }
-            }
-        });
-        // ************************************************************************************//
-
-        // ***************** queste settano le collone principali della canzone
-        // ****************//
-        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
-        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
-        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        // *************************************************************************************//
-
-        // ******************************** per riempire la playlist
-        // **************************//
+        visualizzaEmozioneBrano();
+        setIndex();
+        setColumns();
         repository.setItems(list);
-        // ************************************************************************************//
 
     }
 
-    public void initializePlaylsitList(ObservableList<Canzone> track) {
+    /**
+     * /**Sets the TableView of a certain playlist and makes the row of a song accessible
+     * @param track the list of songs of the playlist
+     */
+    public void initializePlaylistList(ObservableList<Canzone> track) {
 
-        // ******************* questa funzione rende la riga cliccabile
-        // ***************************************//
-        repository.setRowFactory(tableView -> {
-            TableRow<Canzone> row = new TableRow<Canzone>();
-            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-                        if (mouseEvent.getClickCount() == 2) {
-                            Canzone c = tableView.getItems().get(row.getIndex());
-                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
-                            SendData(c);
-                        }
-                    }
-
-                }
-            });
-            return row;
-
-        });
-        // ****************************************************************************************************//
-
-        // ********************* questa serve sempre e setta l'index !
-        // ************************//
-        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
-            @Override
-            public void updateIndex(int index) {
-                super.updateIndex(index);
-                if (isEmpty() || index < 0) {
-                    setText(null);
-                } else {
-                    setText(Integer.toString((index + 1)));
-                }
-            }
-        });
-        // ************************************************************************************//
-
-        // ***************** queste settano le collone principali della canzone
-        // ****************//
-        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
-        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
-        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        // *************************************************************************************//
-
-        // ******************************** per riempire la playlist
-        // **************************//
+        visualizzaEmozioneBrano();
+        setIndex();
+        setColumns();
         repository.setItems(track);
-        // ************************************************************************************//
 
     }
 
+    /**Sets the TableView of the playlist that is being created*/
     public void initializeAdded() {
 
-       
-
-        // ********************* questa serve sempre e setta l'index !
-        // ************************//
-        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
-            @Override
-            public void updateIndex(int index) {
-                super.updateIndex(index);
-                if (isEmpty() || index < 0) {
-                    setText(null);
-                } else {
-                    setText(Integer.toString((index + 1)));
-                }
-            }
-        });
-        // ************************************************************************************//
-
-        // ***************** queste settano le collone principali della canzone
-        // ****************//
-        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
-        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
-        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        // *************************************************************************************//
-
-        // ******************************** per riempire la playlist
-        // **************************//
+        setIndex();
+        setColumns();
         repository.setItems(FXCollections.observableArrayList(GlobalsVariables.canzoni));
-        // ************************************************************************************//
 
     }
 
+    /**
+     * Sets the TableView with the first num songs in Canzoni.data.txt and makes the row of a song accessible 
+     * @param num number of songs displayed
+     */
     public void initializeFiltered(int num) {
-        // ******************* questa funzione rende la riga cliccabile
-        // ***************************************//
-        repository.setRowFactory(tableView -> {
-            TableRow<Canzone> row = new TableRow<Canzone>();
-            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-                        if (mouseEvent.getClickCount() == 2) {
-                            // row.setStyle("-fx-background-color: RED");
-                            Canzone c = tableView.getItems().get(row.getIndex());
-                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
-                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
-                            SendData(c);
-                        }
-                    }
 
-                }
-            });
-            return row;
-
-        });
-        // ****************************************************************************************************//
-
-        // ********************* questa serve sempre e setta l'index !
-        // ************************//
-        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
-            @Override
-            public void updateIndex(int index) {
-                super.updateIndex(index);
-                if (isEmpty() || index < 0) {
-                    setText(null);
-                } else {
-                    setText(Integer.toString((index + 1)));
-                }
-            }
-        });
-        // ************************************************************************************//
-
-        // ***************** queste settano le collone principali della canzone
-        // ****************//
-        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
-        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
-        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
-        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
-        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
-        // ************************************************************************************//
-
-        // ******************************** per riempire la playlist
-        // **************************//
+        visualizzaEmozioneBrano();
+        setIndex();
+        setColumns();
         repository.setItems(setNumberofRows(num));
-        // ************************************************************************************//
 
     }
 
+    /**
+     * Adds a new column containing labels to a certain TableView
+     * @param optionbutton2 the new column that will be added containing labels
+     */
     public void addButton(TableColumn<Canzone, Void> optionbutton2) {
         this.optionbutton = optionbutton2;
         Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
@@ -316,6 +182,11 @@ public class SongTableView {
         optionbutton.setCellFactory(cellFactory);
 
     }
+
+    /**
+     * Adds a new column containing buttons that lets the user remove a song from the TableView of a playlist
+     * @param deletebutton the new column that will be added containing buttons
+     */
     public void deleteFromPlaylist(TableColumn<Canzone, Void> deletebutton) {
         this.optionbutton = deletebutton;
         Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
@@ -330,19 +201,15 @@ public class SongTableView {
                     {
                         mi1.setOnAction((ActionEvent event) -> {
                             Canzone canzone = getTableView().getItems().get(getIndex());
-                            //da sistemare in un modo carino 
-                            ///////////////////////////////////////////////////////////////////////
                             ObservableList<Canzone> list =  repository.getItems();
                             list.remove(canzone);
                             repository.setItems(list);
-                            repository.refresh();//grafica per eliminare la canzone dalla playlist
-                            ///////////////////////////////////////////////////////////////////////
+                            repository.refresh();
                             ArrayList<Playlist> tmp = PlaylistManager.readPlaylist();
                             tmp.remove(tmp.indexOf(GlobalsVariables.plist));
                             GlobalsVariables.plist.getCanzoni().remove(canzone);
                             tmp.add(GlobalsVariables.plist);
                             PlaylistManager.getPlaylist(tmp);
-                            System.out.println("Hai eliminato : " + canzone.getTitolo());
                         });
                     }
 
@@ -364,6 +231,10 @@ public class SongTableView {
 
     }
 
+    /**
+     * Adds a new column containing buttons that lets the user add a song to the TableView of a playlist which is being created
+     * @param buttonadder the new column that will be added containing buttons
+     */
     public void addToPlylistButton(TableColumn<Canzone, Void> buttonadder) {
         this.addbutton = buttonadder;
         Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>> cellFactory = new Callback<TableColumn<Canzone, Void>, TableCell<Canzone, Void>>() {
@@ -375,11 +246,8 @@ public class SongTableView {
                     {
 
                         btn.setOnAction((ActionEvent event) -> {
-                            // tolgo dalla ricerca e aggiungo alla tablella di spora!!!
                             Canzone canzone = getTableView().getItems().get(getIndex());
                             refresh(canzone);
-
-                            System.out.println("hai aggiunto: " + canzone.getTitolo());
                             GlobalsVariables.canzoni.add(canzone);
                             GlobalsVariables.addedSongs.setItems(FXCollections.observableArrayList(GlobalsVariables.canzoni));
                             GlobalsVariables.addedSongs.refresh();
@@ -404,9 +272,12 @@ public class SongTableView {
 
     }
 
-    // ******************************* hmmmm forse ho capito
-    // **********************************************//
+    /**
+     * Method that lets the user search for a certain song in the TableView. The TableView updates itself whith a filtered list of songs based on author, title or year.
+     * @param CercaCanzone fxml TextField in which the user writes to search the song
+     */
     public void cercaBranoMusicale(TextField CercaCanzone) {
+
         this.cercaCanzone = CercaCanzone;
         FilteredList<Canzone> filteredData = new FilteredList<Canzone>(list, b -> true);
         cercaCanzone.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -436,20 +307,26 @@ public class SongTableView {
         repository.setItems(sortedData);
     }
 
+    /**
+     * Updated the TableView with the list of songs without c
+     * @param c the type Canzone object representing the song
+     */
     private void refresh(Canzone c) {
+    
         list.remove(c);
         repository.setItems(list);
         repository.refresh();
         cercaBranoMusicale(cercaCanzone);
 
     }
-    // ********************************************************************************************//
-
-    // *************** per visualizzaere il brano su un altra scene
-    // *************************//
-    private void SendData(Canzone canz) {
+    
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the song canz
+     * @param canz the type Canzone object representing the song
+     */
+    private void ShowSongWindow(Canzone canz) {
         try {
-            FXMLLoader load = loader.getComponentsLoader("WindowCanzone");
+            FXMLLoader load = obj.getComponentsLoader("WindowCanzone");
             WindowCanzoneController windowCanzoneController = new WindowCanzoneController();
             windowCanzoneController.getCanzone(canz);
             load.setController(windowCanzoneController);
@@ -460,16 +337,66 @@ public class SongTableView {
         }
 
     }
-    // **************************************************************************************//
-
-    // ***************************** questa la voglio spiegata
-    // ******************************//
+    
+    /**
+     * Method that filters the List of type Canzone objects taking the first num of them
+     * @param num number of type Canzone objects taken
+     * @return FilteredList<Canzone> object containing num type Canzone objects
+     */
     public FilteredList<Canzone> setNumberofRows(int num) {
         FilteredList<Canzone> filteredData = new FilteredList<>(
                 list,
                 song -> list.indexOf(song) < num);
         return filteredData;
     }
-    // *************************************************************************************//
 
+    /**Sets the column of indexes */
+    private void setIndex(){
+        songindex.setCellFactory(col -> new TableCell<Canzone, Void>() {
+            @Override
+            public void updateIndex(int index) {
+                super.updateIndex(index);
+                if (isEmpty() || index < 0) {
+                    setText(null);
+                } else {
+                    setText(Integer.toString((index + 1)));
+                }
+            }
+        });
+    }
+
+    /**Sets the first row of the TableView with the column factors */
+    private void setColumns(){
+
+        album.setCellValueFactory(new PropertyValueFactory<Canzone, String>("album"));
+        titolo.setCellValueFactory(new PropertyValueFactory<Canzone, String>("titolo"));
+        autore.setCellValueFactory(new PropertyValueFactory<Canzone, String>("autore"));
+        anno.setCellValueFactory(new PropertyValueFactory<Canzone, Integer>("anno"));
+        durata.setCellValueFactory(new PropertyValueFactory<Canzone, Double>("durata"));
+
+    }
+
+    /**Sets the rows of the TableView clickable and shows the song window */
+    private void visualizzaEmozioneBrano(){
+
+        repository.setRowFactory(tableView -> {
+            TableRow<Canzone> row = new TableRow<Canzone>();
+            row.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+                        if (mouseEvent.getClickCount() == 2) {
+                            Canzone c = tableView.getItems().get(row.getIndex());
+                            Parent p = (Parent) GlobalsVariables.left_side_bpane.getCenter();
+                            GlobalsVariables.left_side_bpane.getChildren().remove(p);
+                            ShowSongWindow(c);
+                        }
+                    }
+
+                }
+            });
+            return row;
+        });
+    }
+    
 }

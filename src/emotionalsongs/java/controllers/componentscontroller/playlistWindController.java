@@ -1,3 +1,8 @@
+/**
+ * Provides the controller classes necessary to 
+ * manage the Scenes(components) of the main window.
+ * @see package.emotionalsongs.java.controllers
+ */
 package emotionalsongs.java.controllers.componentscontroller;
 
 import java.io.IOException;
@@ -6,12 +11,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.PlaylistManager;
-import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.controllers.microcontrollers.AddPlaylistBoxController;
 import emotionalsongs.java.controllers.microcontrollers.PlaylistBoxController;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
 import emotionalsongs.java.util.Playlist;
+import emotionalsongs.java.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,24 +26,37 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 
+/**
+ * Controller Class for the file playlist.fxml .
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class playlistWindController implements Initializable {
 
-    private boolean lemie;
-    ArrayList<Playlist> mine = new ArrayList<Playlist>();
-    ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
-    ArrayList<Playlist> others = new ArrayList<Playlist>();
-    StyleManager style = new StyleManager();
-    FxmlLoader obj = new FxmlLoader();
-
+    /**fxml element for graphics */
     @FXML
     private FlowPane Container;
-
+    /**fxml element for graphics */
     private Label avviso = new Label();
 
+    /**Sets the User to the current one */
+    User u = GlobalsVariables.currentUser;
+    /**Useful boolean variable */
+    private boolean lemie;
+    /**Useful object to load fxml file*/
+    FxmlLoader obj = new FxmlLoader();
+    /**Useful ArrayList of type Playlist objects */
+    ArrayList<Playlist> mine = new ArrayList<Playlist>();
+    /**Useful ArrayList of type Playlist objects */
+    ArrayList<Playlist> others = new ArrayList<Playlist>();
+    /**Useful ArrayList of type Playlist objects that are in the Playlist.data.txt file*/
+    ArrayList<Playlist> pl = PlaylistManager.readPlaylist();
+    
+    /**Initializes the fxml file*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            if(GlobalsVariables.currentUser.getGuest()) {
+            if(u != null) {
                 filterPlaylist();
                 if (lemie) {
                     createHomePlaylistUI();
@@ -55,11 +73,18 @@ public class playlistWindController implements Initializable {
 
     }
 
-
+    /**
+     * Sets the boolean field to true if current user's playlists are considered, if not to false
+     * @param x true if current user's playlists are considered, if not to false
+     */
     public void setLemie(boolean x) {
         lemie = x;
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of all the playlists in the application
+     * @throws IOException IOException
+     */
     private void PlaylistUI() throws IOException {
         if (pl.isEmpty() || pl == null) {
             Container.setAlignment(Pos.CENTER);
@@ -81,9 +106,12 @@ public class playlistWindController implements Initializable {
         
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of current user's playlists
+     * @throws IOException IOException
+     */
     private void createHomePlaylistUI() throws IOException {
 
-        System.out.println("\n\nFunzia bene");
         ArrayList<Playlist> playlists = mine;
         if (playlists == null || playlists.isEmpty()) {
             FXMLLoader loader = obj.getLoader("AddPlaylistBox");
@@ -106,8 +134,11 @@ public class playlistWindController implements Initializable {
 
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of other users' playlists
+     * @throws IOException IOException
+     */
     private void createHomeOthersPlaylistUI() throws IOException {
-        System.out.println("\n\nFunzia bene");
         if (pl.isEmpty() || pl == null) {
                 Container.setAlignment(Pos.CENTER);
                 avviso.setText("Nessuna Playlist presente");
@@ -115,7 +146,7 @@ public class playlistWindController implements Initializable {
                 Container.getChildren().add(avviso);
 
         } else{
-            if (GlobalsVariables.currentUser.getGuest()) {
+            if (u != null) {
                 if (others.isEmpty() || others == null) {
                     Container.setAlignment(Pos.CENTER);
                     avviso = new Label("Nessuna Playlist presente");
@@ -147,9 +178,10 @@ public class playlistWindController implements Initializable {
 
     }
 
+    /**Filters the list of playlists that are in the Playlist.data.txt file based on the user Id. */
     private void filterPlaylist() {
         for (Playlist playlist : pl) {
-            if (playlist.getOwner().equals(GlobalsVariables.currentUser.getId())) {
+            if (playlist.getOwner().equals(u.getId())) {
                 mine.add(playlist);
             } else {
                 others.add(playlist);

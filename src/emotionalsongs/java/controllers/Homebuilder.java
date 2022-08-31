@@ -1,3 +1,8 @@
+/**
+ * Provides the classes necessary to manage 
+ * the three main Stages(windows) of the application  
+ * @see package.emotionalsongs.java
+ */
 package emotionalsongs.java.controllers;
 
 import java.io.IOException;
@@ -21,9 +26,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -31,45 +36,57 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Controller Class for the file HomeWindow.fxml .
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ */
 public class Homebuilder implements Initializable {
 
+    /**fxml element for graphics */
     @FXML
     private HBox logbuttons;
-
+    /**fxml element for graphics */
     @FXML
     private TextField usernameEmail;
+    /**fxml element for graphics */
     @FXML
     private PasswordField passwd;
-    @FXML
-    private HBox myPlaylistcont;
+    /**fxml element for graphics */
     @FXML
     private BorderPane left_side_bpane;
-    @FXML
-    private Label hello_username;
-    @FXML
-    private MenuItem btn_signOut;
-    @FXML
-    private Label add_song_btn;
+    /**fxml element for graphics */
     @FXML
     private MenuButton usernameBtn;
+    /**fxml element for graphics */
     @FXML
     private MenuButton LogInMenuButton;
-    @FXML
-    private Pane navBarPane;
+    /**fxml element for graphics */
     @FXML
     private Label labelLeTuePlaylist;
+    /**fxml element for graphics */
     @FXML
     private Label labelNuovaPlaylist;
-    @FXML
-    private Label labelVediPlaylist;
+    /**fxml element for graphics */
     @FXML
     private VBox menubar;
+    
+    @FXML
+    private Label noUser;
 
+    /**Useful object css file*/
     StyleManager style = new StyleManager();
+    /**Useful object fxml file*/
     FxmlLoader obj = new FxmlLoader();
 
+    /**Current User */
+    private User logged = GlobalsVariables.currentUser;
+
+
+    /**Initializes the fxml file*/
     @Override
     public void initialize(URL urilink, ResourceBundle reb) {
+
         Platform.runLater(() -> {
             
             menubar.getChildren().removeAll(labelLeTuePlaylist,labelNuovaPlaylist);
@@ -79,19 +96,21 @@ public class Homebuilder implements Initializable {
 
         });
 
-        if (GlobalsVariables.currentUser.getGuest()) {
+        if (logged == null) {
             logbuttons.getChildren().remove(usernameBtn);
         }
 
     }
 
-    /************************************************************************/
-    /********** Servono per tornare alla scermata loggin *****************/
-
+    /**
+     * Sets User to null and removes some fxml elements
+     * @param e javafx action event
+     * @throws IOException IOException
+     */
     public void SignOut(ActionEvent e) throws IOException {
         GlobalsVariables.clearSession();
         GlobalsVariables.exitSession();
-        GlobalsVariables.currentUser = new User("guest","guest","guest","guest","guest","guest",true);
+        logged = GlobalsVariables.currentUser;
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
         createHome();
@@ -103,36 +122,49 @@ public class Homebuilder implements Initializable {
 
     }
 
-
-    public void Login(ActionEvent e){
+    /**
+     * Sets User to the user doing the login and adds some fxml elements
+     * @param e javafx action event
+     * @throws IOException IOException
+     */
+    public void Login(ActionEvent e) throws IOException {
         User loguser = new User(usernameEmail.getText(), passwd.getText(), usernameEmail.getText(),
                 (usernameEmail.getText()).toLowerCase(), (usernameEmail.getText()).toUpperCase(),
-                (usernameEmail.getText()).toLowerCase(),false);
+                (usernameEmail.getText()).toLowerCase());
         ArrayList<User> users = (ArrayList<User>) UserManager.readUsers();
         if (users.contains(loguser)) {
-
             User log = users.get(users.indexOf(loguser)); // molto meglio
-            System.out.println(log.printUser());// testing ok!
             GlobalsVariables.currentUser = log;
+            noUser.setVisible(false);
             updateWindow();
-
-            System.out.println("\n\n\nUser trovato\n\n\n");
-        } else {
-            System.out.println("\n\n\nUser non presente\n\n\n");
+        }
+        else{
+            usernameEmail.setText("");
+            passwd.setText("");
+            noUser.setVisible(true);
+            noUser.setText("Utente non trovato");
         }
     }
 
+    /**
+     * Sets home window based on if the user is logged or not
+     */
     private void updateWindow() {
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
+        logged = GlobalsVariables.currentUser;
         createHome();
         menubar.getChildren().addAll(labelLeTuePlaylist,labelNuovaPlaylist);
         logbuttons.getChildren().remove(LogInMenuButton);
         logbuttons.getChildren().add(usernameBtn);
-        usernameBtn.setText(GlobalsVariables.currentUser.getUsername());
+        usernameBtn.setText(logged.getUsername());
 
 
     }
+
+    /**
+     * Sets the center of the BorderPane with the file home.fxml
+     */
     private void createHome()
     {
         try {
@@ -141,9 +173,12 @@ public class Homebuilder implements Initializable {
         } catch (Exception e) {
            e.printStackTrace();
         }
-        
-        
+         
     }
+
+    /**
+     * Sets the center of the BorderPane with the file createPlaylist.fxml
+     */
     private void createNewPlaylistUI()throws IOException{
         FXMLLoader load = obj.getComponentsLoader("createPlaylist");
         createPlaylistController createPlaylistController = new createPlaylistController();
@@ -154,7 +189,13 @@ public class Homebuilder implements Initializable {
         left_side_bpane.setCenter(ui);
     }
 
+    /**
+     * Opens a new window for the registration
+     * @param e javafx action event
+     * @throws IOException IOException
+     */
     public void SignUpWind(ActionEvent e) throws IOException {
+        String imgPath = getClass().getResource("/emotionalsongs/resources/images/icon3.png").toExternalForm();
         Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/SignUpWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -162,32 +203,41 @@ public class Homebuilder implements Initializable {
         stage.setTitle("EmotionalSong");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.getIcons().add(new Image(imgPath));
         stage.show();
     }
 
-    /*****************************************************
-     * metodi per i button della homeWindow
-     *****************************************************/
-
+    /**
+     * Method that takes the user back to home after a certain action
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void backHome(MouseEvent e) throws IOException {
         GlobalsVariables.cleardeleteFromPlaylistSessio();
-        System.out.println("funzia");
         Parent p = (Parent) left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         createHome();
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the create playlist window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void newPlaylist(MouseEvent e) throws IOException {
-
-        System.out.println("funzia");
         createNewPlaylistUI();
         Parent p = (Parent) left_side_bpane.getCenter();
         left_side_bpane.getChildren().remove(p);
         createNewPlaylistUI();
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of current user's playlists window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void MyplayWind(MouseEvent e) throws IOException {
-        System.out.println("funzia");
+        
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setLemie(true);
@@ -197,8 +247,14 @@ public class Homebuilder implements Initializable {
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         left_side_bpane.setCenter(ui);
     }
+
+    /**
+     * Method that sets the center of the BorderPane with the graphic of other users' playlists window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void playWind(MouseEvent e) throws IOException {
-        System.out.println("funzia");
+        
         FXMLLoader load = obj.getComponentsLoader("playlist");
         playlistWindController playlistWindController = new playlistWindController();
         playlistWindController.setLemie(false);
@@ -209,14 +265,16 @@ public class Homebuilder implements Initializable {
         left_side_bpane.setCenter(ui);
     }
 
+    /**
+     * Method that sets the center of the BorderPane with the graphic of the songs window
+     * @param e javafx mouse event
+     * @throws IOException IOException
+     */
     public void songWind(MouseEvent e) throws IOException {
-        System.out.println("funzia");
+        
         Pane ui = obj.getPane("songs");
         ui.getStylesheets().add(style.getStyle("repositoryCanzoni"));
         left_side_bpane.setCenter(ui);
     }
-
-    /*****************************************************
-     *****************************************************/
 
 }
