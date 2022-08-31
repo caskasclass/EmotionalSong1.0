@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.util.User;
 import javafx.event.ActionEvent;
@@ -17,39 +16,37 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-// ****************************************
-// Controller della finestra Regisrtazione!
-// ****************************************
 
 /**
  * Controller Class for the file SignUpWindow.fxml .
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class ControllerH {
 
-    // questi sotto servono per la view di SignUP
+    /**fxml element for graphics */
     @FXML
     private TextField btn_cf;
 
+    /**fxml element for graphics */
     @FXML
     private TextField btn_ind;
-
+    /**fxml element for graphics */
     @FXML
     private TextField btn_nome;
-
+    /**fxml element for graphics */
     @FXML
     public TextField btn_username;
-
+    /**fxml element for graphics */
     @FXML
     public TextField btn_mail;
-
+    /**fxml element for graphics */
     @FXML
     public PasswordField btn_passwd;
-
+    /**fxml element for graphics */
     @FXML
     public Button btn_registra;
-
+    /**fxml element for graphics */
     @FXML
     public Label msgErr;
 
@@ -60,7 +57,6 @@ public class ControllerH {
      */
     public void Registrazione(ActionEvent e) throws IOException {
 
-        //problemi con trim per ora l'ho tolto
         String[] s = {btn_username.getText(), btn_passwd.getText(), btn_mail.getText(), btn_nome.getText() 
        , btn_cf.getText(), btn_ind.getText()};
        List<String> s2 = Arrays.asList(s);
@@ -85,11 +81,11 @@ public class ControllerH {
         } 
         
         }
-         // le prossime due righe sono da mettere dentro il controllo tipo if
-        // Nel sennso che se la registrazione è avvenuta con successo allora chiuedi
-        // altrimenti nulla,
-        // magari si stampa un messaggio di errore durante la registrazione!
         
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))
@@ -97,6 +93,10 @@ public class ControllerH {
             this.btn_cf.requestFocus();
         }
     }
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus2(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))
@@ -104,6 +104,10 @@ public class ControllerH {
             this.btn_username.requestFocus();
         }
     }
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus3(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))
@@ -111,6 +115,10 @@ public class ControllerH {
             this.btn_mail.requestFocus();
         }
     }
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus4(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))
@@ -118,6 +126,10 @@ public class ControllerH {
             this.btn_passwd.requestFocus();
         }
     }
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus5(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))
@@ -125,6 +137,10 @@ public class ControllerH {
             this.btn_ind.requestFocus();
         }
     }
+    /**
+     * Moves the focus on anothe textfield when the key is pressed
+     * @param key Enter key
+     */
     public void focus6(KeyEvent key)
     {
         if(key.getCode().equals(KeyCode.ENTER))

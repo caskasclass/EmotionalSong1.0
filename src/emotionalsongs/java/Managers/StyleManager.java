@@ -1,12 +1,9 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.Managers;
 
 /**
  * This Class manages the css files in the application.
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class StyleManager {
     

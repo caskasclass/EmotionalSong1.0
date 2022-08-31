@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.net.URL;
@@ -10,8 +7,8 @@ import javafx.scene.layout.Pane;
 
 /**
  * Useful Class that  every possible emotion that will be evaluated in ValutazioneUtente.   
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class FxmlLoader {
     private Pane ui;

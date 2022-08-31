@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -10,8 +7,8 @@ import java.util.UUID;
 /**
  * Represents an object Playlist. 
  * It has its Id, the Id of the user who created it, an icon, its name and a list of songs
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class Playlist implements Serializable {
 

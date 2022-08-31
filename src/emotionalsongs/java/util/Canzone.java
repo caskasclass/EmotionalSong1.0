@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -10,8 +7,8 @@ import java.util.Date;
 /**
  * Represents a Canzone object.
  * It has the info about the song like title, author ecc..
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 
 public class Canzone implements Serializable {

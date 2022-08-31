@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -12,8 +9,8 @@ import emotionalsongs.java.Managers.UserManager;
 
 /**
  * Represents a User object.
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class User implements Serializable {
     private static String PATH = "./DATA/UtentiRegistrati.dati.txt";

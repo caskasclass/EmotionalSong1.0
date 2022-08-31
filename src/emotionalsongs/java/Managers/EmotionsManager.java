@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.Managers;
 
 import java.io.File;
@@ -10,8 +7,8 @@ import emotionalsongs.java.util.CanzoneEvaluation;
 
 /**
  * This Class manages the evaluations in the application (type CanzoneEvaluation).
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class EmotionsManager extends FileManager {
 

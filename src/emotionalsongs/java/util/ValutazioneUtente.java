@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -9,8 +6,8 @@ import java.util.HashMap;
 /**
  * Represents an object ValutazioneUtente. 
  * It has the Id of the user who evaluates the song and the evaluation itself
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class ValutazioneUtente implements Serializable{
     

@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.util;
 
 import java.io.Serializable;
@@ -8,8 +5,8 @@ import java.io.Serializable;
 /**
  * Represents an object Dettagli. 
  * It has the user who wrote the comment and the comment itself
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class Dettagli implements Serializable{
 

@@ -10,6 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Progetto laboratorio A: "Emotional Songs", anno 2021-2022
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
+ * @version 1.0
+ */
 public class EmotionalSongs extends Application {
     StyleManager style = new StyleManager();
 
@@ -26,6 +32,11 @@ public class EmotionalSongs extends Application {
         primaryStage.show();
     } 
 
+    /**
+     * Launches the JavaFX application.
+     * @param args main arguments 
+     * @throws ParseException exception
+     */
     public static void main(String[] args) throws ParseException {
         launch(args);
 

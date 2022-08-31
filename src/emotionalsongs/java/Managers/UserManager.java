@@ -1,6 +1,3 @@
-/*Beatrice Bastianello, matricola 751864
-Nazar Viytyuk, matricola 748964
-sede VA*/
 package emotionalsongs.java.Managers;
 
 import java.util.ArrayList;
@@ -9,8 +6,8 @@ import emotionalsongs.java.util.User;
 
 /**
  * This Class manages the users in the application (type Playlist).
- * @author Beatrice Bastianello
- * @author Nazar Viytyuk
+ * @author Beatrice Bastianello, matricola 751864
+ * @author Nazar Viytyuk, matricola 748964
  */
 public class UserManager extends FileManager {
     
