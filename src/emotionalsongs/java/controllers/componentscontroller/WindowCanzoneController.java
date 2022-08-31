@@ -476,3 +476,4 @@ public class WindowCanzoneController implements Initializable {
     commentField.setTextFormatter(formatter);
     }
 }
+

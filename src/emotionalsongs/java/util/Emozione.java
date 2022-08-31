@@ -29,5 +29,3 @@ public enum Emozione {
     /**Sadness */
     Sadness
 }
-
-
