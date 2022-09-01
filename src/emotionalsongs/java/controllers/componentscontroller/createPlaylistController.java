@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import emotionalsongs.java.Managers.PlaylistManager;
-import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.util.Canzone;
 import emotionalsongs.java.util.FxmlLoader;
 import emotionalsongs.java.util.GlobalsVariables;
@@ -109,8 +108,6 @@ public class createPlaylistController implements Initializable {
 
     /**Useful object to load fxml file*/
     FxmlLoader obj = new FxmlLoader();
-    /**Useful object to load css file*/
-    StyleManager style = new StyleManager();
 
     /**Initializes the fxml file*/
     @Override
@@ -151,7 +148,7 @@ public class createPlaylistController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/PlaylistImagePicker.fxml"));
         Scene scene = new Scene(root, 1100, 600);
-        scene.getStylesheets().add(style.getStyle("imagePickerWindow"));
+        scene.getStylesheets().add(GlobalsVariables.style.getStyle("imagePickerWindow"));
         stage.setTitle("EmotionalSongs");
         stage.setResizable(false);
         stage.setScene(scene);

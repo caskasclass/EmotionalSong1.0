@@ -10,7 +10,7 @@ package emotionalsongs.java.util;
  * @author Nazar Viytyuk, matricola 748964
  */
 public enum Emozione {
-    /**Amazemente */
+    /**Amazement */
     Amazement,
     /**Solemnity */
     Solemnity,
