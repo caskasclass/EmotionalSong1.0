@@ -210,7 +210,7 @@ public class Homebuilder implements Initializable {
      * @throws IOException IOException
      */
     public void backHome(MouseEvent e) throws IOException {
-        GlobalsVariables.cleardeleteFromPlaylistSessio();
+        GlobalsVariables.cleardeleteFromPlaylistSession();
         Parent p = (Parent) left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         createHome();

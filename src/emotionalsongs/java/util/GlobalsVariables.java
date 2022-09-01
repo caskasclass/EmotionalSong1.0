@@ -39,7 +39,7 @@ public class GlobalsVariables {
     public static StyleManager style= new StyleManager();
 
     /**Removes all the songs (type Canzone)*/
-    public static void cleardeleteFromPlaylistSessio()
+    public static void cleardeleteFromPlaylistSession()
     {
        playlist.clear();
     }
