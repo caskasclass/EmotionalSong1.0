@@ -3,7 +3,7 @@ package emotionalsongs;
 
 import java.text.ParseException;
 
-import emotionalsongs.java.Managers.StyleManager;
+import emotionalsongs.java.util.GlobalsVariables;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,14 +19,13 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class EmotionalSongs extends Application {
-    StyleManager style = new StyleManager();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         String imgPath = getClass().getResource("/emotionalsongs/resources/images/icon3.png").toExternalForm();
         Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/HomeWindow.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(style.mainStyle());
+        scene.getStylesheets().add(GlobalsVariables.style.mainStyle());
         primaryStage.setTitle("EmotionalSong");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
@@ -46,3 +45,4 @@ public class EmotionalSongs extends Application {
     }
 
 }
+

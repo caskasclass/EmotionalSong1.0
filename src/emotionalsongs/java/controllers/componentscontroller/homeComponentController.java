@@ -1,4 +1,3 @@
-
 package emotionalsongs.java.controllers.componentscontroller;
 
 import java.io.IOException;
@@ -263,5 +262,4 @@ public class homeComponentController implements Initializable {
         }
 
     }
-
 }

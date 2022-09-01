@@ -62,5 +62,4 @@ public class songRepositoryController implements Initializable {
         table.cercaBranoMusicale(cercaCanzone);
 
     }
-
 }

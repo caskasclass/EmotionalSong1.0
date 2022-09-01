@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import emotionalsongs.java.Managers.StyleManager;
 import emotionalsongs.java.Managers.UserManager;
 import emotionalsongs.java.controllers.componentscontroller.createPlaylistController;
 import emotionalsongs.java.controllers.componentscontroller.playlistWindController;
@@ -74,8 +73,6 @@ public class Homebuilder implements Initializable {
     @FXML
     private Label noUser;
 
-    /**Useful object css file*/
-    StyleManager style = new StyleManager();
     /**Useful object fxml file*/
     FxmlLoader obj = new FxmlLoader();
 
@@ -199,7 +196,7 @@ public class Homebuilder implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/emotionalsongs/resources/view/SignUpWindow.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(style.getStyle("registration"));
+        scene.getStylesheets().add(GlobalsVariables.style.getStyle("registration"));
         stage.setTitle("EmotionalSong");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -213,7 +210,7 @@ public class Homebuilder implements Initializable {
      * @throws IOException IOException
      */
     public void backHome(MouseEvent e) throws IOException {
-        GlobalsVariables.cleardeleteFromPlaylistSessio();
+        GlobalsVariables.cleardeleteFromPlaylistSession();
         Parent p = (Parent) left_side_bpane.getCenter();
         GlobalsVariables.left_side_bpane.getChildren().remove(p);
         createHome();
@@ -273,7 +270,7 @@ public class Homebuilder implements Initializable {
     public void songWind(MouseEvent e) throws IOException {
         
         Pane ui = obj.getPane("songs");
-        ui.getStylesheets().add(style.getStyle("repositoryCanzoni"));
+        ui.getStylesheets().add(GlobalsVariables.style.getStyle("repositoryCanzoni"));
         left_side_bpane.setCenter(ui);
     }
 

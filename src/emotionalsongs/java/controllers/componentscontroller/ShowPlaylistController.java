@@ -138,7 +138,7 @@ public class ShowPlaylistController  implements Initializable{
         ArrayList<Playlist> array = PlaylistManager.readPlaylist();
         array.remove(current);
         PlaylistManager.getPlaylist(array);
-        GlobalsVariables.cleardeleteFromPlaylistSessio();
+        GlobalsVariables.cleardeleteFromPlaylistSession();
         backToHome();
        
     }

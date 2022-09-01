@@ -1,5 +1,5 @@
 /**
- * Useful Class that creates static variables and methods that are used to simulate a session.   
+ * Provides the Classes that represent the main objects of the application 
  * @author Beatrice Bastianello, matricola 751864
  * @author Nazar Viytyuk, matricola 748964
  */

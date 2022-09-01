@@ -1,4 +1,3 @@
-
 package emotionalsongs.java.controllers;
 
 import emotionalsongs.java.util.GlobalsVariables;
@@ -39,3 +38,4 @@ public class ImagePlaylistPicker {
     }
 
 }
+
