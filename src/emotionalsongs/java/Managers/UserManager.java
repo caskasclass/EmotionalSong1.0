@@ -6,7 +6,6 @@
 package emotionalsongs.java.Managers;
 
 import java.util.ArrayList;
-
 import emotionalsongs.java.util.User;
 
 /**
@@ -18,12 +17,12 @@ public class UserManager extends FileManager {
     
   /**Path to the file containing the users (type User) */
     final static String PATH="./DATA/UtentiRegistrati.dati.txt";
-    
     /**
     * Imports and returns the users (type User) in the file User.dati.txt as an ArrayList
     * @return ArrayList of type User objects
     */
     public static ArrayList<User> readUsers(){
+ 
 
         Object obj= readData(PATH);
         ArrayList<User> users = new ArrayList<>();
